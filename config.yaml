@@ -1,4 +1,4 @@
-categories: ["cs.CV", "cs.LG", "cs.AI"]
+categories: ["cs.CV", "cs.LG", "cs.AI", "cs.SI", "cs.CY", "econ.GN", "econ.EM", "econ.TH", "q-fin.GN", "q-fin.ST", "q-fin.CP", "q-fin.TR", "q-fin.PM"]
 keywords:
   - "open vocabulary"
   - "open-vocabulary"
@@ -13,7 +13,7 @@ keywords:
 #   - "LLM"
   
 logic: "AND"                 # 组间逻辑：categories 与 keywords 间 AND/OR
-max_results: 30
+max_results: 100
 sort_by: "lastUpdatedDate"  # 还可以是submittedDate 建议改成lastUpdatedDate按更新时间排，能捞到v2/v3的“新增”
 sort_order: "descending"
 

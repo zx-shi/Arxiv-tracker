@@ -1,0 +1,111 @@
+name: arxiv-digest-cv
+
+on:
+  workflow_dispatch:
+    inputs:
+      send_email:
+        description: "Send email?"
+        required: false
+        default: "true"
+        type: choice
+        options: ["false", "true"]
+
+  schedule:
+    # 周一、周四 11:00 北京时间 (03:00 UTC)
+    - cron: "0 19 * * 1,4"
+
+concurrency:
+  group: arxiv-digest-cv
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      TZ: Asia/Shanghai
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "pip"
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            libcairo2 libcairo2-dev python3-cairo \
+            libpango1.0-dev libgdk-pixbuf2.0-dev \
+            libffi-dev libjpeg-turbo8-dev libpng-dev \
+            libfreetype6-dev pkg-config
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Compute Pages URL
+        id: site
+        run: |
+          REPO="${GITHUB_REPOSITORY}"
+          OWNER="${REPO%%/*}"
+          NAME="${REPO#*/}"
+          echo "url=https://${OWNER}.github.io/${NAME}/" >> $GITHUB_OUTPUT
+
+      - name: Show env (diagnostics)
+        env:
+          EMAIL_TO: ${{ secrets.EMAIL_TO || vars.EMAIL_TO }}
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER || vars.EMAIL_SENDER }}
+          SMTP_USER: ${{ secrets.SMTP_USER || vars.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          OPENAI_COMPAT_API_KEY: ${{ secrets.OPENAI_COMPAT_API_KEY || vars.OPENAI_COMPAT_API_KEY }}
+        run: |
+          python - <<'PY'
+          import os, re
+          def mask(s): return "" if not s else re.sub(r'(^.).*(@.*$)', r'\1***\2', s) if "@" in s else s[:1] + "***"
+          print(f"EMAIL_TO: {mask(os.getenv('EMAIL_TO',''))}")
+          print(f"EMAIL_SENDER: {mask(os.getenv('EMAIL_SENDER',''))}")
+          print(f"SMTP_USER: {mask(os.getenv('SMTP_USER',''))}")
+          print(f"HAS_SMTP_PASS: {bool(os.getenv('SMTP_PASS'))}")
+          print(f"HAS_OPENAI_COMPAT_API_KEY: {bool(os.getenv('OPENAI_COMPAT_API_KEY'))}")
+          PY
+
+      - name: Run tracker (CV)
+        env:
+          OPENAI_COMPAT_API_KEY: ${{ secrets.OPENAI_COMPAT_API_KEY || vars.OPENAI_COMPAT_API_KEY }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO || vars.EMAIL_TO }}
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER || vars.EMAIL_SENDER }}
+          SMTP_USER: ${{ secrets.SMTP_USER || vars.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          ARXIV_MAX_ATTEMPTS: "6"
+          ARXIV_PAUSE: "1.5"
+        run: |
+          set -e
+          EXTRA=""
+          if { [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.send_email }}" = "true" ]; } || \
+             { [ "${{ github.event_name }}" = "schedule" ] && [ "${{ github.run_attempt }}" = "1" ]; }; then
+            EXTRA=""
+          else
+            EXTRA="--no-email"
+          fi
+          echo "Event: ${{ github.event_name }}, Attempt: ${{ github.run_attempt }}, Extra: $EXTRA"
+          python -m arxiv_tracker.cli run \
+            --config config.yaml \
+            --site-dir docs_cv \
+            --site-url "${{ steps.site.outputs.url }}" \
+            $EXTRA \
+            --verbose
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update CV digest"
+          file_pattern: |
+            docs_cv/**
+            .state/seen_cv.json

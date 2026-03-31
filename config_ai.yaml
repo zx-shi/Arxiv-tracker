@@ -50,7 +50,7 @@ translate:
 email:
   enabled: true
   subject: "[arXiv AI] Daily Digest"
-  smtp_server: "smtp.qq.com"
+  smtp_server: "smtp.163.com"
   smtp_port: 465
   smtp_pass_env: "SMTP_PASS"
   tls: "ssl"

@@ -78,8 +78,8 @@ site:
 
 # === 新鲜度 & 去重 ===
 freshness:
-  since_days: 3                # 【修复】最近 3 天内更新/提交的论文
-  unique_only: true
+  since_days: 7                # 优化：最近 7 天内更新/提交的论文
+  unique_only: false           # 临时关闭去重，测试抓取
   state_path: ".state/seen_cv.json"
   fallback_when_empty: false  # 今天无新增时不回退展示旧论文
 

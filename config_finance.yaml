@@ -70,8 +70,8 @@ site:
   accent: "#dc2626"
 
 freshness:
-  since_days: 7                 # 金融领域论文较少，放宽到 7 天
-  unique_only: true
+  since_days: 7                 # 金融领域论文较少，保持 7 天
+  unique_only: false           # 临时关闭去重，测试抓取
   state_path: ".state/seen_finance.json"
   fallback_when_empty: false
 

@@ -1,20 +1,13 @@
 # === 检索配置 ===
 categories: ["cs.CV", "cs.LG", "cs.AI"]
 
-# 搜索关键词（扩大范围）
+# 搜索关键词（简化为 5 个核心关键词）
 keywords:
-  - "open vocabulary"
   - "open-vocabulary"
-  - "open vocabulary segmentation"
-  - "open-vocabulary segmentation"
   - "vision transformer"
   - "vision-language"
-  - "visual grounding"
-  - "image segmentation"
   - "training-free"
-  - "semantic segmentation"
   - "zero-shot"
-  - "vision language model"
 
 # 排除不相关的论文
 exclude_keywords:

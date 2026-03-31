@@ -83,8 +83,8 @@ jobs:
           EMAIL_SENDER: ${{ secrets.EMAIL_SENDER || vars.EMAIL_SENDER }}
           SMTP_USER: ${{ secrets.SMTP_USER || vars.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
-          ARXIV_MAX_ATTEMPTS: "6"
-          ARXIV_PAUSE: "1.5"
+          ARXIV_MAX_ATTEMPTS: "12"        # 增加重试次数应对 429 限流
+          ARXIV_PAUSE: "3.0"                # 增加暂停时间
         run: |
           set -e
           EXTRA=""

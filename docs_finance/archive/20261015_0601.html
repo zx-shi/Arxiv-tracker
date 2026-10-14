@@ -1,0 +1,519 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递 - Finance</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#dc2626;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#dc2626;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递 - Finance</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-10-15 06:01</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261015_0601</div>
+    <div class="row"><div class="card">
+<div class="title">Superdiffusive Invariance Principle for the two-dimensional Asymmetric Simple Exclusion Process</div>
+<div class="meta-line">Authors: Quentin Moulard</div>
+<div class="meta-line">First: 2026-10-13T17:57:59+00:00 · Latest: 2026-10-13T17:57:59+00:00</div>
+<div class="meta-line">Comments: 85 pages, 2 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18847v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18847v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We consider the Asymmetric Simple Exclusion Process (ASEP) at its critical dimension $d=2$, started from the Bernoulli product measure with density $ρ\in (0,1)$. We first derive the sharp $\log(t)^{2/3}$ divergence of the bulk diffusivity, predicted via mode-coupling theory in [H. van Beijeren, R. Kutner, H. Spohn, Phys. Rev. Lett., 1985], including the exact prefactor, thereby removing the subleading diverging multiplicative corrections in the Tauberian bounds of [H.-T. Yau, Ann. of Math., 2004]. More importantly, we establish an invariance principle for the density fluctuation field on the corresponding superdiffusive scales. On the time scale $τ$, we rescale space by $\sqrtτ \log(τ)^{1/3}$ in the direction of the drift and by $\sqrtτ$ in the transverse direction, and prove functional convergence of the rescaled fluctuation process to the solution of a conservative stochastic heat equation with additive noise. This is the same explicit Gaussian Fixed Point obtained in [G. Cannizzaro, Q. Moulard, F. Toninelli, arXiv:2501.00344, 2025] for the two-dimensional Stochastic Burgers Equation (SBE). We also deduce a superdiffusive central limit theorem for the second-class particle under the same anisotropic rescaling. The result holds for any finite-range jump kernel with nonzero drift and uniaxial asymmetry.
+  This is the first space-time scaling limit result for a nonequilibrium interacting particle system at the critical dimension, where Gaussian fluctuations emerge despite logarithmic corrections to the scaling. The proof uses an approximate fluctuation-dissipation relation, which is obtained by combining a sharp quantitative comparison between the ASEP and SBE generators with refined estimates on the SBE Ansatz. An additional key novelty is a tightness argument that overcomes the limitations of the Itô trick on superdiffusive scales.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We consider the Asymmetric Simple Exclusion Process (ASEP) at its critical dimension $d=2$, started from the Bernoulli product measure with density $ρ\in (0,1)$.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The Last Remote Sensing Model Built by Humans? Casting Any Earth Observation Task as Recursive Self-Improvement</div>
+<div class="meta-line">Authors: Sijie Zhao, Zeqi Zhou, Heli Qi, Xuanchao Fu, Zhuo Zheng, Junshi Xia, Junjue Wang, Weihao Xuan, Naoto Yokoya</div>
+<div class="meta-line">First: 2026-10-13T17:57:51+00:00 · Latest: 2026-10-13T17:57:51+00:00</div>
+<div class="meta-line">Comments: Ongoing project</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18845v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18845v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Earth observation (EO) models are still built by hand. For each new task, experts design a training recipe and tune it against a benchmark. We show that this loop can be handed to an agent. Any verifiable task can be cast as a harness and a verifier, where the harness defines what the agent may use and the verifier defines what counts as success. Every EO task can be made verifiable, through labeled benchmarks, independent sensors, physical models or the repeated observation of the same place. Given only these two components, a general-purpose coding agent builds the EO model and improves it recursively on its own outputs. Settings long treated as separate research problems, from learning with a handful of labels to adapting across domains, become choices of harness and verifier. On four EO benchmarks spanning optical, SAR and multispectral time-series imagery, agent-built models surpass the state of the art and keep most of that accuracy from about 1% of the training labels. This establishes a new paradigm for EO, in which people design harnesses and verifiers and agents build the models, so EO models improve as agents do.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Earth observation (EO) models are still built by hand.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Joint Neural Posterior Estimation and Model Selection for Chemical Reaction Networks</div>
+<div class="meta-line">Authors: J. Arturo Esquivel, Jorge A. Campos-Gonzalez-Angulo, Sergio Pablo-García, Alán Aspuru-Guzik, Vianey Leos-Barajas</div>
+<div class="meta-line">First: 2026-10-13T17:52:39+00:00 · Latest: 2026-10-13T17:52:39+00:00</div>
+<div class="meta-line">Comments: 40 pages total (11 pages main text, 29 pages appendix), 18 figures. Code available at: https://github.com/Esquivel-Arturo/JNPE</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18825v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18825v1">PDF</a> · <a href="https://github.com/Esquivel-Arturo/JNPE">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Simulation-based Bayesian inference for Chemical Reaction Networks (CRNs) must simultaneously solve two computationally demanding problems: discriminating between overlapping reaction pathways and estimating reaction rate constants. Classical approaches, such as Sequential Monte Carlo ABC, rely on handcrafted summary statistics and scale poorly across large parameter spaces. To overcome this, we introduce a neural inference architecture. Our pipeline utilizes shared 1D-CNNs and a permutation-invariant Set Attention mechanism to learn low-dimensional summary statistics from variable-length, multi-experiment time-series data. These statistics simultaneously condition a model selection network to compute posterior model probabilities and model-specific conditional Invertible Neural Networks (cINNs) that estimate parameter posterior distributions. We demonstrate the practical utility of our approach on a real protodeboronation example, illustrating how it handles structural ambiguity and extracts kinetic parameters from competing catalyst deactivation pathways.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Simulation-based Bayesian inference for Chemical Reaction Networks (CRNs) must simultaneously solve two computationally demanding problems: discriminating between overlapping reaction pathways and estimating reaction rate constants.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The Missile and the Toll: Two-Way Flow Through the Strait of Hormuz</div>
+<div class="meta-line">Authors: Bernhard K Meister</div>
+<div class="meta-line">First: 2026-10-13T17:51:49+00:00 · Latest: 2026-10-13T17:51:49+00:00</div>
+<div class="meta-line">Comments: 11 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18823v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18823v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Tolls for safe passage and attacks on shipping are usually treated as mutually exclusive: either ships pay or attacks happen. We argue they are complementary. In a Stackelberg escalation game for the Strait of Hormuz, the enforcer chooses an attack intensity and a toll schedule; the response is to pay, cross exposed, wait, reroute, or exit. Attacks create the willingness to pay; tolls harvest it. The model predicts asymmetry across trade forms: a toll where the cargo owner can pay and the vessel owner will consent, and none where either fails. Any such payment is clandestine, but the model&#x27;s implications are testable against freight rates, insurance premia, and incident reports.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Tolls for safe passage and attacks on shipping are usually treated as mutually exclusive: either ships pay or attacks happen.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The Geography of (Concurrent) Block Proposing</div>
+<div class="meta-line">Authors: Ciamac C. Moallemi, Mallesh M. Pai, Dan Robinson, Christoph Schlegel</div>
+<div class="meta-line">First: 2026-10-13T17:48:16+00:00 · Latest: 2026-10-13T17:48:16+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18812v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18812v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The resilience and censorship resistance of a blockchain depend on where the validators and proposers of that blockchain physically operate. We study the economic incentives behind this location choice, both with a single proposer and with multiple concurrent proposers. Formally, we study a game where proposers first choose locations and then compete in a first-price auction for an opportunity whose common value is driven by information from geographically dispersed sources. A single proposer minimizes variance-weighted delay, locating at a weighted median of the sources and co-locating with any dominant one. By contrast, with two proposers, information both observe equally early earns no rent, and each proposer&#x27;s expected profit is proportional to the standard deviation of the information it receives before its rival. We show that the location game admits the jointly unobserved variance as an ordinal potential, so global solutions of a weighted two-median problem are equilibria. With two sources, one proposer locates at each, however weak one is. With more proposers and at least as many sources, equilibrium locations are distinct under regular bidding. Multiple concurrent proposers thus do more than limit any single proposer&#x27;s control over inclusion: by rewarding exclusive rather than shared information, they create an economic force toward geographic decentralization.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The resilience and censorship resistance of a blockchain depend on where the validators and proposers of that blockchain physically operate.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Spin textures at the Fermi surface of ferromagnets and associated torque</div>
+<div class="meta-line">Authors: T. Valet, J. Li, H. Jaffrès, V. Cros, M. Chshiev, R. Raimondi</div>
+<div class="meta-line">First: 2026-10-13T17:42:30+00:00 · Latest: 2026-10-13T17:42:30+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18800v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18800v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We establish theoretically that transverse spin textures are generically induced by the spin-orbit interaction at the Fermi surface of centrosymmetric ferromagnetic metals. We confirm this prediction with {\em ab initio} computations for Fe, Co and Ni. By symmetry, this cannot be associated with spin-orbit torques under a uniform current. However, a new {\em current-gradient-induced} torque emerges in nanoscale geometries. For a series of Ni-based bilayers, the computed Ni thickness dependence of the current-gradient-induced torque is in quantitative agreement with measurements previously attributed to orbital torques. We discuss how this opens a new avenue for the electrical control of magnetic orders, possibly also including the Néel vector of metallic altermagnets.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We establish theoretically that transverse spin textures are generically induced by the spin-orbit interaction at the Fermi surface of centrosymmetric ferromagnetic metals.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Brain Age Gap Progression in Individuals at Risk for Neurodegeneration</div>
+<div class="meta-line">Authors: Jason Scheffel, Saurabh Sihag</div>
+<div class="meta-line">First: 2026-10-13T17:40:34+00:00 · Latest: 2026-10-13T17:40:34+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18794v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18794v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Neuroimaging is a widely used modality for characterizing neurodegeneration in various health conditions. Brain age gap has emerged as a promising biomarker for monitoring brain health from neuroimaging data using machine learning algorithms. Recent studies have leveraged coVariance neural networks (VNN)-driven pipelines based on the advancements in graph signal processing for relatively transparent construction of brain age gap from neuroimaging data. In this paper, we focus on a longitudinal study of VNN-based brain age gap in conjunction with Alzheimer&#x27;s Progression Score (APS) in individuals that are at a higher risk of neurodegeneration due to family history of Alzheimer&#x27;s disease. APS is a multimodal marker of disease progression. The longitudinal analysis of APS and VNN-derived brain age gap metrics revealed that a higher risk of disease progression at baseline predicted a larger rate of increase in brain age gap in follow-up visits. Thus, our findings revealed potential stratification in the brain age gap modulated by clinical/biological risks of AD in the at-risk population.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Neuroimaging is a widely used modality for characterizing neurodegeneration in various health conditions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Relative-Entropy Geometry and Convergence in Nonconvex Wiretap Optimization</div>
+<div class="meta-line">Authors: Farzin Salek, Masahito Hayashi</div>
+<div class="meta-line">First: 2026-10-13T17:35:33+00:00 · Latest: 2026-10-13T17:35:33+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18785v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18785v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We develop and analyze an entropic descent method for a nonconvex optimization problem on probability simplices arising in classical and quantum secure communication. The optimization variables describe a randomized encoder, allowing its input distribution and stochastic preprocessing to be optimized jointly. An exact relative-entropy identity yields a channel-independent majorization bound and an explicit mirror-descent iteration with a fixed unit step size. We establish quantitative descent, convergence of objective values, and stationarity of accumulation points on their support faces for arbitrary finite classical channels, without assuming degradedness or less noisiness. For strictly positive transition matrices, a square-root parametrization and a Kurdyka--Łojasiewicz argument establish finite length of the transformed trajectory and convergence of the entire sequence, including limits on the simplex boundary. For less-noisy channels, a restricted convex formulation admits global convergence with an explicit \(O(1/t)\) objective-error bound. We extend the relative-entropy construction to noncommuting quantum outputs and derive monotone alternating updates for covariant encoders, including correlated preprocessing over a fixed block. Numerical experiments compare the method with analytic benchmarks and constrained optimization, reveal multiple attracting values, and demonstrate strict improvements from stochastic preprocessing.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We develop and analyze an entropic descent method for a nonconvex optimization problem on probability simplices arising in classical and quantum secure communication.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Deterministic and programmable generation of mechanical multipartite entangled states</div>
+<div class="meta-line">Authors: Isabelle Franzen, Max-Emanuel Kern, Q. Rumman Rahman, Igor Kladarić, Stefano Marti, Yiwen Chu, Zhi-Yuan Wei, Matteo Fadel</div>
+<div class="meta-line">First: 2026-10-13T17:32:44+00:00 · Latest: 2026-10-13T17:32:44+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18778v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18778v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Multimode mechanical resonators offer a large set of densely packed, long-lived bosonic modes within a single compact device, making them attractive for quantum simulation, quantum information processing, and quantum-enhanced sensing. Many such applications rely on multipartite entanglement, yet deterministic mechanical entanglement has so far been largely limited to pairs of modes. Here we demonstrate the deterministic and programmable preparation of multipartite entangled states among the phonon modes of a high-overtone bulk acoustic wave resonator coupled to a superconducting transmon qubit. By sequentially applying optimal-control-engineered isometries between the qubit and successive modes, we generate matrix product states of bond dimension two, including $W$, Greenberger-Horne-Zeilinger (GHZ), and cluster states. We fully characterize these states via quantum state tomography and certify genuine multipartite entanglement among up to four modes. We further demonstrate correlated-noise sensing by exploiting the complementary decoherence responses of the stored $W$ and GHZ states, isolating inter-mode phase correlations from local decoherence and placing quantitative bounds on collective dephasing. Our results establish a scalable approach to preparing multipartite entangled states in mechanical systems, with promising applications in multiparameter sensing and tests of quantum mechanics with massive objects.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Multimode mechanical resonators offer a large set of densely packed, long-lived bosonic modes within a single compact device, making them attractive for quantum simulation, quantum information processing, and quantum-enhanced sensing.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Quantum-enhanced mechanical sensing with machine-learning estimation</div>
+<div class="meta-line">Authors: Finn Müßigbrodt, Andraž Omahen, Q. Rumman Rahman, Giulio Corazza, Yiwen Chu, Matteo Fadel</div>
+<div class="meta-line">First: 2026-10-13T17:32:42+00:00 · Latest: 2026-10-13T17:32:42+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18776v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18776v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Massive mechanical oscillators couple directly to forces, accelerations and gravity, making them attractive probes of new physics and of quantum mechanics at macroscopic scales. Pushing sensitivities beyond the standard quantum limit for signals of unknown phase requires non-Gaussian quantum states, whose metrological advantage has so far been confined to lighter systems such as trapped ions. Here we operate a microgram-scale acoustic mode of a high-overtone bulk acoustic wave resonator as a phase-insensitive quantum-enhanced sensor. A transmon qubit prepares the mode in Fock states of up to seven phonons by optimal control, and resolves its phonon-number distribution after interaction with a weak resonant signal. Bayesian analysis yields a Fisher information five times the vacuum value, a 7.0 dB gain in signal-amplitude sensitivity over any classical probe state, irrespective of its energy, currently limited by state preparation infidelities. We then train a neural network on the measured sensor response to perform Bayesian estimation without any analytical model of the system, showing the same sensitivity gain with half the systematic bias. Our results establish acoustic resonators prepared in non-Gaussian states as quantum-enhanced probes for high-frequency gravitational waves, dark matter and wave-function collapse.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Massive mechanical oscillators couple directly to forces, accelerations and gravity, making them attractive probes of new physics and of quantum mechanics at macroscopic scales.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">From Clicks to Intent: Cross-Platform Session Embeddings with LLM-Distilled Taxonomy for Financial Services Recommendations</div>
+<div class="meta-line">Authors: Dianjing Fan, Yao Li, Kyaw Hpone Myint, Dwipam Katariya, Alexandre G. R. Day, Pranab Mohanty, Giri Iyengar</div>
+<div class="meta-line">First: 2026-06-24T18:18:56+00:00 · Latest: 2026-10-13T17:32:30+00:00</div>
+<div class="meta-line">Comments: Dianjing Fan and Yao Li equally contributed to this work. 7 pages, 1 figure</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2606.26277v2">Abs</a> · <a href="https://arxiv.org/pdf/2606.26277v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Sequential user behavior modeling is widely adopted in industrial recommender systems; however, significant gaps remain in financial services, where pre-login web interactions and authenticated in-app experiences differ drastically. Specifically, pre-login web users typically explore new products, whereas logged-in app users focus on account servicing. Due to the challenge of cross-channel entity resolution (e.g., matching anonymous web sessions to authenticated mobile accounts), web-based intent signals remain underutilized for post-authentication personalization. Existing methods for capturing web-based intent are often ad-hoc and narrow, lacking the flexibility to support both quantitative downstream recommendations and qualitative understanding at scale. In this work, we propose a scalable and dual-purpose intent prediction framework for web-based interactions and demonstrate its applicability for personalization. Our approach transforms raw web clickstreams into two outputs: a self-supervised Transformer encodes multi-modal clickstreams into a compact session embedding, while an LLM-based taxonomy generation and distillation pipeline produces interpretable intent labels. Our system demonstrates that self-supervised clickstream representations combined with LLM-distilled taxonomies can jointly serve quantitative tasks and qualitative understanding in production: on the mobile homepage tile ranking task, the session embedding improves macro Recall@1 by 1.88% and reduces Log Loss by 13.38% over production baselines. On the user conversion prediction task, the embedding outperforms the LLM labels by 4.3% on micro F1, while the distillation layer delivers interpretable labels at ultra-low latency with only a 7% performance drop.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Sequential user behavior modeling is widely adopted in industrial recommender systems; however, significant gaps remain in financial services, where pre-login web interactions and authenticated in-app experiences differ drastically.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Evidential Deep Learning for Multi-Modal Anti-UAV Detection</div>
+<div class="meta-line">Authors: Dmitry Golovchits, Seyed Sahand Mohammadi Ziabari, Ali Mohammed Mansoor Alsahag</div>
+<div class="meta-line">First: 2026-09-01T18:09:46+00:00 · Latest: 2026-10-13T17:22:31+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.01742v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.01742v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Anti-UAV systems increasingly fuse multiple sensors, yet their detection heads provide no per-modality reliability signal. This study evaluates whether evidential deep learning (EDL) heads, Dempster-Shafer (DS) evidence fusion, and uncertainty-driven temporal sensor gating improve anti-UAV detection through a controlled ablation on three benchmarks: thermal tracking (AntiUAV600), RGB-audio-RF classification (TRIDENT), and RGB-IR tracking (MM-UAV). The EDL training objective improves accuracy over retrained sigmoid baselines (+5.9 percentage points in accuracy and a tripled tracker-on-absent rate in E1; +4.8 percentage points in classification accuracy in E2, surviving a clip-clustered bootstrap, p = 0.011) and ranks classification errors substantially better (entropy UAUC approximately 0.94 vs. 0.51). The remaining components do not support their respective hypotheses. DS fusion does not outperform simple probability averaging. Dirichlet vacuity adds no ranking power beyond predictive entropy and inverts at the detection level, where extreme background imbalance causes it to encode class membership rather than error likelihood, a failure also observed for entropy and sigmoid confidence. Temporal gating preserves accuracy only when nearly inactive and yields no realised latency saving on shared-backbone hardware. The benefit of evidential learning therefore arises primarily from its training objective rather than its uncertainty estimate; a crop-level control further localises the detection-level breakdown to anchor-level evaluation rather than the learned representation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Anti-UAV systems increasingly fuse multiple sensors, yet their detection heads provide no per-modality reliability signal.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Phase-Time Array Enabled Multistatic Sensing with Multi-Level Fusion for UAV Localization</div>
+<div class="meta-line">Authors: Ming Gao, Jianhua Mo, Meixia Tao</div>
+<div class="meta-line">First: 2026-05-06T13:47:23+00:00 · Latest: 2026-10-13T17:16:25+00:00</div>
+<div class="meta-line">Comments: 6 pages, 5 figures, 3 tables. Accepted to IEEE GLOBECOM 2026 Workshops. v2: accepted version; adds a receiver-architecture comparison, a processing-framework figure, and funding information, and updates the simulation results. Code available at: https://github.com/SJTU-WirelessAI-Lab/PTA-Multistatic-UAV-Localization</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.04919v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.04919v2">PDF</a> · <a href="https://github.com/SJTU-WirelessAI-Lab/PTA-Multistatic-UAV-Localization">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In multistatic collaborative sensing, existing parameter-level fusion methods suffer from severe error amplification in geometrically unfavorable regions. Conventional receiver architectures present an additional challenge: analog phased arrays incur substantial beam sweeping overhead, while fully digital arrays demand prohibitive hardware costs. This paper proposes a multistatic sensing framework based on a phase-time array (PTA), whose rainbow beamforming maps spatial directions to OFDM subcarriers, achieving wide-angle coverage with a single RF chain and a favorable accuracy-complexity trade-off relative to both phased array and fully digital receivers. To suppress geometry-induced error hotspots, two parameter-level fusion schemes are developed: a GDOP-weighted analytical estimator (GDOP-WLS) and a lightweight multilayer perceptron (PF-MLP). An end-to-end signal-level convolutional neural network (SF-CNN) is further designed to directly regress target coordinates from raw received signals, bypassing cascaded parameter estimation. Simulation results show that the parameter-level schemes effectively mitigate localized error amplification with minimal computational overhead, while SF-CNN attains sub-meter positioning accuracy, at the cost of higher model complexity that can be offset by GPU acceleration. Power-matched training further extends both schemes&#x27; accuracy across a wide power range.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In multistatic collaborative sensing, existing parameter-level fusion methods suffer from severe error amplification in geometrically unfavorable regions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Probabilistic Circuits for Irregular Multivariate Time Series Forecasting</div>
+<div class="meta-line">Authors: Christian Klötergens, Lars Schmidt-Thieme, Vijaya Krishna Yalavarthi</div>
+<div class="meta-line">First: 2026-04-30T12:57:53+00:00 · Latest: 2026-10-13T17:15:17+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.27814v3">Abs</a> · <a href="https://arxiv.org/pdf/2604.27814v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Joint probabilistic modeling is essential for forecasting irregular multivariate time series (IMTS) to accurately quantify uncertainty. Existing approaches often struggle to balance model expressivity with consistent marginalization, frequently leading to unreliable or contradictory forecasts. To address this, we propose CircuITS, a novel architecture for probabilistic IMTS forecasting based on sum-product networks (SPNs). Our model is flexible in capturing intricate dependencies between time series channels while structurally guaranteeing valid joint distributions. Experiments on five real-world datasets demonstrate that CircuITS achieves superior joint and marginal density estimation compared to state-of-the-art baselines.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Joint probabilistic modeling is essential for forecasting irregular multivariate time series (IMTS) to accurately quantify uncertainty.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Quantitative and exact concavity principles for parabolic and elliptic equations</div>
+<div class="meta-line">Authors: Marco Gallo, Riccardo Moraschi, Marco Squassina</div>
+<div class="meta-line">Venue: Proceedings of the Royal Society of Edinburgh: Section A Mathematics. Published online 2026:1-54</div>
+<div class="meta-line">First: 2025-04-13T09:36:52+00:00 · Latest: 2026-10-13T17:12:58+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2504.09494v3">Abs</a> · <a href="https://arxiv.org/pdf/2504.09494v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Goal of this paper is to study classes of Cauchy-Dirichlet problems which include parabolic equations of the type $$u_t -Δu= a(x,t)f(u)\quad\hbox{in $Ω\times(0,T)$}$$ with $Ω\subset\mathbb{R}^N$ bounded, convex domain and $T\in(0,+\infty]$. Under suitable assumptions on $a$ and $f$, we show logarithmic or power concavity (in space, or in space-time) of the solution $u$; under some relaxed assumptions on $a$, we show moreover that $u$ enjoys concavity properties up to a controlled error. The results include relevant examples like the torsion $f(u)=1$, the Lane-Emden equation $f(u)=u^q$, $q\in(0,1)$, the eigenfunction $f(u)=u$, the logarithmic equation $f(u)=u\log(u^2)$, and the saturable nonlinearity $f(u)=\frac{u^2}{1+u}$. The logistic equation $f(x,u)=a(x)u-u^2$ can be treated as well.
+  Some exact results give a different approach, as well as generalizations, to [Ishige-Salani2013, Ishige-Salani2016]. Moreover, some quantitative results are valid also in the elliptic framework $-Δu=a(x)f(u)$ and refine [Bucur-Squassina2019, Gallo-Squassina2024].</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Goal of this paper is to study classes of Cauchy-Dirichlet problems which include parabolic equations of the type $$u_t -Δu= a(x,t)f(u)\quad\hbox{in $Ω\times(0,T)$}$$ with $Ω\subset\mathbb{R}^N$ bounded, convex domain and $T\in(0,+\infty]$.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Emergent Loop Geometry in Gauge-Equivariant Graph Neural Networks</div>
+<div class="meta-line">Authors: Ali Rayat, Gia-Wei Chern</div>
+<div class="meta-line">First: 2026-10-13T17:10:38+00:00 · Latest: 2026-10-13T17:10:38+00:00</div>
+<div class="meta-line">Comments: 16 pages, 8 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18742v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18742v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Gauge-equivariant graph neural networks generate ordered products of gauge links through local message passing, but the geometry of these internal structures is not captured by the receptive field alone. We investigate the statistical ensemble of closed lattice walks generated by recursive node- and edge-feature operations, independently of network training. Analytical and numerical results reveal a separation between rapid growth of contour length and much slower spatial expansion: deeper compositions generate increasingly long paths through repeated traversal of relatively compact regions. Loop expansions of fermionic observables provide a physical interpretation of this hierarchy, showing how spatial locality remains compatible with high-order dependence on nearby gauge fields. These findings identify complementary roles of network depth in extending spatial reach and enriching the representations constructed within that reach, providing a geometrical perspective on learning lattice gauge observables.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Gauge-equivariant graph neural networks generate ordered products of gauge links through local message passing, but the geometry of these internal structures is not captured by the receptive field alone.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">FinTradeBench: A Financial Reasoning Benchmark for LLMs</div>
+<div class="meta-line">Authors: Yogesh Agrawal, Aniruddha Dutta, Md Mahadi Hasan, Santu Karmaker, Aritra Dutta</div>
+<div class="meta-line">First: 2026-03-19T17:59:41+00:00 · Latest: 2026-10-13T17:10:20+00:00</div>
+<div class="meta-line">Comments: 8 pages main text, 36 pages total (including references and appendix). 9 figures, 31 tables. Preprint under review. Code and data will be made available upon publication</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.19225v6">Abs</a> · <a href="https://arxiv.org/pdf/2603.19225v6">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Financial analysis requires reasoning over heterogeneous signals, including company fundamentals from regulatory filings and trading signals derived from market prices. However, existing financial benchmarks focus almost exclusively on regulatory filings, neglecting market dynamics and cross-signal interactions. We introduce FinTradeBench, a benchmark of 1,400 questions covering NASDAQ-100 stocks over a ten-year window. To holistically evaluate financial reasoning, FinTradeBench includes questions in three reasoning categories: fundamentals-focused, trading-signal-focused, and hybrid questions that require cross-signal reasoning. Our benchmark starts with 150 expert-authored seed questions, which are then scaled to 1400. To ensure reliable evaluation, we create a Core400 subset in which every item is expert-reviewed. In zero-shot (No-RAG) response generation, we observe that all models perform substantially worse on trading-focused questions compared to fundamental-focused questions. To identify failure causes, we evaluate LLMs under controlled settings including retrieval-based baselines, tool-assisted computation, oracle conditions, and time-series-specialized pipelines. LLMs&#x27; capabilities to do computation and evidence selection contribute most to reasoning failures. Additionally, retrieval significantly improves trading-signal reasoning but does not improve fundamental reasoning, where identifying relevant signals remains the dominant failure mode. Finally, rather than relying on a small, fine-tuned model for time-series reasoning, it is better to summarize the time-series data and leverage LLMs&#x27; reasoning capabilities.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Financial analysis requires reasoning over heterogeneous signals, including company fundamentals from regulatory filings and trading signals derived from market prices.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Concealed Handgun Detection using WiFi Signals</div>
+<div class="meta-line">Authors: Erik Persson, David Gustafsson, Tomas Wilkinson</div>
+<div class="meta-line">First: 2026-10-13T17:08:44+00:00 · Latest: 2026-10-13T17:08:44+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18736v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18736v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">While conventional camera-based surveillance systems and metal detectors can provide a sufficient level of security when used appropriately, they have fundamental limitations that reduce their applicability. Camera-based systems are unable to detect occluded or concealed threats and metal detectors require each person to enter through a narrow opening one at a time, leading to congestion issues and limited use in large crowds. A WiFi-based security system has the potential to be a complementary modality that is able to handle occlusions or concealment and is not hindered by strict spatial configurations. In this paper, we propose use Channel State Information estimated from WiFi-signals to detect concealed handguns. To this end we collect a dataset of aligned WiFi signals and RGB images that we call the WiFire dataset. We also propose a deep learning model called WiFireNet tailored to detect concealed handguns in WiFi signals using vision-based supervision signals. Our results show that concealed handgun detection is possible in WiFi and has promise as a complementary modality to surveillance cameras and metal detectors. We release the dataset, model and code to facilitate the further research into WiFi-based handgun detection.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">While conventional camera-based surveillance systems and metal detectors can provide a sufficient level of security when used appropriately, they have fundamental limitations that reduce their applicability.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Direct correlation of intravoxel incoherent motion imaging based on implicit neural representations and histopathology in pediatric Wilms tumors: can it differentiate between subtypes?</div>
+<div class="meta-line">Authors: G. C. Arends, M. Fitski, J. Harbers, J. N. van der Beek, R. R. de Krijger, M. M. van den Heuvel-Eibrink, A. F. W. van der Steeg, F. F. J. Simonis, E. Versteeg, A. S. Littooij, C. M. W. Tax</div>
+<div class="meta-line">First: 2026-10-13T17:05:42+00:00 · Latest: 2026-10-13T17:05:42+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18728v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18728v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Wilms tumor (WT) is a heterogeneous pediatric renal malignancy. Invasive procedures to establish histology prior to pre operative treatment are not recommended by the International Society of Pediatric (SIOP) Oncology Renal Tumor Study Group, yet different tissue components are associated with different responses to therapy (SIOP Umbrella protocol). Intravoxel incoherent motion (IVIM) magnetic resonance imaging (MRI) may improve subtype differentiation before surgery as a noninvasive radiographic biomarker by capturing both diffusion and perfusion characteristics, as opposed to the conventionally used apparent diffusion coefficient (ADC). The objective of this study is to evaluate the discriminative performance of IVIM MRI in differentiating WT subtypes. IVIM provides quantitative parameters that disentangle the diffusion coefficient (D), incoherent blood flow (pseudodiffusion Dstar) and perfusion fraction (f). This retrospective study included thirthy children with WT. Standardized 1.5T MRI with 10 b value diffusion weighted imaging (DWI) was performed. IVIM parameters were estimated using a selfsupervised implicit neural representations network and were correlated with histopathology via a patient specific 3D printed cutting guide. Statistical analyses included mixed models, receiver operating curve analysis, and logistic regression. Thirty lesions were MRI histopathology correlated on slice level. Significant subtype differences were observed for Dstar stromal versus epithelial (p = 0.024), regressive tumors (p = 0.031) and mixed WT tumors (p = 0.043). ADC showed no significant subtype differences. Direct MRI histopathology correlation enabled differentiation between stromal subtype and epithelial, mixed and regressive subtype on macroscopic slice level using Dstar.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Wilms tumor (WT) is a heterogeneous pediatric renal malignancy.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Learning Source Structure: Bayesian Prediction with Transformers</div>
+<div class="meta-line">Authors: Meir Feder, Ruediger Urbanke</div>
+<div class="meta-line">First: 2026-10-13T17:05:05+00:00 · Latest: 2026-10-13T17:05:05+00:00</div>
+<div class="meta-line">Comments: 45 pages, 12 figures. 9 pages of main text. Code at https://github.com/urbanke/learning-source-structure</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18725v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18725v1">PDF</a> · <a href="https://github.com/urbanke/learning-source-structure">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A transformer trained on sequences whose source parameters are drawn afresh each time can learn only what the sequences share: the source family and its prior. The Bayesian predictor that knows both, which we call informed Bayes, is the unique minimizer of the training loss and is computable from the family alone; we use it as a quantitative, falsifiable reference. Where earlier work compared transformers with Bayes on sources whose contexts can be learned independently, we build Markov sources with up to 64 symbols in which observations in one context inform prediction in another: product sources with known or hidden encodings, transition rows sharing an unknown base law and depth, and a mixture of three families. Our main result is that informed Bayes predicts, from the family and prior alone, how a trained transformer behaves in four tests that go beyond the learning curve: the loss that remains under a source outside the training family (predicted 2.237 bits, measured 2.309), the doubling of the extra loss when two independent components change rather than one (0.345 predicted, 0.350 measured), the benefit of other contexts when a token appears for the first time, and the depth at which copying an earlier continuation starts to pay. On the learning curves themselves, small transformers match informed Bayes when the shared structure is visible in the tokens, and hidden structure needs more layers and training, with gaps below 0.01 bits per token for the largest models. We explain why the imitation is possible and where it must fail: informed Bayes decomposes into sufficient statistics that attention selects and accumulates and an estimator, fixed by the prior, that the feed-forward network learns; training pays the complexity of informed Bayes under the architecture&#x27;s prior, and finite-memory universal prediction bounds how closely a bounded network can reach it.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A transformer trained on sequences whose source parameters are drawn afresh each time can learn only what the sequences share: the source family and its prior.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Photonic reservoir computing with complex networks</div>
+<div class="meta-line">Authors: Sion Park, Kohei Watabe, Satoshi Sunada, Tomoki Yamagami, Atsushi Uchida</div>
+<div class="meta-line">First: 2026-07-25T16:39:56+00:00 · Latest: 2026-10-13T16:57:20+00:00</div>
+<div class="meta-line">Comments: 23 pages, 13 figures, 3 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.23285v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.23285v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Photonic reservoir computing has attracted increasing attention as a fast and low-cost approach for time-series prediction. Photonic reservoir computing utilizes the high speed, broad bandwidth, and spatial parallelism of light. However, the effect of the internal connection structure (network topology) on the computing performance has not been investigated for large-scale photonic reservoirs. In this study, we experimentally and numerically demonstrate photonic reservoir computing using a spatial light modulator to systematically evaluate the relationship between the network topology and the performance of reservoir computing. We introduce complex network structures such as small-world and scale-free network topologies of the internal nodes in the reservoir. We perform the memory capacity measurement and the one-step-ahead prediction task of the chaotic time series to compare the performance. We found that the small-world network exhibits the maximum memory capacity and the best prediction performance. Our numerical calculations reveal that the performance of the time-series prediction can be optimized by changing the rewiring probability of the network and the leak rate of the reservoir. We also implement photonic human brain network as a reservoir, which is designed by the connectomes of human brain activities. We found that the network topology strongly affects the performance of reservoir computing, and the small-world network structure outperforms the other configurations.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Photonic reservoir computing has attracted increasing attention as a fast and low-cost approach for time-series prediction.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">PULSUS: Direct Frequency-Domain Multidimensional Spectroscopy Beyond the Impulsive Rotating-Wave Approximation</div>
+<div class="meta-line">Authors: Alfonso Castillo-Gonzolez, Eric R. Bittnre</div>
+<div class="meta-line">First: 2026-10-13T16:55:37+00:00 · Latest: 2026-10-13T16:55:37+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18712v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18712v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We introduce PULSUS, a direct frequency-domain framework for multidimensional spectroscopy of open quantum systems beyond the impulsive rotating-wave approximation. Coherence-frequency intervals are represented through Liouvillian resolvents, while finite Gaussian pulses are incorporated through operator-valued functions of the field-free Liouvillian. This enables direct evaluation on Cartesian grids or arbitrary spectral coordinates while retaining molecular evolution during the pulse envelopes and, when required, the complete light--matter interaction.
+  The implementation is validated against analytical and independent time-domain benchmarks and supports targeted spectral sampling that reduces the number of evaluated coordinates when the response is spectrally localized. A controlled hierarchy of finite-pulse, rotating-wave, short-pulse, and impulsive models separates the errors introduced by each approximation. For a coupled electronic dimer, the total impulsive-RWA error is nonmonotonic in pulse duration: an intermediate regime provides the highest accuracy, whereas ultrashort pulses expose coupling-enabled beyond-RWA pathways and longer pulses develop substantial finite-pulse corrections. These results show that the impulsive and rotating-wave approximations cannot be assumed to improve simultaneously and should be tested when quantitatively interpreting multidimensional spectra. PULSUS provides a direct frequency-domain framework for carrying out that comparison.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We introduce PULSUS, a direct frequency-domain framework for multidimensional spectroscopy of open quantum systems beyond the impulsive rotating-wave approximation.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Evidence for Distinct One-Off and Repeating Subpopulations in CHIME/FRB Catalog 2</div>
+<div class="meta-line">Authors: Sloane Sirota, Duncan R. Lorimer</div>
+<div class="meta-line">First: 2026-10-13T16:54:53+00:00 · Latest: 2026-10-13T16:54:53+00:00</div>
+<div class="meta-line">Comments: 12 pages, 6 figures, 5 tables. Submitted to ApJ</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18710v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18710v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The Canadian Hydrogen Intensity Mapping Experiment (CHIME) has published its second catalog of 3,641 fast radio bursts (FRBs). While this sample includes 981 bursts from 83 repeating sources, only 2.3% of CHIME FRBs are observed to repeat. This raises the question of whether the FRB population truly consists of a single repeating population or includes a distinct subpopulation of one-off sources. We apply Simulation Based Inference (SBI), a likelihood-free machine learning framework, to model the CHIME/FRB Catalog 2 dataset, testing eight FRB population models, half of which include a subpopulation of truly one-off sources. The current catalog strongly and decisively favors models including such a subpopulation, with the best-fitting model combining a log-normal burst rate distribution, a Poissonian wait-time distribution, and a one-off subpopulation. This preference is corroborated by an independent random forest classifier and by the ability of one-off models to naturally reproduce the hyperactive repeating sources present in the catalog without having been trained on them. We place upper limits on the potentially observable CHIME/FRB population of 36,000 repeating sources and 19 one-off sources per day in the CHIME sky. Models with a one-off subpopulation naturally account for the hyperactive repeating sources present in the catalog without having been trained on them, providing an independent consistency check on our results. We predict the repeater percentage will fall below 2% in the next five years, eventually declining to ~0.5% as the sample saturates with one-off detections.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The Canadian Hydrogen Intensity Mapping Experiment (CHIME) has published its second catalog of 3,641 fast radio bursts (FRBs).</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A GLE-LSV model with state-dependent leverage and colored noise</div>
+<div class="meta-line">Authors: Andrey Itkin</div>
+<div class="meta-line">First: 2026-10-13T16:53:43+00:00 · Latest: 2026-10-13T16:53:43+00:00</div>
+<div class="meta-line">Comments: 41 pages, 2 figures, 1 table</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18706v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18706v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We study a local stochastic volatility (LSV) model in which the variance factor follows a generalized Langevin equation (GLE) with colored noise, and past returns act on variance through a memory kernel with state-dependent amplitudes. For kernels given by finite sums of exponentials, we prove existence, uniqueness, and non-explosion under a growth condition linking the volatility map to the potential. In a one-mode family with a polynomial potential, feedback through log returns can cause explosion exactly when the squared volatility factor grows faster than the restoring force. Under structural and nondegeneracy conditions, an exact reduced Markovian state has a smooth density solving a deterministic forward equation. The Dupire conditional expectation therefore requires no stochastic partial differential equation. Under a bounded Sharpe ratio, exponential utility selects the minimal entropy martingale measure, whose premium solves a quadratic backward stochastic differential equation. Under a regularity hypothesis, which we verify in special cases with and without leverage, the premium depends only on the current state, and the squared VIX equals the expected average future local stochastic variance. Finally, a regularized calibration problem with bid--ask constraints admits a minimizer whenever a feasible point has finite objective value.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We study a local stochastic volatility (LSV) model in which the variance factor follows a generalized Langevin equation (GLE) with colored noise, and past returns act on variance through a memory kernel with state-dependent amplitudes.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Establishing baseline model performances for optical turbulence forecasting</div>
+<div class="meta-line">Authors: M. De Sepibus, E. Masciadri, C. Weinberger, A. Otarola, S. Miesske, C. Veillet, S. Ragland</div>
+<div class="meta-line">Venue: SPIE Proc. Adaptive Optics Systems X, 2026, Vol. 14150, 141506T</div>
+<div class="meta-line">First: 2026-10-13T16:51:47+00:00 · Latest: 2026-10-13T16:51:47+00:00</div>
+<div class="meta-line">Comments: Comments: 24 figures, 1 table</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18702v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18702v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Accurate forecasting of optical turbulence (OT) is useful to optimise telescope scheduling and maximising observing efficiency, as the performance of adaptive optics systems strongly depends on turbulence conditions. While various numerical weather prediction and machine learning models are developed to predict these complex turbulence properties, properly evaluating their added value requires well-defined baseline reference models. This study establishes baseline performance thresholds for key astroclimatic parameters using two distinct models: one forecasting the parameter average over a specific timescale, and the other forecasting the temporal evolution over the same specific timescale. We apply these frameworks to extensive, multi-year datasets from the sites of the Very Large Telescope (VLT) and the Large Binocular Telescope (LBT) and discuss the possibility of extrapolating reference values of forecast performances for other sites based on their optical turbulence statistical characteristics. Our results show that baseline predictive accuracy varies according to the observing site, the specific parameter, the chosen timescale, and the forecasting approach. Therefore, an OT forecasting model&#x27;s accuracy cannot be quantified in absolute terms, but relatively to the baseline.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Accurate forecasting of optical turbulence (OT) is useful to optimise telescope scheduling and maximising observing efficiency, as the performance of adaptive optics systems strongly depends on turbulence conditions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">FIRE: Multi-fidelity Regression with Distribution-conditioned In-context Learning using Tabular Foundation Models</div>
+<div class="meta-line">Authors: Rosen Ting-Ying Yu, Nicholas Sung, Faez Ahmed</div>
+<div class="meta-line">First: 2026-01-29T22:29:58+00:00 · Latest: 2026-10-13T16:49:22+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2601.22371v2">Abs</a> · <a href="https://arxiv.org/pdf/2601.22371v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Multi-fidelity (MF) regression often operates in regimes of extreme data imbalance, where the commonly-used Gaussian-process (GP) surrogates struggle with cubic scaling costs and overfit to sparse high-fidelity observations, limiting efficiency and generalization in real-world applications. We introduce FIRE, a training-free MF framework that couples tabular foundation models (TFMs) to perform zero-shot in-context Bayesian inference via a high-fidelity correction model conditioned on the low-fidelity model&#x27;s posterior predictive distributions. This cross-fidelity information transfer via distributional summaries captures heteroscedastic errors, enabling robust residual learning without model retraining. Across 31 benchmark problems spanning synthetic and real-world tasks (e.g., DrivAerNet, LCBench), FIRE delivers a stronger performance-time trade-off than seven state-of-the-art GP-based or deep learning MF regression methods, ranking highest in accuracy and uncertainty quantification with runtime advantages. Limitations include context window constraints and dependence on the quality of the pre-trained TFM&#x27;s.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Multi-fidelity (MF) regression often operates in regimes of extreme data imbalance, where the commonly-used Gaussian-process (GP) surrogates struggle with cubic scaling costs and overfit to sparse high-fidelity observations, limiting efficiency and generalization in real-world applications.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Monotone Allocations without Single-Crossing: When to Bunch and When to Jump</div>
+<div class="meta-line">Authors: Aloisio Araujo, Carolina Parra, Sergei Vieira</div>
+<div class="meta-line">First: 2026-08-19T22:12:40+00:00 · Latest: 2026-10-13T16:48:21+00:00</div>
+<div class="meta-line">Comments: 48 pages, 4 figures. Supplementary Material (36 + 7 pages) as ancillary files. Replication package: https://doi.org/10.5281/zenodo.23271020</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.19474v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.19474v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We study one-dimensional screening when the Spence-Mirrlees condition fails along a monotone dividing curve, on which all types value marginal output equally. A single ratio, marginal distortion over marginal rent, governs the problem. When the relaxed solution stays in the positive region, non-decreasing optima in the positive single-crossing region are continuous if the ratio increases in the decision. When it crosses a flat curve and marginal rents are separable, every continuous contract is improved by a jump. When it crosses a strictly monotone curve, a contract that pools and jumps continues along the mirror of the pool if the ratio does not increase along it. Optimality among all implementable allocations, deterministic or random, is proved by a measure on the binding constraints whose weights are the same ratio; with constant curvatures and no crossing, it is also necessary. As applications, we solve problems of procurement and nonlinear pricing.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We study one-dimensional screening when the Spence-Mirrlees condition fails along a monotone dividing curve, on which all types value marginal output equally.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Lifelong In-Context Learning with Transformers Requires Parametric Forms of Attention</div>
+<div class="meta-line">Authors: Luke McDermott, Robert W. Heath, Rahul Parhi</div>
+<div class="meta-line">First: 2026-06-24T03:14:20+00:00 · Latest: 2026-10-13T16:44:07+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2606.25342v2">Abs</a> · <a href="https://arxiv.org/pdf/2606.25342v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Lifelong continual learning remains an obstacle on the path to human-like intelligence. Modern transformers show sparks of intelligence with in-context learning. The quadratic nature of attention, however, prohibits transformers from performing this process on arbitrarily long sequences. In this work, we argue that extending in-context learning to lifelong settings is a practical solution for continual learning in AI agents. In particular, we argue that parametric forms of attention are needed to understand a lifetime of context with transformers on a fixed hardware budget. These attention mechanisms learn the relationship between keys and their associated values at test-time with parametric regression. Our generalization of parametric approaches (linear attention, state-space models, fast weight programmers, and test-time training layers) contrasts with nonparametric counterparts like softmax attention. They replace the ever-growing key-value cache with an online-trainable neural network, maintaining a constant memory footprint. We highlight how parametric attention currently fall short of lifelong learning due to limited memory capacity or costly online updates. To address these issues, we pose a set of open questions with novel insights to guide the field toward long-horizon agents.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Lifelong continual learning remains an obstacle on the path to human-like intelligence.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Approximate reservoir computing with a semiconductor laser for reducing energy consumption</div>
+<div class="meta-line">Authors: Tatsuki Ito, Kazutaka Kanno, Satoshi Kawakami, Atsushi Uchida</div>
+<div class="meta-line">First: 2026-07-25T16:50:00+00:00 · Latest: 2026-10-13T16:43:00+00:00</div>
+<div class="meta-line">Comments: 13 pages, 14 figures, 4 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.23288v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.23288v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Photonic reservoir computing is a promising physical machine-learning approach for time-series prediction. Quantization of the reservoir response signal is an important consideration in the implementation of photonic reservoir computing, and the number of quantization bits and sampling frequency need to be optimized to achieve high prediction performance and low energy consumption. However, few studies have investigated the effects of the number of quantization bits and sampling frequency on both prediction performance and energy consumption. In this study, we introduce the concept of approximate reservoir computing with a semiconductor laser by quantizing the reservoir node states and output weights. We numerically evaluate the performance of a chaotic time-series prediction task and estimate the energy consumption per sample using a component-level model. By optimizing the number of quantization bits, the sampling frequency, and the injection current of the semiconductor laser, we achieve a significant reduction in the estimated energy consumption per sample while maintaining prediction performance. We also obtain model-based estimates of the throughput, energy efficiency, and energy per operation of the proposed reservoir-computing system.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Photonic reservoir computing is a promising physical machine-learning approach for time-series prediction.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Physics-Informed Deep Learning in Oncology</div>
+<div class="meta-line">Authors: Scindhiya Laxmi, Vivek S. Yadav, Ameya D. Jagtap</div>
+<div class="meta-line">First: 2026-10-13T16:38:59+00:00 · Latest: 2026-10-13T16:38:59+00:00</div>
+<div class="meta-line">Comments: 51 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18682v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18682v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Deep learning has enabled substantial advances in oncology, including cancer detection and diagnosis, medical image analysis, tumor characterization, treatment planning, response assessment, and outcome prediction. However, conventional data-driven models often require large annotated datasets, exhibit limited generalization across heterogeneous clinical settings, and lack explicit mechanisms for incorporating the physical, physiological, and biological principles underlying cancer development and treatment. Physics-informed deep learning (PIDL) integrates governing physical laws, mechanistic models, physiological constraints, and domain knowledge into deep learning frameworks, providing a principled approach for learning from sparse, noisy, and heterogeneous oncological data. This review presents a task-oriented synthesis of PIDL methods across oncology, encompassing neural networks, Kolmogorov-Arnold networks, convolutional and vision architectures, neural operators, generative models, and hybrid physics-data-driven frameworks. Their applications are examined across cancer detection and diagnosis, image reconstruction and analysis, tumor characterization, quantitative imaging, tumor progression, treatment response, radiation therapy, treatment planning, and multimodal clinical modeling. Based on the synthesized methodological and application-level evidence, we develop task-optimized PIDL workflows that align the clinical task with appropriate data representations, physical constraints, model architectures, and validation strategies. We further analyze key challenges, including physical-model fidelity, computational scalability, uncertainty quantification, domain generalization, standardized benchmarking, and clinical validation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Deep learning has enabled substantial advances in oncology, including cancer detection and diagnosis, medical image analysis, tumor characterization, treatment planning, response assessment, and outcome prediction.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261012_0640.html">20261012_0640</a>
+<a href="archive/20261011_0611.html">20261011_0611</a>
+<a href="archive/20261008_0727.html">20261008_0727</a>
+<a href="archive/20261005_0611.html">20261005_0611</a>
+<a href="archive/20261004_0558.html">20261004_0558</a>
+<a href="archive/20261001_0647.html">20261001_0647</a>
+<a href="archive/20260928_0550.html">20260928_0550</a>
+<a href="archive/20260927_0546.html">20260927_0546</a>
+<a href="archive/20260924_0559.html">20260924_0559</a>
+<a href="archive/20260921_0510.html">20260921_0510</a>
+<a href="archive/20260920_0515.html">20260920_0515</a>
+<a href="archive/20260917_0555.html">20260917_0555</a>
+<a href="archive/20260913_0510.html">20260913_0510</a>
+<a href="archive/20260910_0530.html">20260910_0530</a>
+<a href="archive/20260907_0502.html">20260907_0502</a>
+<a href="archive/20260906_0455.html">20260906_0455</a>
+<a href="archive/20260903_0532.html">20260903_0532</a>
+<a href="archive/20260831_0550.html">20260831_0550</a>
+<a href="archive/20260830_0530.html">20260830_0530</a>
+<a href="archive/20260827_0536.html">20260827_0536</a>
+<a href="archive/20260824_0320.html">20260824_0320</a>
+<a href="archive/20260823_0319.html">20260823_0319</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260817_0318.html">20260817_0318</a>
+<a href="archive/20260816_0319.html">20260816_0319</a>
+<a href="archive/20260813_0400.html">20260813_0400</a>
+<a href="archive/20260810_0330.html">20260810_0330</a>
+<a href="archive/20260809_0326.html">20260809_0326</a>
+<a href="archive/20260806_0423.html">20260806_0423</a>
+<a href="archive/20260803_0408.html">20260803_0408</a>
+<a href="archive/20260802_0408.html">20260802_0408</a>
+<a href="archive/20260730_0410.html">20260730_0410</a>
+<a href="archive/20260727_0411.html">20260727_0411</a>
+<a href="archive/20260726_0409.html">20260726_0409</a>
+<a href="archive/20260723_0410.html">20260723_0410</a>
+<a href="archive/20260720_0406.html">20260720_0406</a>
+<a href="archive/20260719_0403.html">20260719_0403</a>
+<a href="archive/20260716_0405.html">20260716_0405</a>
+<a href="archive/20260713_0405.html">20260713_0405</a>
+<a href="archive/20260712_0404.html">20260712_0404</a>
+<a href="archive/20260709_0419.html">20260709_0419</a>
+<a href="archive/20260706_0411.html">20260706_0411</a>
+<a href="archive/20260705_0408.html">20260705_0408</a>
+<a href="archive/20260702_0447.html">20260702_0447</a>
+<a href="archive/20260629_0411.html">20260629_0411</a>
+<a href="archive/20260628_0422.html">20260628_0422</a>
+<a href="archive/20260625_0445.html">20260625_0445</a>
+<a href="archive/20260622_0422.html">20260622_0422</a>
+<a href="archive/20260621_0414.html">20260621_0414</a>
+<a href="archive/20260618_0503.html">20260618_0503</a>
+<a href="archive/20260615_0416.html">20260615_0416</a>
+<a href="archive/20260614_0413.html">20260614_0413</a>
+<a href="archive/20260611_0525.html">20260611_0525</a>
+<a href="archive/20260608_0409.html">20260608_0409</a>
+<a href="archive/20260607_0408.html">20260607_0408</a>
+<a href="archive/20260604_0547.html">20260604_0547</a>
+<a href="archive/20260601_0406.html">20260601_0406</a>
+<a href="archive/20260531_0406.html">20260531_0406</a>
+<a href="archive/20260528_0459.html">20260528_0459</a>
+<a href="archive/20260524_0405.html">20260524_0405</a>
+<a href="archive/20260521_0459.html">20260521_0459</a>
+<a href="archive/20260518_0403.html">20260518_0403</a>
+<a href="archive/20260517_0402.html">20260517_0402</a>
+<a href="archive/20260514_0430.html">20260514_0430</a>
+<a href="archive/20260511_0400.html">20260511_0400</a>
+<a href="archive/20260510_0356.html">20260510_0356</a>
+<a href="archive/20260507_0419.html">20260507_0419</a>
+<a href="archive/20260504_0353.html">20260504_0353</a>
+<a href="archive/20260503_0353.html">20260503_0353</a>
+<a href="archive/20260430_0409.html">20260430_0409</a>
+<a href="archive/20260427_0344.html">20260427_0344</a>
+<a href="archive/20260426_0342.html">20260426_0342</a>
+<a href="archive/20260423_0403.html">20260423_0403</a>
+<a href="archive/20260420_0340.html">20260420_0340</a>
+<a href="archive/20260419_0339.html">20260419_0339</a>
+<a href="archive/20260416_0402.html">20260416_0402</a>
+<a href="archive/20260413_0337.html">20260413_0337</a>
+<a href="archive/20260412_0333.html">20260412_0333</a>
+<a href="archive/20260409_0358.html">20260409_0358</a>
+<a href="archive/20260406_0332.html">20260406_0332</a>
+<a href="archive/20260405_0329.html">20260405_0329</a>
+<a href="archive/20260402_0405.html">20260402_0405</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>

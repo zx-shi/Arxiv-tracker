@@ -1,0 +1,730 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递 - CV</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递 - CV</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-10-16 06:05</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261016_0605</div>
+    <div class="row"><div class="card">
+<div class="title">Learning Dynamic Evidence Routes for Vision Transformer Probing</div>
+<div class="meta-line">Authors: Zice Wang, Zhenyu Zhang</div>
+<div class="meta-line">First: 2026-04-29T15:07:00+00:00 · Latest: 2026-10-14T17:28:10+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.00915v3">Abs</a> · <a href="https://arxiv.org/pdf/2605.00915v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Probing frozen vision transformers typically uses permutation-invariant aggregation (GAP or $\texttt{[CLS]}$), treating patch tokens as an unstructured set. Content-dependent probes such as self-attention are useful accuracy controls, but they do not expose a fixed token schedule or fixed position weights for auditing. We introduce SSMProbe, a probe of frozen vision transformers that learns a Sinkhorn patch route and reads it with a diagonal S4 decoder. The decoder&#x27;s causal linear time-invariant (LTI) recurrence yields fixed position coefficients, exposing how patch arrangement interacts with sequential weighting. Held-out spatial predictability measures route organization beyond a location-bias null. On CUB and Cars, MAE, BEiT, DINOv2, and supervised ViT yield spatially organized routes with distinct readout profiles: DINOv2 is $\texttt{[CLS]}$-dominant, while MAE benefits from learned routing over fixed scans. On MAE/ImageNet, Sinkhorn reaches 70.33% accuracy, 5.55 percentage points above the strongest fixed scan.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Probing frozen vision transformers typically uses permutation-invariant aggregation (GAP or $\texttt{[CLS]}$), treating patch tokens as an unstructured set.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The Physics Is the Network: Fast, Training-Free Neural Emulation</div>
+<div class="meta-line">Authors: Luka Todorovic, Kaushal Gianchandani, Sai Ravela</div>
+<div class="meta-line">First: 2026-10-14T17:24:48+00:00 · Latest: 2026-10-14T17:24:48+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.20525v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.20525v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Neural emulation need not require learning a substitute for known physics. We investigate PolyNets that couple a continuous-time neural representation of polynomial dynamics with a simple recurrent network for discrete-time integration. When the governing coefficients are known, the resulting tensor graph requires no training and preserves the prescribed numerical scheme while enabling efficient hardware execution and parallel simulation. Using the one-dimensional Korteweg-de Vries equation, we compare PolyNet with CPU and GPU finite-difference Runge-Kutta solvers and three trained neural models: a state-map emulator, a physics-informed predictor, and a learned-tendency integrator. Analytical soliton solutions provide a reference for amplitude and phase errors across grid resolutions, 10^6 dispersively scaled time steps, ensembles of up to 10^4 trajectories, and varying initial amplitudes. PolyNet achieves accuracy comparable to the numerical solvers, including at amplitudes outside the learned models&#x27; training conditions. It combines this fidelity with high GPU throughput, approximately constant over the tested resolution range, and favorable ensemble scaling.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Neural emulation need not require learning a substitute for known physics.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The COUNT: Counting N-grams Unlocks Scaling on Host Memory and Training-Free Adaptation</div>
+<div class="meta-line">Authors: Ian Magnusson, Noah A. Smith, Pang Wei Koh</div>
+<div class="meta-line">First: 2026-10-14T16:38:19+00:00 · Latest: 2026-10-14T16:38:19+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.20456v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.20456v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The scaling relationship of compute and performance for language models (LMs) has been extensively studied; more recently, models are being designed to scale memory use, as well. In particular, adding embeddings for n-grams scales memory separately from compute use, because each pass only processes individual embedding rows, which are much smaller than the storage used for the whole embedding table. However, existing methods train embeddings from scratch, which needs expensive GPU memory for fast reading and writing. Meanwhile, the ordinary memory of the host system is cheap and underutilized by these training methods. To scale on host memory, we introduce COUNT (Counting Offline Unlocks N-gram Transformers), which builds n-gram embeddings without adding learned parameters by storing precomputed n-gram counts on host. We use the corpus frequencies to weight together the LM&#x27;s own unembeddings of the next tokens most often following the current n-gram history. At a fixed compute budget, COUNT can be added as an additional input embedding for pretraining 1B-parameter LMs to improve validation loss as much as an LM with 57% more compute. If GPU memory is limited, using COUNT to let backbone parameters fill GPU memory gives better performance than splitting memory with additional learned n-gram embeddings. Beyond efficiency, COUNT allows switching in a different table of n-gram counts from a domain-specific corpus at inference time to adapt to a new task without any training.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The scaling relationship of compute and performance for language models (LMs) has been extensively studied; more recently, models are being designed to scale memory use, as well.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">STP-GUI: Spatially-Aware Token Pruning for Efficient Web-GUI Agents</div>
+<div class="meta-line">Authors: Shuo Wang, Sifan Zhou, Xiaobo Wang, Tianyu Fu, Chenxu Zhao, Anyang Su, Hanning Wang, Ping Jiang, Minghui Wu</div>
+<div class="meta-line">First: 2026-10-14T15:53:48+00:00 · Latest: 2026-10-14T15:53:48+00:00</div>
+<div class="meta-line">Comments: 20 pages, 9 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.20390v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.20390v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">With the rapid development of vision-language models (VLMs), Web-GUI agents have achieved promising performance in interacting with real-world interfaces through screenshot-based grounding. However, high-resolution screenshots and multi-turn histories introduce excessive visual tokens, causing substantial inference overhead. Existing token pruning methods, mainly designed for natural images, often select tokens independently based on importance scores, which can fragment the local visual structures required for recognizing small GUI elements such as buttons, icons, and hyperlinks. In this work, we propose STP-GUI (Spatially-aware Token Pruning for GUI agents), a query-guided token pruning framework that preserves fine-grained instruction-conditioned token scoring while performing spatially coherent window-level selection under aggressive token reduction. A lightweight selector is optimized through policy learning while the VLM backbone remains frozen. Experiments on Online-Mind2Web show that \papername achieves a favorable efficiency-performance tradeoff under low token budgets. At 21% token retention, it preserves 77.7% of full-token performance while reducing inference latency by 31% and FLOPs by 57%. Results on Android in the Wild further suggest that the method transfers to mobile GUI environments.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">With the rapid development of vision-language models (VLMs), Web-GUI agents have achieved promising performance in interacting with real-world interfaces through screenshot-based grounding.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Human Demonstrations as Post-Training Data for Any Robot Body: Retargeting the Object, Not the Hand</div>
+<div class="meta-line">Authors: Nagasrikanth Kallakuri</div>
+<div class="meta-line">First: 2026-10-14T15:28:23+00:00 · Latest: 2026-10-14T15:28:23+00:00</div>
+<div class="meta-line">Comments: 16 pages, 17 figures, 7 tables, 2 algorithms; 56-page supplement as ancillary file. A subset of episodes with their per-robot outcomes: https://playground.dxtr.co</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.20351v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.20351v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Human demonstrations are today used largely for pretraining vision-language-action models, with little ability to use the same data for target-embodiment or task-oriented training, which scalable deployment of robots in industrial and general environments depends on. A human demonstration recorded on a simple and scalable device such as a mobile phone can serve as post-training data for a robot whose body differs in structure and capability from the human who recorded it. This is made possible not by retargeting the hand&#x27;s motion but the object&#x27;s. A capture yields a body-free record: the object&#x27;s pose over time, its contact intervals, and a reconstructed 3D object with provenance. Any robot, given as a URDF and a short descriptor, is solved against that record and scored in simulation against the demonstrated object motion as ground truth: the human-to-simulation leg of human-to-simulation-to-robot transfer, measured per robot. Each (robot, episode) pair gets one outcome: pass, failure with a named mode, or refusal, with its reason, before any motion. The method runs as a working system over a growing collection; the set analysed here is a sample of it: 42 captures solved on 8 robots, 157 pairs, of which 31.2% pass, 52.2% fail, 14.0% are refused and 2.5% are unauditable (kinematic feasibility, +/-50 mm / +/-15 deg, in simulation). Refusals held up: every pair the checks refuse on stored evidence yet ran anyway failed (13 of 13; 5 on a body whose public model welds its hand). A description file could not be shown to screen a robot: its outcomes were barely more predictable than guessing. No policy has yet been trained on the record. The record decides what a robot may post-train on; whether the policy then works on the real robot is the simulation-to-robot question, answered downstream.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Human demonstrations are today used largely for pretraining vision-language-action models, with little ability to use the same data for target-embodiment or task-oriented training, which scalable deployment of robots in industrial and general environments depends on.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Read, Parse, Describe: Unified Document Parsing with Visual Element Description Generation</div>
+<div class="meta-line">Authors: Yuheng Chen, Yufan Chen, Zhuojun Cai, Ruiping Liu, Junwei Zheng, Jiale Wei, Di Wen, Weijia Fan, Kunyu Peng, Jiaming Zhang, Rainer Stiefelhagen</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-10-14T15:17:28+00:00 · Latest: 2026-10-14T15:17:28+00:00</div>
+<div class="meta-line">Comments: Accepted by NeurIPS 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.20335v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.20335v1">PDF</a> · <a href="https://github.com/yufanchen96/RPD">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Document understanding systems are typically evaluated as separate components via layout analysis, optical text recognition, reading-order prediction, and image captioning. This separation leaves scientific figures, captions, and visual semantics weakly connected, and fails to measure whether a model can produce a single page-level parse that is both structurally faithful and semantically accessible. We introduce Read-Parse-Describe, a unified dataset for document parsing with visual element description generation. Given a page image, models are required to output an ordered list of layout elements containing bounding boxes, semantic labels, reading-order indices, recognized textual content, and alternative text descriptions for visual elements. The benchmark is built from 2,402 documents, comprising 18,163 continuous pages, 125,218 layout elements, and 11,338 visual instances. Besides, we further propose a plug-and-play space-awareness enhancer that reuses multi-layer visual features and injects grid-aware spatial guidance into vision-language tokens for layout-aware generation. Experiments across end-to-end VLMs and pipeline parsers show that existing systems still struggle to jointly recover reading order and visual semantics, while our enhanced model achieves strong joint performance. These results highlight the need to move beyond isolated document parsing modules toward unified models that jointly read, parse, and describe complex documents. The new dataset and code will be made publicly available at https://github.com/yufanchen96/RPD</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Document understanding systems are typically evaluated as separate components via layout analysis, optical text recognition, reading-order prediction, and image captioning.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Reflect After Failure: Brain-Inspired Self-Evolving Agents for Embodied Spatial Intelligence</div>
+<div class="meta-line">Authors: Xin Li, Xiaohuan Gu, Yifan Wang, Shaobin Ling, Tianli Shi, Jingao Xu, Zhimeng Yin, Dapeng Wu, Yun Wang</div>
+<div class="meta-line">First: 2026-10-14T14:59:04+00:00 · Latest: 2026-10-14T14:59:04+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.20312v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.20312v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Vision-Language Models (VLMs) have made substantial progress in spatial reasoning, and self-evolving agents further extend these capabilities to embodied environments by learning from interactions. However, current self-evolution remains particularly challenging in embodied spatial tasks, complex and multi-step decisions from partial visual evidence making it difficult to determine why an execution fails. The failure may stem from misperception, insufficient exploration, or incorrect planning, yet execution feedback alone rarely reveals which component is responsible. As a result, simply accumulating interaction experience can reinforce ineffective strategies. To address this, we propose HiMeco, a brain-inspired self-evolving agent for embodied spatial intelligence, inspired by metacognitive monitoring and hippocampal memory consolidation. Through Hippocampal-Metacognitive Reflection, HiMeco diagnoses failures in perception-exploration-planning (PEP), then compares execution attempts to derive reusable strategies and guidance for avoiding recurring errors. It also abstracts interaction programs into parameterized skills, using evidence contracts and execution-based validation to determine their retention and reuse. These strategies and skills guide subsequent interactions, with memory updated only between rounds and model parameters kept frozen. HiMeco achieves state-of-the-art performance on ESI-Bench, and it also improves accuracy on EmbSpatial-Bench by 3.94 percentage points without evolution.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Vision-Language Models (VLMs) have made substantial progress in spatial reasoning, and self-evolving agents further extend these capabilities to embodied environments by learning from interactions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Topology-Aware Representation Alignment for Semi-Supervised Vision-Language Learning</div>
+<div class="meta-line">Authors: Junwon You, Mihyun Jang, Sangwoo Mo, Jae-Hun Jung</div>
+<div class="meta-line">First: 2026-04-29T07:30:33+00:00 · Latest: 2026-10-14T14:28:53+00:00</div>
+<div class="meta-line">Comments: 38 pages, 13 figures, 32 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.26370v2">Abs</a> · <a href="https://arxiv.org/pdf/2604.26370v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Vision-language models have shown strong performance, but they often generalize poorly to specialized domains. While semi-supervised vision-language learning mitigates this limitation by leveraging a small set of labeled image-text pairs together with abundant unlabeled images, existing methods remain fundamentally pairwise and fail to model the global structure of multimodal representation manifolds. Most existing topology-based alignment methods rely on persistence diagram matching, which neither guarantees geometric alignment nor uses the image-text pairing information central to vision-language learning. We propose Topology-Aware Representation Alignment for Semi-Supervised Vision-Language Learning (ToMA), a framework that uses persistent homology to decompose pairwise relations into $H_0$-death and $H_1$-birth relations and aligns them across modalities through available cross-modal correspondences. This lightweight decomposition captures both connectivity and cycle-closing structure without constructing 2-simplices. Experiments show clear improvements on remote sensing, while fashion results reveal strong gains in classification and particularly strong retrieval improvements for difficult queries. Additional analysis shows that ToMA provides more consistent gains than alternative topology-based objectives and that lightweight $H_1$-birth edges provide useful higher-order structural signals.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Vision-language models have shown strong performance, but they often generalize poorly to specialized domains.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Efficient Noise Context-Aware Representation for Low-Dose CT Denoising</div>
+<div class="meta-line">Authors: Minwoo Yu, N. Robert Bennett, Jongduk Baek, Adam S. Wang</div>
+<div class="meta-line">First: 2026-08-11T00:57:39+00:00 · Latest: 2026-10-14T13:37:17+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.10343v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.10343v2">PDF</a> · <a href="https://github.com/minwoo-yu/ENCORE.git">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">While deep learning-based denoising has become widely adopted in low-dose CT, conventional models use generic architectures designed for natural images, failing to account for non-stationary and spatially correlated CT noise characteristics. To address this, we propose an Efficient Noise COntext-aware REpresentation (ENCORE) framework that explicitly leverages CT noise characteristics and anatomical features. First, we reformulate the noise synthesis procedure based on a realistic noise distribution beyond the conventional Gaussian approximation, establishing a rigorous foundation for training pair generation. Next, we extract local noise power and correlation contexts to guide the denoising process. To fully leverage the potential of noise context, we propose a FlyingConv module, which adaptively changes convolution weights for each local image region. Notably, our approach demonstrates substantial gains in both denoising quality and computational efficiency. Furthermore, manipulating the intensity of the noise context maps at inference time enables zero-shot conditional denoising, allowing for dynamic control over the output image texture. The entire pipeline is available at https://github.com/minwoo-yu/ENCORE.git</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">While deep learning-based denoising has become widely adopted in low-dose CT, conventional models use generic architectures designed for natural images, failing to account for non-stationary and spatially correlated CT noise characteristics.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Attention Transfer Is Not Universally Effective for Vision Transformers</div>
+<div class="meta-line">Authors: Huaiyuan Qin, Muli Yang, Gabriel James Goenawan, Peng Hu, Chen Gong, Xi Peng, Hongyuan Zhu</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-05-08T03:39:38+00:00 · Latest: 2026-10-14T13:35:30+00:00</div>
+<div class="meta-line">Comments: Published in NeurIPS 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.07191v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.07191v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A recent work shows that Attention Transfer, which transfers only the attention patterns from a pre-trained teacher Vision Transformer (ViT) to a randomly initialized standard student ViT, is sufficient to recover the full benefit of the teacher&#x27;s pre-trained weights. We revisit this finding on a comprehensive benchmark of 20 teachers from 11 well-known ViT families and reveal that Attention Transfer is not universally effective. While 7 families transfer successfully, 4 consistently fail, falling up to 5.1\% below the from-scratch no-transfer baseline. Further results demonstrate that this failure is family-consistent across model sizes, and persists under extended training durations, different transfer datasets, and out-of-distribution evaluations. Controlled analyses then consistently localize the problem to the attention-routing channel, indicating that the key issue is not whether the student can match the teacher&#x27;s attention patterns, but whether the matched patterns remain functional for the student. Crucially, we identify architectural mismatch between the pre-trained teacher and the standard student as the primary mechanism. By adding only the teacher&#x27;s native architectural components to the student in a randomly initialized state, we completely reverse the failure for all 4 families. Notably, these components alone do not improve from-scratch training, confirming that they specifically unlock the usability of the teacher&#x27;s attention. We further show that this failure is not explained by the inadequate choice of transfer loss, differences in pre-training recipes, or the intrinsic quality of attention maps. Our findings refine the prevailing understanding of attention in ViT representations: attention is sufficient \textit{only} when the student architecture matches the teacher.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A recent work shows that Attention Transfer, which transfers only the attention patterns from a pre-trained teacher Vision Transformer (ViT) to a randomly initialized standard student ViT, is sufficient to recover the full benefit of the teacher&#x27;s pre-trained weights.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Capability $\neq$ Interpretability: Human Interpretability of Vision Foundation Models</div>
+<div class="meta-line">Authors: Julien Colin, Lore Goetschalckx, Nuria Oliver, Thomas Serre</div>
+<div class="meta-line">First: 2026-05-19T18:00:06+00:00 · Latest: 2026-10-14T13:05:25+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.20337v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.20337v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">How interpretable are the features of leading vision models? The question is increasingly pressing as these models move from research benchmarks into high-stakes deployments, yet existing methods cannot answer it reliably. We address this gap with a framework for measuring and comparing the human interpretability of vision models, built around two complementary psychophysics protocols: (1) localizability---can an observer predict where a feature fires on a novel image?---and (2) semanticity---can an observer accurately describe what the feature represents? Features are recovered via sparse autoencoders, and a chance-anchored scoring function places every model on a common scale. Applying the framework to six vision transformers---two supervised ViTs and four foundation models (DINOv2, DINOv3, CLIP, SigLIP)---we collected more than $15{,}000$ behavioral responses, of which we analyzed $13{,}400$ responses from the $377$ participants who passed our pre-specified quality checks. We find that foundation models are consistently $less$ interpretable than their size-matched supervised counterparts, and the gap is not a capability tradeoff: interpretability does not correlate with downstream task performance on any benchmark we examine. What does correlate is the locality of a feature&#x27;s activations and coarse-grained semantic alignment with humans---models with focal activations and representations that reflect the world&#x27;s broad categorical structure tend to produce more interpretable features. The two protocols yield strongly correlated rankings and share the same predictors, establishing interpretability as an independent, measurable dimension of representation quality---and, surprisingly, one on which the foundation models we tested fall below their size-matched supervised baseline. Capability alone cannot close that gap, but locality and coarse-grained alignment might.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">How interpretable are the features of leading vision models?</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Seeing at the Edge: Energy Characterization of Vision-Language Model Inference on Edge Platforms</div>
+<div class="meta-line">Authors: Junlin Liao, Harshit Kondle, Di Liu, Zonghua Gu</div>
+<div class="meta-line">First: 2026-10-14T12:55:12+00:00 · Latest: 2026-10-14T12:55:12+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.20136v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.20136v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Vision-language models (VLMs) are moving onto edge devices, but little is known about how much energy they draw on single-board computers with NPU or GPU accelerators, or where that energy goes. We measure total-system energy, latency, and thermal behavior of Qwen2-VL-2B-Instruct and its text-only sibling on a Raspberry Pi 5 with a Hailo-10H NPU and on a Jetson Orin Nano Super, on both CPU and accelerator, and separate the fixed energy of each request from the energy that grows with output length. Because the accelerators use different quantization and serving software, we compare deployment stacks rather than silicon. Three findings stand out. First, NPU offloading makes the Pi a much more efficient VLM platform: it cuts energy per generated token by about two-thirds, leaves the host CPU largely free, and avoids the thermal throttling that the CPU backend reaches in sustained use. Second, an image adds both fixed and per-token energy, but at typical response lengths generating the answer costs far more than processing the image. Third, the Jetson GPU favors short responses through its lower fixed cost per request, whereas the Pi NPU favors longer ones through its lower cost per output token; their energy curves cross near 40 output tokens.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Vision-language models (VLMs) are moving onto edge devices, but little is known about how much energy they draw on single-board computers with NPU or GPU accelerators, or where that energy goes.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">What Do Foundation Models for Market Microstructure Learn? A Controlled Study with Synthetic Limit Order Books</div>
+<div class="meta-line">Authors: Fernando Acero</div>
+<div class="meta-line">First: 2026-10-14T12:38:49+00:00 · Latest: 2026-10-14T12:38:49+00:00</div>
+<div class="meta-line">Comments: Accepted at ACM ICAIF 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.20104v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.20104v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Autoregressive transformers trained on limit order book (LOB) message streams are increasingly proposed as foundation models for market microstructure. Because the generative process of real markets is unknown, these models can be judged only by the realism of their output, leaving open what they actually learn. We make the question answerable by inverting the setup: we train GPT-style models on order flow from simulators whose latent parameters are known, so that the Bayes-optimal predictor, the generating state, and the exact data entropy serve as references. Measured against them, next-token pretraining on order flow implements amortized Bayesian inference over market regimes. The learned predictive matches the exact Bayes optimum to within a millinat per token and approaches the oracle floor even on a nonstationary family whose latent state drifts within an episode, a regime that requires filtering. The latent regime is linearly decodable from frozen activations, well above baselines, so a frozen-model read-out calibrates simulator parameters more accurately than windowed maximum likelihood at a fraction of the cost. In our experiments these capabilities are not produced by scale: capacity and token volume saturate early, and it is the diversity of training regimes, not the token count, that determines generalization to unseen markets. On real NASDAQ data, zero-shot transfer is set by how well the simulator prior covers real flow: an enriched mixture nearly closes the gap to an in-domain baseline, and pretraining beats from-scratch training at every budget across held-out tickers. Known ground truth turns average next-token loss, which is uninformative near the entropy floor, into an exact comparison against the Bayes-optimal and oracle predictors.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Autoregressive transformers trained on limit order book (LOB) message streams are increasingly proposed as foundation models for market microstructure.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Video-HopChain: Multi-Hop Questions and Confidence-Gated Exploration for Video Reasoning Models</div>
+<div class="meta-line">Authors: Trung Nguyen Quang, Yuhao Dong, Shuo Sun, Shuai Liu, Shulin Tian, Kim-Hui Yap, Ziwei Liu</div>
+<div class="meta-line">First: 2026-09-22T07:08:13+00:00 · Latest: 2026-10-14T12:32:11+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.25773v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.25773v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">HopChain has shown on still images that multi-hop data synthesis improves vision-language reasoning, because long chain-of-thought reasoning exposes errors that compound across steps, while most data used for reinforcement learning with verifiable rewards (RLVR) rarely demands a chain of visual evidence, so these weaknesses are likely to stay unexposed. We observe the same problem in video, where this framework has not yet been explored. We therefore build Video-HopChain, a dataset of 22,550 multi-hop video questions over 13,378 videos, together with a held-out benchmark of 1,000 questions. Each question chains three to six yes/no questions about moments in one video, and each yields one of two integers depending on its answer. The final answer is the sum of these integers, so an exact match on that sum gives the verifiable reward that RLVR needs. We first train Qwen3-VL-8B with GRPO on a standard video dataset, and a second stage on Video-HopChain then raises the mean over eight video understanding and reasoning benchmarks from 55.4 to 57.9 and improves every one of them. Training on such a dataset, however, exposes a known limitation of GRPO: its learning signal comes from the reward variance within a group, so hard questions whose rollouts are all incorrect and easy questions whose rollouts are all correct both leave the group with no gradient. To recover these groups at the same compute budget, we introduce Confidence-Gated Exploration (CGE). With 8 rollouts per question, CGE samples the first 4 as usual. If these 4 are either all correct or all incorrect, it samples the last 4 with the policy&#x27;s most confident token masked inside the reasoning span, and removes the masked positions from the loss while all 8 rollouts enter the advantage. With CGE, the mean rises further to 59.3. We release the dataset, the checkpoint, and the data generation and training code.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">HopChain has shown on still images that multi-hop data synthesis improves vision-language reasoning, because long chain-of-thought reasoning exposes errors that compound across steps, while most data used for reinforcement learning with verifiable rewards (RLVR) rarely demands a chain of visual evidence, so these weaknesses are likely to stay unexposed.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">OpenDepth: Repurposing Image Editing Priors for Robust Open-World Monocular Depth Estimation</div>
+<div class="meta-line">Authors: Mengke Zhang, Tianyi Yang, Xinzhuo Li, Anlong Ming</div>
+<div class="meta-line">First: 2026-10-13T02:29:58+00:00 · Latest: 2026-10-14T12:26:42+00:00</div>
+<div class="meta-line">Comments: Accepted at ACM Multimedia 2026. 18 pages, 9 figures, including supplementary material</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.17610v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.17610v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Recently, the integration of generative priors has revolutionized Monocular Depth Estimation (MDE), achieving state-of-the-art (SOTA) performance with remarkably high data efficiency. However, although methods based on Text-to-Image (T2I) models excel in general scenes, their efficacy degrades sharply when confronted with open-world environmental perturbations, such as illumination variations and adverse weather. Since T2I priors are optimized for semantic synthesis rather than preserving pixel-level structure, they struggle to decouple geometry from appearance under severe visual shifts, easily triggering structural hallucinations. Therefore, our core insight is to model open-world depth estimation as consistent geometric inference across multi-style images, fully leveraging the powerful structure-preserving editing priors of Image-to-Image (I2I) models. Based on this, we propose OpenDepth, a robust open-world MDE framework that introduces &quot;Intra-Domain Awareness&quot; -- the capability to map diverse stylistic inputs sharing identical geometry into a unified latent space. To achieve this, we first align shallow features within the Diffusion Transformer (DiT) to anchor degraded observations to unified geometric representations. Additionally, we introduce a joint RGB latent reconstruction task, requiring the model to recover clean RGB information from degraded inputs. This multi-stage strategy effectively decouples environmental style interference, compelling the model to focus strictly on underlying geometric recovery. Extensive evaluations show that OpenDepth sets new SOTA records for robust zero-shot depth estimation across standard and extreme weather benchmarks, demonstrating exceptional structural integrity and adaptability.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Recently, the integration of generative priors has revolutionized Monocular Depth Estimation (MDE), achieving state-of-the-art (SOTA) performance with remarkably high data efficiency.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">G$^3$VLA: Geometric Inductive Bias for Vision-Language-Action Models</div>
+<div class="meta-line">Authors: Yue Peng, Yongzhe Zhao, Artur Habuda, Khuyen Pham, Yanheng Zhu, Tran Nguyen Le, Fares Abu-Dakka, Li Guo</div>
+<div class="meta-line">First: 2026-06-23T12:02:36+00:00 · Latest: 2026-10-14T12:08:55+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2606.24472v2">Abs</a> · <a href="https://arxiv.org/pdf/2606.24472v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Vision-language-action (VLA) models have rapidly advanced generalist robot manipulation by harnessing the semantic knowledge of pretrained vision-language backbones. However, their visual representations are typically grounded in 2D image coordinates rather than calibrated camera geometry. This limitation is especially pronounced in multi-camera systems, where views are coupled by known intrinsics and extrinsics but processed as independent images. We propose G$^3$VLA, a camera-aware geometric module that injects calibrated structure into the visual-token stream of a pretrained VLA without altering its action space or original action-learning objective. G$^3$VLA combines intrinsic-conditioned ray embeddings, projective positional encoding (PRoPE), and bidirectional cross-view fusion to establish geometrically consistent representations across camera views. Geometric supervision is provided by ground-truth point maps or confidence-gated $π^3$X teacher predictions, enabling training without depth sensors or manual geometric annotations. On $π_0$, G$^3$VLA consistently improves performance on LIBERO and RoboCasa24 under both supervision regimes, while ground-truth supervision improves five-task RoboTwin2.0 averages with three cameras. Experiments on camera-shifted LIBERO-Goal and real robots demonstrate improved robustness to unseen camera viewpoints. Controlled calibration studies across $π_0$ and $π_{0.5}$ show that these gains depend on correct camera geometry while remaining stable under mild calibration perturbations. These results demonstrate that grounding VLA visual tokens in calibrated camera geometry provides a simple and general mechanism for improving geometric consistency, multi-view reasoning, and viewpoint robustness in pretrained robot policies.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Vision-language-action (VLA) models have rapidly advanced generalist robot manipulation by harnessing the semantic knowledge of pretrained vision-language backbones.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">FoveaVLA: Foveation Actions Replace the Wrist Camera in VLAs</div>
+<div class="meta-line">Authors: Bingao Chen, Lihan Zha, C. Karen Liu, Guy Tevet</div>
+<div class="meta-line">First: 2026-10-14T12:04:21+00:00 · Latest: 2026-10-14T12:04:21+00:00</div>
+<div class="meta-line">Comments: Project website: https://tml.stanford.edu/FoveaVLA/</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.20064v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.20064v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We present FoveaVLA, a Vision-Language-Action (VLA) model that replaces the wrist camera with learned foveation actions. Wrist cameras provide close-up detail but restrict the view to the end-effector&#x27;s surroundings. External cameras see the whole scene, but the policy receives them at low resolution, so the fine detail needed for manipulation is lost. FoveaVLA recovers this detail by predicting, alongside each action chunk, the interaction region to observe at the next policy query. The policy then receives crops of these regions, taken from the original-resolution images, together with the full views. We build FoveaVLA on $π_{0.5}$ in two configurations, Single and Dual, using one or two external stereo cameras with full and foveal RGB and depth inputs, and post-train both on DROID with RoboInter interaction annotations. Across four real-world task suites, FoveaVLA-Single achieves 70.8% success with one external RGB-D view, and FoveaVLA-Dual achieves 77.1%, versus 52.1% for the wrist-equipped $π_{0.5}$. Both match the baseline on plain pick-and-place and improve success with distractors, cloth manipulation, and far-away objects.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We present FoveaVLA, a Vision-Language-Action (VLA) model that replaces the wrist camera with learned foveation actions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">GeoCloak: An Agentic Framework for Semantics-Preserving Geolocation Privacy via Peripheral Clue Manipulation</div>
+<div class="meta-line">Authors: Yixin Wu, Mingjie Li, Yun Shen, Michael Backes, Yang Zhang</div>
+<div class="meta-line">First: 2026-10-14T11:56:53+00:00 · Latest: 2026-10-14T11:56:53+00:00</div>
+<div class="meta-line">Comments: 27 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.20055v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.20055v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The rapid advancement of large vision language models (LVLMs) has made geolocation inference from images highly accurate and accessible. This poses serious privacy risks: a passive adversary with black-box LVLM access can infer a user&#x27;s location from a single photo with no metadata. Existing protection methods rely almost exclusively on adversarial perturbation, which introduces perceptible visual artifacts and utility degradation. We identify the visual-geolocation asymmetry: geolocation-decisive clues, such as street signs, tend to be visually peripheral but dominate location inference. Exploiting this asymmetry, we propose GeoCloak, an agentic framework for semantics-preserving geolocation privacy protection. It acts as a clue-aware planner that analyzes each image to identify geolocation-relevant clues, dispatches targeted semantic edits to directly suppress peripheral clues, and autonomously configures adversarial perturbation to further suppress residual geolocation features, all under iterative utility-aware feedback. We evaluate GeoCloak on four diverse datasets spanning 108 countries and 576 cities against five LVLMs and three inference methods. GeoCloak reduces overall city-level accuracy from 41.2% to 9.9%, approximately half of the best-performing baseline, while achieving substantially superior utility preservation both qualitatively and quantitatively. We hope this work takes a meaningful step toward practical, semantics-preserving geolocation privacy protection, giving users greater control over the location information inadvertently embedded in their shared images.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The rapid advancement of large vision language models (LVLMs) has made geolocation inference from images highly accurate and accessible.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">MorphAct: Robot Policies Morphing with the Worlds They Act In</div>
+<div class="meta-line">Authors: Ziyan Liu, Jiting Liu, Weihong Zhong, Wenda Yu, Yeqiu Chen, Jason Li, Xiaojiang Peng, Shuyuan Hu, Kai Wang, Bo Zhao</div>
+<div class="meta-line">First: 2026-10-14T11:31:24+00:00 · Latest: 2026-10-14T11:31:24+00:00</div>
+<div class="meta-line">Comments: 25 pages. Project page: https://mint-sjtu.github.io/MorphAct.io/</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.20019v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.20019v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://mint-sjtu.github.io/MorphAct.io/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Progress toward general intelligence in the physical world requires scaling robot learning across diverse environments and interactions. However, existing robot policies use shared parameters that remain fixed across interaction contexts. When different operations favor competing parameter adjustments, fitting their mixture can leave individual operations insufficiently adapted. Our atomic-task diagnostics reveal competing update directions in both vision-language and action parameters, with source-improving updates increasing loss on other tasks. This motivates MorphAct, a contextual parameterization framework that dynamically adjusts robot policy parameters as interaction contexts change. Two coupled generators produce context-dependent low-rank updates for the vision-language and action modules. Their coupling follows the policy&#x27;s computational dependency: vision-language updates shape the representations that condition action-side parameter generation. Both generators are trained jointly through the native action objective, without operation labels or expert-adapter targets. MorphAct improves performance across three VLA backbones on LIBERO and Meta-World, with gains of up to 16.30%. In real-world evaluation, it achieves gains of up to 14% over $π_{0.5}$. Ablations support the benefits of contextual parameter generation and representation coupling.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Progress toward general intelligence in the physical world requires scaling robot learning across diverse environments and interactions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">SnapFlow: One-Step Action Generation for Flow-Matching VLAs via Progressive Self-Distillation</div>
+<div class="meta-line">Authors: Wuyang Luan, Junhui Li, Weiguang Zhao, Rui Ma, Tieru Wu</div>
+<div class="meta-line">First: 2026-04-07T09:56:03+00:00 · Latest: 2026-10-14T11:25:19+00:00</div>
+<div class="meta-line">Comments: 10 pages, 6 figures, 9 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.05656v2">Abs</a> · <a href="https://arxiv.org/pdf/2604.05656v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Vision-language-action (VLA) models with flow-matching action heads, such as π0 and π0.5, have become a standard recipe for generalist robot manipulation, but every action chunk is produced by integrating a learned velocity field over about ten sequential action-expert evaluations, so action generation dominates model latency and caps the achievable control frequency. Existing remedies either shrink each evaluation through layer distillation or pruning while leaving the sequential solver in place, or import one-step objectives from image generation that were designed for training from scratch, rely on an exponential-moving-average teacher or an external critic, and regress finite-span targets onto the conditional velocity, whose variance around the marginal field biases the learned map. We introduce SnapFlow, a self-distillation method that adapts a pretrained flow-matching VLA to one-step action generation. SnapFlow mixes local flow-matching supervision with shortcut samples whose target is the model&#x27;s own two-step Euler endpoint under stop-gradient, and adds a single zero-initialized destination-time projection so that one action expert serves both objectives while the pretrained predictor is preserved at initialization; no separate teacher network or critic is required. On π0.5, whose 10-NFE teacher operates near ceiling, the archived one-NFE SnapFlow checkpoint reaches 98.75% LIBERO success versus 97.75% for the teacher; under a separate paired evaluation of π0, the one-NFE model surpasses its teacher by 10.5 percentage points. SnapFlow also lowers mean and tail action error on held-out data, cuts batch-one model latency by about 3.3x, and transfers to shelf retrieval on a dual-arm humanoid.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Vision-language-action (VLA) models with flow-matching action heads, such as π0 and π0.5, have become a standard recipe for generalist robot manipulation, but every action chunk is produced by integrating a learned velocity field over about ten sequential action-expert evaluations, so action generation dominates model latency and caps the achievable control frequency.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Strong Harness Narrows the Model Gap: A Comparative Evaluation for Legislative Document-to-XML Conversion</div>
+<div class="meta-line">Authors: Palvika Bansal, Rittika Jindal, Ruichong Wang</div>
+<div class="meta-line">Venue: EMNLP 2026</div>
+<div class="meta-line">First: 2026-10-14T11:15:25+00:00 · Latest: 2026-10-14T11:15:25+00:00</div>
+<div class="meta-line">Comments: Accepted to the Natural Legal Language Processing Workshop (NLLP) at EMNLP 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19999v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.19999v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Legal-content reproduction requires matching the source exactly in section hierarchy, verbatim text, citations, and amendment spans; a dropped citation or mislabeled amendment carries into the products lawyers rely on. We report an industrial pipeline converting U.S. state legislation into strict, schema-constrained XML, and hypothesize that its accuracy comes from harness engineering, the deterministic tooling built around a model, more than the model itself. Our controlled ablation crosses three harnesses (zero-shot, a single tool-using agent, and a decomposed multi-agent pipeline) with three Claude models on 153 gold bills from two jurisdictions. The harness narrows the model gap: the weakest model in the full pipeline beats the strongest model alone (0.948 versus 0.806, paired bootstrap p less than 0.001). Because the two agentic harnesses share identical tools, their gap comes from orchestration: decomposition plus the persisted state and per-agent context it brings. Across four scored dimensions, the model spread at zero-shot (0.68 to 0.81) narrows to 0.95 at the full pipeline; the residual sits almost entirely in citation normalization, where the canonical identifier is retrieved from an external authority rather than generated from the weights, so a deterministic lookup tool supplies the exactness that a larger model does not.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Legal-content reproduction requires matching the source exactly in section hierarchy, verbatim text, citations, and amendment spans; a dropped citation or mislabeled amendment carries into the products lawyers rely on.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">LEAP: Unlocking dLLM Parallelism via Lookahead Early-Convergence Token Detection</div>
+<div class="meta-line">Authors: Haohui Zhang, Zhiye Wang, Xiaoying Gan, Xinbing Wang, Bo Jiang</div>
+<div class="meta-line">First: 2026-05-09T03:26:23+00:00 · Latest: 2026-10-14T11:15:08+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.10980v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.10980v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Diffusion Language Models (dLLMs) have garnered significant attention for their potential in highly parallel processing. The parallel capabilities of existing dLLMs stem from the assumption of conditional independence at high confidence levels, which ensures negligible discrepancy between the marginal and joint distributions. However, the stringent confidence thresholds required to preserve accuracy severely constrain the scalability of parallelism. Through systematic token-level statistical analysis, we reveal that a substantial proportion of tokens converge to their correct predictions early in the denoising process yet fail to reach standard confidence thresholds, confirming that current confidence-based criteria are overly conservative. In response, we introduce LEAP (Lookahead Early-Convergence Token Detection for Accelerated Parallel Decoding). LEAP is a training-free, plug-and-play method that leverages future context filtering and multi-sequence superposition to detect early-converging tokens. By validating the alignment between early convergence and correctness, we enable reliable early decoding of these tokens. Benchmarking across diverse domains demonstrates that LEAP significantly lowers inference latency and decoding steps. Compared to confidence-based decoding, the average number of denoising steps is reduced by about 30%. On the GSM8K dataset, combining LEAP with dParallel accelerates decoding to 7.2 tokens per step while preserving model precision. LEAP effectively breaks the reliance on high-confidence priors, offering a novel paradigm for parallel decoding.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Diffusion Language Models (dLLMs) have garnered significant attention for their potential in highly parallel processing.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Towards Modality-Agnostic Seizure Classification: A Unified Deep Learning Framework for Heterogeneous EEG and Intracranial EEG Signals</div>
+<div class="meta-line">Authors: Ramya Sundaram, Muhammad Aslam Jarwar, M Uma, Sunder Ali Khowaja, Qurat-Ul-Ain Mastoi</div>
+<div class="meta-line">First: 2026-10-12T11:18:18+00:00 · Latest: 2026-10-14T10:13:15+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.16596v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.16596v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Seizure prediction and detection, essential for clinical treatment of epilepsy, remain the crucial task of this neurological disease. EEG and iEEG are widely used to analyze epilepsy due to its capability of capturing discriminative brain activities at high time resolution. However, existing works generally analyze either EEG or iEEG seizure activity separately, where EEG analysis has been well-researched, while more and more works consider iEEG for its higher specificity at the spatial level and signal quality. Currently, most of the existing seizure prediction systems are single-modal in nature, which limits its application to a variety of clinical conditions. Therefore, a common framework to analyze seizures with both EEG and iEEG signals needs to be developed. This paper presents a new framework of multimodal seizure classification integrating the heterogeneous EEG and iEEG recordings from different subjects and sources. A specific framework, called Unified Multimodal Signal Harmonization (UMSH), is developed for harmonizing signals with varied sampling rates and recording conditions. Moreover, to handle the extremely class-imbalanced problem in the data sets, we use a Conditional Generative Adversarial Network (cGAN) based data augmentation technique to generate synthetic samples to balance the class distribution. The proposed framework uses the EEGNet-Vision Transformer (EEGNet-ViT) as the feature extraction and classification network to learn the local discriminative patterns as well as global contextual information in the multimodal seizure data. Experimental results demonstrate the effectiveness of the proposed framework for robust seizure classification, emphasizing the potential of integrated EEG-iEEG multimodal learning in advancing next-generation epilepsy monitoring and clinical decision-support systems.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Seizure prediction and detection, essential for clinical treatment of epilepsy, remain the crucial task of this neurological disease.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Constitutive parameterized deep energy method for solid mechanics problems with random material parameters</div>
+<div class="meta-line">Authors: Zhangyong Liang, Jihong Zhu, Huanhuan Gao</div>
+<div class="meta-line">First: 2026-03-27T02:59:32+00:00 · Latest: 2026-10-14T09:46:27+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.26030v2">Abs</a> · <a href="https://arxiv.org/pdf/2603.26030v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In practical structural design and solid mechanics simulations, material properties inherently exhibit random variations within bounded intervals. However, evaluating mechanical responses under continuous material uncertainty remains a persistent challenge. Traditional numerical approaches, such as the Finite Element Method (FEM), incur prohibitive computational costs as they require repeated mesh discretization and equation solving for every parametric realization. Similarly, data-driven surrogate models depend heavily on massive, high-fidelity datasets, while standard physics-informed frameworks (e.g., the Deep Energy Method) strictly demand complete retraining from scratch whenever material parameters change. To bridge this critical gap, we propose the Constitutive Parameterized Deep Energy Method (CPDEM). In this purely physics-driven framework, the strain energy density functional is reformulated by encoding a latent representation of stochastic constitutive parameters. By embedding material parameters directly into the neural network alongside spatial coordinates, CPDEM transforms conventional spatial collocation points into parameter-aware material points. Trained in an unsupervised manner via expected energy minimization over the parameter domain, the pre-trained model continuously learns the solution manifold. Consequently, it enables zero-shot, real-time inference of displacement fields for unknown material parameters without requiring any dataset generation or model retraining. The proposed method is rigorously validated across diverse benchmarks, including linear elasticity, finite-strain hyperelasticity, and complex highly nonlinear contact mechanics. To the best of our knowledge, CPDEM represents the first purely physics-driven deep learning paradigm capable of simultaneously and efficiently handling continuous multi-parameter variations in solid mechanics.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In practical structural design and solid mechanics simulations, material properties inherently exhibit random variations within bounded intervals.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">CorrelationFlow: A Training-Free Geometric Approach for LiDAR Scene Flow Estimation</div>
+<div class="meta-line">Authors: Minh-Quan Dao, Yancong Lin, Julie Stephany Berrio Perez, Holger Caesar</div>
+<div class="meta-line">First: 2026-07-31T10:14:08+00:00 · Latest: 2026-10-14T09:32:58+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.29237v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.29237v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">LiDAR scene flow is the task of estimating point-wise motion from sequential point clouds. It is essential for autonomous driving, as it provides critical information about moving objects and their trajectories. In recent years, unsupervised methods have gained significant traction by eliminating the need for expensive point-wise annotations. However, despite incremental performance improvements, these methods uniformly rely on a single paradigm: training feed-forward networks through optimizing a loss function based on the Chamfer distance, a framework that inherently limits their progression. This paper presents CorrelationFlow, a new paradigm that reformulates LiDAR scene flow as a correlation maximization problem between Bird&#x27;s-Eye View (BEV) images. Instead of using learnable parameters, our approach employs a chain of image processing operations to solve this problem. The learning-free nature of CorrelationFlow enables strong generalization across diverse domains. This capability is demonstrated by the second-place ranking in the unsupervised track of the Argoverse 2 Scene Flow Challenge at CVPR 2026, which featured a test set spanning five datasets that cover varied vehicle platforms and environments. Our results show that this classical, model-based approach can match or even surpass the performance of learning-based methods, thereby opening a new direction for unsupervised LiDAR scene flow research. The source code will be released.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">LiDAR scene flow is the task of estimating point-wise motion from sequential point clouds.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">DarKnight: Retrieval-Guided Agentic Framework for Breaking Dark Web CAPTCHA Gates</div>
+<div class="meta-line">Authors: Binghui Wu, Yeo Zi Yi, Darren Tan, Manit Baser, Levente Csikor, Dinil Mon Divakaran</div>
+<div class="meta-line">First: 2026-10-14T09:04:50+00:00 · Latest: 2026-10-14T09:04:50+00:00</div>
+<div class="meta-line">Comments: Accepted for APWG eCrime 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19830v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.19830v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Cyber Threat Intelligence (CTI) investigators who monitor dark web marketplaces for leaked credentials and breach listings must pass the diverse CAPTCHAs that operators deploy to block automated collection. Existing solvers either need unscalable per-site fine-tuning or rely on commercial Vision-Language Model (VLM) APIs, which surrender operational sovereignty: provider policies, Tor-exit blocking, government regulation, or model updates outside the investigator&#x27;s control can halt or alter the solver overnight, and per-call costs recur with every session and retry. We present DarKnight, a self-improving agentic framework designed to run on a single workstation GPU inside an investigator&#x27;s Tor crawler and solve CAPTCHAs with small, locally hosted open-weight VLMs that no provider decision can withdraw, without per-market training or third-party services. For each CAPTCHA, DarKnight retrieves successful and failed past attempts on similar images (dual-signal RAG), composes an image-specific preprocessing pipeline, and learns from the site&#x27;s pass/fail verdict. In a case study on four real-world dark web marketplaces, agentic tool selection outperformed parameter scaling. A deployable open-weight VLM with DarKnight reached 83.2\% on the most heavily defended market, 37.2 percentage points above its base model, outperforming even the frontier Claude Opus~5 (44%). DarKnight recovered 48.2% of baseline failures at a 7.6% degeneration cost, indicating that selective tool use can avoid much of the degradation caused by uniform preprocessing.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Cyber Threat Intelligence (CTI) investigators who monitor dark web marketplaces for leaked credentials and breach listings must pass the diverse CAPTCHAs that operators deploy to block automated collection.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Schrödinger&#x27;s Navigator: Imagining an Ensemble of Futures for Zero-Shot Object Navigation</div>
+<div class="meta-line">Authors: Yu He, Da Huang, Zhenyang Liu, Zixiao Gu, Qiang Sun, Guangnan Ye, Yanwei Fu, Yu-Gang Jiang</div>
+<div class="meta-line">First: 2025-12-24T14:28:17+00:00 · Latest: 2026-10-14T09:02:52+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2512.21201v4">Abs</a> · <a href="https://arxiv.org/pdf/2512.21201v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Zero-shot object navigation (ZSON) requires robots to find target objects in unseen environments without task-specific fine-tuning or pre-built maps, a key capability for general-purpose service robots. Yet methods that perform well in simulation often degrade in cluttered real-world scenes with severe occlusion and latent hazards, where large unseen regions make single-scene inference brittle and unsafe. We propose Schrödinger&#x27;s Navigator, a belief-aware framework that reasons at inference time over multiple trajectory-conditioned imagined 3D futures. Given candidate paths, a trajectory-conditioned 3D world model predicts hypothetical observations and maintains a superposition of plausible scene realizations rather than committing to one map. An adaptive occluder-aware sampler directs imagination to uncertainty-critical regions, while a Future-Aware Value Map (FAVM) aggregates imagined futures for robust, proactive action selection. Experiments in simulation and on a physical Go2 quadruped show that Schrödinger&#x27;s Navigator outperforms strong ZSON baselines, improving hidden-target discovery and risk-aware waypoint selection in occlusion-heavy navigation scenarios. These results highlight imagined 3D futures as a scalable and generalizable strategy for zero-shot navigation in uncertain real-world environments.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Zero-shot object navigation (ZSON) requires robots to find target objects in unseen environments without task-specific fine-tuning or pre-built maps, a key capability for general-purpose service robots.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">What Matters for World Modeling in Vision-Language-Action Models?</div>
+<div class="meta-line">Authors: Qisen Ma, Yixiang Chen, Yuan Xu, Peiyan Li, Jiabing Yang, Kai Wang, Jianhua Yang, Jianlou Si, Jun Huang, Jing Liu, Nianfeng Liu, Yan Huang, Liang Wang</div>
+<div class="meta-line">First: 2026-10-14T09:01:30+00:00 · Latest: 2026-10-14T09:01:30+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19825v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.19825v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://dylanmqs.github.io/WM-in-VLAs/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Integrating world models into Vision-Language-Action models (VLAs) has emerged as a promising direction, enabling policies to anticipate future dynamics beyond reactive observation-to-action mapping. However, existing approaches vary simultaneously in their world representations, integration paradigms, and policy backbones, making it difficult to determine what truly matters for effective world model integration. To disentangle these factors, we categorize existing efforts into four representative paradigms, namely Implicit Future Alignment, Explicit Future Query, MoT Future Expert, and External World Predictor. We instantiate each within a unified framework and systematically evaluate these paradigms with diverse world representations and policy backbones across in-domain, out-of-domain, long-horizon, dynamic, few-shot, and real-world settings. Our study yields four main findings: 1) world representation effectiveness is paradigm-dependent, whereas 2D semantic representations offer robust, cross-paradigm gains; 2) no single paradigm is universally optimal, yet the decoupled MoT Future Expert offers competitive overall performance, particularly in OOD robustness; 3) world modeling consistently benefits policies built on standard VLMs, while decoupled designs exhibit greater compatibility with pretrained VLAs; and 4) world modeling improves performance over action-only baselines across multiple settings, with notable gains on long-horizon and dynamic tasks. Project page and video demonstrations are available at https://dylanmqs.github.io/WM-in-VLAs/.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Integrating world models into Vision-Language-Action models (VLAs) has emerged as a promising direction, enabling policies to anticipate future dynamics beyond reactive observation-to-action mapping.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">4DVLT: Dynamic Scene Understanding with Worldline-Centered Vision-Language Tracking</div>
+<div class="meta-line">Authors: Boxue Yang, Chaoyue Li, Shengyao Zhou, Rui Qian, Haoyang Wu, Shaoqiu Zhang, Linfeng Zhang</div>
+<div class="meta-line">First: 2026-06-21T18:33:15+00:00 · Latest: 2026-10-14T08:38:19+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2606.22631v2">Abs</a> · <a href="https://arxiv.org/pdf/2606.22631v2">PDF</a> · <a href="https://github.com/mikubaka88/4DVLT">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Language-guided dynamic scene understanding requires identifying one physical entity across time, metric 3D space, and multiple viewpoints, a setting not captured by current multimodal reasoning or tracking paradigms. We introduce 4DVLT, an offline calibrated multi-view task that unifies grounding with metric 3D and synchronized 2D tracking through a worldline binding identity, motion, visibility, and observations. We construct Instruct-4D, with 129.4K QA pairs, 64.7K targets, 851 scenes, and 9 reasoning types, and propose 4DTrack for query-conditioned inference over a 4D state graph. 4DTrack reaches 55.18 WQS, exceeding the strongest adapted VLT baseline by 33.01 points while improving grounding and trajectory quality. The project page is available at https://github.com/mikubaka88/4DVLT.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Language-guided dynamic scene understanding requires identifying one physical entity across time, metric 3D space, and multiple viewpoints, a setting not captured by current multimodal reasoning or tracking paradigms.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Physics-Shaped, Not Physical: Auditing Physics-Guided Underwater Image Restoration</div>
+<div class="meta-line">Authors: Mochamad Rizal Fauzan, Irgi Surya</div>
+<div class="meta-line">First: 2026-10-14T08:17:56+00:00 · Latest: 2026-10-14T08:17:56+00:00</div>
+<div class="meta-line">Comments: 17 pages, 7 figures, 4 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19763v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.19763v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Physics-guided networks for underwater image restoration predict transmission and backscatter and invert the image-formation model, yet rarely test whether this physics does any work. We audit one representative design, PhysGuide-Net, with four controlled experiments: five-seed ablations on UIEB with zero-shot evaluation on the complete LSUI (4279 pairs) and AUIED3K (3000 pairs) sets; a data-efficiency study with a capacity-matched control that removes the formation model; and a validation of the predicted maps against measured range on Sea-thru. With all 800 training images the physics module gives no zero-shot gain (mean PSNR differences of at most 0.16 dB; all 95% intervals include zero) at 3.4x the FLOPs. With 80 images it helps more (+0.65 dB on UIEB, +1.48 dB on AUIED3K; seed-to-seed s.d. on AUIED3K from 1.3 to 0.5 dB), although not individually significant after correction, and the control does not reproduce this (0.8-1.0 dB lower). Yet the predicted transmission does not behave like a physical quantity: its correlation with range is no stronger than for the range map of a different image (pooled difference +0.02, versus -0.06 for the dark-channel prior), and a Beer-Lambert fit explains 0.4% of its variance. The effect of the module also changes sign with degradation severity between datasets. The benefit thus comes from a physics-shaped inductive bias, not from physics. We further show that single-run ablations can reverse sign and document implementation defects that invalidate loss ablations.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Physics-guided networks for underwater image restoration predict transmission and backscatter and invert the image-formation model, yet rarely test whether this physics does any work.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Discriminative Score Function: Turning Pretrained Models into Functional Generative Priors</div>
+<div class="meta-line">Authors: Junhoo Lee, Hyeonjin Kim, Sangbum Han, Nojun Kwak</div>
+<div class="meta-line">First: 2026-10-14T08:04:30+00:00 · Latest: 2026-10-14T08:04:30+00:00</div>
+<div class="meta-line">Comments: 20 pages. Accepted at the Fortieth Annual Conference on Neural Information Processing Systems (2026)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19743v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.19743v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Discriminative models are trained with task-specific objectives such as classification, detection, or representation learning, yet their practical utility depends on generalizing beyond the training task to unseen samples from the same domain. This suggests that a discriminative model may retain an implicit trace of the data manifold beyond its task labels. We ask whether this trace can be exposed as a generative signal without task-specific guidance. We introduce the Discriminative Score Function (DSF), which extracts an image-space generative field from the loss-gradient geometry of a pretrained discriminative model. DSF provides a training-free update rule that moves images toward model-consistent visual regions without retraining or task-specific targets. We apply DSF to diverse pretrained discriminative models, including ResNet classifiers, DETR detectors, and DINOv2 ViT encoders. DSF generates unconditional images from noise and supports conditional guidance, editing, inpainting, and explanation through the same field. DSF-generated samples also provide effective zero-shot quantization calibration when real images or labels are unavailable, preserving feature geometry better than data-free calibration baselines. These results show that discriminative training leaves a generative functional signal for synthesis and calibration. Project page: https://junhoo.me/dsf.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Discriminative models are trained with task-specific objectives such as classification, detection, or representation learning, yet their practical utility depends on generalizing beyond the training task to unseen samples from the same domain.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">ProtModernBERT: Compute-Efficient Protein Language Modeling</div>
+<div class="meta-line">Authors: Alberto Martínez, Natalia Flechas Manrique, Llorenç Espinosa-Portalés, Luc Andrea</div>
+<div class="meta-line">First: 2026-10-14T07:59:49+00:00 · Latest: 2026-10-14T07:59:49+00:00</div>
+<div class="meta-line">Comments: 12 pages, 5 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19738v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.19738v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Large protein language models provide a powerful framework for learning sequence-function relationships and guiding experimental design. However, architectural improvements are underexplored, especially in low-compute regimes of relevance for resource-constrained research laboratories. We show that the training cost for encoder-only transformer architectures can be reduced by leveraging modern architectural refinements, offering an encouraging performance / compute-efficiency trade-off. We introduce ProtModernBERT, a modernized BERT-style model pre-trained on amino acid sequences, and compare it with ProtBert, Amplify, and ESM2 across a set of supervised structural tasks -encompassing secondary structure prediction, disorder prediction, and subcellular localization- and ProteinGym&#x27;s zero-shot functional benchmark. We find that ProtModernBERT matches or closely tracks the performance of Amplify-120M and ProtBert with up to 80-90\% reduction in pre-training FLOPs, and narrows the gap to ESM2 when controlling for pre-training. Our analysis using a cluster-based validation protocol for hyperparameter selection and randomly initialized models disentangles the contributions of architecture and data, showing that modern components provide stronger inductive biases that are more consequential than parameter count in low-compute regimes.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Large protein language models provide a powerful framework for learning sequence-function relationships and guiding experimental design.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">TIMERSI: Towards Self-Improved Agentic Deployment for Time-Series Foundation Models</div>
+<div class="meta-line">Authors: Haoxin Liu, Deqing Fu, Lucheng Fu, Yiqiao Jin, Rushi Qiang, Harshavardhan Kamarthi, B. Aditya Prakash</div>
+<div class="meta-line">First: 2026-10-14T07:48:38+00:00 · Latest: 2026-10-14T07:48:38+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19725v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.19725v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Time-series foundation models provide strong zero-shot forecast, but deployment for real- world applications still requires task-specific designs for model inputs and outputs. Direct inference can leave domain knowledge and re- curring forecast errors unaddressed, while tai- lored pipelines require substantial human ex- pertise and effort. We introduce TIMERSI, a self-improving agentic deployment system around frozen forecasting models. A cod- ing agent translates task descriptions into ex- ecutable pipeline changes. It tests each re- vision on historical forecasting windows and uses observed errors to guide subsequent re- visions. During deployment, an adaptive se- lector chooses among the resulting pipelines using completed forecasts under similar con- ditions. Across 198 tasks on TIME and FEV- bench, TIMERSI outperforms all submissions on six point and probabilistic forecasting met- rics. Controlled comparisons support the value of feedback-guided revision over non-iterative pipeline search. Further experiments verify the generalization with different coding agents and forecasting models.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Time-series foundation models provide strong zero-shot forecast, but deployment for real- world applications still requires task-specific designs for model inputs and outputs.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Recognizing Dialogue Ambiguity via Candidate Set Visual Grounding</div>
+<div class="meta-line">Authors: Shun Inadumi, Lee Sangmyeong, Koichiro Yoshino</div>
+<div class="meta-line">First: 2026-10-14T07:48:25+00:00 · Latest: 2026-10-14T07:48:25+00:00</div>
+<div class="meta-line">Comments: Data: https://huggingface.co/datasets/SInadumi/CandVG, Code: https://github.com/OU-sigma-dis/candvg</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19723v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.19723v1">PDF</a> · <a href="https://huggingface.co/datasets/SInadumi/CandVG">Code1</a> · <a href="https://github.com/OU-sigma-dis/candvg">Code2</a> · <a href="https://huggingface.co/huggingface">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Interpreting an ambiguous utterance in real-world interactions often requires context beyond a single utterance. When the utterance refers to objects in a visual scene, it is necessary to maintain and update the set of plausible referents as context accumulates, without assuming that the available information identifies a unique object. However, prior work on interactive visual grounding, which localizes objects referred to by linguistic expressions, has focused on identifying a unique object once sufficient dialogue context becomes available. To address this gap, we propose Candidate Set Visual Grounding (CSVG), a task for estimating the set of objects consistent with the given dialogue context. We further introduce CandVG, a benchmark that evaluates how the candidate set changes across dialogue turns. Our evaluation of vision-language models shows that stronger visual grounding capability does not necessarily yield better CSVG performance. In particular, models have difficulty predicting the complete candidate set, owing to challenges in candidate generation and premature commitment to a small set of candidates in early turns. Nevertheless, we find that this limitation can be partially mitigated in the evaluated large-scale models using instructions designed for CSVG.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Interpreting an ambiguous utterance in real-world interactions often requires context beyond a single utterance.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">No Way To Steal My Face: Proactive Defense Against Identity-Preserving Personalized Generation</div>
+<div class="meta-line">Authors: Lizhi Xiong, Jun Li, Ziqiang Li, Weiwei Jiang, Zhangjie Fu</div>
+<div class="meta-line">First: 2026-10-14T07:43:13+00:00 · Latest: 2026-10-14T07:43:13+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19717v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.19717v1">PDF</a> · <a href="https://github.com/OpenAscent-L/IDGuardian.git">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Recent advances in diffusion models have enabled high-fidelity, identity-preserving image generation for personalized applications such as digital avatars and virtual try-on systems. However, their reliance on sensitive facial reference images raises growing privacy concerns. Existing defense mechanisms are primarily designed for training-based personalization and struggle to generalize to emerging training-free approaches, due to fundamental differences in their identity integration paradigms. To bridge this gap, we propose IDGuardian-the first generalizable and model-agnostic identity protection framework capable of defending against both training-based and training-free personalization methods. IDGuardian abstracts the personalization process into two critical stages: identity extraction and identity injection. It then introduces crafted adversarial perturbations to simultaneously disrupt both stages. Specifically, it degrades the identity features extracted by external encoders and establishes an adversarial conceptual bridge that misdirects the generative trajectory away from the target identity. Extensive experiments show that IDGuardian effectively protects identity across various personalization pipelines and model architectures, while remaining robust to post-processing, adaptive attacks, and cross-dataset generalization. Our code is available at https://github.com/OpenAscent-L/IDGuardian.git.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Recent advances in diffusion models have enabled high-fidelity, identity-preserving image generation for personalized applications such as digital avatars and virtual try-on systems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Uncertainty-Driven Self-Play for Robust Multi-Agent Driving Policies</div>
+<div class="meta-line">Authors: Sajad Marvi, Julian Schmidt, Alessandro Canevaro, Julian Jordan, Abhinav Valada</div>
+<div class="meta-line">First: 2026-10-14T07:40:27+00:00 · Latest: 2026-10-14T07:40:27+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19714v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.19714v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Learning robust driving policies that generalize beyond their training domain remains a central challenge in motion planning. We propose an uncertainty-driven self-play scheme, in which half of the agents are rewarded for increasing their neighbors&#x27; epistemic uncertainty, while the other half learn to drive safely as the exploring agents continuously seek out their weaknesses. Epistemic uncertainty indicates where the policy is least confident and serves as an automatic proxy for scenario difficulty. Exploring agents use this signal to seek out hard cases, generating a challenging curriculum without manual scenario design. The resulting policy outperforms standard self-play, achieving best-in-class zero-shot transfer to nuplan Val14 (99.12% vs. 97.97%) and Argoverse 2 (82.39% vs. 78.03%) without fine-tuning, while also improving performance over standard self-play on Waymo. Our diversity-driven approach achieves 85% higher LSTM hidden-state coverage than the baseline, indicating a much richer set of behaviors. Further analysis shows that epistemic uncertainty serves as a calibrated difficulty detector, with highest-uncertain agents exhibiting 14.8 times the combined failure rate across collision, off-road, and DNF, of lowest-uncertain agents, enabling automatic prioritization of challenging scenarios without ground-truth labels.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Learning robust driving policies that generalize beyond their training domain remains a central challenge in motion planning.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">PrismQuant: Optimal Null-Space Rotations for Grouped Quantizers</div>
+<div class="meta-line">Authors: Yanlong Chen, Yining Chen, Song Zhang, Amirhossein Habibian, Yawei Li</div>
+<div class="meta-line">First: 2026-09-26T10:05:10+00:00 · Latest: 2026-10-14T06:56:11+00:00</div>
+<div class="meta-line">Comments: The paper is currently under review. Code, checkpoints, and implementation details are available at: https://github.com/ForeverBlue816/PrismQuant and https://huggingface.co/collections/ForeverBlue/prsimquant</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.32429v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.32429v2">PDF</a> · <a href="https://github.com/ForeverBlue816/PrismQuant">Code1</a> · <a href="https://huggingface.co/collections/ForeverBlue/prsimquant">Code2</a> · <a href="https://huggingface.co/huggingface">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Smaller activation outliers do not necessarily imply better low-bit quantization: their alignment with the quantizer matters. We introduce PrismQuant, a quantizer-aware rotation framework that aligns the leading activation eigenspace with the constant group subspace of asymmetric grouped INT4. The affine offsets represent the energy in this subspace without widening the range within the group. We formulate rotation design as a Ky Fan trace maximization and derive a closed-form solution that is provably optimal for this alignment objective. Compact Householder transformations and their compact-WY representation enable gradient-free construction and efficient application at both foldable and online sites. A predictive range law further connects unaligned activation energy and group size to quantization-relevant variation. Experiments on Llama, Qwen, and Mistral span dense models up to 70B parameters and a 30B mixture-of-experts model. Under W4A4KV4, PrismQuant sets the state of the art on Llama-3.2-3B among the compared methods in both perplexity and accuracy. On Llama-3.1-70B, it attains 3.85 perplexity and 72.46% average zero-shot accuracy, only 0.22 percentage points below full precision. In the deployment study on Llama-3.1-8B, our optimized implementation achieves 1.51x prefill and 1.22x CUDA Graph decode speedups over matched FP16 baselines, with 56.34% lower decode peak memory and only 2.35% additional Graph decode latency over Hadamard. Code and models are available at https://github.com/ForeverBlue816/PrismQuant and https://huggingface.co/collections/ForeverBlue/prsimquant.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Smaller activation outliers do not necessarily imply better low-bit quantization: their alignment with the quantizer matters.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Efficient Memory Crystallization for Graph Learning under Non-Stationary Distribution Shifts</div>
+<div class="meta-line">Authors: Yue Hou, Ruomei Liu, Yingke Su, Junran Wu, Ke Xu</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-10-02T04:35:59+00:00 · Latest: 2026-10-14T06:54:18+00:00</div>
+<div class="meta-line">Comments: Accepted by the 40th Conference on Neural Information Processing Systems (NeurIPS 2026)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.02795v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.02795v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Deep graph learning models deployed in real-world systems often need to cope with non-stationary environments, where the underlying graph distribution drifts continually over time. Prevailing solutions rely on training auxiliary generative modules to synthesize memory graphs for cross-domain adaptation, which incurs substantial computational overhead and scales poorly under prolonged distribution shifts. We argue that a more economical path exists: rather than generating memory, one can crystallize it. To this end, we propose Efficient Memory Crystallization (EMC), a training-free test-time framework that distills each incoming graph domain into a compact, semantically faithful memory through a closed-form solution to a memory-oriented distribution-matching objective, thereby eliminating redundant domain information under continual covariate shifts. To preserve both generalizability and adaptability as the model traverses a long sequence of target domains, EMC further models inter-domain dependencies through state-evolving memories and admits a theoretically grounded, tighter generalization error bound than direct adaptation. Extensive experiments demonstrate the superior performance of EMC over state-of-the-art baselines on graphs under non-stationary distribution shifts, while reducing average runtime by 87.4% and GPU memory consumption by 92.4% relative to the recent competitor, making continual graph adaptation practical at scale.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Deep graph learning models deployed in real-world systems often need to cope with non-stationary environments, where the underlying graph distribution drifts continually over time.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Video Depth Anything: Consistent Depth Estimation for Super-Long Videos</div>
+<div class="meta-line">Authors: Sili Chen, Hengkai Guo, Shengnan Zhu, Feihu Zhang, Zilong Huang, Jiashi Feng, Bingyi Kang</div>
+<div class="meta-line">First: 2025-01-21T18:53:30+00:00 · Latest: 2026-10-14T06:48:25+00:00</div>
+<div class="meta-line">Comments: Project page: https://videodepthanything.github.io/</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2501.12375v4">Abs</a> · <a href="https://arxiv.org/pdf/2501.12375v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://videodepthanything.github.io/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Depth Anything has achieved remarkable success in monocular depth estimation with strong generalization ability. However, it suffers from temporal inconsistency in videos, hindering its practical applications. Various methods have been proposed to alleviate this issue by leveraging video generation models or introducing priors from optical flow and camera poses. Nonetheless, these methods are only applicable to short videos (&lt; 10 seconds) and require a trade-off between quality and computational efficiency. We propose Video Depth Anything for high-quality, consistent depth estimation in super-long videos (over several minutes) without sacrificing efficiency. We base our model on Depth Anything V2 and replace its head with an efficient spatial-temporal head. We design a straightforward yet effective temporal consistency loss by constraining the temporal depth gradient, eliminating the need for additional geometric priors. The model is trained on a joint dataset of video depth and unlabeled images, similar to Depth Anything V2. Moreover, a novel key-frame-based strategy is developed for long video inference. Experiments show that our model can be applied to arbitrarily long videos without compromising quality, consistency, or generalization ability. Comprehensive evaluations on multiple video benchmarks demonstrate that our approach sets a new state-of-the-art in zero-shot video depth estimation. We offer models of different scales to support a range of scenarios, with our smallest model capable of real-time performance at 30 FPS.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Depth Anything has achieved remarkable success in monocular depth estimation with strong generalization ability.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Plan-Bench: Can Existing VLMs Go Well Beyond Perception to Reason and Plan in Embodied Worlds?</div>
+<div class="meta-line">Authors: Juntong Feng, Qingan Liu, Jingru Dong, Yue Zhu, Weiming Zheng, Yujie Cheng, Xinzhe Han, Shuai Hao, Yunzhi Zhuge, Haiwen Diao, Huchuan Lu</div>
+<div class="meta-line">First: 2026-10-13T17:55:20+00:00 · Latest: 2026-10-14T06:35:22+00:00</div>
+<div class="meta-line">Comments: 24 pages, 11 figures, 10 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18836v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.18836v2">PDF</a> · <a href="https://github.com/MinneFeng/Plan-Bench">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Vision-Language Models (VLMs) have achieved strong performance in visual perception and spatial reasoning, leading to growing interest in using them as high-level planners for embodied AI. However, physical tasks require models to integrate spatial information, reason over temporal states, and generate multi-step plans under various constraints, raising the question of whether current VLMs can reliably support such reasoning and planning independently of execution. We introduce Plan-Bench, a benchmark for evaluating the high-level reasoning and multi-step planning capabilities of VLMs relevant to embodied worlds, while isolating the influence of action execution. It covers three complementary dimensions, spanning 16 subclasses and 699 curated samples. Extensive evaluation of 28 VLMs reveals room for improvement, with even the strongest model achieving only 75.0% accuracy. We further find that model scaling generally improves these capabilities. Ablation studies also indicate larger models show increasing potential as high-level planners. Overall, Plan-Bench provides a lightweight probe for evaluating VLMs&#x27; reasoning and planning capabilities relevant to embodied environments and assessing their potential as decision makers for physical tasks. Our benchmark and code are available at https://github.com/MinneFeng/Plan-Bench.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Vision-Language Models (VLMs) have achieved strong performance in visual perception and spatial reasoning, leading to growing interest in using them as high-level planners for embodied AI.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">OxyGen: Unified KV Cache Management for VLA Inference under Multi-Task Parallelism</div>
+<div class="meta-line">Authors: Xiangyu Li, Huaizhi Tang, Xin Ding, Weijun Wang, Ting Cao, Yunxin Liu</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-03-15T13:23:56+00:00 · Latest: 2026-10-14T06:30:19+00:00</div>
+<div class="meta-line">Comments: NeurIPS 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.14371v4">Abs</a> · <a href="https://arxiv.org/pdf/2603.14371v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Embodied AI agents increasingly require parallel execution of multiple tasks, such as manipulation, conversation, and memory construction, from shared observations under distinct time constraints. Recent Mixture-of-Transformers (MoT) Vision-Language-Action Models (VLAs) support such heterogeneous outputs, yet existing inference systems incur redundant computation and resource contention when serving concurrent tasks on-device. We identify isolated KV cache management as the root cause. To address this, we propose unified KV cache management, an inference design that treats the KV cache as a first-class shared resource across tasks and control cycles. This abstraction enables two key optimizations: cross-task KV sharing eliminates redundant prefill of shared observations, while cross-frame continuous batching batches unfinished language requests from different frames and advances them within a per-frame decoding budget. We implement this design in OxyGen and evaluate $π_{0.5}$ on NVIDIA GeForce RTX 4090 and Jetson AGX Thor. OxyGen achieves up to 3.7$\times$ speedup over isolated execution, delivering over 200 tokens/s language throughput and 70 Hz action frequency simultaneously on RTX 4090. We also validate the design on Xiaomi-Robotics-0 and StarVLA across different backbones and expert configurations. We further demonstrate the inference gains on a humanoid robot with on-board Jetson AGX Thor.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Embodied AI agents increasingly require parallel execution of multiple tasks, such as manipulation, conversation, and memory construction, from shared observations under distinct time constraints.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">SPECTRA-VLA: Base-Fine Hyperspectral Token Transfer at Frozen Vision-Language-Action Interfaces</div>
+<div class="meta-line">Authors: Chih-Chung Hsu</div>
+<div class="meta-line">First: 2026-10-14T06:17:59+00:00 · Latest: 2026-10-14T06:17:59+00:00</div>
+<div class="meta-line">Comments: 34 pages: 11-page main paper and 23-page supplementary material</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19651v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.19651v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Hyperspectral imaging distinguishes RGB-similar objects, but a pretrained vision-language-action model needs a state its frozen decoder can use. SPECTRA-VLA provides a native-width spectral upgrade without retraining the visual encoder or action decoder. A learned continuous residual enriches each target token through its own normalized false-color reference; projection, norm control and validation-calibrated injection regulate the change. Across 86 held-out acquisitions, category balanced accuracy rises from 0.812 to 0.883. With identical residuals and scale, own-token addition improves reuse of an external category-derived probe on frozen decoder logits: 0.701 versus 0.590 with pooled replacement, at similar image-disjoint recognition. Five grouped tests covering the same 86 acquisitions recover within-category spectral shape with $R^2=0.802/0.337$ from continuous and posterior-code states. Category-matched spectral swaps further show that own-token composition approximately doubles the target-specific recovery increment after frozen decoding. Spectral enrichment and receiving-token preservation thus work together at the pretrained interface.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Hyperspectral imaging distinguishes RGB-similar objects, but a pretrained vision-language-action model needs a state its frozen decoder can use.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Eye, Robot: Learning Expressive Gaze Dynamics via a VLM-Guided Transformer-VAE</div>
+<div class="meta-line">Authors: Yuhang Hu, Junlin Lyu, Yuan Fang, Xiaoying Shen, Lechen Zhang, Jiong Lin, Judah Goldfeder, Steven Tian, Hod Lipson</div>
+<div class="meta-line">First: 2026-10-14T06:04:04+00:00 · Latest: 2026-10-14T06:04:04+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19635v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.19635v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Gaze coordinates attention in human interaction through coupled eye, head, and eyelid motion. A humanoid robot must choose where to look while generating a suitable movement toward that target; fixed tracking rules alone do not model the temporal structure of human gaze. We separate these tasks with an asynchronous vision-language model that selects a scene referent, a reactive perception module that maintains fixation, and a Realistic Gaze Transformer (RGT) that generates target-conditioned motion. RGT is a Transformer-VAE trained on markerless human recordings retargeted to the robot&#x27;s 11-DoF joint space: self-supervised pretraining encodes recent full-head history, and autoregressive fine-tuning exposes the model to its own predictions during rollout. At inference, a four-dimensional binocular-eye trajectory conditions coordinated neck and eye motion; an auxiliary blink predictor triggers eyelid templates during playback. On a two-second benchmark in which all controllers receive the same ground-truth target, RGT-Base obtains the lowest reported overall seven-joint MSE, and physical demonstrations show the integrated targeting and control pipeline. The evidence establishes robot-space kinematic fidelity and real-time RGT inference; perceived naturalness and open-vocabulary target-selection accuracy remain questions for controlled evaluation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Gaze coordinates attention in human interaction through coupled eye, head, and eyelid motion.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Neural-Network Solutions to Real-Space Charge Density and Generalization</div>
+<div class="meta-line">Authors: Yuxuan Zeng, Tong Xie, Taoyuze Lv, Zhicheng Zhong</div>
+<div class="meta-line">First: 2026-09-14T01:51:52+00:00 · Latest: 2026-10-14T05:46:04+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.14906v4">Abs</a> · <a href="https://arxiv.org/pdf/2609.14906v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The Hohenberg-Kohn theorem establishes that, in principle, the ground state (GS) charge density contains all GS information of a many-electron system, such that all GS observables can be expressed as functionals of the GS charge density. Conventional Kohn-Sham density functional theory requires iterative solution of the self-consistent-field equations at substantial computational cost, motivating the development of deep learning surrogates for electronic structure calculations and, in turn, accelerating computer-aided materials design. Here, we propose AIDEN, an Atomic-Interaction Density Equivariant Network for solving real-space charge density. AIDEN separates the element-dependent one-center density from environment-induced density redistribution and represents the latter through complementary atom- and edge-centered tensor correlations. A continuous low-rank Gaussian decoder then reconstructs the density at arbitrary spatial coordinates while reusing atomic encodings independently of the evaluation grid. AIDEN achieves state-of-the-art accuracy on periodic crystal benchmarks while remaining competitive for molecular systems, and further demonstrates zero-shot transferability across several structurally distinct out-of-distribution case studies. Furthermore, AIDEN provides substantially faster inference than both baseline models and full SCF calculations, enabling efficient charge density reconstruction for large-scale electronic structure calculations.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The Hohenberg-Kohn theorem establishes that, in principle, the ground state (GS) charge density contains all GS information of a many-electron system, such that all GS observables can be expressed as functionals of the GS charge density.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">What Breaks in Multi-Image Schema Application? Factorial Oracle Interventions Reveal an Instance-Information Bottleneck</div>
+<div class="meta-line">Authors: Yiliu Xu, Xinjin Li, Yu Ma</div>
+<div class="meta-line">First: 2026-10-14T05:33:46+00:00 · Latest: 2026-10-14T05:33:46+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19611v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.19611v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Modern vision-language models can accept multi-image contexts, but aggregate accuracy rarely reveals where a multi-image reasoning pipeline fails. We study a controlled schema-application task in which a model must locate two target characters in a 16-image sequence, identify their visual attributes, consult an item-specific visual codebook, and compose two ordered nonce code names. We introduce a within-item 2-by-2 factorial Oracle design: Oracle-A supplies a verified textual schema, Oracle-B supplies a verified ordered target-appearance representation, and both interventions retain the original images and final question. Across 72 new items and 1,188 analyzed model responses, Oracle-B increased strict exact accuracy by 54.6 percentage points (95% confidence interval: 46.3 to 63.0) and outperformed Oracle-A by 60.6 points (Holm-adjusted p-value no greater than .0002). An auxiliary retrieval diagnostic reached only 49.1% ordered-appearance accuracy even after removing code-name generation. Providing both Oracle sources yielded 100% accuracy across all models. These results localize the dominant recoverable deficit to upstream ordered instance recovery rather than primarily to downstream schema use and composition.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Modern vision-language models can accept multi-image contexts, but aggregate accuracy rarely reveals where a multi-image reasoning pipeline fails.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Rethinking One-Shot Federated Graph Learning: Training-Free Statistical Estimation</div>
+<div class="meta-line">Authors: Shutong Zheng, Sijia Chen</div>
+<div class="meta-line">First: 2026-09-05T15:55:22+00:00 · Latest: 2026-10-14T05:32:58+00:00</div>
+<div class="meta-line">Comments: 23 pages, 9 figures, including supplementary material</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.06154v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.06154v2">PDF</a> · <a href="https://github.com/Yodeesy/SPEAR">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">One-shot federated graph learning generally aims to train Graph Neural Networks (GNNs) across clients with disconnected subgraphs in a single communication round. Existing methods predominantly design advanced optimization strategies under the premise that local GNN training is indispensable. However, empirical observations reveal that under extreme non-IID conditions, local GNN training suffers from severe cross-client representation misalignment, becoming a major source of error rather than a remedy. Motivated by this, we reformulate one-shot FGL as a statistical estimation problem. We propose SPEAR (Statistical Prototype Estimation with Adaptive Reliability), a completely training-free framework that directly computes topology-smoothed class prototypes from local graphs in the original feature space. The server then aggregates these prototypes using a sample-size-adaptive shrinkage estimator that down-weights unreliable local estimates, producing robust global class prototypes. Extensive experiments across seven benchmarks demonstrate that SPEAR consistently achieves state-of-the-art accuracy under extreme heterogeneity. Moreover, SPEAR delivers at least an order-of-magnitude speedup over all baselines, reaching several orders of magnitude against generative and distillation-based methods. Our findings suggest that training-free statistical estimation, rather than local GNN optimization, provides the key to robust and efficient one-shot federated graph learning. The code is available at https://github.com/Yodeesy/SPEAR .</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">One-shot federated graph learning generally aims to train Graph Neural Networks (GNNs) across clients with disconnected subgraphs in a single communication round.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Masked Diffusion Vision-Language Models for Temporal Action Localization</div>
+<div class="meta-line">Authors: Fengshun Wang, Zhengbo Zhang, Zhigang Tu</div>
+<div class="meta-line">First: 2026-05-28T12:39:04+00:00 · Latest: 2026-10-14T05:26:23+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.29858v3">Abs</a> · <a href="https://arxiv.org/pdf/2605.29858v3">PDF</a> · <a href="https://github.com/ycwfs/MDVLM-TAL">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Temporal action localization (TAL) requires recognizing the target event and localizing its start and end times precisely in untrimmed videos. Recent vision-language formulations improve semantic reasoning and support language-conditioned outputs, but their autoregressive decoders still generate tokens from left to right, preventing later semantic evidence from revising earlier timestamp predictions.
+  We adapt masked diffusion vision-language models (MDVLMs) to TAL so that semantic tokens and boundary tokens remain editable throughout iterative denoising with bidirectional attention, allowing temporal boundaries and semantic content to be refined jointly.
+  Direct adaptation, however, creates two TAL-specific mismatches: standard masked diffusion training corrupts all positions uniformly at random, but the time tokens are more reliable when enough semantic context is available; and token-level cross-entropy does not reflect temporal IoU. To address these mismatches, we introduce a Planned Training Objective that uses boundary-aware masking and step-weighted reconstruction to rehearse the late recovery of time tokens, together with a Step-Level IoU Reward that provides overlap-aware supervision during denoising. A standard sequence-level cross-entropy term provides the base reconstruction signal.
+  Experiments on ActivityNet-RTL, ActivityNet-1.3, and THUMOS-14 show that MDVLM-TAL improves both temporal reasoning and boundary localization over autoregressive vision-language baselines, with especially strong gains under stricter temporal IoU criteria. The source code is available at https://github.com/ycwfs/MDVLM-TAL .</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Temporal action localization (TAL) requires recognizing the target event and localizing its start and end times precisely in untrimmed videos.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">How Should a Camera-First AI Agent Work?</div>
+<div class="meta-line">Authors: Xiaofan Wu, Xi Zeng, Miaoxia Chen, Peishan Chen, Shuyan Li, Chen Wang, Xiaohan Wang, Wanling Xu, Jiyun Yao, Hanyong Zhong, Jiahao Zhu</div>
+<div class="meta-line">First: 2026-10-10T09:53:25+00:00 · Latest: 2026-10-14T05:10:05+00:00</div>
+<div class="meta-line">Comments: 8 pages, 4 figures, 3 tables. Position/contract paper on time-critical camera-first agents (systems/timing).Primary cs.AI;</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.14772v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.14772v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Camera-first agents must act on the visual world as it unfolds. We argue that the central obstacle for future camera-first agents is not recognition ability - multimodal models (vision-language and live/streaming alike) generalize well through language and remain the right tool for semantic reasoning - but time. Many visual targets are ephemeral: they appear, are query-relevant, and leave within a short window. Binding memory to the same end-to-end path as reasoning means that by the time a monolithic pipeline completes, the evidence is gone. We formalize this as Ephemeral-Target Interaction (ETI) and a Perceptual Deadline Contract separating a hard memory deadline from a soft reasoning deadline, grounded in the bounded, passive nature of sensory and working memory. We propose a two-deadline architecture: an always-on, bounded, non-semantic fast path; an active remembering mechanism that commits a moment to durable memory before it is overwritten (event-driven in v1); and a deferred deliberation layer (multimodal model + tools). We instantiate the contract on real MOT17 track windows, a consistency check, and calibrate the single-path baseline from measured frontier-model latency: even a short answer takes 1.2-9.3 s, and an agentic identify-and-search longer. Answers can be late; evidence cannot be missed.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Camera-first agents must act on the visual world as it unfolds.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Scaling Vision Transformers Without Training: Prune-and-Merge Token Compression</div>
+<div class="meta-line">Authors: Vatsal, Soumil Malhotra, Priyanshu Chahal, Sanjeev Kumar</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-10-13T09:29:25+00:00 · Latest: 2026-10-14T04:42:32+00:00</div>
+<div class="meta-line">Comments: Accepted at the GlobalSouthAI Workshop at NeurIPS 2026; 12 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18039v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.18039v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Vision Transformers achieve strong performance but incur high computational costs from quadratic token interactions. Training-free token reduction methods improve efficiency, but their robustness remains underexplored. We propose Prune-and Merge ViT, a training-free framework for off-the-shelf models. It combines class attention-based pruning with similarity-based merging to reduce redundancy while preserving semantic information. To evaluate robustness we introduce two metrics. Relative Accuracy Drop (RAD) measures relative accuracy degradation under transformations, and Prediction Flip Rate (PFR) quantifies prediction consistency. On pretrained ViT and DeiT, Prune-and-Merge reduces computation competitively while maintaining robustness and better accuracy than existing token reduction methods. Our analysis suggests that hybrid token reduction does not introduce hallucination-like behavior and preserves prediction stability for common image transformations.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Vision Transformers achieve strong performance but incur high computational costs from quadratic token interactions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">REWIND: Uncertainty-Guided Trajectory Repair for Test-Time Reasoning</div>
+<div class="meta-line">Authors: Yi Ding, Mengyu Wang, Min Zhou, Menglin Yang</div>
+<div class="meta-line">First: 2026-10-14T04:20:56+00:00 · Latest: 2026-10-14T04:20:56+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19561v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.19561v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">An early mistake in the generated reasoning can constrain all subsequent reasoning. Repeated-generation methods, like MCMC-based approaches, attempt to improve output quality by sampling multiple generations, but their effectiveness can be limited by randomly selecting where to regenerate. On MATH500 with Qwen2.5-Math-7B, we find that incorrect responses have substantially higher mean token entropy than correct responses, with an average within-question relative increase of approximately 112%, suggesting that entropy can signal reasoning errors. Motivated by this finding, we introduce REWIND, a training-free controller that uses entropy dynamics to propose targeted suffix regenerations. Across three model families and five benchmarks, REWIND outperforms all baselines, with gains of 0.51-10.00 percentage points over the strongest baseline. These results demonstrate the effectiveness of targeted, uncertainty-guided trajectory repair across models and tasks. Our code is available at https://anonymous.4open.science/r/rewind-D310.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">An early mistake in the generated reasoning can constrain all subsequent reasoning.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261013_0914.html">20261013_0914</a>
+<a href="archive/20261009_0744.html">20261009_0744</a>
+<a href="archive/20261006_0843.html">20261006_0843</a>
+<a href="archive/20261002_0705.html">20261002_0705</a>
+<a href="archive/20260929_0749.html">20260929_0749</a>
+<a href="archive/20260925_0612.html">20260925_0612</a>
+<a href="archive/20260922_0634.html">20260922_0634</a>
+<a href="archive/20260918_0602.html">20260918_0602</a>
+<a href="archive/20260915_0627.html">20260915_0627</a>
+<a href="archive/20260911_0532.html">20260911_0532</a>
+<a href="archive/20260908_0559.html">20260908_0559</a>
+<a href="archive/20260904_0538.html">20260904_0538</a>
+<a href="archive/20260901_0712.html">20260901_0712</a>
+<a href="archive/20260828_1134.html">20260828_1134</a>
+<a href="archive/20260825_0335.html">20260825_0335</a>
+<a href="archive/20260821_0338.html">20260821_0338</a>
+<a href="archive/20260818_0334.html">20260818_0334</a>
+<a href="archive/20260814_0400.html">20260814_0400</a>
+<a href="archive/20260811_0401.html">20260811_0401</a>
+<a href="archive/20260807_0845.html">20260807_0845</a>
+<a href="archive/20260804_0437.html">20260804_0437</a>
+<a href="archive/20260731_0420.html">20260731_0420</a>
+<a href="archive/20260728_0428.html">20260728_0428</a>
+<a href="archive/20260724_0419.html">20260724_0419</a>
+<a href="archive/20260721_0427.html">20260721_0427</a>
+<a href="archive/20260717_0407.html">20260717_0407</a>
+<a href="archive/20260714_0421.html">20260714_0421</a>
+<a href="archive/20260710_0453.html">20260710_0453</a>
+<a href="archive/20260707_0457.html">20260707_0457</a>
+<a href="archive/20260703_0424.html">20260703_0424</a>
+<a href="archive/20260630_0454.html">20260630_0454</a>
+<a href="archive/20260626_0502.html">20260626_0502</a>
+<a href="archive/20260623_0536.html">20260623_0536</a>
+<a href="archive/20260619_0543.html">20260619_0543</a>
+<a href="archive/20260616_0549.html">20260616_0549</a>
+<a href="archive/20260612_0528.html">20260612_0528</a>
+<a href="archive/20260609_0514.html">20260609_0514</a>
+<a href="archive/20260602_0615.html">20260602_0615</a>
+<a href="archive/20260529_0516.html">20260529_0516</a>
+<a href="archive/20260526_0427.html">20260526_0427</a>
+<a href="archive/20260522_0455.html">20260522_0455</a>
+<a href="archive/20260519_0443.html">20260519_0443</a>
+<a href="archive/20260515_0442.html">20260515_0442</a>
+<a href="archive/20260512_0451.html">20260512_0451</a>
+<a href="archive/20260508_0424.html">20260508_0424</a>
+<a href="archive/20260505_0424.html">20260505_0424</a>
+<a href="archive/20260501_0417.html">20260501_0417</a>
+<a href="archive/20260428_0415.html">20260428_0415</a>
+<a href="archive/20260424_0412.html">20260424_0412</a>
+<a href="archive/20260421_0404.html">20260421_0404</a>
+<a href="archive/20260417_0405.html">20260417_0405</a>
+<a href="archive/20260414_0411.html">20260414_0411</a>
+<a href="archive/20260410_0406.html">20260410_0406</a>
+<a href="archive/20260407_0357.html">20260407_0357</a>
+<a href="archive/20260403_0354.html">20260403_0354</a>
+<a href="archive/20260331_1007.html">20260331_1007</a>
+<a href="archive/20260331_0947.html">20260331_0947</a>
+<a href="archive/20260331_0900.html">20260331_0900</a>
+<a href="archive/20260331_0849.html">20260331_0849</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>

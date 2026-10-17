@@ -1,0 +1,521 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递 - Finance</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#dc2626;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#dc2626;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递 - Finance</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-10-18 05:12</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261018_0512</div>
+    <div class="row"><div class="card">
+<div class="title">Global Multi-Maturity SPX-VIX Calibration Beyond Markovian Stitching</div>
+<div class="meta-line">Authors: Atithi Acharya, Charlie Che, Yue Sun, Brandon Augustino, Shouvanik Chakrabarti, Shree Hari Sureshbabu</div>
+<div class="meta-line">First: 2026-09-03T16:54:16+00:00 · Latest: 2026-10-15T17:59:32+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.04087v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.04087v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We develop a global martingale optimal transport framework for joint S&amp;P 500 (SPX)-VIX smile calibration across multiple maturities, without the conditional independence that Markovian stitching imposes between months. We prove that exact local and global feasibility are equivalent, yet the stitched laws, which carry earlier months only through the current SPX level, can form a strict subset of the global ones, so adjacent smiles cannot identify the dependence across months. We show that relative entropy against the standard Markov reference selects the stitched law, so this dependence must be supplied deliberately. We supply it through a finite-memory reference, in which a latent autoregressive state drives the VIX levels while every VIX marginal stays exact, and calibrate the resulting law on a junction tree whose size grows linearly with the number of maturities. On market data with up to nine SPX maturities, a law with memory and a law without it fit the same quotes but price VIX-conditioned SPX Asian claims differently: on every calendar, memory makes a claim on the maximum VIX cheaper and a claim on the minimum VIX dearer. Varying the memory strength on one calendar moves these differences steadily from zero, so the vanilla quotes, which fix the law of each date, do not determine prices that depend on the joint law across dates.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We develop a global martingale optimal transport framework for joint S&amp;P 500 (SPX)-VIX smile calibration across multiple maturities, without the conditional independence that Markovian stitching imposes between months.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Accuracy of Uniform Inference on Fine Grid Points</div>
+<div class="meta-line">Authors: Shunsuke Imai</div>
+<div class="meta-line">First: 2025-12-21T07:39:11+00:00 · Latest: 2026-10-15T17:59:10+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2512.18627v3">Abs</a> · <a href="https://arxiv.org/pdf/2512.18627v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Uniform confidence bands are widely used in empirical analysis for uncertainty qualification of nonparametric inference of unknown functions. A variety of simple implementation methods, including multiplier bootstrap, have been proposed and theoretically justified. However, an implementation over a literally continuous index set is generally computationally infeasible, and practitioners therefore compute the critical value by evaluating the statistic on a finite evaluation grid. This paper quantifies the effect of this discretization on coverage accuracy and investigates how fine the evaluation grid must be to ensure valid uniform inference. We first illustrate through simulations of a kernel-based nonparametric estimator that coarse grids can invalidate uniform inference. Surprisingly, increasing the sample size can worsen coverage on a fixed coarse grid, even as the remaining approximation error on the grid decreases. We then derive general upper bounds on the coverage probability and coverage error of uniform confidence bands based on finite-grid multiplier-bootstrap critical values. These bounds distinguish discretization error from the remaining approximation error on the grid. For local empirical processes arising from kernel smoothing, we further establish primitive conditions under which coverage converges to zero, even when the number of grid points diverges, and conditions under which asymptotically nominal coverage is attained. These results yield rate-sharp grid resolution requirements in terms of the bandwidth.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Uniform confidence bands are widely used in empirical analysis for uncertainty qualification of nonparametric inference of unknown functions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">PathFM: Fast Generative Forecasting of Multivariate Trajectories</div>
+<div class="meta-line">Authors: Jiachen Yao, Xiyuan Zhang, Annan Yu, Boran Han, Abdul Fatir Ansari, Shuai Zhang, Michael Bohlke-Schneider, Bernie Wang</div>
+<div class="meta-line">First: 2026-10-15T17:58:45+00:00 · Latest: 2026-10-15T17:58:45+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22358v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22358v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Time series foundation models are becoming increasingly popular for general-purpose forecasting. However, most leading models predict marginal quantiles, leaving the dependence structure of future trajectories unspecified. This distinction matters for trajectory-dependent quantities such as cumulative demand, peak load, and event timing, yet point and marginal scores do not reveal it. To model this dependence, we introduce PathFM, a trajectory-based forecasting model that uses flow matching to generate complete future paths. We further distill the model to one or two steps and share history attention cache across draws. Together, these enable PathFM to generate multiple paths for a single series in roughly the time needed for one query to a quantile model. The distilled sampler also makes it practical to optimize a calibration loss directly. PathFM achieves competitive marginal accuracy on the established forecasting benchmarks fev-bench and TIME. To complement these evaluations, we introduce Forecast Path Score Bench (fps-bench), which augments fev-bench tasks with energy and variogram scores and downstream metrics. PathFM achieves a higher aggregate path score on fps-bench than all evaluated external baselines. Experiments on chaotic systems further show that our flow model sustains long-run variability, while strong baselines rapidly collapse. PathFM makes generative time series forecasting both competitive and practical, enabling diverse downstream applications.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Time series foundation models are becoming increasingly popular for general-purpose forecasting.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">MLExpert: Towards a Generalist Agentic Model for Autonomous Machine Learning Engineering</div>
+<div class="meta-line">Authors: Shangheng Du, Jinxin Shi, Shuaiyu Zhang, Yiming Wu, Junpeng Zhao, Shiyang Feng, Xin Li, Liang He, Xiangchao Yan, Bo Zhang</div>
+<div class="meta-line">First: 2026-10-15T17:56:32+00:00 · Latest: 2026-10-15T17:56:32+00:00</div>
+<div class="meta-line">Comments: Code: https://github.com/InternScience/MLExpert Model: https://huggingface.co/InternScience/MLExpert</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22344v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22344v1">PDF</a> · <a href="https://github.com/InternScience/MLExpert">Code1</a> · <a href="https://huggingface.co/InternScience/MLExpert">Code2</a> · <a href="https://huggingface.co/huggingface">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Large language models (LLMs) are expanding from assisting scientific research and engineering to autonomously developing and improving AI systems, advancing AI for AI (AI4AI) as a pathway toward recursive self-improvement (RSI). Workflow-driven machine learning engineering (MLE) systems provide a practical path toward this pursuit through complex orchestration that manages long-horizon experimentation, while recent MLE systems adopt model-directed interaction, allowing models to autonomously organize experiments and adapt optimization strategies based on execution feedback. However, feedback from each experiment reflects several preceding decisions, and a long MLE run contains many such costly experiments. Training must therefore select useful supervision from long interaction trajectories and learn from intermediate outcomes. We propose a post-training method for autonomous long-horizon MLE optimization and apply it to train MLExpert, a 35B Mixture-of-Experts agentic model. We design the Kaggle-MLE Factory to construct executable tasks and an interaction harness for model-directed experimentation. Hierarchical agentic SFT transfers general tool-use and coding capabilities to MLE through outcome-guided supervision. Windowed Interaction RL (WIRL) treats the multi-turn decisions between successive experiment results as an execution window and assigns it a shared outcome-based reward. Asynchronous collection and policy correction support policy updates before the trajectory ends. On MLE-Bench Lite, MLExpert improves the average medal rate of the base model from 37.9% to 72.7%, achieving performance comparable to larger frontier models such as Kimi-K3 and GLM-5.3. Further experiments show that MLExpert improves performance on NatureBench Lite, agent scaffold optimization, and algorithm optimization, suggesting that the learned optimization capability generalizes to other tasks.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Large language models (LLMs) are expanding from assisting scientific research and engineering to autonomously developing and improving AI systems, advancing AI for AI (AI4AI) as a pathway toward recursive self-improvement (RSI).</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Twice Upon a Time: Complementary Representations for Time-Series Reasoning</div>
+<div class="meta-line">Authors: Hedi Zisling, Liran Nochumsohn, Ilan Naiman, Mihir Parmar, Omri Azencot</div>
+<div class="meta-line">First: 2026-10-15T17:52:18+00:00 · Latest: 2026-10-15T17:52:18+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22327v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22327v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Time Series Language Models (TSLMs) enable language-based understanding and reasoning over temporal data, yet a fundamental question remains: what information should their time-series representations preserve, and what variation should they factor out? Existing TSLMs typically expose the language model to a single representation, imposing a fixed inductive bias across downstream tasks. We instead introduce complementary representations as a design principle for time-series reasoning. Our model combines two visual views: line plots preserve absolute measurements and the observed coordinate frame, while normalized delay embeddings factor out positive amplitude rescaling and offsets while exposing temporal structure. Dedicated visual encoders integrate both views into a shared language model through visual tokens and multi-level feature fusion. Evaluation-time interventions verify that the two views exhibit distinct invariance profiles, while single-view ablations show that their combination is particularly beneficial beyond basic perception, with the large gains in prediction and reasoning. Built on Qwen3-VL-8B, our dual-view model improves overall TSRBench accuracy from 44.5% with line plots alone to 53.2%, substantially exceeding the strongest evaluated dedicated TSLM baseline at 36.7%. It further achieves 89.9% accuracy on TSExam and 86.8% numerical accuracy on multivariate ChatTS alignment. Together, these results demonstrate that complementary representations provide an effective design principle for general-purpose TSLMs, enabling models to exploit temporal structure without sacrificing access to the original measurement frame.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Time Series Language Models (TSLMs) enable language-based understanding and reasoning over temporal data, yet a fundamental question remains: what information should their time-series representations preserve, and what variation should they factor out?</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Learning the information contained in the microstructure of data distributions</div>
+<div class="meta-line">Authors: Lucrezia L. Baldo, Chiara Lionello, Edward D. Donkor, Matteo Becchi, Giovanni M. Pavan</div>
+<div class="meta-line">First: 2026-10-15T17:41:31+00:00 · Latest: 2026-10-15T17:41:31+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22283v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22283v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Understanding how much and where information is nested in sets of data obtained using different parameters and metrics is a typical problem in the analysis of high-dimensional datasets. Approaches based on relative data-driven metrics may be poorly quantitative and difficult to interpret, while accurate methods may be computationally expensive and impractical for large datasets. Here, we report an efficient, quantitative, and transferable method useful to this end, which we call &quot;Micro-Information Analysis&quot;. Its foundation is based on the tight relationship that exists between the microscopic features of data distributions and the information they contain. The method performs preliminary unsupervised clustering, capturing microstructural features of data distributions such as the dominant Gaussian microdomains (microstates) present in them, their population, separation, and their residual non-Gaussian fraction. Leveraging the principle of clustering-and-minimization of Shannon entropy, this allows quantifying in bit (that is, in absolute metric) the information contained in the microstructure of the data, and how much information is nested in each Gaussian and non-Gaussian microdomain. The output of the analysis is a set of easily interpretable Information-Microstructure plots that allow to readily compare and rank data based on their information content and to graphically map the information breakdown among their various microenvironments in diagrams that are easy to interpret. We prove the efficiency of our method by analyzing and ranking data generated synthetically or from molecular simulations, demonstrating how &quot;Micro-Information Analysis&quot; is a physically-grounded quantitative tool useful for the study of physical systems from their data and for data science in general.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Understanding how much and where information is nested in sets of data obtained using different parameters and metrics is a typical problem in the analysis of high-dimensional datasets.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Replica Symmetry Breaking and Algorithmic Thresholds in Empirical Risk Minimization under Multi-Index Model</div>
+<div class="meta-line">Authors: Andrea Montanari, Kangjie Zhou</div>
+<div class="meta-line">First: 2026-06-26T19:57:08+00:00 · Latest: 2026-10-15T17:27:20+00:00</div>
+<div class="meta-line">Comments: 81 pages; 3 pdf figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2606.28573v2">Abs</a> · <a href="https://arxiv.org/pdf/2606.28573v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Modern machine learning models are trained by optimizing high-dimensional non-convex empirical risk functions. Such cost functions can have a multitude of local optima and yet, gradient-based optimization appears to converge to near-global optima.
+  Within a simple supervised learning setting, we develop a precise picture of which parts of the empirical risk landscape are accessible by polynomial-time algorithms. We are given i.i.d. pairs $\{(\boldsymbol{x}_i,y_i):\; 1 \le i\le n\}$ with $\boldsymbol{x}_i\in \mathbb{R}^d$ standard Gaussian feature vectors, and $y_i\in\mathbb{R}$ response variables that depend on $\boldsymbol{x}_i$ through their projections on an unknown $k$-dimensional subspace. We use empirical risk minimization to learn a model that depends on an $m$-dimensional projection of the data (e.g., an $m$-neurons neural network).
+  We propose an incremental approximate message passing (IAMP) algorithm and precisely characterize the training error it achieves, as well as the relation between test and training error, in the high dimensional asymptotics $n,d\to\infty$, with $n/d\toα\in (0, +\infty)$. Based on earlier work in related models, we expect that the performance achieved by our algorithm is optimal among polynomial-time algorithms.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Modern machine learning models are trained by optimizing high-dimensional non-convex empirical risk functions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">FPG-Seg: Annotation-free Retinal Vessel Topology Segmentation</div>
+<div class="meta-line">Authors: James Willoughby, Irina Voiculescu</div>
+<div class="meta-line">First: 2026-10-15T17:27:11+00:00 · Latest: 2026-10-15T17:27:11+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22259v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22259v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">State-of-the art approaches to retinal vessel segmentation typically require extensive annotations, a highly time-consuming process, reliant on clinical expertise. We present FPG-Seg, an annotation-free pipeline for retinal vessel segmentation combining classical vesselness filtering, Bayesian deep learning and topology-aware graph reconstruction to segment retinal vessel topology without manual labels. Tested across four widely used benchmark datasets for retinal vessel segmentation, FPG-Seg attains a clDice of $0.74{-}0.78$, representing $86{-}98\%$ of the performance of an equivalent fully-supervised baseline, despite using no manual annotations for training or hyperparameter tuning. As part of this work, we also provide, to our knowledge, the first performance benchmark of an annotation-free vessel segmentation method on FIVES.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">State-of-the art approaches to retinal vessel segmentation typically require extensive annotations, a highly time-consuming process, reliant on clinical expertise.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Denoising Textures is a Different Ballgame Altogether!</div>
+<div class="meta-line">Authors: Saptarshi Mandal, Oindrila Haldar, Chirayata Bhattacharya, Chandra Sekhar Seelamantula, Zhiwei Xu, Thrasyvoulos N. Pappas, Gaurav Sharma</div>
+<div class="meta-line">First: 2026-10-15T17:27:07+00:00 · Latest: 2026-10-15T17:27:07+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22258v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22258v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The human brain effortlessly deciphers colors and textures from visual stimuli and reconstructs the world around us, yet preserving such details remains challenging in image denoising. While significant progress has been made in generic image denoising, the problem of texture denoising has remained relatively under-explored. Fine details, such as intricate patterns and repetitive structures, often suffer from over-smoothing even in deep learning based approaches for denoising. In this paper, we analyze the behavior of state-of-the-art (SOTA) denoisers on texture datasets and show that performance improvements are possible only by fine-tuning the denoisers on the texture datasets. Surprisingly, fine-tuning on texture datasets result in the models catastrophically forgetting the original dataset. These findings highlight the need for specialized treatment of textures in denoising. Since denoising quality directly impacts downstream tasks such as generative modelling, we argue that dedicated texture aware denoisers are essential for faithful texture reconstruction and synthesis.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The human brain effortlessly deciphers colors and textures from visual stimuli and reconstructs the world around us, yet preserving such details remains challenging in image denoising.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Size-Transferability of Graph Transformers with Convolutional Positional Encodings</div>
+<div class="meta-line">Authors: Javier Porras-Valenzuela, Zhiyang Wang, Teresa Shang, Yusu Wang, Alejandro Ribeiro</div>
+<div class="meta-line">First: 2026-02-16T22:38:56+00:00 · Latest: 2026-10-15T17:19:28+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2602.15239v4">Abs</a> · <a href="https://arxiv.org/pdf/2602.15239v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Transformers have achieved remarkable success across domains, motivating the rise of Graph Transformers (GTs) as attention-based architectures for graph-structured data. A key design choice in GTs is the use of Graph Neural Network (GNN)-based positional encodings to incorporate structural information. In this work, we study GTs through the lens of manifold limit models for graph sequences and establish a theoretical connection between GTs with GNN positional encodings and Manifold Neural Networks (MNNs). Building on transferability results for GNNs under manifold convergence, we show that GTs inherit transferability guarantees from their positional encodings. In particular, GTs trained on small graphs provably generalize to larger graphs under mild assumptions. We complement our theory with extensive experiments on standard graph benchmarks, demonstrating that GTs exhibit scalable behavior on par with GNNs. To further show the efficiency in a real-world scenario, we implement GTs for shortest path distance estimation over terrains to better illustrate the efficiency of the transferable GTs. Our results provide new insights into the understanding of GTs and suggest practical directions for efficient training of GTs in large-scale settings.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Transformers have achieved remarkable success across domains, motivating the rise of Graph Transformers (GTs) as attention-based architectures for graph-structured data.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">BRIDGE: Bridging Reasoning In Distillation Gap Elimination via Structure-Aware Masking</div>
+<div class="meta-line">Authors: Bowen Yu, Sheng Zhang, Binhao Wang, Yi Wen, Jingtong Gao, Bowen Liu, Zimo Zhao, Shanshan Ye, Wanyu Wang, Maolin Wang, Xiangyu Zhao</div>
+<div class="meta-line">First: 2026-02-05T05:27:11+00:00 · Latest: 2026-10-15T17:12:35+00:00</div>
+<div class="meta-line">Comments: 15 pages, 13 figures. Accepted at SDM 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2602.17686v7">Abs</a> · <a href="https://arxiv.org/pdf/2602.17686v7">PDF</a> · <a href="https://github.com/Applied-Machine-Learning-Lab/SDM2026_BRIDGE">Code1</a> · <a href="https://huggingface.co/bowen0815/BRIDGE">Code2</a> · <a href="https://huggingface.co/huggingface">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Chain-of-Thought (CoT) reasoning has significantly improved LLMs&#x27; mathematical problem-solving capabilities, but distilling such capabilities into smaller models remains challenging due to the capacity mismatch between verbose teachers and compact students. Directly copying teachers&#x27; lengthy reasoning chains causes capacity overload, resulting in truncated outputs or repetitive failure. Existing remedies each sacrifice a critical property of CoT: implicit reasoning methods (e.g., compressing reasoning into hidden states) trade away interpretability and verifiability, while heuristic compression strategies (e.g., random step pruning) destroy logical integrity. To address this, we propose BRIDGE, a curriculum framework that first establishes structural understanding via masked reconstruction, then uses GRPO-based reinforcement learning to guide students in self-discovering the optimal balance between accuracy and brevity, and finally internalizes complex reasoning through teacher-guided rewriting on failure cases. On GSM8K, BRIDGE enables Qwen2.5-3B to achieve 11.29% accuracy improvement and 27.4% token reduction over the original model, outperforming instruction-tuned variants and distillation baselines. Zero-shot transfer experiments on SVAMP and MATH-500 further confirm the generalization of internalized reasoning. Our code and model checkpoints are publicly available at https://github.com/Applied-Machine-Learning-Lab/SDM2026_BRIDGE and https://huggingface.co/bowen0815/BRIDGE.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Chain-of-Thought (CoT) reasoning has significantly improved LLMs&#x27; mathematical problem-solving capabilities, but distilling such capabilities into smaller models remains challenging due to the capacity mismatch between verbose teachers and compact students.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">CompFlowLab: A Python code to develop and prototype new data-driven models for challenging compressible flow problems with shocks and chemical reactions</div>
+<div class="meta-line">Authors: Ali Mohaghegh, Cheng Huang</div>
+<div class="meta-line">First: 2026-09-26T02:11:37+00:00 · Latest: 2026-10-15T17:06:33+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.32150v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.32150v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">CompFlowLab is an open-source Python environment that is capable of modeling different classes of compressible flow problems (including shocks, flames, and detonation waves) using a one-dimensional compressible Navier-Stokes solver with multi-species transport and chemical-reaction models. It is designed specifically for the data-driven modeling community as a lightweight, accessible prototyping platform to test, develop, and evaluate new modeling methods on numerically and physically challenging compressible flow problems, especially those featuring shocks and chemical reactions. Specifically, CompFlowLab aims at (1) providing computationally efficient calculations on advection-dominanted problems that are well-recognized to be difficult for conventional data-driven modeling techniques, such as shocks, flames, and detonation waves, and more importantly (2) enabling rapid testing and prototyping of new data-driven models. The code serves three primary purposes: (1) generating high-fidelity full order model data for training of data-driven modeling, (2) providing a modular platform for implementing and testing novel data-driven algorithms (e.g., machine learning methods and reduced-order modeling techniques) on challenging physics, and (3) offering a standalone Computational Fluid Dynamics (CFD) solver with validated test cases that can also support numerical method development in the broader CFD community. By unifying these capabilities in a clean, extensible Python codebase, CompFlowLab lowers barriers to innovation at the intersection of model reduction and complex fluid dynamics.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">CompFlowLab is an open-source Python environment that is capable of modeling different classes of compressible flow problems (including shocks, flames, and detonation waves) using a one-dimensional compressible Navier-Stokes solver with multi-species transport and chemical-reaction models.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A quantitative form of the planar Falconer distance theorem</div>
+<div class="meta-line">Authors: Guozheng Cheng, Xiang Fang, Menghan Li, Hongdou Qu, Chengbo Xiao</div>
+<div class="meta-line">First: 2026-10-15T17:03:24+00:00 · Latest: 2026-10-15T17:03:24+00:00</div>
+<div class="meta-line">Comments: For clarity, a planar version is presented. Higher-dimensional cases will be addressed in subsequent versions, building on the October 6 release of the OpenAI preprint</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22222v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22222v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We give a quantitative planar form of a multiscale argument for Falconer&#x27;s distance problem. For every $0&lt;η&lt;1$, we obtain a positive lower bound for the Lebesgue measure of the distance set of a compact subset of the unit ball supporting a probability measure with $ν(B(x,r))\le 2r^{1+η}$. The bound depends only on $η$. For a compact set of diameter $D$ carrying a probability measure with $μ(B(x,r))\le A(r/D)^{1+\varepsilon}$, localization gives $|ΔE|\ge c_{\varepsilon,p}DA^{-p}$ for every fixed $p&gt;1/\varepsilon$. In particular, compact planar sets of Hausdorff dimension greater than one have distance sets of positive Lebesgue measure. The proof develops the multiscale method of the September 2026 manuscript of OpenAI, using one sequence of restricted distance measures for both the mass and Fourier estimates. A reconstruction lemma combines summable total-variation errors with summable squared Fourier norms. No endpoint or sharpness assertion is made.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We give a quantitative planar form of a multiscale argument for Falconer&#x27;s distance problem.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">GNN-Guided Local Refinement for Efficient Layout Decomposition with DSA-MP</div>
+<div class="meta-line">Authors: Yu Feng, Liyi Zhou, Haoyu Wang, Yiming Xu, Hao Geng, Shaozhi Deng, Ningsheng Xu, Shisheng Xiong</div>
+<div class="meta-line">First: 2026-10-15T17:00:17+00:00 · Latest: 2026-10-15T17:00:17+00:00</div>
+<div class="meta-line">Comments: 9 pages. Accepted at the IEEE/ACM International Conference on Computer-Aided Design (ICCAD 2026)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22214v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22214v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Multiple patterning lithography (MPL) has been widely used to improve lithography resolution in advanced nodes, but it faces cost limits as feature sizes shrink. Directed self-assembly (DSA) offers a cost-effective complement, extending the resolution of optical lithography to sub-10 nm and beyond. Integrating DSA into MPL (DSA-MP) further enhances the resolution of contact/via patterning. Nevertheless, growing design complexity exposes the limits of existing decomposition methods, which struggle to balance solution quality and runtime, and neglect edge-to-edge spacing constraints of DSA templates, compromising manufacturability. To address these issues, we introduce a new conflict graph model capturing the previously overlooked constraints and develop a local refinement strategy powered by the graph neural network, enabling efficient and scalable layout decomposition. Experiments demonstrate that our method achieves higher solution quality with faster convergence than state-of-the-art methods, while maintaining robustness across layout scales, design styles, technology nodes, and varying mask counts.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Multiple patterning lithography (MPL) has been widely used to improve lithography resolution in advanced nodes, but it faces cost limits as feature sizes shrink.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Generalization Guarantees of Randomized Block Coordinate Descent for Nonconvex Learning</div>
+<div class="meta-line">Authors: Ruixi Hu, Liang Wu</div>
+<div class="meta-line">First: 2026-10-15T17:00:07+00:00 · Latest: 2026-10-15T17:00:07+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22213v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22213v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Randomized block coordinate descent (RBCD) is a popular optimization algorithm for many large-scale machine learning problems. The existing theoretical analysis of RBCD mainly focuses on its convergence behavior from an optimization perspective, while its generalization behavior remains less understood for nonconvex problems. In this paper, we establish high-probability generalization guarantees for RBCD with nonconvex objectives. In the general nonconvex setting, we derive bounds on the gradients of both empirical and population risks, requiring only standard smoothness assumptions. With polynomially decaying step sizes, we tune the iteration number to balance optimization and generalization, thereby quantifying how early stopping leads to the optimal convergence rate for the population gradients. In the gradient-dominated setting, we provide bounds in terms of functional suboptimality, which nearly match the optimistic rates in convex and low-noise settings. Finally, we develop dimension-independent bounds for loss functions of a specific structure, making the generalization guarantees applicable to high-dimensional problems.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Randomized block coordinate descent (RBCD) is a popular optimization algorithm for many large-scale machine learning problems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Using 23 Years of ACS/SBC Data to Understand Backgrounds: Explaining &amp; Predicting Background Variations</div>
+<div class="meta-line">Authors: Christopher J. R. Clark, Roberto J. Avila, Alyssa M. Guzman, Norman A. Grogin</div>
+<div class="meta-line">First: 2026-01-14T18:31:06+00:00 · Latest: 2026-10-15T16:57:04+00:00</div>
+<div class="meta-line">Comments: 37 pages, 21 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2601.09682v3">Abs</a> · <a href="https://arxiv.org/pdf/2601.09682v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Recent analysis of 23 years of Hubble Space Telescope ACS/SBC data has shown that background levels can vary considerably between observations, with most filters showing over an order of magnitude variation. For the shorter-wavelength filters, the background is understood to be dominated by airglow; however, what precisely drives background variations is not well constrained for any filter. Here, we explore the causes of the background variation. Using over 8,000 archival SBC observations, we developed a machine learning model that can accurately predict the background for an observation, based upon a set of 23 observational parameters. This model indicates that, depending on filter, the SBC background is generally dominated by Solar elevation, Solar separation angle, Earth limb angle of observation, SBC temperature, and target Galactic latitude.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Recent analysis of 23 years of Hubble Space Telescope ACS/SBC data has shown that background levels can vary considerably between observations, with most filters showing over an order of magnitude variation.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The Last Remote Sensing Model Built by Humans? Casting Any Earth Observation Task as Recursive Self-Improvement</div>
+<div class="meta-line">Authors: Sijie Zhao, Zeqi Zhou, Heli Qi, Xuanchao Fu, Zhuo Zheng, Junshi Xia, Junjue Wang, Weihao Xuan, Naoto Yokoya</div>
+<div class="meta-line">First: 2026-10-13T17:57:51+00:00 · Latest: 2026-10-15T16:56:46+00:00</div>
+<div class="meta-line">Comments: Ongoing project</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18845v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.18845v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Earth observation (EO) models are still built by hand. For each new task, experts design a training recipe and tune it against a benchmark. We show that this loop can be handed to an agent. Any verifiable task can be cast as a harness and a verifier, where the harness defines what the agent may use and the verifier defines what counts as success. Every EO task can be made verifiable, through labeled benchmarks, independent sensors, physical models or the repeated observation of the same place. Given only these two components, a general-purpose coding agent builds the EO model and improves it recursively on its own outputs. Settings long treated as separate research problems, from learning with a handful of labels to adapting across domains, become choices of harness and verifier. On six EO benchmarks spanning optical, SAR and multispectral time-series imagery, with outputs that range from land-cover maps and ship instances to canopy heights and answers about large images, agent-built models surpass the state of the art on every one, and on land-cover mapping, they do so from 11% of the training labels. This establishes a new paradigm for EO, in which people design harnesses and verifiers and agents build the models, so EO models improve as agents do.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Earth observation (EO) models are still built by hand.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">AlignSAE: Concept-Aligned Sparse Autoencoders</div>
+<div class="meta-line">Authors: Minglai Yang, Xinyu Guo, Zhengliang Shi, Jinhe Bi, Steven Bethard, Mihai Surdeanu, Liangming Pan</div>
+<div class="meta-line">Venue: Transactions on Machine Learning Research (TMLR), 2026. https://openreview.net/forum?id=I9UjKxW4nq</div>
+<div class="meta-line">First: 2025-12-01T18:58:22+00:00 · Latest: 2026-10-15T16:55:22+00:00</div>
+<div class="meta-line">Comments: Published in Transactions on Machine Learning Research (08/2026). 36 pages, 18 figures, 12 tables. v2: adds an Errata section clarifying a few issues in the TMLR version</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2512.02004v4">Abs</a> · <a href="https://arxiv.org/pdf/2512.02004v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Large Language Models (LLMs) encode factual knowledge within hidden parametric spaces that are difficult to inspect or control. While Sparse Autoencoders (SAEs) can decompose hidden activations into more fine-grained, interpretable features, they often struggle to reliably align these features with human-defined concepts, resulting in entangled and distributed feature representations. To address this, we introduce AlignSAE, a method that aligns SAE features with a predefined ontology through a &quot;pre-train, then post-train&quot; curriculum. After an initial unsupervised training phase, we apply supervised post-training to bind specific concepts to dedicated latent slots while preserving the remaining capacity for general reconstruction. This separation creates an interpretable interface where specific concepts can be inspected and controlled without interference from unrelated features. Empirical results on GPT-2 across synthetic biographical QA (1-hop, 6 concepts) and compositional relational reasoning (2-hop, 20 concepts) demonstrate that AlignSAE enables precise causal interventions, such as reliable concept swaps (94.8% success in 1-hop), by targeting single, semantically aligned slots. AlignSAE achieves disentanglement improvements of $9$--$\infty\times$ over standard SAEs (measured via Mutual Information Gap), and further supports multi-hop reasoning and a mechanistic probe of grokking-like generalization dynamics. Although our evaluation focuses on GPT-2, AlignSAE itself is model-agnostic.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Large Language Models (LLMs) encode factual knowledge within hidden parametric spaces that are difficult to inspect or control.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Learning Variable Metrics for Convergent Proximal Splitting Algorithms</div>
+<div class="meta-line">Authors: Yodai Suzuki, Shunsuke Ono</div>
+<div class="meta-line">First: 2026-10-15T16:53:18+00:00 · Latest: 2026-10-15T16:53:18+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22204v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22204v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We propose learned variable metric (LVM), a framework that learns metrics of proximal splitting algorithms adapted to each problem instance, coordinate, and iteration with a convergence guarantee. Proximal splitting algorithms can solve a wide variety of convex optimization problems but often require many iterations to converge. Choosing a suitable metric is an effective remedy, and variable metric theory naturally extends convergence guarantees to metrics that vary over the iterations. Learning is a promising way to design such adaptive metrics beyond the reach of manual design, but a naive implementation leads to (i) an expensive evaluation of a network at every iteration and (ii) difficulty in satisfying the conditions that the theory imposes on the whole infinite sequence of metrics. To resolve these difficulties, we first train a neural network to generate a few representative metrics once per problem instance, and then obtain the metric of every iteration by combining them with basis functions of the normalized iteration index. We present LVM for the proximal gradient method with a quadratic term and the primal-dual hybrid gradient method, and prove their convergence under a mild spectral condition, which is ensured by a rescaling of the representative metrics. In experiments on deblurring and inpainting, LVM reduces the number of iterations to reach a target accuracy in most tested settings compared with several baselines, and the computation time at high accuracies.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We propose learned variable metric (LVM), a framework that learns metrics of proximal splitting algorithms adapted to each problem instance, coordinate, and iteration with a convergence guarantee.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">FAME: An FPGA-Based Platform for Approximate Multipliers Evaluation with Pattern-Guided DNN Retraining</div>
+<div class="meta-line">Authors: Rappy Saha, Nima Amirafshar, Jude Haris, Nima Taherinejad, José Cano</div>
+<div class="meta-line">First: 2026-09-15T18:39:28+00:00 · Latest: 2026-10-15T16:46:31+00:00</div>
+<div class="meta-line">Comments: Accepted at the 38th IEEE/SBC International Symposium on Computer Architecture and High Performance Computing (SBAC-PAD) 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.17730v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.17730v2">PDF</a> · <a href="https://github.com/gicLAB/FAME">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Approximate multipliers can reduce hardware area and energy consumption in Deep Neural Network (DNN) inference; however, they introduce computational errors. Assessing the accuracy of numerous approximate multiplier designs across diverse DNN models and large-scale datasets remains challenging due to prohibitive evaluation times. This overhead primarily stems from the slow emulation of approximate multiplier behavior using look-up tables (LUTs) on CPU and GPU platforms. Moreover, the resulting accuracy degradation must be carefully quantified and, if necessary, mitigated (e.g., through retraining), further increasing the overall evaluation cost. To address these challenges, we propose FAME, an FPGA-based platform for evaluating approximate multipliers. The platform exploits the reconfigurable logic of Field-Programmable Gate Arrays (FPGAs) to implement approximate multipliers directly in hardware, eliminating the need for LUT-based emulation on CPU/GPU platforms and thereby enabling efficient DNN inference while significantly reducing evaluation time on large datasets. Furthermore, we introduce a pattern-guided DNN retraining technique to mitigate accuracy degradation induced by approximate multipliers. Specifically, retraining is guided by multiplier-specific patterns to effectively recover potential accuracy losses. We evaluate FAME using two DNN models, ResNet-18 and MobileNetV2, on the ImageNet dataset across 27 approximate multipliers. During inference, our approach achieves up to a 3.47x speedup in approximate multiplier evaluation compared to prior LUT-based emulation methods. Furthermore, the proposed retraining technique improves accuracy by up to 65.5% over existing retraining approaches for the evaluated multipliers. The code is publicly available at: https://github.com/gicLAB/FAME</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Approximate multipliers can reduce hardware area and energy consumption in Deep Neural Network (DNN) inference; however, they introduce computational errors.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Anomalous Thermal Conductivity Reversal Driven by a Fluctuating Charge Density Wave</div>
+<div class="meta-line">Authors: Han Huang, Jinghang Dai, Joyce Christiansen-Salameh, Jiyoung Kim, Samuel Kielar, Desheng Ma, Noah Schinitzer, Danrui Ni, Gustavo Alvarez, Chen Li, Carla Slebodnick, Mario Medina, Bilal Azhar, Ahmet Alatas, Robert Cava, David Muller, Zhiting Tian</div>
+<div class="meta-line">First: 2026-03-16T21:05:19+00:00 · Latest: 2026-10-15T16:35:01+00:00</div>
+<div class="meta-line">Comments: Main text 26 pages, 5 figures. SI: 21 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.15915v3">Abs</a> · <a href="https://arxiv.org/pdf/2603.15915v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">For more than a century, the lattice thermal conductivity of crystalline solids has been known to decrease with increasing temperature, as the phonons that carry heat scatter more strongly via Umklapp processes. Here we report a pronounced violation of this rule in the layered charge-density-wave (CDW) metal 2H-TaSe2. Its in-plane thermal conductivity is strongly nonmonotonic: it peaks sharply at the 122 K ordering transition, collapses to a deep minimum near 210 K, and then anomalously reverses, rising with temperature to at least 350 K. Such a high-temperature reversal, in which a crystal conducts heat more efficiently as it is heated, is rare in crystalline solids. Its thermal conductivity minimum lies deep in the disordered phase well above the ordering transition, unlike the weak, transition-centered anomalies of other charge-density-wave systems, pointing to heat conduction governed by fluctuating rather than established order. Combining inelastic X-ray scattering, selected-area electron diffraction, and synchrotron X-ray diffraction, we attribute the reversal to phonons scattering off persistent, fluctuating charge order that survives more than 150 K above the long-range transition, to at least 300 K. A phenomenological phonon-CDW scattering model, tied directly to the measured diffraction linewidth and intensity, quantitatively reproduces the entire nonmonotonic curve. We also reveal that the charge order melts not abruptly but through a fluctuation- and defect-driven, weak first-order process, leaving short-range correlations far above the transition. This work establishes fluctuating charge order as a sensitive control knob for thermal transport in quantum materials and thermal conductivity as a powerful probe of the hidden charge order.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">For more than a century, the lattice thermal conductivity of crystalline solids has been known to decrease with increasing temperature, as the phonons that carry heat scatter more strongly via Umklapp processes.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The importance of tensor handling and implementation of physics-informed DeepONets</div>
+<div class="meta-line">Authors: Nahum Banks, Gustavo A. M. de Almeida, Sergio Maldonado</div>
+<div class="meta-line">First: 2026-10-15T16:22:05+00:00 · Latest: 2026-10-15T16:22:05+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22157v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22157v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Physics-informed neural networks (PINNs) reduce or eliminate the need for large labelled datasets by enforcing governing equations during training. Physics-informed Deep Operator Networks (PI-DeepONets) extend this approach to learning solution operators, enabling rapid prediction across families of problems. Despite these advantages, we show that their application to higher-dimensional problems remains limited by the computational cost of training. To address this issue, we propose a modified PI-DeepONet architecture that reduces this cost by removing redundancy in how the Branch network processes input functions across collocation points. The proposed formulation is mathematically equivalent to the original architecture but reduces input tensor sizes and the number of Branch network evaluations. We analyse the computational complexity of both architectures and derive theoretical scaling laws for training time with respect to the number of collocation points and input functions. The proposed architecture is evaluated on 1D, 2D, and 3D linear advection problems. In all cases, it achieves comparable predictive accuracy to the original PI-DeepONet while consistently reducing training time. In 2D experiments, a maximum speed-up of $3.75\times$ is observed, with empirical training-time scaling agreeing with the predicted linear dependence on collocation points and input functions. Furthermore, training a 3D model on an NVIDIA A100 GPU is only feasible using the proposed architecture, as the original formulation exceeds memory limits. These results demonstrate that careful consideration of how PI-DeepONets are implemented can yield substantial gains, enhancing the practical performance of PI-DeepONets and enabling their application to otherwise intractable physics-informed learning problems.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Physics-informed neural networks (PINNs) reduce or eliminate the need for large labelled datasets by enforcing governing equations during training.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Deep Learning-based Semantic Segmentation of Dental Radiographs: Comparative Evaluation of PSPNet, DeepLabv3, UNet, and UNet++</div>
+<div class="meta-line">Authors: Malithi Nawarathne, Nadeesha Herath Mudiyanselage Lihini Sangeetha</div>
+<div class="meta-line">First: 2026-10-10T16:53:13+00:00 · Latest: 2026-10-15T16:14:52+00:00</div>
+<div class="meta-line">Comments: 11 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.15061v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.15061v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Accurate and efficient analysis of dental radiographs has become increasingly important for disease diagnosis and clinical decision making. In particular, dental radiographs segmentation plays a critical role as it is challenging due to several reasons, such as low contrast, noise in the images, variations in the image quality, etc. Previous studies have primarily addressed these challenges using convolutional neural networks (CNN)-based models. However, direct comparison of these segmentation models is still challenging due to the variations among the experimental settings. Therefore, we mainly compared four segmentation models, including Pyramid Scene Parsing Network (PSPNet), DeepLabV3, UNet, and UNet++, through a fair, controlled experimentation setting under varying conditions such as image sizes and batch sizes. For this, we used 1269 dental radiography images, and prior to training, we implemented a series of preprocessing techniques. To assess the models, we used several metrics, including Dice coefficient (DICE), Intersection over Union (IoU), accuracy, precision, training and validation losses. According to our results, UNet++ demonstrated the highest IoU score of 0.6719, and a DICE value of 0.7869, showing superior results in terms of segmentation, specifically when configured with an image size of 300x300 and a batch size of 16. In addition, we also explored the effect of image resolutions and batch sizes on model performance and accuracy under different architectures. Therefore, this study provides insights into the strengths of different segmentation models and the potential of deep learning-based semantic segmentation methods for improving automated dental radiograph analysis.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Accurate and efficient analysis of dental radiographs has become increasingly important for disease diagnosis and clinical decision making.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">SUPN: Shallow Universal Polynomial Networks for Efficient Function Approximation</div>
+<div class="meta-line">Authors: Zachary Morrow, Michael Penwarden, Brian Chen, Aurya Javeed, Akil Narayan, John D. Jakeman</div>
+<div class="meta-line">Venue: Trans. Mach. Learn. Res. (2026), ISSN 2835-8856</div>
+<div class="meta-line">First: 2025-11-26T14:06:42+00:00 · Latest: 2026-10-15T16:06:27+00:00</div>
+<div class="meta-line">Comments: 47 pages including appendices</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2511.21414v2">Abs</a> · <a href="https://arxiv.org/pdf/2511.21414v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Deep neural networks (DNNs) and Kolmogorov-Arnold networks (KANs) are flexible function approximators, but their accuracy can require substantial network depth, width, and trainable parameter counts. Beyond making the resulting networks less transparent, large parameter spaces can increase training cost and produce solutions that are sensitive to optimization and parameter initialization, leading to variability in generalization error. For these reasons, we propose Shallow Universal Polynomial Networks (SUPNs), which retain a single hidden layer while increasing the expressivity of each unit through a learnable multivariate polynomial inside each activation, which we refer to as a polynomial pre-activation. This construction trades architectural depth and width for greater expressivity within each hidden unit, reducing parameter counts and training cost while preserving a shallow computational graph. We establish two complementary universal approximation results: SUPNs are universal by increasing network width at fixed polynomial complexity, as in classical shallow-network approximation, and by increasing polynomial complexity at fixed finite width. We further prove that finite SUPNs can approach the best approximation attainable in a prescribed polynomial space to arbitrary relative tolerance, derive explicit quasi-optimal parameters, and establish corresponding convergence rates. We empirically evaluate SUPNs against DNNs, KANs, and polynomial projection on smooth, nonsmooth, and discontinuous function-approximation problems in one, two, and ten dimensions using more than 16,000 trained models. Across the target functions studied, SUPNs frequently achieve lower approximation error and variability than DNNs and KANs at comparable parameter counts while retaining lower training cost, supporting their use as efficient function approximators when the target structure is not known a priori.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Deep neural networks (DNNs) and Kolmogorov-Arnold networks (KANs) are flexible function approximators, but their accuracy can require substantial network depth, width, and trainable parameter counts.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Autonomous OSS Threat Detection via Taxonomy-Aligned LLMs</div>
+<div class="meta-line">Authors: Md. Robiul Islam Niloy</div>
+<div class="meta-line">First: 2026-10-01T07:54:44+00:00 · Latest: 2026-10-15T16:03:06+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.01263v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.01263v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Open-source software (OSS) ecosystems face escalating supply chain threats, including typosquatting, dependency confusion, Trojan Source obfuscation, malicious build injection, and CI/CD pipeline poisoning. Sonatype documented over 1.2 million cumulative malicious packages across major registries, while signature-based and rule-based detection approaches lack the semantic understanding needed to generalize across evolving attacks. This paper proposes a taxonomy-aligned large language model framework for automated detection and multi-class classification of OSS supply chain threats. We introduce an AV-xxx taxonomy covering five semantically distinct attack categories and curate 999 verified real-world incidents from GitHub Security Advisories, CISA alerts, government security databases, and commercial threat intelligence reports, spanning 2018 to 2026 across eight package ecosystems. Using taxonomy-aligned prompting with GPT-4, the framework achieves 97% accuracy and 97% macro F1 across all five categories. Evaluation against eight methods five traditional machine learning baselines, one zero-shot open-source LLM, and two fine-tuned neural models reveals that fine-tuned Llama 3.1 8B (70.5%) and SecRoBERTa (77.5%) underperform a simple TF-IDF classifier (82.3%), while Mistral 7B without taxonomy alignment achieves 65.7%. These findings highlight taxonomy-aligned prompting over model scale, domain pretraining, or fine-tuning as the critical performance factor. Cross-ecosystem analysis shows varying classification difficulty, with npm achieving 65.5% baseline accuracy versus 100% in smaller ecosystems. GitHub Actions exhibits a substantial accuracy F1 divergence (82.4% accuracy, 0.367 macro F1), indicating systematic class imbalance and highlighting ecosystems where LLM-based contextual reasoning offers the greatest benefit. Our dataset, scripts, and code are publicly available in Github.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Open-source software (OSS) ecosystems face escalating supply chain threats, including typosquatting, dependency confusion, Trojan Source obfuscation, malicious build injection, and CI/CD pipeline poisoning.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Neuro-Relational Programs: Unifying Queries and Neural Computation over Structured Data</div>
+<div class="meta-line">Authors: Arie Soeteman, Balder ten Cate, Maurice Funk, Benny Kimelfeld, Carsten Lutz, Moritz Schönherr</div>
+<div class="meta-line">Venue: Proc. ACM Manag. Data 4(5) (PODS), Article 300, November 2026</div>
+<div class="meta-line">First: 2026-06-10T11:16:36+00:00 · Latest: 2026-10-15T15:58:44+00:00</div>
+<div class="meta-line">Comments: 55 pages; Accepted at PODS 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2606.11946v2">Abs</a> · <a href="https://arxiv.org/pdf/2606.11946v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The conventional approach to deep learning over relational databases applies neural models, such as Graph Neural Networks (GNNs), to a graph representation of the database. Recent approaches instead operate on databases directly, associating tuples with embeddings and extending query mechanisms to jointly process embeddings and relational content. Inspired by these developments, we introduce Neuro-Relational Programs (NRPs), a declarative query language for relational databases whose facts carry numeric vector embeddings. NRPs extend Datalog-style rules with operations that combine, aggregate, and transform embeddings, thereby interleaving relational reasoning and learnable neural components within a single formalism. This yields a general approach to neural computation over relational data: an NRP can be read both as a query plan with trainable components and as a neural architecture with relational structure built in.
+  Natural syntactic fragments of NRPs recover existing architectures and query formalisms. Zero-ary NRPs correspond to non-adaptive query algorithms; monadic NRPs generalize GNN-style message passing and precisely capture Deep Homomorphism Networks, a connection that we extend to frontier-guarded NRPs over databases with row-ids. We characterize the expressive power of unrestricted NRPs with ReLU-FFN transformations by FOCQ, an extension of first-order logic with counting interpreted over real-weighted structures, yielding a precise connection with uniform TC$^0$ over ordered databases. Together, these results establish NRPs as a broad declarative framework for querying and neural computation over relational data.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The conventional approach to deep learning over relational databases applies neural models, such as Graph Neural Networks (GNNs), to a graph representation of the database.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Barrier Log-Concavity of Large Forests</div>
+<div class="meta-line">Authors: Vadim E. Levit</div>
+<div class="meta-line">First: 2026-10-15T15:46:44+00:00 · Latest: 2026-10-15T15:46:44+00:00</div>
+<div class="meta-line">Comments: 26 pages, 2 figures; optional 16-page quantitative supplement and verification code/data in ancillary files</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22098v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22098v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We prove that the independence sequence of every sufficiently large forest is strictly barrier log-concave: whenever $i_{k+1}&gt;i_k$, one has $i_k^2&gt;i_{k-1}i_{k+1}$. Consequently, every common downward coefficient tilt is unimodal, with one order threshold valid simultaneously for all $0&lt;t\le1$. As an application, we prove that every sufficiently large well-covered tree has a strictly log-concave independence polynomial. More generally, the latter conclusion holds for well-covered forests with sufficiently large matching number. Every sufficiently large forest with a palindromic independence polynomial is also strictly log-concave, with its modes at the central ranks. The proof establishes local coefficient-curvature estimates uniformly over forests of unbounded maximum degree and over activities tending to zero. Combined with the fixed-density theorem of Fang, Lu, Nevo, Yao, and Zheng, these estimates complete the strict log-concavity interval down to rank one through $\lfloor17α/25\rfloor$; the terminal fraction is inherited. The classical decreasing tail then yields the barrier property. A cumulative-coefficient corona theorem transfers barrier log-concavity of the base forest to full strict log-concavity of its leaf corona.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We prove that the independence sequence of every sufficiently large forest is strictly barrier log-concave: whenever $i_{k+1}&gt;i_k$, one has $i_k^2&gt;i_{k-1}i_{k+1}$.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The Radius-Luminosity Relationship for Active Galactic Nuclei with Hierarchical Bayesian Reverberation Mapping</div>
+<div class="meta-line">Authors: Hugh McDougall, Tamara M. Davis, Benjamin J. S. Pope, Paul Martini, Zhefu Yu, Chris Lidman, Geraint F. Lewis, Christian Adamcewicz, Rahma Alfarsy</div>
+<div class="meta-line">First: 2026-10-15T15:45:24+00:00 · Latest: 2026-10-15T15:45:24+00:00</div>
+<div class="meta-line">Comments: 18 Figures, 33 Pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22096v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22096v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Reverberation mapping of active galactic nuclei uses the time taken for variability to travel through the system as a measure of system size, with this size being used to inform estimates of the mass of the central black hole, a technique that has graduated to an industrial-scale effort in recent decades. Such large target-count, multi-year surveys have been consistently undercut by poor light curve quality and the aliasing problems of seasonal observations. These impacts compound with statistical approaches that are not consistent between works and sometimes combine inconsistent statistical frameworks. Here, we present a new end-to-end Bayesian framework for fitting lags at scale in large surveys, simultaneous with the fitting of population models such as the radius-luminosity relation, and formulated in a numerically tractable way. This procedure is a statistically and numerically robust generalisation of the stacking and quality cut procedures of past works, fully marginalising over data uncertainty and data quality. Our approach remains numerically stable when scaling to larger surveys, and can act as a basis for any Bayesian population modelling of large sets of AGN time series observations. Applied to the OzDES sample, we demonstrate that this new approach yields more than double the constraining power on population-level properties like the R-L relationship, and an order-of-magnitude increase in the number of recovered lags and masses. With this method, we go from 24 high quality lag recoveries with traditional methods to a new effective sample size of ~297, all while being robust against random chance false positive measurements.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Reverberation mapping of active galactic nuclei uses the time taken for variability to travel through the system as a measure of system size, with this size being used to inform estimates of the mass of the central black hole, a technique that has graduated to an industrial-scale effort in recent decades.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Learning Changes the World and Then What Was Learned has Changed: Training and Deploying Neural Networks in the Control Loop</div>
+<div class="meta-line">Authors: Vittorio Lippi</div>
+<div class="meta-line">Venue: (Lippi, 2026) In Proc. of the 23rd Int. Conf. on Informatics in Control, Automation and Robotics - Vol. 1, ISBN 978-989-758-870-9, ISSN 2184-2809, pp 15-26</div>
+<div class="meta-line">First: 2026-10-15T15:39:01+00:00 · Latest: 2026-10-15T15:39:01+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22084v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22084v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Neural networks offer critical adaptability for controlling complex systems where nominal modeling proves intractable. However, when offline-trained neural networks are deployed within closed-loop control systems, their actions fundamentally alter the state distribution upon which they were trained. This paper introduces a unified taxonomy to categorize these sequential failure modes: the initial Closed-Loop Identification Error, the deployment-induced Action Error, and the continuous Tracking Error. Through discrete-time sensitivity analysis, this work formalizes how offline-learned parameters locally guarantee a trajectory divergence upon deployment, degrading performance due to local loss geometry. To mitigate this distribution shift, we propose actionable design policies centered on time-scale separated online adaptation. These mechanisms are validated through ablation studies on a nonlinear Duffing oscillator, demonstrating that bounded continuous learning successfully mitigates trajectory divergence whereas static deployments fail, offering concrete guidelines for practitioners deploying machine learning components in safety-critical feedback systems.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Neural networks offer critical adaptability for controlling complex systems where nominal modeling proves intractable.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Beyond the Hamming Cliff: Compact Spatial Encodings Preserving Semantic Distance in Spiking Neural Networks</div>
+<div class="meta-line">Authors: Sergio Davies, Muhammad Aitsam, Morgan-Tyler Stone, Alessandro Di Nuovo, Liangxiu Han</div>
+<div class="meta-line">First: 2026-10-15T15:38:51+00:00 · Latest: 2026-10-15T15:38:51+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22083v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22083v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">By pre-processing input signals with Gray, Thermometer, Johnson and hybrid encodings before passing them to spiking neural networks running on SpiNNaker hardware, Davies et al.(2025) address the semantic-spatial disparity that causes the ``Hamming cliff&#x27;&#x27; in standard binary representations. Continuous semantic patterns are presented as a set of simultaneous spikes at the input layer, preserving ultra-low latency processing. Training the network on multiple continuous values under each scheme, and measuring accuracy, required homeostatic scaling and false-positive rates, shows that removing the cliff is necessary but not sufficient: Gray encoding removes it yet retains little global distance structure, whereas Thermometer and Johnson preserve semantic distance at a code width that grows with the value range. The proposed hybrid encodings contain all three as limiting cases of a single parameter, recovering most of that structure at a fraction of the width. The homeostatic factor is shown to set a radius of tolerance around each trained pattern, so that the choice of encoding alone decides which values the network treats as similar.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">By pre-processing input signals with Gray, Thermometer, Johnson and hybrid encodings before passing them to spiking neural networks running on SpiNNaker hardware, Davies et al.(2025) address the semantic-spatial disparity that causes the ``Hamming cliff&#x27;&#x27; in standard binary representations.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261015_0601.html">20261015_0601</a>
+<a href="archive/20261012_0640.html">20261012_0640</a>
+<a href="archive/20261011_0611.html">20261011_0611</a>
+<a href="archive/20261008_0727.html">20261008_0727</a>
+<a href="archive/20261005_0611.html">20261005_0611</a>
+<a href="archive/20261004_0558.html">20261004_0558</a>
+<a href="archive/20261001_0647.html">20261001_0647</a>
+<a href="archive/20260928_0550.html">20260928_0550</a>
+<a href="archive/20260927_0546.html">20260927_0546</a>
+<a href="archive/20260924_0559.html">20260924_0559</a>
+<a href="archive/20260921_0510.html">20260921_0510</a>
+<a href="archive/20260920_0515.html">20260920_0515</a>
+<a href="archive/20260917_0555.html">20260917_0555</a>
+<a href="archive/20260913_0510.html">20260913_0510</a>
+<a href="archive/20260910_0530.html">20260910_0530</a>
+<a href="archive/20260907_0502.html">20260907_0502</a>
+<a href="archive/20260906_0455.html">20260906_0455</a>
+<a href="archive/20260903_0532.html">20260903_0532</a>
+<a href="archive/20260831_0550.html">20260831_0550</a>
+<a href="archive/20260830_0530.html">20260830_0530</a>
+<a href="archive/20260827_0536.html">20260827_0536</a>
+<a href="archive/20260824_0320.html">20260824_0320</a>
+<a href="archive/20260823_0319.html">20260823_0319</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260817_0318.html">20260817_0318</a>
+<a href="archive/20260816_0319.html">20260816_0319</a>
+<a href="archive/20260813_0400.html">20260813_0400</a>
+<a href="archive/20260810_0330.html">20260810_0330</a>
+<a href="archive/20260809_0326.html">20260809_0326</a>
+<a href="archive/20260806_0423.html">20260806_0423</a>
+<a href="archive/20260803_0408.html">20260803_0408</a>
+<a href="archive/20260802_0408.html">20260802_0408</a>
+<a href="archive/20260730_0410.html">20260730_0410</a>
+<a href="archive/20260727_0411.html">20260727_0411</a>
+<a href="archive/20260726_0409.html">20260726_0409</a>
+<a href="archive/20260723_0410.html">20260723_0410</a>
+<a href="archive/20260720_0406.html">20260720_0406</a>
+<a href="archive/20260719_0403.html">20260719_0403</a>
+<a href="archive/20260716_0405.html">20260716_0405</a>
+<a href="archive/20260713_0405.html">20260713_0405</a>
+<a href="archive/20260712_0404.html">20260712_0404</a>
+<a href="archive/20260709_0419.html">20260709_0419</a>
+<a href="archive/20260706_0411.html">20260706_0411</a>
+<a href="archive/20260705_0408.html">20260705_0408</a>
+<a href="archive/20260702_0447.html">20260702_0447</a>
+<a href="archive/20260629_0411.html">20260629_0411</a>
+<a href="archive/20260628_0422.html">20260628_0422</a>
+<a href="archive/20260625_0445.html">20260625_0445</a>
+<a href="archive/20260622_0422.html">20260622_0422</a>
+<a href="archive/20260621_0414.html">20260621_0414</a>
+<a href="archive/20260618_0503.html">20260618_0503</a>
+<a href="archive/20260615_0416.html">20260615_0416</a>
+<a href="archive/20260614_0413.html">20260614_0413</a>
+<a href="archive/20260611_0525.html">20260611_0525</a>
+<a href="archive/20260608_0409.html">20260608_0409</a>
+<a href="archive/20260607_0408.html">20260607_0408</a>
+<a href="archive/20260604_0547.html">20260604_0547</a>
+<a href="archive/20260601_0406.html">20260601_0406</a>
+<a href="archive/20260531_0406.html">20260531_0406</a>
+<a href="archive/20260528_0459.html">20260528_0459</a>
+<a href="archive/20260524_0405.html">20260524_0405</a>
+<a href="archive/20260521_0459.html">20260521_0459</a>
+<a href="archive/20260518_0403.html">20260518_0403</a>
+<a href="archive/20260517_0402.html">20260517_0402</a>
+<a href="archive/20260514_0430.html">20260514_0430</a>
+<a href="archive/20260511_0400.html">20260511_0400</a>
+<a href="archive/20260510_0356.html">20260510_0356</a>
+<a href="archive/20260507_0419.html">20260507_0419</a>
+<a href="archive/20260504_0353.html">20260504_0353</a>
+<a href="archive/20260503_0353.html">20260503_0353</a>
+<a href="archive/20260430_0409.html">20260430_0409</a>
+<a href="archive/20260427_0344.html">20260427_0344</a>
+<a href="archive/20260426_0342.html">20260426_0342</a>
+<a href="archive/20260423_0403.html">20260423_0403</a>
+<a href="archive/20260420_0340.html">20260420_0340</a>
+<a href="archive/20260419_0339.html">20260419_0339</a>
+<a href="archive/20260416_0402.html">20260416_0402</a>
+<a href="archive/20260413_0337.html">20260413_0337</a>
+<a href="archive/20260412_0333.html">20260412_0333</a>
+<a href="archive/20260409_0358.html">20260409_0358</a>
+<a href="archive/20260406_0332.html">20260406_0332</a>
+<a href="archive/20260405_0329.html">20260405_0329</a>
+<a href="archive/20260402_0405.html">20260402_0405</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>

@@ -1,0 +1,749 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递 - CV</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递 - CV</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-10-20 06:52</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261020_0652</div>
+    <div class="row"><div class="card">
+<div class="title">RCPN: towards robust pseudo-labels in unsupervised CLIP adaptation via consistent prototypes and neighborhoods</div>
+<div class="meta-line">Authors: Eman Ali, Chetan Arora, Muhammad Haris Khan</div>
+<div class="meta-line">First: 2025-07-22T19:08:24+00:00 · Latest: 2026-10-16T17:28:20+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2507.22075v2">Abs</a> · <a href="https://arxiv.org/pdf/2507.22075v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In unsupervised adaptation for vision-language models such as CLIP, pseudo-labels derived from zero-shot predictions often exhibit significant noise, particularly under domain shifts or in visually complex scenarios. Conventional pseudo-label filtering approaches, which rely on fixed confidence thresholds, tend to be unreliable in fully unsupervised settings. In this work, we propose a novel adaptive pseudo-labeling framework that enhances CLIP&#x27;s adaptation performance by integrating prototype consistency and neighborhood-based consistency. The proposed method comprises two key components: PICS, which assesses pseudo-label accuracy based on in-class feature compactness and cross-class feature separation; and NALR, which exploits semantic similarities among neighboring samples to refine pseudo-labels dynamically. Additionally, we introduce an adaptive weighting mechanism that adjusts the influence of pseudo-labeled samples during training according to their estimated correctness. Extensive experiments on 11 benchmark datasets demonstrate that our method achieves state-of-the-art performance in unsupervised adaptation scenarios, delivering more accurate pseudo-labels while maintaining computational efficiency.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In unsupervised adaptation for vision-language models such as CLIP, pseudo-labels derived from zero-shot predictions often exhibit significant noise, particularly under domain shifts or in visually complex scenarios.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">HydroShear: Hydroelastic Shear Simulation for Tactile Sim-to-Real Reinforcement Learning</div>
+<div class="meta-line">Authors: An Dang, Jayjun Lee, Mustafa Mukadam, X. Alice Wu, Bernadette Bucher, Manikantan Nambi, Nima Fazeli</div>
+<div class="meta-line">Venue: RSS 2026</div>
+<div class="meta-line">First: 2026-02-28T03:59:33+00:00 · Latest: 2026-10-16T16:58:20+00:00</div>
+<div class="meta-line">Comments: Accepted to RSS 2026 | Project page: https://hydroshear.github.io</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.00446v2">Abs</a> · <a href="https://arxiv.org/pdf/2603.00446v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://hydroshear.github.io">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In this paper, we address the problem of tactile sim-to-real policy transfer for contact-rich tasks. Existing methods primarily focus on vision-based sensors and emphasize image rendering quality while providing overly simplistic models of force and shear. Consequently, these models exhibit a large sim-to-real gap for many dexterous tasks. Here, we present HydroShear, a non-holonomic hydroelastic tactile simulator that advances the state-of-the-art by modeling: a) stick-slip transitions, b) path-dependent force and shear build up, and c) full SE(3) object-sensor interactions. HydroShear extends hydroelastic contact models using Signed Distance Functions (SDFs) to track the displacements of the on-surface points of an indenter during physical interaction with the sensor membrane. Our approach generates physics-based, computationally efficient force fields from arbitrary watertight geometries while remaining agnostic to the underlying physics engine. In experiments with GelSight Minis, HydroShear more faithfully reproduces real tactile shear compared to existing methods. This fidelity enables zero-shot sim-to-real transfer of reinforcement learning policies across four tasks: peg insertion, bin packing, book shelving for insertion, and drawer pulling for fine gripper control under slip. Our method achieves a 93% average success rate, outperforming policies trained on tactile images (34%) and alternative shear simulation methods (58%-61%).</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In this paper, we address the problem of tactile sim-to-real policy transfer for contact-rich tasks.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">MANGO-Grasp: Mahalanobis Fields over Geometry-Oriented 3D Gaussians for Cross-Embodiment Dexterous Grasping</div>
+<div class="meta-line">Authors: Heng Zhang, Kevin Yuchen Ma, Mike Zheng Shou, Weisi Lin, Yan Wu</div>
+<div class="meta-line">First: 2026-08-03T10:12:15+00:00 · Latest: 2026-10-16T16:47:33+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.02014v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.02014v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://connor-zh.github.io/MANGO-Grasp/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Cross-embodiment dexterous grasping aims to synthesize stable grasps across heterogeneous multi-fingered hands with little or no embodiment-specific tuning. Existing interaction-centric methods achieve promising results, but their object representations often underrepresent local surface geometry, hand descriptors do not explicitly capture both morphology and kinematics, and hand-object interaction modeling is typically isotropic. We propose MANGO-Grasp, an anisotropic interaction framework that represents objects as geometry-oriented 3D Gaussian primitives to better preserve local surface geometry, and encodes hands into pretrained descriptors that capture both morphology and kinematics. Hand-object interaction is modeled using anisotropic Mahalanobis fields that reflect the directional nature of contact and guide a shared optimization for grasp realization across embodiments. On the CMAP and MultiGripperGrasp benchmarks, MANGO-Grasp outperforms the strongest seen-hand baseline by up to 8.24 percentage points in simulation. It also transfers zero-shot to the unseen SharpaWave hand, improving over the strongest zero-shot baseline by up to 16.57 percentage points, and achieves 86% success in real-world experiments. The code and additional materials will be made available upon publication at https://connor-zh.github.io/MANGO-Grasp/.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Cross-embodiment dexterous grasping aims to synthesize stable grasps across heterogeneous multi-fingered hands with little or no embodiment-specific tuning.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Learning to Reason About Implicit Multimodal Harm: From Diagnosis to Generalization</div>
+<div class="meta-line">Authors: Anisha Saha, Varsha Suresh, Teodora Kamova, Sophia Wiedmann, Timothy Hospedales, Vera Demberg</div>
+<div class="meta-line">First: 2026-05-28T13:58:15+00:00 · Latest: 2026-10-16T16:01:16+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.29951v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.29951v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A benign image paired with a benign caption can become harmful only in combination, making detection fundamentally a cross-modal reasoning problem. Existing multimodal harm benchmarks evaluate only classification accuracy, leaving unclear whether models identify the cross-modal mechanism that produces harm. We introduce MuPHI (Multimodal Pragmatic Harm Interpretation), a controlled diagnostic benchmark in which harm arises purely from image-text composition, with benign counterfactuals and annotated harm rationales. Using MuPHI, we systematically evaluate where compositional harm reasoning breaks in vision-language models (VLMs). MuPHI reveals that VLMs reliably ground each modality yet fail to bind the evidence into the harm mechanism and their predictions respond weakly to label-determining counterfactual interventions. Moreover, existing harm detection approaches trained on labels substantially improves in-domain (ID) detection but transfers poorly across harm distributions. We therefore propose Compositional Harm Interpretation Learning (CHIL), which rewards evidence identification in each modality, cross-modal binding and verdict consistency in the reasoning chain rather than just predicted label. CHIL improves 81% OOD transfer evaluations by an average of +2.5 macro-F1 and correct counterfactual flip rate by up to +3.8 and +5.4 % points, while also improving overall reasoning quality over label-only optimization. These results suggest that optimizing how a model reasons, not just what it concludes, offers a promising direction for multimodal safety systems that generalize beyond dataset-specific correlations.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A benign image paired with a benign caption can become harmful only in combination, making detection fundamentally a cross-modal reasoning problem.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Language-Informed Loss for Visual Generation</div>
+<div class="meta-line">Authors: Suchir Agarwal, Keshigeyan Chandrasegaran, Ziyu Chen, Kyle Sargent, Juan Carlos Niebles, Li Fei-Fei, Jiajun Wu</div>
+<div class="meta-line">First: 2026-10-16T15:49:12+00:00 · Latest: 2026-10-16T15:49:12+00:00</div>
+<div class="meta-line">Comments: 29 pages; Project website: https://suchiragarwal.com/lilie</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23653v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.23653v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">End-to-end visual generation with pixel-space loss has recently achieved competitive performance without the need for learned image tokenizers. In this work, we study whether language-informed supervision can provide a richer training signal than pixel loss for visual generation. We introduce LILIE (pronounced &quot;lily&quot;), a Language-Informed and Lossless Image Encoder. LILIE is an invertible image transform trained such that a vision-language model can recover captions from noised features. The encoder uses a normalizing flow transformer trained jointly with a vision-language model via next token prediction. We then use the encoder to extract a simple language-informed loss for text-to-image generation. We train JiT models with LILIE loss, reducing gFD by 14 points (66.84 $\to$ 53.01) against a pixel-only baseline on the GPIC dataset. Our code, encoders, and generative models are available at https://suchiragarwal.com/lilie.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">End-to-end visual generation with pixel-space loss has recently achieved competitive performance without the need for learned image tokenizers.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Would you still call this Dax? Novel Visual References in VLMs and Humans</div>
+<div class="meta-line">Authors: Ada Defne Tür, Gaurav Kamath, Joyce Chai, Siva Reddy, Benno Krojer</div>
+<div class="meta-line">Venue: EMNLP</div>
+<div class="meta-line">First: 2026-06-03T20:23:12+00:00 · Latest: 2026-10-16T15:49:10+00:00</div>
+<div class="meta-line">Comments: EMNLP Main Conference 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2606.05409v4">Abs</a> · <a href="https://arxiv.org/pdf/2606.05409v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Vision-language models (VLMs), like human learners, are frequently exposed to new visual concepts, but how they map novel visual references to language after exposure remains largely underexplored, particularly when those references contradict prior knowledge from pre-training. To study this, we present the Novel Visual References Dataset (NVRD): 19,176 images spanning 90 visual concepts across different levels of visual novelty, each with up to 20 increasingly perturbed versions of the original object to probe generalization. Unlike prior work on visual augmentations of familiar concepts, NVRD comprises entirely novel, open-ended stimuli constructed from scratch, mirroring how humans encounter genuinely new concepts. We evaluate 3 open- and 2 closed-source models alongside 2,400 human judgments for direct human-model comparison, and find that (i) models struggle to acquire novel concepts in-context when they contradict prior knowledge, and (ii) while models and humans show correlated sensitivity to visual perturbations, models significantly overgeneralize, extending learned labels to stimuli that humans reject. We contribute NVRD as a corpus and benchmark for research on visual concept learning in both humans and machines.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Vision-language models (VLMs), like human learners, are frequently exposed to new visual concepts, but how they map novel visual references to language after exposure remains largely underexplored, particularly when those references contradict prior knowledge from pre-training.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">How Many, but How Sure? Class Competition as a Confidence Proxy in Multi-Class Density-Based Counting</div>
+<div class="meta-line">Authors: Villanelle O&#x27;Reilly, Georgios Leontidis, Marc Hanheide</div>
+<div class="meta-line">First: 2026-10-16T15:23:53+00:00 · Latest: 2026-10-16T15:23:53+00:00</div>
+<div class="meta-line">Comments: 2+1 pages, 1 figure; a 2027 Northern Lights Deep Learning Conference abstract</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23611v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.23611v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Multi-class density estimators can count objects in crowded scenes, but their class-wise outputs offer no indication of how reliably density mass has been allocated. We introduce a training-free confidence proxy based on local competition between the strongest class channels. The resulting prominence measure requires only the predicted density maps, with no retraining or access to model internals. We test whether residual competition is diagnostic of cross-class leakage by attenuating contested density at inference time. On DSACA predictions for the Hicks et al. dataset, this reduces overall MAE from 0.920 to 0.846, suggesting that class competition contains useful information about count reliability.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Multi-class density estimators can count objects in crowded scenes, but their class-wise outputs offer no indication of how reliably density mass has been allocated.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Metro-WM: Long-Horizon Latent Planning with Realisable Sub-Goals</div>
+<div class="meta-line">Authors: Royson Lee, Fady Rezk, Titouan Parcollet, Timothy Hospedales, Cristina Cornelio</div>
+<div class="meta-line">First: 2026-09-25T18:09:49+00:00 · Latest: 2026-10-16T15:23:50+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.31868v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.31868v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Model-predictive control with Joint-Embedding Predictive Architectures (JEPAs) provides a strong zero-shot goal-reaching planner, but it is only effective over short planning horizons. Hierarchical extensions attempt to bridge this gap by learning a macro planner to predict intermediate latent sub-goals to guide the micro planner. In this work, we demonstrate that unconstrained latent sub-goal prediction is fundamentally flawed. A rigorous evaluation reveals that a leading state-of-the-art macro planner routinely emits physically unrealisable sub-goals. To resolve this, we introduce Metro-WM, a hierarchical framework that issues sub-goals by retrieving genuine states from prior experience rather than generating ungrounded latent vectors. Specifically, Metro-WM constructs a graph whose vertices are observed frames from offline expert demonstrations or random-action trajectories, allowing frames from different episodes to be connected and stitched into routes to the goal. Planning over the full graph also makes the system highly robust to execution errors: if the micro planner drifts off course, Metro-WM instantly finds a new optimal path from the current state. Our experiments show that Metro-WM achieves superior long-horizon success rates of up to 37.33 percentage points over the next best hierarchical approach while being up to 10.9 times faster, requiring both 13-56 times less offline compute and fewer tuned hyperparameters. Additional analysis reveals that Metro-WM finds shorter paths than the offline demonstrations, outperforms an oracle relying on the query&#x27;s own demonstration, and maintains robust performance under extremely sparse dataset conditions.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Model-predictive control with Joint-Embedding Predictive Architectures (JEPAs) provides a strong zero-shot goal-reaching planner, but it is only effective over short planning horizons.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Not Every Mention Is a Claim: Rethinking Object Hallucination Detection in Vision-Language Models</div>
+<div class="meta-line">Authors: Hsin-Ling Hsu, Neeraja Kirtane, Kuan-Hao Huang</div>
+<div class="meta-line">First: 2026-10-16T15:23:45+00:00 · Latest: 2026-10-16T15:23:45+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23610v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.23610v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Object hallucination in vision-language models (VLMs) is usually measured by checking each object a caption names against the image. Most benchmarks and detectors alike treat every object mention as a claim that the object is present. This assumption fails when a caption names an object without asserting it, as in &quot;a bench for people to sit on&quot;, which mentions people without claiming that any are in the image. We call such mentions non-assertive. Treating them as hallucinations inflates the error rates attributed to models that use such language. To separate them from real hallucinations, we introduce NAME-Bench (Non-Assertive Mention Evaluation Benchmark), 25,497 object mentions from captions that five VLMs generate for COCO images. Each mention is labelled concrete (asserted and present), hallucinated (asserted and absent), or non-assertive, and non-assertive mentions are further divided into four subtypes: depictive, purpose, negation and hedged. All the hallucination detectors that we evaluate flag non-assertive mentions as hallucinations, at rates between 14% and 80%. Adding non-assertive mentions to detector training as negatives largely corrects this on LLaVA-1.5. On the four newer VLMs, a comparable correction takes five to ten times more data, and the detectors then catch fewer real hallucinations. These findings show that current detectors conflate mentioning an object with asserting it, and that this conflation is harder to undo on the four newer VLMs than on LLaVA-1.5. Hallucination evaluation should therefore separate what a caption asserts from what it merely mentions.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Object hallucination in vision-language models (VLMs) is usually measured by checking each object a caption names against the image.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Learning to Discriminate Scene Structures Makes Self-Supervised Depth Learning Scalable</div>
+<div class="meta-line">Authors: Mengtan Zhang, Yuchuan Cui, Yu Ma, Zizhan Guo, Wei Ye, Rui Fan</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-10-16T15:17:07+00:00 · Latest: 2026-10-16T15:17:07+00:00</div>
+<div class="meta-line">Comments: Accepted to NeurIPS 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23600v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.23600v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Self-supervised monocular depth estimation is appealing for its potential to scale with unlabeled data, yet existing methods often degrade when trained on diverse scenes. This study finds that, under self-supervision, models tend to encode dataset-specific structural biases rather than transferable scene geometry, leading to cross-domain optimization conflicts. To address this issue, this study proposes the MaSS framework, aiming to make self-supervised depth learning scalable to diverse data. MaSS introduces a dedicated structural representation pathway explicitly decoupled from contextual features, which is guided by a novel scene-structure discrimination objective to learn generalized, layout-aware structural representations for depth decoding. Trained and evaluated on four diverse datasets, both individually and jointly, MaSS substantially outperforms prior self-supervised methods and is the first to consistently benefit from mixed-domain training. Zero-shot evaluation on eight additional datasets further demonstrates its remarkable generalizability, particularly on those entirely out-of-distribution scenes. The source code is publicly available at https://mias.group/MaSS.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Self-supervised monocular depth estimation is appealing for its potential to scale with unlabeled data, yet existing methods often degrade when trained on diverse scenes.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Enhancing RAG-based Medical VQA with Gated Multimodal Representations</div>
+<div class="meta-line">Authors: Daniela Jimenez-Pano, Hugo Jair Escalante, Delia Irazú Hernández-Farías</div>
+<div class="meta-line">First: 2026-10-16T15:07:33+00:00 · Latest: 2026-10-16T15:07:33+00:00</div>
+<div class="meta-line">Comments: Preprint submitted to ECIR</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23588v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.23588v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Medical Vision-Language Models (Med-LVLMs) have shown strong performance in Medical Visual Question Answering (MVQA), yet they may still produce factually inconsistent responses. Retrieval-Augmented Generation (RAG) can mitigate this issue by incorporating external clinical evidence; however, retrieval is often guided by a single modality, potentially overlooking the joint semantics of medical images and clinical questions. We introduce a multimodal RAG framework that learns a joint query representation through a Gated Multimodal Unit, enabling evidence retrieval to leverage information from both modalities while keeping the underlying Med-LVLM frozen. We evaluate the proposed approach on benchmark datasets. Results show that the multimodal query representation consistently outperforms a reference Med-LVLM and remains competitive with state-of-the-art methods. Our findings demonstrate the potential of multimodal query representations for more effective evidence retrieval in Medical VQA.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Medical Vision-Language Models (Med-LVLMs) have shown strong performance in Medical Visual Question Answering (MVQA), yet they may still produce factually inconsistent responses.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">PreciseEdit: Strong Yet Stable Semantic Transport for One-Step Image Editing</div>
+<div class="meta-line">Authors: Jingyi Wang, Xiao Lu</div>
+<div class="meta-line">First: 2026-10-16T14:33:26+00:00 · Latest: 2026-10-16T14:33:26+00:00</div>
+<div class="meta-line">Comments: 9 pages, 7 figures, and 5 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23535v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.23535v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Recent one-step text-to-image (T2I) models enable efficient image synthesis, opening up new possibilities for interactive Web-based image editing. However, existing one-step editing methods often construct a global transport field through simple vector operations between conditional predictions. While such strong transport can effectively drive the image toward the target semantics, it may be released along unreliable directions or over non-edited regions, leading to structural distortions within the editing region and background drift elsewhere. More importantly, stabilizing the editing process through global smoothing or uniformly weakening the transport field often makes large semantic changes overly conservative. In this work, we revisit one-step image editing from the perspective of the tension between semantic strength and transport stability, and identify a key insight: strong semantic transport is not inherently unstable. What matters is whether it is applied along reliable directions and at reliable spatial locations. Motivated by this insight, we introduce PreciseEdit, a model-agnostic, training-free and inversion-free one-step editing framework that strengthens target-semantic alignment while preserving background fidelity and structural consistency. We further propose a dual-noise-scale role decomposition strategy: a higher-noise scale produces the strong target-directed transport used for actual editing, whereas a lower-noise scale jointly serves as a probe for directional agreement and spatial structure. Extensive experiments on PIE-Bench demonstrate that PreciseEdit achieves state-of-the-art performance and effectiveness on various editing tasks.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Recent one-step text-to-image (T2I) models enable efficient image synthesis, opening up new possibilities for interactive Web-based image editing.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Edit-Your-Interest: Efficient Video Editing via Feature Most-Similar Propagation</div>
+<div class="meta-line">Authors: Yi Zuo, Zitao Wang, Lingling Li, Xu Liu, Fang Liu, Licheng Jiao</div>
+<div class="meta-line">Venue: Pattern Recognition 183 (2027) 115113</div>
+<div class="meta-line">First: 2025-10-15T01:55:32+00:00 · Latest: 2026-10-16T13:59:01+00:00</div>
+<div class="meta-line">Comments: 32 pages, 11 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2510.13084v2">Abs</a> · <a href="https://arxiv.org/pdf/2510.13084v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://edit-your-interest.github.io/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Text-to-image diffusion models have advanced video editing. However, existing video editing methods are limited by their high computational overhead and memory consumption. Furthermore, these approaches often sacrifice visual fidelity, leading to temporal inconsistencies and artifacts such as blurring and mosaic-like patterns. To address these dual challenges and strike a balance between computational efficiency and visual fidelity, we propose Edit-Your-Interest, a lightweight, text-driven, zero-shot video editing method. Edit-Your-Interest introduces a Spatio-Temporal Feature Memory bank (SFM) to cache spatial-attention features from previous frames under a fixed memory budget. The SFM maintains a representative candidate pool, reducing the computational overhead of full-sequence spatio-temporal modeling. To query this memory, we propose Feature Most-Similar Propagation (FMP), a similarity-based retrieval rule that propagates relevant cached tokens to the current frame. Together, SFM and FMP form a bounded-memory retrieval-based propagation design that improves temporal consistency while reducing blurring and mosaic-like artifacts. Finally, we introduce a feature-diversity-based SFM update algorithm to keep the memory representative and non-redundant throughout the video sequence. Furthermore, to enable precise object editing, we leverage cross-attention maps to automatically extract masks for the instances of interest. These masks are seamlessly integrated into the diffusion denoising process, enabling fine-grained control over target objects and allowing Edit-Your-Interest to perform highly accurate edits while robustly preserving the background integrity. Extensive experiments demonstrate that Edit-Your-Interest outperforms state-of-the-art methods in both efficiency and visual fidelity. Project page: https://edit-your-interest.github.io/.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Text-to-image diffusion models have advanced video editing.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">When Evidence Vanishes: Distilling Visual-Evidence Dependency in Medical Vision-Language Models</div>
+<div class="meta-line">Authors: Qizhen Lan, Yiling Ma, Ruiqi Chen, Mengchen Fan, Xi Xiao, Lin Zhao, Liang He, Baocheng Geng, Pulin Che, Tianyang Wang, Xiaoqian Jiang</div>
+<div class="meta-line">First: 2026-10-16T13:48:30+00:00 · Latest: 2026-10-16T13:48:30+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23469v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.23469v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Compact medical vision-language models (VLMs) can answer clinical questions correctly without reliably using the image, relying instead on question wording or learned priors. Standard knowledge distillation copies a teacher&#x27;s answer preference on the original image, but it leaves unchecked whether that preference is conditional on the visual evidence required by the question. We study this missing target as medical visual evidence dependency: support for the correct answer should decrease when the matched evidence is absent. We introduce Evidence-Conditioned Dependency Distillation (ECDD), which pairs each training image with a control matched to the evidence level and distills the teacher&#x27;s drop in answer margin across the pair. A lower bound objective transfers positive dependency by penalizing only shortfalls, while original-image supervision preserves task accuracy. The same formulation applies when the evidence is a queried clinical region, a surgical instrument, or whole-image visual content. Across three medical VQA settings, ECDD keeps original-image accuracy competitive with distillation and alignment baselines while making answer support more sensitive to evidence removal. Under the DME headline objective, for example, the positive-case margin response to target rather than random masking rises from 0.786 with KD to 2.023 with ECDD, while original-image accuracy differs by 0.11 points. These results suggest that medical VLM distillation should transfer both the teacher&#x27;s answer preference and its dependence on visual evidence.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Compact medical vision-language models (VLMs) can answer clinical questions correctly without reliably using the image, relying instead on question wording or learned priors.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">mmPencil: Toward Writing-Style-Independent In-Air Handwriting Recognition via mmWave Radar and Large Vision-Language Model</div>
+<div class="meta-line">Authors: Yifan Guo, Zhu Wang, Qian Qin, Yangqian Lei, Qiwen Gan, Zhuo Sun, Chao Chen, Bin Guo, Zhiwen Yu</div>
+<div class="meta-line">Venue: Proc. ACM Interact. Mob. Wearable Ubiquitous Technol. 9, 3, Article 81 (September 2025), 30 pages</div>
+<div class="meta-line">First: 2026-10-16T13:08:09+00:00 · Latest: 2026-10-16T13:08:09+00:00</div>
+<div class="meta-line">Comments: Published in ACM IMWUT, Vol. 9, No. 3, Article 81, 2025; presented at ACM UbiComp 2025. 30 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23419v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.23419v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In-air handwriting recognition based on radio frequency (RF) signals offers a promising solution for human-computer interaction, yet existing methods are often limited by predefined writing planes, constrained writing styles, and small recognition vocabularies. To address these limitations, we propose m^2VLMs, a modality mapping architecture that bridges millimeter-wave (mmWave) radar sensing and large vision-language models (VLMs), and develop mmPencil, a 3D in-air handwriting word recognition system. mmPencil reconstructs 3D handwriting trajectories from mmWave signals using a multi-stage spatial trajectory reconstruction algorithm and maps them into visual representations through a spatial-to-visual mapping algorithm, enabling VLMs to recognize handwriting while reducing sensitivity to writing styles and environmental factors.
+  We collect and release a 3D mmWave handwriting dataset containing 7,664 samples of 200 words from 12 users across 22 writing scenarios. Extensive experiments demonstrate that mmPencil achieves robust word recognition under variations in writing position, range, angle, speed, size, direction, and user movement. It achieves 97.60% accuracy on 200 word classes for seen users and 92.50% zero-shot accuracy on 50 word classes for unseen users, outperforming state-of-the-art baselines.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In-air handwriting recognition based on radio frequency (RF) signals offers a promising solution for human-computer interaction, yet existing methods are often limited by predefined writing planes, constrained writing styles, and small recognition vocabularies.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Through the PRISm: Importance-Aware Scene Graphs for Semantic Image Retrieval</div>
+<div class="meta-line">Authors: Dimitrios Georgoulopoulos, Nikolaos Chaidos, Angeliki Dimitriou, Giorgos Stamou</div>
+<div class="meta-line">First: 2025-12-20T15:57:46+00:00 · Latest: 2026-10-16T12:53:21+00:00</div>
+<div class="meta-line">Comments: 10 pages, 5 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2512.18407v2">Abs</a> · <a href="https://arxiv.org/pdf/2512.18407v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Web-based visual search increasingly handles queries driven by semantic intent, focusing on what is happening in an image rather than merely what it looks like. While global embeddings from vision-language models capture overall appearance, they often blur fine-grained relational structure. Conversely, scene graphs make these relationships explicit, but generating them automatically for unannotated web images produces dense, noisy graphs that retain every detected entity and relation regardless of relevance. To address this, we introduce PRISm (Pruning-based Image Retrieval via Importance Prediction on Semantic Graphs), an image-to-image retrieval framework that learns to focus on what matters in a scene. PRISm employs an Importance Prediction Module, supervised by caption-derived relevance strictly during training, to score and prune non-essential objects and &lt;subject, relation, object&gt; triplets. An Edge-Aware Contextual GNN then aggregates relation conditioned neighbor messages, fusing the refined graph with global visual features into a single, index-ready embedding per image. On PSG, PRISm outperforms the strongest baseline by points in MAP@1. Furthermore, on Flickr with machine-generated scene graphs and captions, PRISm remains best on top-1 metrics, while adding only 33,ms per query beyond scene graph generation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Web-based visual search increasingly handles queries driven by semantic intent, focusing on what is happening in an image rather than merely what it looks like.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">CorrelationFlow: A Training-Free Geometric Approach for LiDAR Scene Flow Estimation</div>
+<div class="meta-line">Authors: Minh-Quan Dao, Yancong Lin, Shiming Wang, Julie Stephany Berrio Perez, Holger Caesar</div>
+<div class="meta-line">First: 2026-07-31T10:14:08+00:00 · Latest: 2026-10-16T12:42:14+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.29237v3">Abs</a> · <a href="https://arxiv.org/pdf/2607.29237v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">LiDAR scene flow is the task of estimating point-wise motion from sequential point clouds. It is essential for autonomous driving, as it provides critical information about moving objects and their trajectories. In recent years, unsupervised methods have gained significant traction by eliminating the need for expensive point-wise annotations. However, despite incremental performance improvements, these methods uniformly rely on a single paradigm: training feed-forward networks through optimizing a loss function based on the Chamfer distance, a framework that inherently limits their progression. This paper presents CorrelationFlow, a new paradigm that reformulates LiDAR scene flow as a correlation maximization problem between Bird&#x27;s-Eye View (BEV) images. Instead of using learnable parameters, our approach employs a chain of image processing operations to solve this problem. The learning-free nature of CorrelationFlow enables strong generalization across diverse domains. This capability is demonstrated by the second-place ranking in the unsupervised track of the Argoverse 2 Scene Flow Challenge at CVPR 2026, which featured a test set spanning five datasets that cover varied vehicle platforms and environments. Our results show that this classical, model-based approach can match or even surpass the performance of learning-based methods, thereby opening a new direction for unsupervised LiDAR scene flow research. The source code will be released.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">LiDAR scene flow is the task of estimating point-wise motion from sequential point clouds.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">GroundingPI: A Grounding Foundation Model towards Physical Intelligence with Visual Primitives</div>
+<div class="meta-line">Authors: Qize Yu, Lianrui Fan, Boyu Chen, Jiaqi Liang, Xini Ding, Yue Chen, Zetian Song, Yuran Wang, Yi Zou, Kaixuan Wang, Tianxing Chen, Wenxuan Song, Bohan Zhou, Mingleyang Li, Siqiao Huang, Yuqi Ye, Caigao Jiang, Wei Wei, Ruihai Wu, Hang Zhang, Yixiao Ge, Shuchang Zhou, Shilong Liu, Xianming Liu, Ping Luo, Shiyu Huang</div>
+<div class="meta-line">First: 2026-09-30T12:20:54+00:00 · Latest: 2026-10-16T12:38:38+00:00</div>
+<div class="meta-line">Comments: 64 pages, including supplementary material. Project page: https://groundingpi.github.io/ Code: https://github.com/groundingpi/GroundingPI Model: https://huggingface.co/GroundingPI/GroundingPI</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.39601v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.39601v2">PDF</a> · <a href="https://github.com/groundingpi/GroundingPI">Code1</a> · <a href="https://huggingface.co/GroundingPI/GroundingPI">Code2</a> · <a href="https://huggingface.co/huggingface">Code3</a> · <a href="https://groundingpi.github.io/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Precise grounding matters. It specifies which object is the target and where that object is, even in clutter and for tiny objects, and it has to be fast enough for closed-loop control. Yet vision-language-action (VLA) and world-action models (WAMs) take perception from general-purpose vision-language and video-generation backbones, which still fail in these settings. We introduce GroundingPI, a 4B grounding foundation model that generates points and boxes as quantized coordinates in a shared vocabulary. Training combines multimodal and spatial pretraining, supervised fine-tuning, and reinforcement learning with GRPO, using supervision from public datasets and dedicated data engines. Against 44 baselines across 34 grounding benchmarks spanning 11 perceptual capabilities, GroundingPI establishes a new state of the art, averaging 73.68%, above the larger GPT-6 Astra (71.54%). As a downstream visual backbone, GroundingPI improves performance on robotic manipulation and autonomous driving. On RoboTwin 2.0, it outperforms every mainstream backbone we evaluate in all four out-of-distribution settings, by up to 24.8% relative to the strongest backbone. On RoboCasa-GR1, GroundingPI trained with 50% of the demonstrations outperforms those baselines trained with 75%. On nuScenes, used as the visual backbone, GroundingPI attains an average open-loop L2 error of 0.296 m. We systematically analyze GroundingPI&#x27;s pretraining in scale and data composition. Downstream autonomous driving and robotic manipulation improve as the pretraining is scaled. Analyzing the data recipe across these 11 perceptual capabilities shows dense grounding&#x27;s substantial benefits for both, and OCR&#x27;s potential as a catalyst for perceptual learning. These results support grounding as a perceptual foundation, and dedicated perceptual pretraining as a promising direction for foundation models of physical intelligence.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Precise grounding matters.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">FloodVLM-Pix: Language-Guided Pixel-Level Flood Understanding</div>
+<div class="meta-line">Authors: Chengyang Zhang, Zhihao Wang, Zhiyu Long, Xueqian Wang, Quanming Yao, Wei Wu, Gang Li</div>
+<div class="meta-line">First: 2026-10-16T12:30:30+00:00 · Latest: 2026-10-16T12:30:30+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23377v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.23377v1">PDF</a> · <a href="https://github.com/Haomiaoyanmeng/FloodPix">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">As climate change intensifies, floods are becoming more frequent and destructive, making accurate flood understanding an urgent priority. However, existing vision-language models perform poorly on flood-related tasks, suffering from attentional bias and inaccurate descriptions of flood magnitude. To bridge this gap, we construct the first large-scale remote sensing flood multi-modal benchmark that supports language-level flood understanding and pixel-level flood segmentation. The benchmark contains 131,200 flood image patches and corresponding 443,100 textual descriptions for flood severity and evolution. Based on this benchmark, we propose FloodVLM-Pix, a language-guided pixel-level flood understanding model that includes a flood prior module and a multi-temporal flood pixel decoder to achieve accurate flood understanding. The flood prior module automatically distills sub-region flood spatial priors and inputs priors into FloodVLM-Pix, solving the attentional bias problem in flood language understanding. The flood pixel decoder introduces a novel general-specific feature fusion mechanism to address performance degradation caused by interference (e.g., clouds or mountain shadows) during flood segmentation. Experiments on FloodVL-Pix demonstrate that FloodVLM-Pix improves both flood description quality and pixel-level flood segmentation performance compared with state-of-the-art VLMs and flood segmentation models. Our code and data will be released at https://github.com/Haomiaoyanmeng/FloodPix.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">As climate change intensifies, floods are becoming more frequent and destructive, making accurate flood understanding an urgent priority.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Beyond Success Rate: Interventional Evaluation of Memory in Vision-Language-Action Systems</div>
+<div class="meta-line">Authors: Keyuan Luo, Yi Xie, Wanyun Ling, Yuanzhe Li, Ziyue Li, Zhuoqi Zeng</div>
+<div class="meta-line">First: 2026-10-16T12:23:56+00:00 · Latest: 2026-10-16T12:23:56+00:00</div>
+<div class="meta-line">Comments: 41 pages, including references and appendices</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23372v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.23372v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">When we say that a robot uses memory, does that memory actually play a role? Success-rate ablations alone cannot establish the use of task-relevant facts: they change information and computation together, while aggregate rates can hide offsetting gains and losses. We propose an Interventional Memory Evaluation Protocol (IMEP) for vision-language-action (VLA) systems to address four questions: (1) Does memory provide a net benefit? (2) Under what conditions does memory help? (3) Do changes to memory alter task outcomes? (4) Are these effects specific to task-relevant facts? At the retrieval interface, we compare target-fact substitutions with fact-preserving replacements, minimal numerical perturbations, and exact replicas, while assessing decision correctness separately from motor execution success. We evaluate within-episode, cross-episode, and agentic memory. In cross-episode learned-bank experiments, a one-unit-in-the-last-place (ULP) intervention, including its installation procedure, changes 11.9% of seed-paired outcomes, while changing key facts produces no clear additional effect over fact-preserving replacements. To examine when memory helps, we introduce ChainBench, where correct decisions require historical information unavailable in current observations. The full memory configuration raises task success from 39.1% to 74.3%, matching the oracle-decision condition under shared recorded executions. These results show that correct history can support robot decisions, but establishing whether a memory system realizes this benefit requires fact-specific evidence beyond aggregate success rates.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">When we say that a robot uses memory, does that memory actually play a role?</div>
+</details>
+</div>
+<div class="card">
+<div class="title">FAER: Auditable Utility-Aligned Trajectory Replay for Language Model Post-Training</div>
+<div class="meta-line">Authors: Miaobo Hu, Shuhao Hu, Xiaobo Guo, Xin Wang, Bokun Wang, Tianshu Fu, Daren Zha</div>
+<div class="meta-line">First: 2026-09-30T09:41:08+00:00 · Latest: 2026-10-16T12:01:19+00:00</div>
+<div class="meta-line">Comments: 35 pages, 6 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.00385v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.00385v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Replay selectors often rank cached trajectories by format feedback, confidence, freshness, or response length, although cache-level correctness and downstream learner utility are distinct objectives. We formalize this selection-to-learning gap and introduce FAER as an auditable full-trajectory replay framework. Its training-free fixed selector is a protocol baseline; FAER-UTILITY is the learner-aware selector fitted on disjoint calibration blocks. The normalized gradient alignment is reported as a baseline, while a disposable optimizer-aware virtual update supplies a magnitude-aware utility surface. The audit contract freezes observed fields and replay traces before evaluation labels are joined. On GSM8K with Qwen2.5-1.5B-Instruct, the matched learner study reports quality 0.6329 for the fixed selector, compared with 0.5482 for uniform and 0.6037 for format-feedback under 128 updates. Metadata-only cross-fitted calibration reaches $0.6476\!\pm\!0.0139$ over eight seeds (median 0.6481; paired 95% interval $[+0.079,+0.122]$) at 63,276 target-run tokens; its recorded full cost is 189,642 tokens and 3.48 GPU-hours including calibration. The completed FAER-UTILITY row reaches 0.6624 at 62,844 target-run tokens and 4.26 GPU-hours. Format-feedback selects records with correctness 0.6953, compared with 0.3594 for the fixed selector, despite the different downstream ranking. The completed comparison surfaces report the learner-aware ablation, same-seed gap, policy-optimization rows, and strict zero-shot transfer.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Replay selectors often rank cached trajectories by format feedback, confidence, freshness, or response length, although cache-level correctness and downstream learner utility are distinct objectives.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">CatchUp: Depth-Aware Re-Admission of Visual Tokens for Efficient Large Vision-Language Models</div>
+<div class="meta-line">Authors: Eunju Park, Uiwon Hwang</div>
+<div class="meta-line">Venue: WACV 2027</div>
+<div class="meta-line">First: 2026-10-16T11:28:46+00:00 · Latest: 2026-10-16T11:28:46+00:00</div>
+<div class="meta-line">Comments: WACV 2027. Code: https://github.com/pej0918/CatchUp</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23324v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.23324v1">PDF</a> · <a href="https://github.com/pej0918/CatchUp">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Large Vision-Language Models (LVLMs) repeatedly process hundreds of visual tokens across decoder layers, incurring substantial computation and memory costs. Existing inference-time visual token pruning methods often irreversibly remove low-ranked tokens, although the set of visual tokens receiving high query-conditioned attention can change across decoder depth. Recoverable routing preserves skipped tokens for later reconsideration, but re-admits them with stale representations after bypassing intermediate transformations. We further find that replacing stale re-admitted states with their current-depth oracle states from a full-token reference trajectory substantially improves grounding performance. We therefore propose CatchUp, a training-free framework for depth-aware visual-token re-admission. CatchUp repeatedly re-evaluates query-conditioned visual relevance, processes only selected visual tokens through each decoder interval, and preserves deferred tokens for later re-admission. Upon re-admission, CatchUp approximates missed representation evolution using reference-to-current transition signals from semantically and spatially related visual tokens. Across three referring-expression grounding datasets and six multimodal benchmarks, CatchUp achieves the highest average relative retention in both benchmark groups at 64-, 128-, and 192-token budgets. At a 64-token budget with 88.9% fewer active visual tokens, CatchUp retains 92.17% of the full model&#x27;s performance on average across six multimodal benchmarks while reducing end-to-end latency by 8.0%. Code is available at https://github.com/pej0918/CatchUp</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Large Vision-Language Models (LVLMs) repeatedly process hundreds of visual tokens across decoder layers, incurring substantial computation and memory costs.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Look, Reason, Draw a Region: Recursive Refinement for Spatial Context Prediction</div>
+<div class="meta-line">Authors: Wajeeha Tahir, Anna Tegon, Lionnus Kesting, Gamze İslamoğlu, Kristóf Karacs, Luca Benini, Thorir Mar Ingolfsson</div>
+<div class="meta-line">First: 2026-10-16T11:06:34+00:00 · Latest: 2026-10-16T11:06:34+00:00</div>
+<div class="meta-line">Comments: 17 pages, 6 figures, 3 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23302v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.23302v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Spatial context prediction requires visual grounding and spatial reasoning to identify vacant regions relative to objects in a scene. Spatial relationships and physical constraints remain challenging for large vision-language models (VLMs). Recursive reasoning has demonstrated strong performance on discrete and abstract reasoning tasks, motivating its use for improving spatial context prediction in natural images. Weight sharing enables higher accuracy with a small trainable parameter count. We introduce Spatial-TRM, a compact recursive model with frozen vision-language features, a convex region decoder, and just 11.2M trainable parameters. This weight-tied reasoner supports six spatial relationships, three reference frames, and open-vocabulary anchor objects. On the RoboSpatial-Home benchmark, Spatial-TRM achieves 29.51% context accuracy, a gain of 9.02 percentage points (44.0% relative) over a separately trained single-step model with the same parameter count. Including the frozen encoders, the model has 877.8M total parameters, approximately $15\times$ fewer than the reported 13B size of RoboPoint. These results show that repeated refinement improves spatial context prediction from pretrained vision-language features at a fixed trainable parameter count on this benchmark.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Spatial context prediction requires visual grounding and spatial reasoning to identify vacant regions relative to objects in a scene.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">FlashReFocus: Interactive Image Refocusing in Seconds</div>
+<div class="meta-line">Authors: Ching-Heng Cheng, Chia-Ming Lee, Ming-Ching Chang, Xin Li, Yu-Lun Liu, Chih-Chung Hsu</div>
+<div class="meta-line">First: 2026-10-16T11:04:18+00:00 · Latest: 2026-10-16T11:04:18+00:00</div>
+<div class="meta-line">Comments: 38 pages (8 main + appendix), 47 figures, 16 tables. Project page: https://ming053l.github.io/FlashReFocus/ Code: https://github.com/ming053l/FlashReFocus</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23297v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.23297v1">PDF</a> · <a href="https://github.com/ming053l/FlashReFocus">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a> · <a href="https://ming053l.github.io/FlashReFocus/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Single-image refocusing changes the focal plane and depth of field of a photograph after capture. It is inherently interactive: users try many focal points and blur strengths on one image, so each edit should be fast and change only the blur. Recent generative methods, however, rerun large diffusion models for every edit. We observe that the two sub-problems differ in kind: recovering the all-in-focus image is ill-posed and needs a generative prior, whereas rendering blur is largely determined by depth and the focal plane. We therefore propose FlashReFocus, which runs diffusion once per photograph and renders every edit with a lightweight network. To address the ill-posed restoration, a one-step diffusion deblurrer with a decoder refiner recovers fine detail efficiently while balancing fidelity and perceptual quality. For precise control, the renderer is conditioned on an explicit defocus map and uses defocus-bias attention, which lets pixels at similar defocus share information without interference from pixels at other depths; in-focus content stays unchanged, and editing the map yields tilt-shift and two focal planes. To further test generalization to unseen cameras, we collect 3CReal, a three-camera benchmark of 89 pairs. FlashReFocus achieves the best perceptual fidelity for zero-shot bokeh rendering on EBB! and 3CReal, refocuses 148.3x faster than GenRefocus, and takes about half a second per further edit, 462x faster.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Single-image refocusing changes the focal plane and depth of field of a photograph after capture.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">NestedVLA: Learning to Consolidate and Generate Skills for Vision-Language-Action Models</div>
+<div class="meta-line">Authors: Guodong Du, Wanyu Lin</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-10-16T10:42:29+00:00 · Latest: 2026-10-16T10:42:29+00:00</div>
+<div class="meta-line">Comments: Accepted at NeurIPS 2026. 23 pages, 3 figures. Code: https://github.com/WanyuGroup/NeurIPS2026-NestedVLA</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23271v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.23271v1">PDF</a> · <a href="https://github.com/WanyuGroup/NeurIPS2026-NestedVLA">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Vision--Language--Action (VLA) models promise generalist robotic agents, yet consolidating skills learned across heterogeneous tasks and environments remains difficult: training data is fragmented across platforms, joint multi-task training suffers from interference, and model merging tends to introduce parameter conflicts or require architectural changes. We instead advocate a paradigm in which skills are first learned independently and then consolidated post hoc. To this end, we propose NestedVLA, which replaces parameter aggregation with parameter generation: a nested hypernetwork, conditioned on the target task, synthesizes task-adaptive action-expert parameters that compose with a frozen base VLA. Task-specific compressed VLM residuals are retained separately. This formulation enables flexible task-conditioned skill reuse while mitigating interference. Across three RL benchmarks (MetaWorld, ManiSkill, CALVIN), NestedVLA outperforms the strongest model-merging baseline by 41 pp on average, matches per-task fine-tuning within 1 pp on ManiSkill, and substantially closes the gap on CALVIN, pointing toward a storage-efficient route to skill consolidation. Code is available at https://github.com/WanyuGroup/NeurIPS2026-NestedVLA.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Vision--Language--Action (VLA) models promise generalist robotic agents, yet consolidating skills learned across heterogeneous tasks and environments remains difficult: training data is fragmented across platforms, joint multi-task training suffers from interference, and model merging tends to introduce parameter conflicts or require architectural changes.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">SpaceCast-Bench: Evaluating Predictive Spatial Reasoning in Vision-Language Models</div>
+<div class="meta-line">Authors: Hongxing Li, Jinyue Su, Dingming Li, Wenqi Zhang, Weiming Lu, Jun Xiao, Yueting Zhuang, Yongliang Shen</div>
+<div class="meta-line">First: 2026-10-08T17:44:17+00:00 · Latest: 2026-10-16T10:40:25+00:00</div>
+<div class="meta-line">Comments: Project Page: https://zjureal.com/SpaceCast-Bench Code: https://github.com/ZJU-REAL/SpaceCast-Bench</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.12402v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.12402v2">PDF</a> · <a href="https://github.com/ZJU-REAL/SpaceCast-Bench">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Existing spatial reasoning benchmarks mainly test spatial perception: reading off relations already visible in the input. Yet real-world spatial intelligence demands predictive spatial reasoning: constructing a scene from observations, anticipating how an intervention changes it, and reasoning about the unseen outcome. We introduce SpaceCast-Bench, the first benchmark to directly and diagnostically evaluate this capability. Built around an observe-transform-infer framework, its 3,862 questions from 182 real-world scenes span 16 task types at three levels: static perception, local prediction, and global prediction, progressively requiring scene understanding, spatial state updating, and relational inference over unobserved outcomes. Evaluating 21 models exposes a stark gap: the strongest model reaches only 58.0% against 87.2% human performance, while spatially specialized models remain near random chance. Controlled analyses further reveal that bridge views are critical for integrating distributed observations, and that explicit 3D evidence benefits models more reliably than generated outcome images or videos. Fine-tuning on our programmatically generated data lifts Qwen3-VL-4B from 34.0% to 65.7% with macro-average gains across six out-of-domain benchmarks.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Existing spatial reasoning benchmarks mainly test spatial perception: reading off relations already visible in the input.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Can the Parts Fool the Test? Counterfactual Pairing Cycles for Relational OOD</div>
+<div class="meta-line">Authors: Yibo Zhou, Yirong Xiang</div>
+<div class="meta-line">Venue: Neurips 2026</div>
+<div class="meta-line">First: 2026-10-16T10:22:00+00:00 · Latest: 2026-10-16T10:22:00+00:00</div>
+<div class="meta-line">Comments: Accepted at Neurips 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23248v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.23248v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Relational out-of-distribution errors are easy to describe and hard to evaluate cleanly. An image may be natural, a caption may be fluent, and all mentioned objects may be common, yet the caption may describe the wrong relation in the image. Many evaluations intended to test this behavior can be solved without checking the pairing at all, because negatives differ in caption style, template, length, object frequency, or image statistics. We propose counterfactual pairing cycles, a blocked evaluation primitive that reuses the same two images and the same two captions on both sides of the comparison, changing only which image is paired with which caption. This makes image-only, text-only, and additive component shortcuts cancel exactly in finite samples. The same contrast also gives a training loss for relational outlier exposure and a diagnostic for bilinear vision-language scores. Across synthetic controls, GQA, and COCO, cycles separate coarse image-caption matching from directional role-binding failures, while also identifying geometric size relations that remain strongly visible in global features. In a shortcut-contaminated COCO outlier-exposure stress test, a model selected by a near-perfect shortcut validation AUROC retains substantial relational signal but remains below cycle training on exact cycles; cycle training improves CycleAcc from 0.882 to 0.927. The main lesson is simple: to test whether a model understands a pairing, the benchmark should keep the parts fixed, change the pairing, and ask only about coupling. The official implementation is available online.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Relational out-of-distribution errors are easy to describe and hard to evaluate cleanly.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">RAP: A Dataset for Paper-to-Poster Generation via Declarative Markup from Human-Crafted Exemplars</div>
+<div class="meta-line">Authors: Haonan Han, Yukang Lin, Minliang Lin, Haoxian Tan, Jun-Yan He, Rui Yang, Zhi-Qi Cheng, Jie Hu, Guanglu Wan, Xiu Li</div>
+<div class="meta-line">First: 2026-10-16T09:59:22+00:00 · Latest: 2026-10-16T09:59:22+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23230v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.23230v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://reconstruct-a-poster.github.io/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Making a conference poster is visual coding in miniature: an entire paper must be compressed onto a single page, which exercises summarization, visual design, and code implementation at once, using nothing beyond the paper itself. Yet benchmarks for this task in the context of visual coding remain scarce: existing resources are small and annotated only with layout boxes, so evaluation must fall back on VLM-as-judge or human checklists rather than objective render-and-compare, and the generation methods they support design layouts from scratch, leaving human-crafted posters unusable as either a retrievable design library or as verified supervision. We introduce RAP (Reconstruct A Poster), a dataset and benchmark for paper-to-poster generation as a visual coding task. RAP contains 25K+ verified paper-poster pairs from various machine learning conferences held between 2022 and 2026, annotated with a three-level content taxonomy, plus a held-out benchmark of 150 test papers each paired with its human poster. A fully automated derendering pipeline turns each poster into styled HTML/CSS of typed, refillable slots, so every sample is a paper-poster-markup triplet verifiable by rendering against the source poster. The corpus serves both inference and training: PosterRAG, a training-free multi-agent pipeline, retrieves an exemplar and refills its slots without touching layout or styling, while an SFT+RL recipe trains a dedicated model from the same triplets. An online demo is available at https://reconstruct-a-poster.github.io/.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Making a conference poster is visual coding in miniature: an entire paper must be compressed onto a single page, which exercises summarization, visual design, and code implementation at once, using nothing beyond the paper itself.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Towards Unified World Models for Visual Navigation via Memory-Augmented Planning and Foresight</div>
+<div class="meta-line">Authors: Yifei Dong, Fengyi Wu, Guangyu Chen, Lingdong Kong, Qiyu Hu, Yuxuan Zhou, Xu Zhu, Jingdong Sun, Jun-Yan He, Qi Dai, Alexander G. Hauptmann, Zhi-Qi Cheng</div>
+<div class="meta-line">Venue: ECCV 2026</div>
+<div class="meta-line">First: 2025-10-09T18:18:11+00:00 · Latest: 2026-10-16T09:44:37+00:00</div>
+<div class="meta-line">Comments: Accepted to ECCV 2026. 22 pages, 12 figures, code: https://github.com/UWMILab/UniWM</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2510.08713v4">Abs</a> · <a href="https://arxiv.org/pdf/2510.08713v4">PDF</a> · <a href="https://github.com/UWMILab/UniWM">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Enabling embodied agents to imagine future states is essential for robust and generalizable visual navigation. Yet, state-of-the-art systems typically rely on modular designs that decouple navigation planning from visual world modeling, which often induces state-action misalignment and weak adaptability in novel or dynamic scenarios. We propose UniWM, a unified, memory-augmented world model that integrates egocentric visual foresight and planning within a single multimodal autoregressive backbone. UniWM explicitly grounds action selection in visually imagined outcomes, tightly aligning prediction with control. Meanwhile, a hierarchical memory mechanism fuses short-term perceptual cues with longer-term trajectory context, supporting stable and coherent reasoning over extended horizons. Extensive experiments on four challenging benchmarks (Go Stanford, ReCon, SCAND, HuRoN) and the 1X Humanoid Dataset show that UniWM improves navigation success rates by up to 30%, substantially reduces trajectory errors against strong baselines, generalizes zero-shot to the unseen TartanDrive dataset, and scales naturally to high-dimensional humanoid navigation. These results position UniWM as a principled step toward unified, imagination-driven embodied navigation. The code and models are available at https://github.com/UWMILab/UniWM.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Enabling embodied agents to imagine future states is essential for robust and generalizable visual navigation.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">OxyGen: Unified KV Cache Management for VLA Inference under Multi-Task Parallelism</div>
+<div class="meta-line">Authors: Xiangyu Li, Huaizhi Tang, Xin Ding, Weijun Wang, Ting Cao, Yunxin Liu</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-03-15T13:23:56+00:00 · Latest: 2026-10-16T08:33:36+00:00</div>
+<div class="meta-line">Comments: NeurIPS 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.14371v5">Abs</a> · <a href="https://arxiv.org/pdf/2603.14371v5">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Embodied AI agents increasingly require parallel execution of multiple tasks, such as manipulation, conversation, and memory construction, from shared observations under distinct time constraints. Recent Mixture-of-Transformers (MoT) Vision-Language-Action Models (VLAs) support such heterogeneous outputs, yet existing inference systems incur redundant computation and resource contention when serving concurrent tasks on-device. We identify isolated KV cache management as the root cause. To address this, we propose unified KV cache management, an inference design that treats the KV cache as a first-class shared resource across tasks and control cycles. This abstraction enables two key optimizations: cross-task KV sharing eliminates redundant prefill of shared observations, while cross-frame continuous batching batches unfinished language requests from different frames and advances them within a per-frame decoding budget. We implement this design in OxyGen and evaluate $π_{0.5}$ on NVIDIA GeForce RTX 4090 and Jetson AGX Thor. OxyGen achieves up to 3.7$\times$ speedup over isolated execution, delivering over 200 tokens/s language throughput and 70 Hz action frequency simultaneously on RTX 4090. We also validate the design on Xiaomi-Robotics-0 and StarVLA across different backbones and expert configurations. We further demonstrate the inference gains on a humanoid robot with on-board Jetson AGX Thor.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Embodied AI agents increasingly require parallel execution of multiple tasks, such as manipulation, conversation, and memory construction, from shared observations under distinct time constraints.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Reliability-Consistent Appearance Modeling for RGB-Infrared Multi-Object Tracking</div>
+<div class="meta-line">Authors: Bingyang Wang, Jiazuo Yu, Lu Zhang, Lihe Zhang, Huchuan Lu, You He</div>
+<div class="meta-line">First: 2026-10-16T08:30:48+00:00 · Latest: 2026-10-16T08:30:48+00:00</div>
+<div class="meta-line">Comments: 10 pages, 6 figures. Submitted to IEEE Transactions on Multimedia</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23125v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.23125v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Recent RGB-infrared multi-object tracking (MOT) methods have substantially improved cross-modal representation learning and multimodal information integration. However, most existing methods compress RGB and infrared evidence into a unified descriptor. When one modality is temporarily degraded, the tracker can no longer regulate its contribution separately; unreliable evidence may distort association and contaminate appearance memory. We therefore propose RCA-MOT, a reliability-consistent appearance modeling framework that preserves cross-modal complementarity while retaining post-representation evidence controllability. RGB-specific, infrared-specific, and fused identity representations are maintained as jointly accessible appearance states. For each detection, a simple training-free target-scene estimator produces branch-wise appearance reliability used across the two temporal roles of appearance: relative reliability regulates different identity branches, absolute reliability calibrates borderline candidates near the ReID acceptance boundary, and the same branch-wise reliability controls how strongly matched descriptors update historical appearance memory. The individual components are intentionally simple, focusing evaluation on reliability-controllable appearance organization rather than elaborate fusion or learned reliability-estimation modules. RCA-MOT sets new SOTA results on VT-MOT and UniRTL, improving the previous best HOTA by 5.402/6.075 points and IDF1 by 11.549/12.789 points, respectively, while post-hoc analyses further validate reliability as an informative control signal. Code will be released upon acceptance.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Recent RGB-infrared multi-object tracking (MOT) methods have substantially improved cross-modal representation learning and multimodal information integration.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Domain-specific language alignment of multimodal embeddings towards explainable predictions</div>
+<div class="meta-line">Authors: Gabrielė Tijūnaitytė, Thijs L. van der Plas, Mohamed-Bachir Belaid, Rob Knapen, Maciej J. Soja, Ioannis N. Athanasiadis</div>
+<div class="meta-line">First: 2026-10-16T08:20:18+00:00 · Latest: 2026-10-16T08:20:18+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23110v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.23110v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Multimodal data are commonly fused into latent representations that improve downstream task performance but are not interpretable, limiting their application in domains that require explainable model decisions. Vision-language alignment has made image embeddings interpretable through language, but requires vast image-caption training data. However, captioned data are typically not available for multimodal embeddings, as relevant features cannot directly be observed and annotated from embeddings alone. Here, we propose a framework to language-align any embedding space that can be linked to interpretable auxiliary data. Captioning functions convert auxiliary data into partial captions; a soft contrastive loss weights pairs by the similarity of their properties that each caption describes; and a rank-based concept retrieval task evaluates alignment against the auxiliary data rather than the captions. We apply this framework to multimodal Earth embeddings to facilitate explainable predictions for two species distribution modelling tasks: S2BMS and SatBird. AlphaEarth embeddings beat previous state-of-the-art models on 6/7 metrics, while our framework language-aligns domain-specific concepts of the embedding space, outperforming previous Earth observation vision-language models on average concept retrieval for both datasets. Finally, aligned concepts recover species-habitat associations ($ρ$=0.44) and relate habitat descriptions to species predictions, showing that abstract embeddings can be interrogated in the language of domain experts.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Multimodal data are commonly fused into latent representations that improve downstream task performance but are not interpretable, limiting their application in domains that require explainable model decisions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">RAD: A Realistic Multi-View Benchmark for Pose-Agnostic Anomaly Detection</div>
+<div class="meta-line">Authors: Xinhai Chang, Kaichen Zhou, Taewhan Kim, Jiadong Zhang, Yang Cao, Chufei Peng, Fangneng Zhan, Hao Zhao, Hao Dong, Kai Ming Ting, Ye Zhu</div>
+<div class="meta-line">First: 2024-10-01T14:05:35+00:00 · Latest: 2026-10-16T08:08:10+00:00</div>
+<div class="meta-line">Comments: 19 pages, 5 figures. Corrected public-release dataset statistics (4,047 RGB images) and updated corresponding figures, tables, and layout</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2410.00713v8">Abs</a> · <a href="https://arxiv.org/pdf/2410.00713v8">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://chang-xinhai.github.io/rad-website/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Anomaly detection is essential for robotic perception and industrial inspection, yet most benchmarks are collected under controlled conditions with fixed viewpoints and stable illumination. These settings do not reflect robotic deployment, where camera pose, lighting, and surface reflectance vary continuously. We present RAD (Realistic Anomaly Detection), a robot-captured multi-view benchmark for pose-agnostic anomaly detection. RAD contains 4,047 RGB images from 13 everyday object categories, captured from 68 viewpoints per object with a Franka robotic arm and an RGB-D camera under uncontrolled lighting. The dataset covers four realistic defect types: scratched, missing, stained, and squeezed, with pixel-level annotations for localization. We benchmark representative 2D feature-based methods, 3D reconstruction pipelines, and vision-language models under a realistic setting in which test poses are unknown. Results show a clear gap between performance on conventional benchmarks and performance on RAD. Strong 2D feature-embedding methods remain the most reliable at image-level detection, whereas 3D approaches are more competitive for pixel-level localization but remain vulnerable to reflective materials, geometric symmetry, and sparse viewpoint coverage. Vision-language models perform poorly in both classification and localization. RAD provides a challenging testbed for robust robotic inspection and highlights open problems in jointly modeling appearance, geometry, and viewpoint uncertainty. Our website and code are available at https://chang-xinhai.github.io/rad-website/.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Anomaly detection is essential for robotic perception and industrial inspection, yet most benchmarks are collected under controlled conditions with fixed viewpoints and stable illumination.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">ME-VLM: A Unified VLM for Embodied Cognition and Agent Coordination</div>
+<div class="meta-line">Authors: Foundation Model, Li Auto Inc</div>
+<div class="meta-line">First: 2026-09-21T12:59:59+00:00 · Latest: 2026-10-16T07:41:58+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.24526v4">Abs</a> · <a href="https://arxiv.org/pdf/2609.24526v4">PDF</a> · <a href="https://github.com/MachEmbodied/ME-VLM">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Physical AI requires models to ground visual and linguistic understanding in real-world environments while accounting for environmental constraints and execution feedback. We introduce MachEmbodied-VLM (ME-VLM), a unified vision-language model with two variants, 4B and 35B-A3B, that brings together embodied cognition and multimodal agent capabilities. Our work emphasizes physical perception and spatiotemporal reasoning, together with planning, interaction, and outcome assessment in both digital and physical environments. We construct training data spanning embodied and multimodal agent tasks, including execution observations and feedback to support outcome assessment and decision refinement. The training pipeline comprises embodied capability injection, separate reinforcement learning of embodied and multimodal-agent experts, and multi-teacher on-policy distillation that consolidates their complementary capabilities into a single model. Experiments show competitive performance on both embodied and agent benchmarks, as well as on autonomous-driving and embodied-navigation tasks. For edge deployment, visual token compression, W4A8 quantization, and hardware-software co-optimization enable on-device inference of the 4B variant on the M100, reducing prefill latency from 400 ms to 188 ms. Project Page: https://machembodied.com/ME-Brain/ME-VLM.html Code Repository: https://github.com/MachEmbodied/ME-VLM</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Physical AI requires models to ground visual and linguistic understanding in real-world environments while accounting for environmental constraints and execution feedback.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Unifying Embodied Foundation Models via a Model-to-Policy Formulation</div>
+<div class="meta-line">Authors: Xinyi Hong, Mingyang Ren</div>
+<div class="meta-line">First: 2026-10-16T07:30:52+00:00 · Latest: 2026-10-16T07:30:52+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23053v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.23053v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Vision-language-action (VLA) models and world-action models (WAMs) have emerged as promising approaches to robot learning and control. These models integrate multimodal perception and action generation, but differ in their architectures, output representations, and learning objectives. In this paper, we present a unified, architecture-agnostic probabilistic formulation for embodied foundation models based on stochastic kernels. Our formulation has two key components: (i) we characterize embodied foundation models through conditional output distributions and action-realization kernels, which together induce task-conditioned robot policies; and (ii) we connect pretraining and post-training to policy deployment, accommodating model-specific pretraining objectives and offline or online post-training strategies. We instantiate the formulation for OpenVLA and DreamZero, covering autoregressive action-token prediction and joint video-action generation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Vision-language-action (VLA) models and world-action models (WAMs) have emerged as promising approaches to robot learning and control.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">RoTA-Bench: Evaluating 3D Spatial Reasoning through Interactive Projection Alignment</div>
+<div class="meta-line">Authors: Qingchuan Ma, Yuexiao Ma, Xiang Meng, Yixuan Zou, Tianyu Xie, Wang Chen, Yuhui Zeng, Yuhang Wu, Rongrong Ji, Xiawu Zheng</div>
+<div class="meta-line">First: 2026-10-13T03:46:48+00:00 · Latest: 2026-10-16T07:18:17+00:00</div>
+<div class="meta-line">Comments: 31 pages, 2 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.17665v3">Abs</a> · <a href="https://arxiv.org/pdf/2610.17665v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Can vision-language models turn 2D observations into 3D understanding that supports precise action? This requires inferring object geometry, anticipating the effects of rotation, and refining actions through visual feedback. We introduce RoTA-Bench to evaluate these abilities through interactive 3D-to-2D projection alignment. Given a target silhouette, a model observes a rotated object and chooses successive rotations to recover the target projection within a limited action budget. Our automated pipeline constructs silhouette-preserving 3D objects from 2D icons and uses reversible initialization to guarantee solvability, yielding 674 tasks and a stratified 100-task test set. Empirically, we find that (i) a substantial human-model gap persists: GPT-5.6-Sol succeeds on only 17% of tasks, whereas 20 undergraduate participants collectively complete the test set four times with a 100% success rate; (ii) image-space and pose-space progress can diverge: at matched states, the model more often improves silhouette overlap while worsening pose alignment than humans (19.4% vs. 10.9%); and (iii) fine-grained control is sensitive to interaction history: removing it leaves 96.8% of the model&#x27;s actions at a coarse 30-degree step size and sharply reduces observed task success. These findings highlight the challenge of converting visual evidence into precise 3D control, beyond recognizing or matching individual images.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Can vision-language models turn 2D observations into 3D understanding that supports precise action?</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Schrödinger&#x27;s Navigator: Imagining an Ensemble of Futures for Zero-Shot Object Navigation</div>
+<div class="meta-line">Authors: Yu He, Da Huang, Zhenyang Liu, Zixiao Gu, Qiang Sun, Guangnan Ye, Yanwei Fu, Yu-Gang Jiang</div>
+<div class="meta-line">Venue: CoRL</div>
+<div class="meta-line">First: 2025-12-24T14:28:17+00:00 · Latest: 2026-10-16T07:12:44+00:00</div>
+<div class="meta-line">Comments: Accepted to the Conference on Robot Learning (CoRL) 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2512.21201v5">Abs</a> · <a href="https://arxiv.org/pdf/2512.21201v5">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Zero-shot object navigation (ZSON) requires robots to find target objects in unseen environments without task-specific fine-tuning or pre-built maps, a key capability for general-purpose service robots. Yet methods that perform well in simulation often degrade in cluttered real-world scenes with severe occlusion and latent hazards, where large unseen regions make single-scene inference brittle and unsafe. We propose Schrödinger&#x27;s Navigator, a belief-aware framework that reasons at inference time over multiple trajectory-conditioned imagined 3D futures. Given candidate paths, a trajectory-conditioned 3D world model predicts hypothetical observations and maintains a superposition of plausible scene realizations rather than committing to one map. An adaptive occluder-aware sampler directs imagination to uncertainty-critical regions, while a Future-Aware Value Map (FAVM) aggregates imagined futures for robust, proactive action selection. Experiments in simulation and on a physical Go2 quadruped show that Schrödinger&#x27;s Navigator outperforms strong ZSON baselines, improving hidden-target discovery and risk-aware waypoint selection in occlusion-heavy navigation scenarios. These results highlight imagined 3D futures as a scalable and generalizable strategy for zero-shot navigation in uncertain real-world environments.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Zero-shot object navigation (ZSON) requires robots to find target objects in unseen environments without task-specific fine-tuning or pre-built maps, a key capability for general-purpose service robots.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">ADEPT: Accelerating Dexterity via Pre-Training and Post-Training using Reinforcement Learning</div>
+<div class="meta-line">Authors: Jayjun Lee, Jessica Yin, Asif Rana, Nicholas Blauch, Octi Zhang, Sam Mady, Mohak Bhardwaj, Nima Fazeli, Nathan Ratliff, Karl Van Wyk, Ankur Handa</div>
+<div class="meta-line">Venue: CoRL 2026</div>
+<div class="meta-line">First: 2026-08-19T17:55:06+00:00 · Latest: 2026-10-16T07:12:42+00:00</div>
+<div class="meta-line">Comments: Accepted at CoRL 2026 | Project page: https://adept-dexterity.github.io/</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.19182v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.19182v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://adept-dexterity.github.io/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We introduce Accelerating Dexterity via Pre-Training (ADEPT), a large-scale reinforcement learning (RL) framework for learning sim-to-real transferable dexterity across high degree-of-freedom (DoF) robot embodiments that can solve long-horizon tasks directly from raw visuo-tactile perception. ADEPT pretrains a dexterous policy on a generic object reposing task, then post-trains downstream policies with this pretrained behavior as a prior. ADEPT enables learning new behaviors that are otherwise difficult to discover from scratch on multi-fingered robots and avoids learning the same set of skills over again for every new downstream task. The pretrained policy zero-shots the reposing phase of downstream tasks, but naïve RL fine-tuning rapidly degrades this capability during transfer. We address this with a stable post-training recipe combining behavior-cloning distillation, critic warm-up, and conservative on-policy updates. To safely exploit the full kinematic dexterity, we introduce a joint-space Geometric Fabric that mediates between the RL policy and the robot. We distill post-trained teachers into perceptive students that zero-shot sim-to-real transfer on two embodiments: a 23 DoF Kuka-Allegro with two RGB cameras, and a 29 DoF Flexiv-Sharpa with two RGB cameras and five vision-based tactile sensors, and can solve long-horizon tasks from challenging initial states with dexterity at human-level speed.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We introduce Accelerating Dexterity via Pre-Training (ADEPT), a large-scale reinforcement learning (RL) framework for learning sim-to-real transferable dexterity across high degree-of-freedom (DoF) robot embodiments that can solve long-horizon tasks directly from raw visuo-tactile perception.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">TORINO: Token Reduction via Interpretable Concept Overlap in Vision-Language Models</div>
+<div class="meta-line">Authors: Riccardo Renzulli, Gabriele Spadaro, Shruthi Gowda, Alaa Eddine Mazouz, Van-Tam Nguyen</div>
+<div class="meta-line">Venue: WACV 2027</div>
+<div class="meta-line">First: 2026-07-06T01:43:09+00:00 · Latest: 2026-10-16T07:05:50+00:00</div>
+<div class="meta-line">Comments: Accepted at WACV 2027</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.04593v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.04593v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://eidoslab.github.io/TORINO">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Vision-Language Models (VLMs) have demonstrated impressive capabilities across different tasks, but their computational cost is dominated by the large number of visual tokens fed to the language model. Existing token reduction methods rely on attention-based scores or pairwise similarity, without an explicit semantic representation of each token. We introduce TORINO (TOken Reduction via Interpretable coNcept Overlap), a plug-and-play framework for adaptive visual token reduction in VLMs that requires no fine-tuning of the underlying model. TORINO leverages Sparse Autoencoders (SAEs) to project visual tokens into an interpretable latent space where token relationships can be analyzed through shared concept activations. Specifically, we define concept overlap as the degree of agreement between active SAE latents and use it to group tokens that share semantic content. Reduction within each group is then performed by either pruning or merging, providing a unified framework that preserves semantically important visual information while removing redundancy. Unlike fixed-budget approaches, TORINO dynamically adapts the reduction rate to input complexity, allowing different images to retain different numbers of tokens. Experiments across multiple vision-language benchmarks show that TORINO achieves favorable efficiency-accuracy trade-offs, reducing the number of visual tokens with minimal performance loss. Source code released at https://eidoslab.github.io/TORINO.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Vision-Language Models (VLMs) have demonstrated impressive capabilities across different tasks, but their computational cost is dominated by the large number of visual tokens fed to the language model.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">GOLD: Geometric Optimized Latent Diffusion for Structure-Aware RNA Inverse Folding</div>
+<div class="meta-line">Authors: Qi Si, Xuyang Liu, Penglei Wang, Shuo Su, Limei Han, Mengzhu Li, Xin Guo, Yuan Qi, Yuan Cheng</div>
+<div class="meta-line">Venue: NeurIPS 2026 Spotlight</div>
+<div class="meta-line">First: 2026-10-16T06:16:09+00:00 · Latest: 2026-10-16T06:16:09+00:00</div>
+<div class="meta-line">Comments: Accept as a Spotlight Paper in NeurIPS 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22992v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22992v1">PDF</a> · <a href="https://github.com/darkflash03/GOLD">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Designing RNA sequences that fold into specific 3D structures is a fundamental challenge in therapeutics. Current RNA inverse folding methods typically condition on 3D backbone coordinates but the generation is limited to 1D discrete sequences. This ignores the continuous side-chain orientations, which are essential for overall structural stability. To address this issue, we explicitly introduce side-chain geometry into the RNA generative process. Unlike co-design frameworks that diffuse across separate raw spaces, we propose Geometric Optimized Latent Diffusion (\textbf{GOLD}), which project sequence and structure into a unified latent manifold. GOLD employs a novel GeoVAE to elegantly integrate discrete RNA sequences with continuous side-chain angles. By mapping these modalities into a single, smooth latent manifold, GOLD naturally facilitates a synergistic co-diffusion process. To enhance structural validity, we further introduce a training-free, gradient-guided sampling mechanism. By decoding the generated sequence probabilities and side-chain geometries into structures during the sampling process, we compute analytical gradients from physical constraints. This dynamic feedback actively guides the generated sequence to a physically stable state. Extensive experiments validate the superiority of GOLD, achieving state-of-the-art performance across sequence recovery, secondary structure validity, and 3D foldability metrics. Our code and data are publicly available at https://github.com/darkflash03/GOLD.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Designing RNA sequences that fold into specific 3D structures is a fundamental challenge in therapeutics.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Demystifying When and Why VLAs Fail in Contact-Rich Tasks and How to Fix Them</div>
+<div class="meta-line">Authors: Carlota Parés-Morlans, Nils Kuhn, Y. Isabel Liu, Alberta Longhini, Jeannette Bohg</div>
+<div class="meta-line">Venue: CoRL 2026 Spotlight</div>
+<div class="meta-line">First: 2026-08-02T17:34:19+00:00 · Latest: 2026-10-16T06:10:02+00:00</div>
+<div class="meta-line">Comments: 17 pages, Spotlight at CoRL 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.01402v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.01402v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We address the problem of understanding when and why Vision-Language-Action models struggle with contact-rich manipulation tasks that require precise physical interaction. Prior work has primarily focused on addressing contact failures through force-augmented architectures and training-time regularizers, yet the factors contributing to these failures remain underexplored. We identify two distinct failure modes underlying this gap. Precision failures occur when policies struggle to produce the small, accurate corrective actions required during contact and force failures occur when policies fail to respond to contact forces. To address these failures, we propose FACT. During post-training, FACT increases low noise sampling to improve fine action prediction and incorporates structured force conditioning to guide action generation using contact state and force history. FACT achieves an average success rate of 66% across five contact-rich tasks against 41% for the best prior baseline, in an evaluation spanning almost 2,500 real-world rollouts.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We address the problem of understanding when and why Vision-Language-Action models struggle with contact-rich manipulation tasks that require precise physical interaction.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">How Murky Before a VLM Knows It Cannot See? Accuracy, Confidence and Abstention on a Physical Visibility Axis</div>
+<div class="meta-line">Authors: Mochamad Rizal Fauzan, Irgi Surya</div>
+<div class="meta-line">First: 2026-10-16T06:04:26+00:00 · Latest: 2026-10-16T06:04:26+00:00</div>
+<div class="meta-line">Comments: 16 pages, 9 figures, 10 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22981v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22981v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Robustness studies of vision-language models (VLMs) grade degradation on nominal severity scales (&quot;level 1-5&quot;) that carry no physical units, and they rarely ask whether a model&#x27;s confidence follows the loss of visibility. We measure accuracy, internal (token-probability) confidence, verbalized confidence and an explicit abstain option on a visibility axis in metres: fog follows the Koschmieder model, an underwater arm scales the absorption spectrum of pure water, both are applied with a monocular metric depth map, and the visibility range V is swept over eight log-spaced levels from 250 m to 1.95 m. On 1000 COCO scenes and five small open VLMs (2-5 B parameters), accuracy on a boxed-object identification task falls from near its clean value to chance within a narrow band (half-way visibility V_acc of 12.1-15.9 m in fog and 20.5-38.6 m under water) while, for the four models that are confident on clean images, the confidence stays high: at V=1.95 m in fog their accuracy is at chance but their mean internal confidence is 0.68-0.84 and their verbalized confidence 0.61-1.00, a blind-spot width W=log10(V_acc/V_aware) of at least 0.79 decades, i.e. a factor of 6.2 in visibility. The remaining model is under-confident throughout and its internal confidence follows accuracy. An explicit abstain option follows accuracy when it names the reason (W from -0.21 to -0.06 in fog) but, for one model, lags with a generic &quot;I don&#x27;t know&quot; (W up to 0.18). ImageNet-C fog severities 1-5 correspond to only 55-110 m of physical visibility, outside the failure band, and leave the accuracy of the models within 5 percentage points of its clean value. Blank-image and shuffled-image controls, a prior-matched answer set and a 200-image pilot that preceded the study are reported. Findings are descriptive: one draw of 1000 images, depth of assumed scale, and models of 2-5 B parameters.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Robustness studies of vision-language models (VLMs) grade degradation on nominal severity scales (&quot;level 1-5&quot;) that carry no physical units, and they rarely ask whether a model&#x27;s confidence follows the loss of visibility.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Towards Hyperparameter Transfer for Differentially Private Optimization</div>
+<div class="meta-line">Authors: Tianze Wang, Zhiqi Bu, Linjun Zhang</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-10-16T05:51:00+00:00 · Latest: 2026-10-16T05:51:00+00:00</div>
+<div class="meta-line">Comments: Accepted at NeurIPS 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22976v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22976v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Scaling laws and hyperparameter tuning remain central challenges in training large-scale models, particularly under differential privacy (DP), where optimization is further complicated by noise injection and per-sample gradient clipping. While Maximal Update Parametrization ($μ$P) allows for zero-shot hyperparameter transfer in standard training, we show that it fails under DP constraints due to the distinct spectral properties of high-dimensional noise versus low-rank gradients. In this work, we introduce DP-$μ$P, a theoretically grounded framework that extends $μ$P to the privacy-preserving setting. By analyzing the interaction between gradient clipping, noise injection, and feature learning, we derive a Signal-to-Noise Ratio (SNR) condition that governs layer-wise learning rate scaling. Combining this with our proposed spectral scaling formulation, we provide specific scaling rules for DP-SGD, DP-Adam, and DP-Muon optimizers. Empirically, we demonstrate that DP-$μ$P enables effective zero-shot transfer of learning rates across model widths on diverse architectures (MLP, ViT, GPT-2), matching or exceeding the performance of individually tuned baselines while significantly reducing computational costs.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Scaling laws and hyperparameter tuning remain central challenges in training large-scale models, particularly under differential privacy (DP), where optimization is further complicated by noise injection and per-sample gradient clipping.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Sink-Sparse Hybrid Attention for Efficient Inference in T2I/T2V Diffusion Transformers</div>
+<div class="meta-line">Authors: Bingxin Xing, Yu Zhang, Jiatong Ding, Lei Lu, Ping Wang</div>
+<div class="meta-line">First: 2026-10-16T05:50:56+00:00 · Latest: 2026-10-16T05:50:56+00:00</div>
+<div class="meta-line">Comments: 12 pages, 6 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22975v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22975v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Diffusion Transformers (DiTs) have become a common backbone for high-quality text-to-image and text-to-video generation, but repeated dense self-attention remains a major inference bottleneck as token sequences grow and the same operator is invoked across many denoising steps. Our study suggests that dense attention in pretrained DiTs contains reusable layer/head-specific high-mass structure that can be identified from a small offline calibration set and reused across future generations. This leads to Sink-Sparse Hybrid Attention, a train-free attention replacement that reuses static sink masks and supplements them with a lightweight pooled-KV branch, while leaving model weights and sampling schedules unchanged. On Wan2.1-T2V-1.3B, the method attains 1.54$\times$ end-to-end speedup while maintaining generation quality. On Z-Image-Turbo, it attains 1.57$\times$ end-to-end speedup with competitive GenEval2 performance. These results indicate that reusable importance-aware sparse support can provide an effective train-free acceleration path for both T2V and T2I DiTs.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Diffusion Transformers (DiTs) have become a common backbone for high-quality text-to-image and text-to-video generation, but repeated dense self-attention remains a major inference bottleneck as token sequences grow and the same operator is invoked across many denoising steps.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Query-adaptive Recurrent Tokenization</div>
+<div class="meta-line">Authors: Bavesh Balaji, Pranav Gopinath, Pouya Sadeghi, Sirisha Rambhatla</div>
+<div class="meta-line">First: 2026-10-16T05:28:20+00:00 · Latest: 2026-10-16T05:28:20+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22957v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22957v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Visual information worth extracting from an image and the token budget it warrants depend on the text query. Yet modern vision and vision-language models largely encode images independently of the query and allocate a fixed visual token budget to every input. We introduce the Query-Adaptive Recurrent Tokenizer (QART), a backbone-agnostic module that makes visual representations both query-steerable and budget-adaptive. QART steers the visual representation toward query-relevant evidence while adapting its token budget to the amount of information required. Its key principle is simple. Additional tokens are allocated until the visual features relevant to the query are represented with sufficient fidelity. Starting from frozen encoder features, QART recurrently constructs a compact representation and uses reconstruction quality over the query-relevant visual support to control token allocation. On Visual7W and VQAv2, QART achieves 81.96% and 76.37% accuracy using only about 29 visual tokens, reducing token counts by 20-25x relative to dense VLM inputs. It further reaches 92.0% P@1 on CORE and 36.3% PR-AUC on PODS, outperforming SteerViT on PODS by 8.4%. Together, these results show that visual representations need not be fixed in either content or capacity and can instead adapt to what each query requires.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Visual information worth extracting from an image and the token budget it warrants depend on the text query.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">MambaAct: Efficient Mamba Action Experts for Flow-Matching Vision-Language-Action Models</div>
+<div class="meta-line">Authors: Khuyen Pham, Tran Nguyen Le, Edoardo Fazzari, Cesare Stefanini</div>
+<div class="meta-line">First: 2026-10-16T05:20:45+00:00 · Latest: 2026-10-16T05:20:45+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22951v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22951v1">PDF</a> · <a href="https://github.com/giakhuyendihoc/MambaAct">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Vision-language-action (VLA) models have shown strong promise for generalist robotic manipulation, but their inference cost remains a major bottleneck for real-time control. This limitation is especially pronounced in flow-matching VLAs such as $π_{0.5}$, where the action expert is evaluated repeatedly during iterative denoising. We introduce MambaAct, an efficient Mamba action expert for flow-matching VLA policies. MambaAct retains the pretrained visual-language prefix encoder of $π_{0.5}$, while replacing its transformer-based action expert with a compact Mamba-based action expert. Within this expert, Mamba serves as the action mixer that models dependencies across the noisy continuous-action sequence. To preserve visual-language conditioning without repeated token-level cross-attention, MambaAct uses a lightweight Context Compressor to map Vision-language model (VLM) prefix tokens into a compact conditioning signal that gates and modulates each Mamba action block. MambaAct uses a $10\times$ smaller action expert and reduces flow-matching denoising latency by $64.8\%$ on LIBERO and $58.8\%$ in real-world deployment, while improving mean LIBERO success by $1.08$ percentage points across three independent fine-tuning seeds and maintaining gains on LIBERO-Plus and real-world benchmarks. Our code and model weights are publicly available at https://github.com/giakhuyendihoc/MambaAct.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Vision-language-action (VLA) models have shown strong promise for generalist robotic manipulation, but their inference cost remains a major bottleneck for real-time control.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">DICL-Qwen3VL: Decoupled Confidence Calibration for Interpretable Workwear Detection</div>
+<div class="meta-line">Authors: Meng Wang, Wu Zeng, Mei Li, Chao He</div>
+<div class="meta-line">First: 2026-10-16T04:46:20+00:00 · Latest: 2026-10-16T04:46:20+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22929v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22929v1">PDF</a> · <a href="https://github.com/DaErwen1/WICWD">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Poor illumination and occlusion obscure clothing cues in indoor work sites, while diverse clothing styles complicate workwear compliance judgments. Although vision-language models (VLMs) support localization and semantic reasoning, their predictions often lack explicit supporting evidence, and a single confidence score cannot distinguish visual uncertainty from ambiguity in compliance judgments. We propose DICL-Qwen3VL, a decoupled interpretable VLM that integrates structured workwear detection, evidence generation, and separate visual and reasoning confidence estimates. First, low-rank adaptation (LoRA) adapts Qwen3-VL to localize visible upper-body clothing and identify workwear. Second, decoupled calibration separates visual observations from compliance reasoning and assigns a confidence score to each. Token entropy and sensitivity to image perturbations provide supervision for visual confidence, linking confidence estimation to the generated observations and their dependence on image content. Finally, group relative policy optimization (GRPO) jointly optimizes detection accuracy, output validity, and confidence calibration. Experiments on the company-collected Indoor Construction Site Workwear Dataset (ICSWD) and the web-collected Indoor Construction Workwear Dataset (WICWD) yield mAP@50 values of 0.730 and 0.753, respectively, outperforming the evaluated LoRA-adapted VLM baselines, including Qwen3-VL. The framework also provides explicit evidence and separate confidence scores to support manual review in industrial safety monitoring. WICWD is publicly available at https://github.com/DaErwen1/WICWD.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Poor illumination and occlusion obscure clothing cues in indoor work sites, while diverse clothing styles complicate workwear compliance judgments.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">MaskMerge: Structure-aware Token Merging for Efficient Instance Segmentation</div>
+<div class="meta-line">Authors: Bavesh Balaji, Letian Jiang, Alexander Wong, David Clausi, Sirisha Rambhatla</div>
+<div class="meta-line">First: 2026-10-16T04:37:01+00:00 · Latest: 2026-10-16T04:37:01+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22921v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22921v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Token merging improves the efficiency of Vision Transformers by combining redundant tokens, but existing methods largely rely on feature similarity to determine which tokens to merge. This criterion is effective for semantic segmentation, yet can fail in instance segmentation, where adjacent objects of the same class often have highly similar features. We identify this failure mode as cross-instance token fusion. We introduce MaskMerge, an instance-aware token merging method that uses coarse intermediate mask predictions to constrain feature-based merging and preserve instance boundaries. We evaluate MaskMerge on two diverse instance segmentation domains characterized by high inter-instance visual similarity: PanNuke and iSAID. Against the SOTA token merging method ALGM, MaskMerge improves mAP from 30.1 to 32.1 on PanNuke while reducing computation from 229 to 153 GFLOPs and running 1.18x faster, and from 33.1 to 36.2 on iSAID while reducing computation from 198 to 182 GFLOPs and running 1.23x faster. Additionally, we also test it on Cityscapes and match ALGM&#x27;s performance while using fewer FLOPs. The gains also transfer to an MAE pretrained backbone, demonstrating that instance-aware merging enables more aggressive compression when appearance similarity alone cannot reliably preserve object identity.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Token merging improves the efficiency of Vision Transformers by combining redundant tokens, but existing methods largely rely on feature similarity to determine which tokens to merge.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">COMET: Decoupled Distillation, Routing, and Capacity Control for Task-Agnostic Continual Vision--Language Learning</div>
+<div class="meta-line">Authors: Seungyoon Woo, Keonhee Park, Gunhee Kim</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-10-16T04:15:49+00:00 · Latest: 2026-10-16T04:15:49+00:00</div>
+<div class="meta-line">Comments: Accepted at NeurIPS 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.22907v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.22907v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Vision-language models (VLMs) such as CLIP retain zero-shot recognition ability, but their open-world use often requires task-agnostic continual learning: tasks arrive sequentially, past data are unavailable, task identity is unknown, and the backbone cannot be retrained. We argue that this setting fails VLMs through three coupled pressures beyond the stability-plasticity tradeoff: (1) modal-consistency drift, (2) representation-space interference, and (3) per-task capacity shortfall. We propose COMET (Collaborative Mixture-of-Expert Transfer) to resolve these three issues respectively as follows. A frozen teacher provides only a feature reference on a shared image-text pool; Tri-Affinity Distillation preserves image-image, text-text, and image-text geometry; and Student-Aware Cross-Expert Distillation aligns new experts with compatible prior experts so routing errors degrade gracefully. We design COMET to keep capacity and inference separate: a contextual bandit keeps or merges full per-task experts using post-training signals, while a reconstruction router selects sparse experts at test time without teacher semantics. On the X-TAIL benchmark, we show that each proposed component improves continual learning performance. COMET shows that continual vision-language adaptation can preserve multimodal geometry, coordinate accumulated experts, and allocate capacity jointly when feature reference, expert shaping, routing, and capacity control are separated by construction.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Vision-language models (VLMs) such as CLIP retain zero-shot recognition ability, but their open-world use often requires task-agnostic continual learning: tasks arrive sequentially, past data are unavailable, task identity is unknown, and the backbone cannot be retrained.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">EgoTac: In-the-wild Tactile Prediction from Egocentric Vision</div>
+<div class="meta-line">Authors: Wenkang Zhang, Chengbo Yuan, Zicheng Zhang, Zhengxue Cheng, Yang Gao</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-08-15T06:18:13+00:00 · Latest: 2026-10-16T02:05:25+00:00</div>
+<div class="meta-line">Comments: NeurIPS 2026 Accepted. Project Page: https://egotac.github.io/</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.15060v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.15060v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://egotac.github.io/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Touch is fundamental to dexterous manipulation, yet most egocentric human data increasingly used for robot learning lacks tactile information. Directly collecting large-scale tactile data is challenging due to sensor limitations, while human video data is abundant, contact-rich, and easily scalable. This motivates a natural question: can tactile signals be inferred purely from vision? To address this, we introduce EgoTac, a generalizable model that predicts rich tactile information directly from egocentric human videos. EgoTac is trained on a unified corpus of over 5.7M image-tactile pairs, covering both continuous force measurements and binary contacts. By learning from this diverse dataset, EgoTac captures nuanced touch dynamics across varied interactions. Experiments demonstrate strong performance: in-domain prediction achieves an average force error below 0.06N. On out-of-domain contact prediction benchmarks, EgoTac consistently outperforms the state-of-the-art contact estimator. It also captures the rise and fall patterns of real tactile data and enables zero-shot predictions on unconstrained real-world videos. Scaling analyses further reveal that both data diversity and volume improve performance steadily. Overall, EgoTac provides a scalable pathway to extract tactile priors from egocentric human videos, enabling broadly applicable tactile-aware robot learning. Related resources can be found at https://egotac.github.io/ .</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Touch is fundamental to dexterous manipulation, yet most egocentric human data increasingly used for robot learning lacks tactile information.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261016_0605.html">20261016_0605</a>
+<a href="archive/20261013_0914.html">20261013_0914</a>
+<a href="archive/20261009_0744.html">20261009_0744</a>
+<a href="archive/20261006_0843.html">20261006_0843</a>
+<a href="archive/20261002_0705.html">20261002_0705</a>
+<a href="archive/20260929_0749.html">20260929_0749</a>
+<a href="archive/20260925_0612.html">20260925_0612</a>
+<a href="archive/20260922_0634.html">20260922_0634</a>
+<a href="archive/20260918_0602.html">20260918_0602</a>
+<a href="archive/20260915_0627.html">20260915_0627</a>
+<a href="archive/20260911_0532.html">20260911_0532</a>
+<a href="archive/20260908_0559.html">20260908_0559</a>
+<a href="archive/20260904_0538.html">20260904_0538</a>
+<a href="archive/20260901_0712.html">20260901_0712</a>
+<a href="archive/20260828_1134.html">20260828_1134</a>
+<a href="archive/20260825_0335.html">20260825_0335</a>
+<a href="archive/20260821_0338.html">20260821_0338</a>
+<a href="archive/20260818_0334.html">20260818_0334</a>
+<a href="archive/20260814_0400.html">20260814_0400</a>
+<a href="archive/20260811_0401.html">20260811_0401</a>
+<a href="archive/20260807_0845.html">20260807_0845</a>
+<a href="archive/20260804_0437.html">20260804_0437</a>
+<a href="archive/20260731_0420.html">20260731_0420</a>
+<a href="archive/20260728_0428.html">20260728_0428</a>
+<a href="archive/20260724_0419.html">20260724_0419</a>
+<a href="archive/20260721_0427.html">20260721_0427</a>
+<a href="archive/20260717_0407.html">20260717_0407</a>
+<a href="archive/20260714_0421.html">20260714_0421</a>
+<a href="archive/20260710_0453.html">20260710_0453</a>
+<a href="archive/20260707_0457.html">20260707_0457</a>
+<a href="archive/20260703_0424.html">20260703_0424</a>
+<a href="archive/20260630_0454.html">20260630_0454</a>
+<a href="archive/20260626_0502.html">20260626_0502</a>
+<a href="archive/20260623_0536.html">20260623_0536</a>
+<a href="archive/20260619_0543.html">20260619_0543</a>
+<a href="archive/20260616_0549.html">20260616_0549</a>
+<a href="archive/20260612_0528.html">20260612_0528</a>
+<a href="archive/20260609_0514.html">20260609_0514</a>
+<a href="archive/20260602_0615.html">20260602_0615</a>
+<a href="archive/20260529_0516.html">20260529_0516</a>
+<a href="archive/20260526_0427.html">20260526_0427</a>
+<a href="archive/20260522_0455.html">20260522_0455</a>
+<a href="archive/20260519_0443.html">20260519_0443</a>
+<a href="archive/20260515_0442.html">20260515_0442</a>
+<a href="archive/20260512_0451.html">20260512_0451</a>
+<a href="archive/20260508_0424.html">20260508_0424</a>
+<a href="archive/20260505_0424.html">20260505_0424</a>
+<a href="archive/20260501_0417.html">20260501_0417</a>
+<a href="archive/20260428_0415.html">20260428_0415</a>
+<a href="archive/20260424_0412.html">20260424_0412</a>
+<a href="archive/20260421_0404.html">20260421_0404</a>
+<a href="archive/20260417_0405.html">20260417_0405</a>
+<a href="archive/20260414_0411.html">20260414_0411</a>
+<a href="archive/20260410_0406.html">20260410_0406</a>
+<a href="archive/20260407_0357.html">20260407_0357</a>
+<a href="archive/20260403_0354.html">20260403_0354</a>
+<a href="archive/20260331_1007.html">20260331_1007</a>
+<a href="archive/20260331_0947.html">20260331_0947</a>
+<a href="archive/20260331_0900.html">20260331_0900</a>
+<a href="archive/20260331_0849.html">20260331_0849</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>

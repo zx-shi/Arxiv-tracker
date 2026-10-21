@@ -1,0 +1,528 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递 - Finance</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#dc2626;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#dc2626;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递 - Finance</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-10-22 06:04</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261022_0604</div>
+    <div class="row"><div class="card">
+<div class="title">NarraSpace: Multimodal Scene-Grounded Evidence for Picture-Description Dementia Classification</div>
+<div class="meta-line">Authors: Qingming Li, Ruiyan Sun, Satoshi Nakamura</div>
+<div class="meta-line">First: 2026-10-20T17:55:44+00:00 · Latest: 2026-10-20T17:55:44+00:00</div>
+<div class="meta-line">Comments: 30 pages, 3 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28616v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28616v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Picture-description dementia classification uses a shared visual scene, but a transcript-level prediction alone does not identify the scene evidence underlying its inputs. NarraSpace links words and speech times to named picture elements and retrieves utterances for predefined scene events. Narrative-spatial descriptors summarize coverage and temporal organization. A frozen language model contrasts each event&#x27;s text under examples from Alzheimer&#x27;s disease and healthy-control training participants, alongside transcript surprisal and coverage measurements. Retained source records link event scores to their source utterances, speech intervals, and lexical matches. On the official 48-participant test set of the Alzheimer&#x27;s Dementia Recognition through Spontaneous Speech benchmark, a fixed support vector classifier achieves $80.88\%\pm2.56\%$ mean accuracy over fifty seeds; averaged probabilities yield $81.25\%$ accuracy and $91.32\%$ area under the receiver operating characteristic curve. NarraSpace makes the construction of scene-linked classification inputs explicit and inspectable by connecting event-indexed language-model measurements to their source utterances, speech timing, and extraction records. Such source-linked measurements could support clinician review of picture descriptions by presenting quantitative summaries alongside the original speech evidence.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Picture-description dementia classification uses a shared visual scene, but a transcript-level prediction alone does not identify the scene evidence underlying its inputs.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Variational Graph Neural Networks for Uncertainty Quantification in Inverse Problems</div>
+<div class="meta-line">Authors: David Gonzalez, Alba Muixi, Beatriz Moya, Elias Cueto</div>
+<div class="meta-line">First: 2026-03-31T09:57:52+00:00 · Latest: 2026-10-20T17:54:39+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.29515v3">Abs</a> · <a href="https://arxiv.org/pdf/2603.29515v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The increasingly wide use of deep machine learning techniques in computational mechanics has significantly accelerated simulations of problems that were considered unapproachable just a few years ago. However, in critical applications such as Digital Twins for engineering or medicine, fast responses are not enough; reliable results must also be provided. In certain cases, traditional deterministic methods may not be optimal as they do not provide a measure of confidence in their predictions or results, especially in inverse problems where the solution may not be unique or the initial data may not be entirely reliable due to the presence of noise, for instance. Classic deep neural networks also lack a clear measure to quantify the uncertainty of their predictions. In this work, we present a variational graph neural network (VGNN) architecture that integrates variational layers into its architecture to model the probability distribution of weights. Unlike computationally expensive full Bayesian networks, our approach strategically introduces variational layers exclusively in the decoder, allowing us to estimate cognitive uncertainty and statistical uncertainty at a relatively lower cost.
+  In this work, we validate the proposed methodology in two cases of solid mechanics: the identification of the value of the elastic modulus with nonlinear distribution in a 2D elastic problem and the location and quantification of the loads applied to a 3D hyperelastic beam, in both cases using only the displacement field of each test as input data. The results show that the model not only recovers the physical parameters with high precision, but also provides confidence intervals consistent with the physics of the problem, as well as being able to locate the position of the applied load and estimate its value, giving a confidence interval for that experiment.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The increasingly wide use of deep machine learning techniques in computational mechanics has significantly accelerated simulations of problems that were considered unapproachable just a few years ago.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Semantic Observability for Autonomous Systems Diagnostics</div>
+<div class="meta-line">Authors: Jitendra Solanki, Anand Todkar, Ziran Min</div>
+<div class="meta-line">First: 2026-10-20T17:53:32+00:00 · Latest: 2026-10-20T17:53:32+00:00</div>
+<div class="meta-line">Comments: 8 pages, 3 figures. Foundational architecture paper; companion evaluation paper forthcoming</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28611v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28611v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Modern distributed microservice deployments generate massive volumes of heterogeneous, multi-format observability logs across physically and logically partitioned infrastructure. Isolating root causes during cascading failures remains an arduous task for Site Reliability Engineers (SREs), bottlenecked by manual keyword filtering and disjointed temporal correlation across monitoring dashboards. We introduce Semantic Observability, an autonomous multi-agent framework that unifies disparate log streams into a dynamic, queryable Property Graph Database. By modeling physical infrastructure topologies, logical software dependencies, and chronological event sequences as attributed nodes and directed relations, it bridges the semantic gap inherent in flat, unstructured log repositories. Building on this unified substrate, we deploy a stateful multi-agent system orchestrated through Directed Cyclic Graphs (DCGs). The system autonomously navigates the topology, applying causal graph algorithms and temporal back-traversal to isolate the precise blast radius of anomalies. The pruned subgraph is then interpreted by a Large Language Model (LLM) reasoning engine to generate contextualized, code-level Root Cause Analyses (RCA) and actionable remediations. This paper establishes the foundational system architecture, formal relational ontology, and multi-agent control loops of Semantic Observability. We show conceptually how the framework eliminates ambient telemetry noise, reduces Mean Time to Resolution (MTTR), compresses LLM token consumption, and prevents structural hallucinations. We also specify an open-source validation framework on standard benchmarks (LogHub and Train-Ticket), laying the groundwork for a forthcoming companion paper on exhaustive quantitative evaluation and production benchmarking.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Modern distributed microservice deployments generate massive volumes of heterogeneous, multi-format observability logs across physically and logically partitioned infrastructure.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Covariance-Aware Transformers for Quadratic Programming and Decision Making</div>
+<div class="meta-line">Authors: Kutay Tire, Yufan Zhang, Ege Onur Taga, Samet Oymak</div>
+<div class="meta-line">First: 2026-02-16T06:39:24+00:00 · Latest: 2026-10-20T17:48:47+00:00</div>
+<div class="meta-line">Comments: Published in the proceedings of the Conference on Language Modeling (COLM), 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2602.14506v2">Abs</a> · <a href="https://arxiv.org/pdf/2602.14506v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We explore the use of transformers for solving quadratic programs and how this capability benefits decision-making problems that involve covariance matrices. We first show that the linear attention mechanism can provably solve unconstrained QPs by tokenizing the matrix variables (e.g.~$A$ of the objective $\frac{1}{2}x^\top Ax+b^\top x$) row-by-row and emulating gradient descent iterations. Furthermore, by incorporating MLPs, a transformer block can solve (i) $\ell_1$-penalized QPs by emulating iterative soft-thresholding and (ii) $\ell_1$-constrained QPs when equipped with an additional feedback loop. Our theory motivates us to introduce Time2Decide: a generic method that enhances a time series foundation model (TSFM) by explicitly feeding the covariance matrix between the variates. We empirically find that Time2Decide uniformly outperforms the base TSFM model for the classical portfolio optimization problem that admits an $\ell_1$-constrained QP formulation. Remarkably, Time2Decide also outperforms the classical &quot;Predict-then-Optimize (PtO)&quot; procedure, where we first forecast the returns and then explicitly solve a constrained QP, in suitable settings. Our results demonstrate that transformers benefit from explicit use of second-order statistics, and this can enable them to effectively solve complex decision-making problems, like portfolio construction, in one forward pass.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We explore the use of transformers for solving quadratic programs and how this capability benefits decision-making problems that involve covariance matrices.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Turning TS2Vec into a Foundation Model for Time Series Classification</div>
+<div class="meta-line">Authors: Vasilii Feofanov, Zhenghan Tai, Andrei Ermakov, Irina Rish</div>
+<div class="meta-line">First: 2026-10-20T17:47:51+00:00 · Latest: 2026-10-20T17:47:51+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28602v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28602v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">TS2Vec is one of the strongest self-supervised methods for time series classification, introduced in 2022. It is designed to be trained anew on every dataset: self-supervised pre-training followed by linear probing. Since then, the field has shifted towards foundation models that reuse one encoder across datasets. Yet TS2Vec offers a compact convolutional architecture that operates directly on temporal samples and accepts variable-length inputs without resampling. We ask whether these properties can be retained when the encoder is pre-trained only once, and show that they can: TS2Vec can essentially be turned into a foundation model. Three changes suffice: pre-train on a synthetic corpus, feed the encoder a raw amplitude view and an instance-normalized shape view of the input through two small stems, and distill one specialist encoder per view into a single encoder. The result, TS2Vec-FM, is a 1.6M-parameter dilated convolutional network that, kept frozen, reaches 83.3% on UCR-128 and 75.3% on UEA-27 under linear probing, within 0.3 pp of MantisV2, the current state of the art, and above TS2Vec trained separately on each target dataset. What we find most interesting is how different TS2Vec-FM is from other foundation models in design: near-parity is reached without attention, without a patch tokenizer, and without intermediate-layer extraction, using an &quot;old-school&quot; convolutional encoder and a two-layer MLP stem.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">TS2Vec is one of the strongest self-supervised methods for time series classification, introduced in 2022.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Resolving the extended interstellar medium of infrared galaxies I. Polycyclic aromatic hydrocarbon emission</div>
+<div class="meta-line">Authors: C. M. Lofaro, T. Diaz-Santos, L. Armus, V. Charmandaris, T. Lai, M. Pereira-Santaella, J. McKinney, R. Fernandez-Aranda, G. Donnelly, M. Bianchin, Y. Song, I. Shivaei, L. A. Boogaard, G. Rodighiero, S. Linden, G. C. Privon, C. Ricci, L. Lenkic, H. Inami, S. Stierwalt, V. U, D. Kakkad, P. Van der Werf, M. Sanchez-Garcia, A. Evans, D. B. Sanders</div>
+<div class="meta-line">First: 2026-10-20T17:47:24+00:00 · Latest: 2026-10-20T17:47:24+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28599v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28599v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We investigate spatial variations in polycyclic aromatic hydrocarbon (PAH) properties and photoelectric heating efficiency in 67 nearby luminous infrared galaxies from the Great Observatories All-sky LIRG Survey (GOALS). Using mid-infrared spectroscopy from Spitzer and far-infrared cooling-line maps from Herschel, we extract spectra in concentric annuli and matched aperture grids out to about 14 kpc. PAH features are measured with the CAFE spectral decomposition tool. We trace photoelectric heating efficiency by combining PAH emission with cooling lines after isolating the neutral-gas contribution. In starburst galaxies, the PAH 11.3/7.7 ratio rises out to about 5 kpc while 6.2/7.7 remains nearly constant, indicating predominantly large, neutral PAHs. Between 5 and 8 kpc, 11.3/7.7 continues to rise while inferred PAH sizes decrease. Beyond 8 kpc, 11.3/7.7 falls and 6.2/7.7 rises, indicating smaller, more ionized PAHs. These trends are consistent with PAH photodestruction near the central starburst. Strong active galactic nucleus (AGN) systems show more neutral PAHs and harder radiation fields in their nuclear and inner regions. Beyond about 5 kpc, PAHs become more ionized and approach the starburst locus as the radiation field weakens. Strong AGNs influence average PAH charge states at 6-14 kpc as effectively as moderate AGNs at 1-6 kpc. Photoelectric heating efficiency increases with radius in both starburst and AGN-hosting galaxies as the radiation field weakens. In starbursts, higher efficiency is associated with more neutral PAHs, while AGN-dominated systems show the opposite relation. These results provide quantitative, spatially resolved constraints on the extent of AGN effects on dust properties in a population of luminous infrared galaxies.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We investigate spatial variations in polycyclic aromatic hydrocarbon (PAH) properties and photoelectric heating efficiency in 67 nearby luminous infrared galaxies from the Great Observatories All-sky LIRG Survey (GOALS).</div>
+</details>
+</div>
+<div class="card">
+<div class="title">PaPi: Parallel Picard-Duhamel Integration for Fast Neuro-Spectral Architectures</div>
+<div class="meta-line">Authors: Arthur Bizzi, Márcio Marques, Kleyton Da Costa, Vitor Balestro, Tiago Novello, João M. Pereira, Daniel Yukimura</div>
+<div class="meta-line">First: 2026-10-20T17:42:52+00:00 · Latest: 2026-10-20T17:42:52+00:00</div>
+<div class="meta-line">Comments: 27 pages, 8 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28591v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28591v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Neuro-spectral architectures (NeuSA) are a class of physics-informed neural networks (PINNs) that have proven effective for solving time-dependent PDEs in the frequency domain. However, training and inference often rely on costly numerical integration of the learned vector field, typically using sequential Runge-Kutta time stepping, which limits temporal parallelism. We introduce PaPi, an integration scheme inspired by weakly nonlinear flows that enables time-Parallel inference through exponential integration and a Duhamel-Picard scheme. We show that the Duhamel-Picard iteration converges exponentially for all flows, and provide explicit error bounds that depend on how close the flow is to linear. Experiments show that PaPi accelerates training and inference by up to two orders of magnitude, achieving training times of under one second for low-dimensional PDE learning problems, while maintaining competitive predictive accuracy.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Neuro-spectral architectures (NeuSA) are a class of physics-informed neural networks (PINNs) that have proven effective for solving time-dependent PDEs in the frequency domain.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Bayesian Nonparametric Dynamical Clustering of Time Series</div>
+<div class="meta-line">Authors: Adrián Pérez-Herrero, Paulo Félix, Jesús Presedo, Carl Henrik Ek</div>
+<div class="meta-line">First: 2025-10-08T11:52:39+00:00 · Latest: 2026-10-20T17:41:05+00:00</div>
+<div class="meta-line">Comments: Revised version with methodological refinements, expanded experimental results, and improvements to the presentation</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2510.06919v2">Abs</a> · <a href="https://arxiv.org/pdf/2510.06919v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We present a method that models the evolution of an unbounded number of time series clusters by switching among an unknown number of regimes with linear dynamics. We develop a Bayesian non-parametric approach using a hierarchical Dirichlet process as a prior on the parameters of a Switching Linear Dynamical System and a Gaussian process prior to model the statistical variations in amplitude and temporal alignment within each cluster. By modeling the evolution of time series patterns, the method avoids unnecessary proliferation of clusters in a principled manner. We perform inference by formulating a variational lower bound for off-line and on-line scenarios, enabling efficient learning through optimization. We illustrate the versatility and effectiveness of the approach through several case studies of electrocardiogram analysis using publicly available databases.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We present a method that models the evolution of an unbounded number of time series clusters by switching among an unknown number of regimes with linear dynamics.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Optimal Incentive-Compatible Assignments with Endogenous School Priorities</div>
+<div class="meta-line">Authors: Federico Echenique, Juan S. Pereyra</div>
+<div class="meta-line">First: 2026-10-20T17:37:40+00:00 · Latest: 2026-10-20T17:37:40+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28582v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28582v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We study whether a planner can favor students at schools they rank more highly while preserving truthful reporting. The standard implementation of the deferred acceptance (DA) algorithm is typically not the solution. With interior cutoffs, DA with multiple tie-breaking (DA-MTB) solves the planner&#x27;s optimization problem if and only if the planner&#x27;s payoff from a school assignment is independent of the students&#x27; preferences. This is typically not the case, and strict incentive compatibility under DA-MTB leaves room for improvement via preference-dependent priority adjustments. We characterize optimal rank-dependent cutoff adjustments in a two-school model and show that, in a many-school environment, near-optimal approximately incentive-compatible assignments can be chosen with small support (so each type of student may only attend a small number of schools).</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We study whether a planner can favor students at schools they rank more highly while preserving truthful reporting.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Birthday Estimators Are Uniformly Optimal for Renyi Entropy</div>
+<div class="meta-line">Authors: Maciej Skórski</div>
+<div class="meta-line">First: 2026-10-20T17:37:30+00:00 · Latest: 2026-10-20T17:37:30+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28581v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28581v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Collisions are a basic probe of unknown distributions, used for testing and for counting substructures in graphs, and they underlie Rényi entropy, a fundamental measure of uncertainty with applications in cryptography, machine learning, physics, and biology. Motivated by this, we study the natural birthday estimator.
+  We prove Bernstein-type concentration for it and show that it is minimax optimal, uniformly and jointly in alphabet size, order, accuracy, and confidence, with no sample splitting, clipping, or median aggregation.
+  This, in particular, settles the sample complexity of integer-order Rényi entropy estimation up to absolute constants in all regimes, closing the gap between the best known upper and lower bounds.
+  Our concentration bound rests on a sensitivity analysis of collision count, and the matching lower bound on a sharp analysis of detecting a hidden spike in a plateau distribution.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Collisions are a basic probe of unknown distributions, used for testing and for counting substructures in graphs, and they underlie Rényi entropy, a fundamental measure of uncertainty with applications in cryptography, machine learning, physics, and biology.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Asymmetric Bidirectional Predictive Dynamics in Google Search and COVID-19 Time Series: A Multi-Horizon Forecast-Error Analysis</div>
+<div class="meta-line">Authors: Andrei Velichko, Imen Mahmoud</div>
+<div class="meta-line">First: 2026-10-20T17:23:44+00:00 · Latest: 2026-10-20T17:23:44+00:00</div>
+<div class="meta-line">Comments: 42 pages, 12 figures, 9 tables, 45 references</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28563v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28563v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Online search activity is widely used as a digital trace of information seeking during epidemics, but its predictive value is often reduced to correlation, a selected lag, or a single forecast-error score. We examine eight pre-specified Google Trends-COVID-19 pairs in both directions using matched LightGBM forecasts over rolling 400-day windows and horizons of 1-14 days. Log-RMSE gain is combined with forecast-error distribution entropy (FEDE), which captures horizon-dependent changes in the signed error distribution. The resulting directional predictive signature comprises response class, RMSE effect, FEDE endpoint and early-slope responses, persistence across rolling regimes, and horizon profile. For screening candidate directions, we also introduce a relative persistence-weighted directional predictive response strength (DPRS) on a within-study 0-100 scale; 100 denotes the strongest observed response in the comparison set, not an absolute coupling maximum. The pairs show concordant, RMSE-only, FEDE-only, and mixed responses. &quot;loss of smell&quot; -&gt; reported cases is accuracy-dominant, with mean log-RMSE gain 0.104 (about 9.9% equivalent RMSE reduction) and DPRS 100, whereas the reverse direction is FEDE-dominant (D_FEDE=0.048; DPRS=42). &quot;covid test&quot; -&gt; positive rate is FEDE-dominant (D_FEDE=0.039; positive in 72% of windows; DPRS=98) despite negative RMSE gain, while &quot;lockdown&quot; -&gt; stringency is the clearest concordant case (DPRS=78). World-level symptom/case pairs are less persistent. Thus, forecast accuracy and error-distribution dynamics are complementary, predictive effects can be direction- and metric-dependent, and forecast horizon is part of the relationship. Aggregated regime-level patterns should not be extrapolated to individual time points or interpreted as evidence of causality.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Online search activity is widely used as a digital trace of information seeking during epidemics, but its predictive value is often reduced to correlation, a selected lag, or a single forecast-error score.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">OptScientist: Automated Discovery of Optimization Laws</div>
+<div class="meta-line">Authors: Ma ZhenYao, Yue Liang, Jian-Qiao Zhu</div>
+<div class="meta-line">First: 2026-10-20T17:23:40+00:00 · Latest: 2026-10-20T17:23:40+00:00</div>
+<div class="meta-line">Comments: Project website: https://optscientist.github.io/</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28562v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28562v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://optscientist.github.io/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Many scientific phenomena are best understood as outcomes of underlying optimization problems, yet automated scientific discovery has largely focused on recovering equations that describe observed input-output patterns. We introduce OptScientist, a novel automated framework for discovering compact symbolic optimization laws directly from data. OptScientist comprises (i) a model that infers symbolic optimization problems by first learning to represent data as an optimization problem and then extracting its symbolic form, and (ii) an LLM agentic system embedding the model in a discovery process that integrates theoretical priors from scientific literature, discovers candidate laws, abstracts their underlying mechanisms, and suggests new data to collect. We first evaluate OptScientist on OptFeynman, a novel benchmark of 99 physics-derived optimization problems, where OptScientist recovers ground-truth laws for over 80% of the problems and remains robust to noisy contextual information, while substantially outperforming machine-learning, symbolic, and LLM-based model-discovery baselines. On human risky choice and central-bank monetary policy, OptScientist discovers compact symbolic optimization laws that achieve held-out predictive performance competitive with leading baselines, while using few parameters and substantially fewer tokens than LLM baselines. Overall, OptScientist extends automated scientific discovery to uncovering optimization laws that generate observed phenomena, enabling automated theory building across the physical, biological, behavioral, and social sciences.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Many scientific phenomena are best understood as outcomes of underlying optimization problems, yet automated scientific discovery has largely focused on recovering equations that describe observed input-output patterns.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Convergence of stochastic gradient descent for learning linear neural networks</div>
+<div class="meta-line">Authors: Gabin Maxime Nguegnang, Bubacarr Bah, Holger Rauhut, Ulrich Terstiege</div>
+<div class="meta-line">First: 2026-10-20T17:23:16+00:00 · Latest: 2026-10-20T17:23:16+00:00</div>
+<div class="meta-line">Comments: 30 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28561v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28561v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Stochastic gradient descent (SGD) is the cornerstone of modern deep learning, yet its theoretical convergence properties remain poorly understood in non-convex settings. To address this gap, we study SGD dynamics in deep linear neural networks - simplified models that retain key non-convex characteristics while remaining analytically tractable. Building on recent results for gradient descent, we extend convergence guarantees to SGD under regularized squared loss. We establish almost sure boundedness of SGD iterates. Using the framework of asymptotic pseudotrajectories from stochastic approximation theory, our analysis establishes then, for both deterministic and adaptive step-size choices, convergence of SGD to the set of critical points under mild conditions (without relying on Lipschitz properties or whitened data). To our knowledge, this is the first work providing almost sure convergence guarantees for SGD in deep linear networks, bridging the gap between theoretical optimization and practical stochastic training.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Stochastic gradient descent (SGD) is the cornerstone of modern deep learning, yet its theoretical convergence properties remain poorly understood in non-convex settings.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Falsification-proof non-market allocation mechanisms</div>
+<div class="meta-line">Authors: Eduardo Perez-Richet, Vasiliki Skreta</div>
+<div class="meta-line">First: 2026-10-13T16:03:20+00:00 · Latest: 2026-10-20T17:21:45+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18625v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.18625v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Relying on manipulable characteristics to target the allocation of resources is fraught with difficulties. Naively optimal rules lead to falsification and allocative inefficiency. Optimizing the rule for allocative efficiency while accounting for falsification typically induces falsification, at a heavy cost to the agents. Moreover, falsification generates negative externalities. We characterize optimal falsification-proof rules under a broad range of falsification technologies. We also provide an honesty condition under which they solve the unconstrained problem of a planner who maximizes a weighted sum of allocative surplus and agents&#x27; welfare.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Relying on manipulable characteristics to target the allocation of resources is fraught with difficulties.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Quantitative unique continuation for elliptic equations with Hölder continuous potentials</div>
+<div class="meta-line">Authors: Long Teng, Zhiwei Wang, Jiuyi Zhu</div>
+<div class="meta-line">First: 2026-03-22T20:30:34+00:00 · Latest: 2026-10-20T17:17:29+00:00</div>
+<div class="meta-line">Comments: 26 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.21392v2">Abs</a> · <a href="https://arxiv.org/pdf/2603.21392v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We study quantitative unique continuation for second order elliptic equations with lower-order terms of Hölder regularity via a weighted frequency function method. We establish quantitative three-ball inequalities and corresponding vanishing-order bounds for Schrödinger equations with Hölder potentials and Hölder gradient terms, and corresponding results for elliptic equations with variable leading coefficients. Our results are quantitative with explicit dependence of Hölder norms in the three-ball inequalities. These fill in the gap for quantitative unique continuation between bounded potentials and $C^1$ potentials.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We study quantitative unique continuation for second order elliptic equations with lower-order terms of Hölder regularity via a weighted frequency function method.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Two Types of Tertiarization: Household Demand, Production Networks, and the Rise of Services</div>
+<div class="meta-line">Authors: Li Gan</div>
+<div class="meta-line">First: 2026-08-06T20:53:44+00:00 · Latest: 2026-10-20T17:12:27+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.06584v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.06584v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">I measure whether the rise of services is ultimately supported by household consumption or by non-household demand through production networks, investment, exports, and government. Using harmonized input-output tables for 76 economies over 1995-2022, I attribute service value added to its ultimate domestic final-demand category and measure the household orientation of each service economy in both levels and growth. The conventional service share does not reveal the type: it is negatively correlated with household orientation, and only about four in ten tertiarization episodes are majority-household. Among the 65 economies whose service share rose over 1995-2018, 77 percent became less household-oriented; the share is 75 percent under a two-percentage-point material-change threshold. Yet household-supported production becomes more service-intensive with income because households&#x27; aggregate position falls faster. A one-type benchmark has no purchaser margin; a two-type extension gives the condition for this reversal. An exact Leontief accounting and Shapley decomposition allocate a median 73 percent of service-share growth to production-system channels, which are the largest contribution in 80 percent of economies with materially rising shares. The decline in household orientation is instead allocated mainly to aggregate final-demand structure. The service share records how much service activity exists, not which economic transformation produced it.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">I measure whether the rise of services is ultimately supported by household consumption or by non-household demand through production networks, investment, exports, and government.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Dissecting the Impact of Model Misspecification in Data-driven Optimization</div>
+<div class="meta-line">Authors: Adam N. Elmachtoub, Henry Lam, Haixiang Lan, Haofeng Zhang</div>
+<div class="meta-line">First: 2025-03-01T21:31:54+00:00 · Latest: 2026-10-20T17:06:33+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2503.00626v3">Abs</a> · <a href="https://arxiv.org/pdf/2503.00626v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Data-driven optimization aims to translate a machine learning model into decision-making by optimizing decisions on estimated costs. Such a pipeline can be conducted by fitting a distributional model which is then plugged into the target optimization problem. While this fitting can utilize traditional methods such as maximum likelihood, a more recent approach uses estimation-optimization integration that minimizes decision error instead of estimation error. Although intuitive, the statistical benefit of the latter approach is not well understood yet is important to guide the prescriptive usage of machine learning. In this paper, we dissect the performance comparisons between these approaches in terms of the amount of model misspecification. In particular, we show how the integrated approach offers a ``universal double benefit&#x27;&#x27; on the top two dominating terms of regret when the underlying model is misspecified, while the traditional approach can be advantageous when the model is nearly well-specified. Our comparison is powered by finite-sample tail regret bounds that are derived via new higher-order expansions of regrets and the leveraging of a recent Berry-Esseen theorem.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Data-driven optimization aims to translate a machine learning model into decision-making by optimizing decisions on estimated costs.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Symmetry-Guided Machine Learning of Spin-Dependent Nonlinear Hall Response</div>
+<div class="meta-line">Authors: Jyotirmoy Sau</div>
+<div class="meta-line">First: 2026-10-20T17:03:21+00:00 · Latest: 2026-10-20T17:03:21+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28529v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28529v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A Berry-curvature dipole can produce a nonlinear Hall current even when the linear Hall response vanishes, but symmetry alone does not determine its magnitude or magnetic tunability. The interplay of structural symmetry, moment orientation, and carrier occupation is examined in a honeycomb model. Curvature maps and the band-summed dipole integrand reveal how velocity and the occupation window near the Fermi level select signed contributions. Removing threefold rotation permits a nonmagnetic dipole perpendicular to the surviving mirror. Generic magnetic reorientation activates the second component and tunes both components through positive and negative values. Global reversal preserves the dipole while reversing the intrinsic linear Hall conductivity, allowing a finite bulk dipole contribution from equally populated reversed domains under uniform-field averaging.A symmetry-constrained polynomial model predicts both dipole components for 256 held-out spin configurations, achieving coefficients of determination $R^2 &gt; 0.9995$ at the reference chemical potential. At fixed carrier density, orientation-dependent shifts of the chemical potential modify the response and yield slightly larger prediction errors for the chosen model. Across the chemical-potential sweep,the prediction accuracy decreases more strongly for $D_y$,revealing an energy dependence of the surrogate&#x27;s performance. Within semiclassical transport with a constant relaxation time, the calculated dipole determines the angular dependence of the quadratic current and its rectified and second-harmonic components. These results provide a quantitative representation of magnetic-orientation-dependent Berry-curvature dipoles and show how carrier occupation influences both the response and its predictability.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A Berry-curvature dipole can produce a nonlinear Hall current even when the linear Hall response vanishes, but symmetry alone does not determine its magnitude or magnetic tunability.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Optimal L2 Regularization in High-dimensional Continual Linear Regression</div>
+<div class="meta-line">Authors: Gilad Karpel, Edward Moroshko, Ran Levinstein, Ron Meir, Daniel Soudry, Itay Evron</div>
+<div class="meta-line">First: 2026-01-20T10:58:14+00:00 · Latest: 2026-10-20T16:57:36+00:00</div>
+<div class="meta-line">Comments: Accepted to ALT 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2601.13844v3">Abs</a> · <a href="https://arxiv.org/pdf/2601.13844v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We study generalization in an overparameterized continual linear regression setting, where a model is trained with L2 (isotropic) regularization across a sequence of tasks. We derive a closed-form expression for the expected generalization loss in the high-dimensional regime that holds for arbitrary linear teachers. We demonstrate that isotropic regularization mitigates label noise under both single-teacher and multiple i.i.d. teacher settings, whereas prior work accommodating multiple teachers either did not employ regularization or used memory-demanding methods. Furthermore, we prove that the optimal fixed regularization strength scales nearly linearly with the number of tasks $T$, specifically as $T/\ln T$. To our knowledge, this is the first such result in theoretical continual learning. Finally, we validate our theoretical findings through experiments on linear regression and neural networks, illustrating how this scaling law affects generalization and offering a practical recipe for the design of continual learning systems.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We study generalization in an overparameterized continual linear regression setting, where a model is trained with L2 (isotropic) regularization across a sequence of tasks.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Deep Learning-Based Road Lane Quality Assessment from Egocentric Dashcam Video</div>
+<div class="meta-line">Authors: Shaif Chowdhury, Akhila Yeruvasu, Moshiur Rahman Tonmoy, Ayush Goyal, Dunren Che</div>
+<div class="meta-line">First: 2026-10-20T16:46:32+00:00 · Latest: 2026-10-20T16:46:32+00:00</div>
+<div class="meta-line">Comments: Accepted in the ICECER 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28508v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28508v1">PDF</a> · <a href="https://github.com/Shaif95/Road_Quality">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Reliable lane markings are important for both human drivers and automated driving systems, but their condition is still commonly assessed through manual inspection. Existing autonomous-driving datasets primarily support lane detection and scene understanding and usually lack maintenance-oriented labels for lane-marking visibility, continuity, or degradation. In this study, we present a geo-referenced smartphone dashcam dataset and baseline framework for lane-marking quality assessment. The dataset contains 63,839 road-facing frames collected across South Texas using a GPS-enabled dashcam application. A subset of 3,339 frames is matched with OpenStreetMap-derived lane-count labels, which are used as weak supervision for lane-count regression and map-consistency evaluation. We propose three lane-quality measures: Contrast Stability Index (CSI), which captures lane-background contrast using Laplacian responses; Line Continuity Ratio (LCR), which estimates structural continuity using edge and Hough-line evidence; and Regression Lane Confidence Score (RLCS), which measures agreement between predicted and map-derived lane counts on matched frames. The baseline prediction models attained strong performance, with CSI (MAE $0.039$, $R^2=0.97$) and LCR (MAE $0.093$, $R^2=0.84$). Notably, CSI and LCR are no-reference, segmentation-derived quality metrics that can be computed without dense human labels. In a pilot validation using 50 human-ranked images, these proposed lane-specific metrics show stronger rank agreement with human lane-quality ordering (e.g., Spearman&#x27;s $ρ=0.7316$ and Kendall&#x27;s $τ=0.5472$ for LCR) than general image-quality measures such as PSNR, SSIM, BRISQUE, NIQE, and LPIPS. We believe the dataset, metrics, and baseline provide an initial step toward scalable, low-cost, location-aware lane-marking quality assessment. Data and code: https://github.com/Shaif95/Road_Quality</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Reliable lane markings are important for both human drivers and automated driving systems, but their condition is still commonly assessed through manual inspection.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">ECG for laboratory values:A comprehensive physiological and technical analysis</div>
+<div class="meta-line">Authors: Walentin Palanchuk</div>
+<div class="meta-line">First: 2026-10-20T16:46:26+00:00 · Latest: 2026-10-20T16:46:26+00:00</div>
+<div class="meta-line">Comments: 78 pages, 17 figures, source code under https://github.com/WPalanchuk/ECG-for-Labvalues</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28507v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28507v1">PDF</a> · <a href="https://github.com/WPalanchuk/ECG-for-Labvalues">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Laboratory measurements are essential for clinical decision making but typically require invasive blood sampling. Recent research suggests that ECG recordings may contain information beyond cardiac rhythm and provide information related to laboratory values. This thesis investigates NT-proBNP prediction from ECG recordings and patient metadata using a multimodal deep learning framework, while considering the physiological plausibility of ECG-based prediction. It also compares a 1-lead configuration using lead II with the corresponding 12-lead configuration. Additional experiments on glucose, hemoglobin, and potassium are presented in the appendix.
+  Regression, binary classification, and three-class classification experiments were conducted using MIMIC-IV, with the three-class task based on clinically established thresholds. The 12-lead configuration consistently achieved better performance. Regression reached a mean absolute error of 534.98 pg/mL for 1-lead and 514.27 pg/mL for 12-lead. Binary classification achieved AUROCs of 0.849 and 0.876, respectively, while three-class classification achieved macro-averaged AUROCs of 0.738 and 0.752.
+  The results indicate that precise NT-proBNP regression remains challenging, whereas broader concentration ranges can be classified more effectively. The findings are consistent with the physiological hypothesis that ECG characteristics and NT-proBNP concentrations reflect shared cardiovascular processes. ECG-based NT-proBNP prediction may therefore provide complementary information, particularly for classifying broader concentration ranges. However, laboratory measurements remain necessary, and validation on independent datasets is required.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Laboratory measurements are essential for clinical decision making but typically require invasive blood sampling.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Model- and Layer-Level Closed-Loop Forecasting with SSM-Based Spiking Neural Networks</div>
+<div class="meta-line">Authors: Erik Stolt, Sanja Karilanova, Ayca Ozcelikkale</div>
+<div class="meta-line">First: 2026-10-20T16:39:59+00:00 · Latest: 2026-10-20T16:39:59+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28495v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28495v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Deep State-Space Models (Deep SSMs) have shown promising performance and computational benefits in processing of time-series data with complex temporal dependencies. Spiking neural networks (SNNs) constitute a biologically inspired class of deep SSMs, where computing blocks communicate through spikes, discrete single-bit events rather than continuous activation functions. A particularly important task in time-series processing is forecasting, i.e. predicting future values of a sequence from past observations alone. However, how to best perform forecasting with SNNs is an open question, where the standard autoregressive nature of the data processing with SNNs requires values that are not available during the forecasting phase. In this article, we address this challenge. We explore two closed-loop forecasting strategies, in which the network&#x27;s own generated values are fed back into the network as if they were observed past values: (i) model-level and (ii) layer-level closed-loop forecasting. We evaluate these approaches on the ETT-small datasets, a standard benchmark for time-series forecasting, under both spike-based and continuous activation functions. We compare the proposed closed-loop approaches against state-of-the-art methods such as SpaceTime, as well as the zero-masking baseline in S4. Both of the proposed approaches perform comparably to or better than zero-masking with S4, and in most cases match SpaceTime. These findings highlight the trade-off between continuous and low-bit quantized activations, and demonstrate that the proposed Deep SSM architectures provide a competitive framework for forecasting.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Deep State-Space Models (Deep SSMs) have shown promising performance and computational benefits in processing of time-series data with complex temporal dependencies.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Multiscale Modeling of Zr Corrosion: Predicting Microstructures of Oxide Films</div>
+<div class="meta-line">Authors: K. Starkey, L. Kahle, M. Christensen, V. Eyert, A. El-Azab, C. B. Geller, A. P. Shivprasad, E. Wimmer</div>
+<div class="meta-line">Venue: J. Nucl. Mater. 625, 156521 (2026)</div>
+<div class="meta-line">First: 2026-10-20T16:39:51+00:00 · Latest: 2026-10-20T16:39:51+00:00</div>
+<div class="meta-line">Comments: 42 pages, 22 figures, 4 tables. Accepted manuscript of the article published in Journal of Nuclear Materials 625 (2026) 156521, under a CC BY 4.0 license</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28493v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28493v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A first-principles-informed multiscale modeling approach is reported for oxide formation during corrosion of zirconium. The present simulations reproduce the columnar corrosion film microstructure and grain size distribution seen in micrographs of oxidized Zr surfaces. This structural feature emerges from a hexagonal ZrO layer adjacent to the $α$-Zr/ZrO$_{2-x}$ interface, which is dynamically stabilized by continuous heterogeneous grain nucleation and grain boundary mass diffusion. This ZrO layer is identified as a significant oxygen diffusion barrier and a potential contributor to sub-parabolic pretransition corrosion kinetics. The simulations also reproduce the undulatory nature of the metal/oxide interface, leading to regions with tensile stress components capable of nucleating cracks, despite the overall state of compressive hydrostatic stress within the oxide film. First principles density functional theory (DFT) computations of fundamental ZrO$_x$ properties were combined with molecular dynamics simulations using a machine-learned potential based on a DFT training set to provide extensive input to an advanced phase field model for oxide formation and its microstructure, as implemented in the new MedeA PhaseField module. The phase field simulations reported herein incorporated computed stoichiometry-dependent thermochemical data, anisotropic elastic properties, interface energies, bulk and grain boundary mass transport processes, multiphase heterogeneous grain nucleation, and strain energy-dependent phase stabilities.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A first-principles-informed multiscale modeling approach is reported for oxide formation during corrosion of zirconium.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Reduced graph-based representations of detonation-containing flows</div>
+<div class="meta-line">Authors: Sinaendhran Pujali Elilarasan, Michael Ullman, Shivam Barwey</div>
+<div class="meta-line">First: 2026-10-20T16:31:26+00:00 · Latest: 2026-10-20T16:31:26+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28486v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28486v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A graph neural network (GNN)-based autoencoder is leveraged to produce reduced latent graph representations of detonation-containing flows. In a two-dimensional hydrogen-air channel configuration with a uniform fuel-air mixture, it was found that latent graphs with effective resolutions of twice the induction length are capable of reconstructing both the wavefront and the post-shock region of the cellular detonation wave structure. Extrapolation studies using stratified and three-dimensional detonation configurations revealed an intrinsic property of GNN-based reconstruction from reduced latent graphs -- a representational hierarchy, rooted in the local nature of message passing, that tends to prioritize features at the detonation front (i.e., the wavefront profile and triple points) over the downstream deflagrative regions. In particular, it was found that at a fixed ambient condition, the information contained in uniform two-dimensional detonations was sufficient to reconstruct the wavefront structure of both stratified and three-dimensional detonations. Overall, this work demonstrates the utility of GNNs for both reduction and information overlap extraction in detonation-containing flows, opening promising pathways for accelerated simulations of these flows.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A graph neural network (GNN)-based autoencoder is leveraged to produce reduced latent graph representations of detonation-containing flows.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The &quot;Rubin 2036: Opportunities for Discovery&quot; Workshop: A Community Roadmap for the Future of the Vera C. Rubin Observatory After the LSST</div>
+<div class="meta-line">Authors: Andrés Alejandro Plazas Malagón, Steve Allen, Shreya Anand, Muhammad Awais, Simon Birrer, Lindsey Bleem, Robert Blum, Adam S. Bolton, Rosaria Bonito, Alex Broughton, Jeffrey L. Carlin, Francisco Castander, Rebecca C. Chen, Anirudh Chiti, Lyla Choi, Chuck Claver, Suber Corley, John Franklin Crenshaw, Arjun Dey, Seth Digel, Holger Drass, Alex Drlica-Wagner, Haruki Ebina, Lukas Eisert, Anthony Englert, Kevin Fanning, Josh Frieman, Shenming Fu, Nandini Hazra, Carrie E. Holt, Minhee Hyun, Hafiz Inam Ullah, Saurabh Jha, J. Bryce Kalmbach, Yijung Kang, Kshitija Kelkar, Sthabile Kolwa, Andjelka Kovačević, Kenneth W. Lin, Meng-Xiang Lin, Becky Long, Sean MacBride, Alex I. Malz, Steve Margheim, Nigel J. Mason, Guillem Megias Homar, Simona Mei, Hironao Miyatake, Maia Moore, Justin Myles, Jeffrey A. Newman, Anh Nguyen, Yasna Ordenes-Briceño, Antonella Palmese, Swayamtrupta Panda, Claire Poppett, Francisco Pozo Nuñez, Anand Raichoor, Andrew Rasmussen, Maya Redden, Steve Ritz, Aaron Roodman, Leonid Sajkov, Ben Sherwin, Brian Stalder, Chris Stubbs, John Suárez-Pérez, Sandrine Thomas, Chun-Hao To, Alessandro S. Tramuto, Yousuke Utsumi, Laura Venuti, Hai-Feng Wang, Risa Wechsler, Christina C. Williams, W. Michael Wood-Vasey, Prince Yadav, Masaya Yamamoto</div>
+<div class="meta-line">First: 2026-10-20T16:30:19+00:00 · Latest: 2026-10-20T16:30:19+00:00</div>
+<div class="meta-line">Comments: 23 pages. Zenodo community: https://zenodo.org/communities/rubin2036workshop/ Workshop website: https://rubin-observatory.github.io/Rubin-Beyond-LSST/pages/Rubin2036proceedings/</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28482v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28482v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://rubin-observatory.github.io/Rubin-Beyond-LSST/pages/Rubin2036proceedings/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The NSF-DOE Vera C. Rubin Observatory will complete its ten-year Legacy Survey of Space and Time (LSST) in the mid-2030s. Its 8.4 m aperture and 9.6 square degree field of view give it an étendue unmatched by any facility planned for that era. The Rubin 2036: Opportunities for Discovery workshop (KIPAC/SLAC, 3-5 August 2026) brought together approximately 100 participants to discuss Rubin&#x27;s future after LSST. This paper summarizes the workshop&#x27;s structure and discussions across five working groups. The continued-surveying group explored a machine-learning foundation model pretrained on Rubin imaging for detection, deblending, and classification. The cadence group considered allocating post-LSST observing time and strategies for transiting exoplanets, Type Ia supernova cosmology, time-delay cosmography, and second-scale transients. The filter group explored broadband, medium-band, and narrowband filters for photometric redshifts, high-redshift large-scale structure, AGN reverberation mapping, Galactic archaeology, and emission-line imaging. The multi-messenger group explored follow-up of next-generation gravitational-wave and neutrino sources, including standard sirens, kilonovae, and Galactic supernovae. The technology group organized options by cost and lead time, including fast readout, new filters, a faster shutter, and summit edge computing. Cross-cutting topics included AI/ML, Chilean and Latin-American co-leadership, satellite megaconstellations, and weather and climate trends at Cerro Pachón. White papers and workshop talks are available through https://zenodo.org/communities/rubin2036workshop/ and https://rubin-observatory.github.io/Rubin-Beyond-LSST/pages/Rubin2036proceedings/.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The NSF-DOE Vera C.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Overlapping Reserves without a Common Priority: Theory and an Application to School Choice in Chile</div>
+<div class="meta-line">Authors: Battal Doğan, Kenzo Imamura, M. Bumin Yenmez</div>
+<div class="meta-line">First: 2026-10-20T16:24:24+00:00 · Latest: 2026-10-20T16:24:24+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28471v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28471v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We study matching markets with overlapping reserves governed by heterogeneous priorities. When applicants qualify for multiple reserves, how they are routed can affect reserve utilization and which applicants are admitted. We introduce classify-and-rank choice rules that yield strategy-proof deferred acceptance mechanisms satisfying maximum reserve utilization and priority-respect. We axiomatically characterize our mechanism&#x27;s admission outcomes for any given classification and reserve order. With two reserve categories, we provide a foundation for the reserve order and establish its distributional implications for access across eligibility groups. Using nine cycles of Chilean school admissions, which feature such reserves, we document reserve-utilization failures under the deployed mechanism and show that their frequency depends sharply on the reserve order. We show how our mechanism can be adapted to Chile&#x27;s institutional setting to prevent such failures. Under this alternative mechanism, the reserve order generates a distributional pattern across eligibility groups, consistent with our theory.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We study matching markets with overlapping reserves governed by heterogeneous priorities.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">On the stability of displacement energy in toric manifolds</div>
+<div class="meta-line">Authors: Jean-Philippe Chassé, Ipsita Datta</div>
+<div class="meta-line">First: 2026-10-20T16:21:42+00:00 · Latest: 2026-10-20T16:21:42+00:00</div>
+<div class="meta-line">Comments: 30 pages, 5 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28469v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28469v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We present a quantitative exploration of the behaviour of displacement energy of Lagrangians under stabilization. In particular, we completely characterize the displacement behaviour of toric fibres in Fano 4-manifolds. Our approach relates the geometry of the moment polytope&#x27;s caustic to the structure of the (bulk-deformed) superpotential and to the presence of symmetric probes.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We present a quantitative exploration of the behaviour of displacement energy of Lagrangians under stabilization.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Submission quotas as self-screening when manuscript production is cheap</div>
+<div class="meta-line">Authors: Steve Lawford</div>
+<div class="meta-line">First: 2026-10-03T18:04:38+00:00 · Latest: 2026-10-20T16:19:23+00:00</div>
+<div class="meta-line">Comments: 25 pages, revised exposition, added asymptotic discussion to appendix</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.04688v3">Abs</a> · <a href="https://arxiv.org/pdf/2610.04688v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Generative AI enables authors to produce more manuscripts at lower cost. But evaluation by expert editors and referees remains scarce. In this context, the value of an author&#x27;s submission rights can increase. Major research repositories and journals are reacting by imposing submission quotas and fees. Non-transferable author quotas transform submission of a manuscript into a revealed-priority decision. Authors construct a portfolio of their highest-ranked manuscripts. A common fee charges an author for every manuscript they submit. Both methods have drawbacks. Quotas do not flexibly allocate scarce review capacity to authors who have unusually strong realised candidate sets. Fees can generate heterogeneous submission thresholds that may be systematically related to an author&#x27;s baseline portfolio quality. In this paper, I derive the condition under which submission quotas yield weakly higher mean reviewed value than fees, given an equal expected review load. When project values are bounded and candidate manuscripts are abundant, an equal-load fee can price out some authors entirely.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Generative AI enables authors to produce more manuscripts at lower cost.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Bochner Weitzenböck Decomposition for Cellular Sheaf Laplacians, Curvature and Neural Sheaf Diffusion</div>
+<div class="meta-line">Authors: Francesco Maria Guadagnuolo, Alessio Borgi, Dorina Thanou, Pietro Liò</div>
+<div class="meta-line">First: 2026-10-20T16:13:32+00:00 · Latest: 2026-10-20T16:13:32+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28455v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28455v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We extend the Bochner-Weitzenböck decomposition to cellular sheaf Laplacians, splitting it into a positive semidefinite term, the Bochner sheaf Laplacian, and a block diagonal term, the Forman curvature. We show that the Bochner Laplacians form a class of cellular sheaves that extends both connection and matrix-weighted Laplacians, and generalizes signed graphs to $d$ dimensions. We give a holonomy characterization of their kernel, prove the related Cheeger inequalities, and attach to them a random walk that generalizes the Gremban expansion. For the Forman term, we prove a discrete Bochner theorem, which bounds the first cohomology of a cellular sheaf with nonnegative curvature, and we read the whole decomposition as an opinion-dynamics model. We then apply this machinery to Sheaf Neural Networks, whose learnt Laplacian is otherwise unobserved. The Bochner interpretation yields a node-level conviction score that acts as an operational importance measure under frozen-model interventions, while the Forman profile provides a local descriptor of the learnt operator.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We extend the Bochner-Weitzenböck decomposition to cellular sheaf Laplacians, splitting it into a positive semidefinite term, the Bochner sheaf Laplacian, and a block diagonal term, the Forman curvature.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Toward opportunistic coronary artery calcium assessment from dual-layer dual-energy chest radiography using deep learning: a simulation study</div>
+<div class="meta-line">Authors: Linxi Shi, Akyl Swaby, Kaitlin Hellier, Praveen Bharathi, Scott Hsieh, Dominik Fleischmann, Shiva Abbaszadeh, Adam S. Wang</div>
+<div class="meta-line">First: 2026-10-20T16:09:34+00:00 · Latest: 2026-10-20T16:09:34+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28448v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28448v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Background: Coronary artery calcium (CAC) predicts cardiovascular risk. Dual-energy (DE) chest radiography may enable accessible opportunistic CAC assessment by separating calcifications from overlapping bone.
+  Purpose: To evaluate multi-task deep learning for CAC localization and CT-referenced score prediction and assess projection, image representation, and exposure effects.
+  Methods: This retrospective simulation study used 550 calcium-scoring CT exams with reference CAC masks and Agatston scores. Dual-layer DE radiographs were simulated with a physics-based detector model. A modified nnU-Net jointly predicted CAC localization and scores from continuous probability maps. Comparisons included AP, 45°, and lateral views; lateral single-energy (SE), DE bone, and high-pass filtered DE bone images; and dose-matched models at 70, 50, and 24 mAs. Patient-level splitting reserved 10% for independent testing; five-fold models provided averaged inference. Metrics included Dice and AUC at CAC thresholds &gt;0, &gt;100, &gt;400, and &gt;1000, with bootstrap uncertainty and paired DeLong tests with Holm-Bonferroni correction.
+  Results: Lateral views achieved Dice 0.34 versus 0.23 (AP) and 0.22 (45°), with AUCs for CAC &gt;100 of 0.86, 0.81, and 0.77, respectively; AUC differences were not significant after correction. Lateral DE bone outperformed SE (Dice: 0.33 vs. 0.19; AUC for CAC &gt;100: 0.86 vs. 0.64), with significant AUC advantages at &gt;100, &gt;400, and &gt;1000. High-pass filtering added little classification benefit. Dice decreased with exposure, while AUC differences across doses were not significant.
+  Conclusions: Simulation results support lateral dual-layer DE bone imaging for opportunistic CAC assessment, with significant advantages over SE. Physical and clinical validation is needed.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Background: Coronary artery calcium (CAC) predicts cardiovascular risk.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261019_0514.html">20261019_0514</a>
+<a href="archive/20261018_0512.html">20261018_0512</a>
+<a href="archive/20261015_0601.html">20261015_0601</a>
+<a href="archive/20261012_0640.html">20261012_0640</a>
+<a href="archive/20261011_0611.html">20261011_0611</a>
+<a href="archive/20261008_0727.html">20261008_0727</a>
+<a href="archive/20261005_0611.html">20261005_0611</a>
+<a href="archive/20261004_0558.html">20261004_0558</a>
+<a href="archive/20261001_0647.html">20261001_0647</a>
+<a href="archive/20260928_0550.html">20260928_0550</a>
+<a href="archive/20260927_0546.html">20260927_0546</a>
+<a href="archive/20260924_0559.html">20260924_0559</a>
+<a href="archive/20260921_0510.html">20260921_0510</a>
+<a href="archive/20260920_0515.html">20260920_0515</a>
+<a href="archive/20260917_0555.html">20260917_0555</a>
+<a href="archive/20260913_0510.html">20260913_0510</a>
+<a href="archive/20260910_0530.html">20260910_0530</a>
+<a href="archive/20260907_0502.html">20260907_0502</a>
+<a href="archive/20260906_0455.html">20260906_0455</a>
+<a href="archive/20260903_0532.html">20260903_0532</a>
+<a href="archive/20260831_0550.html">20260831_0550</a>
+<a href="archive/20260830_0530.html">20260830_0530</a>
+<a href="archive/20260827_0536.html">20260827_0536</a>
+<a href="archive/20260824_0320.html">20260824_0320</a>
+<a href="archive/20260823_0319.html">20260823_0319</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260817_0318.html">20260817_0318</a>
+<a href="archive/20260816_0319.html">20260816_0319</a>
+<a href="archive/20260813_0400.html">20260813_0400</a>
+<a href="archive/20260810_0330.html">20260810_0330</a>
+<a href="archive/20260809_0326.html">20260809_0326</a>
+<a href="archive/20260806_0423.html">20260806_0423</a>
+<a href="archive/20260803_0408.html">20260803_0408</a>
+<a href="archive/20260802_0408.html">20260802_0408</a>
+<a href="archive/20260730_0410.html">20260730_0410</a>
+<a href="archive/20260727_0411.html">20260727_0411</a>
+<a href="archive/20260726_0409.html">20260726_0409</a>
+<a href="archive/20260723_0410.html">20260723_0410</a>
+<a href="archive/20260720_0406.html">20260720_0406</a>
+<a href="archive/20260719_0403.html">20260719_0403</a>
+<a href="archive/20260716_0405.html">20260716_0405</a>
+<a href="archive/20260713_0405.html">20260713_0405</a>
+<a href="archive/20260712_0404.html">20260712_0404</a>
+<a href="archive/20260709_0419.html">20260709_0419</a>
+<a href="archive/20260706_0411.html">20260706_0411</a>
+<a href="archive/20260705_0408.html">20260705_0408</a>
+<a href="archive/20260702_0447.html">20260702_0447</a>
+<a href="archive/20260629_0411.html">20260629_0411</a>
+<a href="archive/20260628_0422.html">20260628_0422</a>
+<a href="archive/20260625_0445.html">20260625_0445</a>
+<a href="archive/20260622_0422.html">20260622_0422</a>
+<a href="archive/20260621_0414.html">20260621_0414</a>
+<a href="archive/20260618_0503.html">20260618_0503</a>
+<a href="archive/20260615_0416.html">20260615_0416</a>
+<a href="archive/20260614_0413.html">20260614_0413</a>
+<a href="archive/20260611_0525.html">20260611_0525</a>
+<a href="archive/20260608_0409.html">20260608_0409</a>
+<a href="archive/20260607_0408.html">20260607_0408</a>
+<a href="archive/20260604_0547.html">20260604_0547</a>
+<a href="archive/20260601_0406.html">20260601_0406</a>
+<a href="archive/20260531_0406.html">20260531_0406</a>
+<a href="archive/20260528_0459.html">20260528_0459</a>
+<a href="archive/20260524_0405.html">20260524_0405</a>
+<a href="archive/20260521_0459.html">20260521_0459</a>
+<a href="archive/20260518_0403.html">20260518_0403</a>
+<a href="archive/20260517_0402.html">20260517_0402</a>
+<a href="archive/20260514_0430.html">20260514_0430</a>
+<a href="archive/20260511_0400.html">20260511_0400</a>
+<a href="archive/20260510_0356.html">20260510_0356</a>
+<a href="archive/20260507_0419.html">20260507_0419</a>
+<a href="archive/20260504_0353.html">20260504_0353</a>
+<a href="archive/20260503_0353.html">20260503_0353</a>
+<a href="archive/20260430_0409.html">20260430_0409</a>
+<a href="archive/20260427_0344.html">20260427_0344</a>
+<a href="archive/20260426_0342.html">20260426_0342</a>
+<a href="archive/20260423_0403.html">20260423_0403</a>
+<a href="archive/20260420_0340.html">20260420_0340</a>
+<a href="archive/20260419_0339.html">20260419_0339</a>
+<a href="archive/20260416_0402.html">20260416_0402</a>
+<a href="archive/20260413_0337.html">20260413_0337</a>
+<a href="archive/20260412_0333.html">20260412_0333</a>
+<a href="archive/20260409_0358.html">20260409_0358</a>
+<a href="archive/20260406_0332.html">20260406_0332</a>
+<a href="archive/20260405_0329.html">20260405_0329</a>
+<a href="archive/20260402_0405.html">20260402_0405</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>

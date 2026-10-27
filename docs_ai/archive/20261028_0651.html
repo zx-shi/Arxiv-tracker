@@ -1,0 +1,729 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递 - AI</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#7c3aed;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#7c3aed;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递 - AI</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-10-28 06:51</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261028_0651</div>
+    <div class="row"><div class="card">
+<div class="title">Retriever-Free Retrieval: Navigating Documents with Decision Models</div>
+<div class="meta-line">Authors: Chao Wan, Paul Jünger, Beixi Du, Bodong Liu, Navaneetha Krishnan, Kilian Q. Weinberger</div>
+<div class="meta-line">First: 2026-10-26T17:59:44+00:00 · Latest: 2026-10-26T17:59:44+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35868v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35868v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">While language models have become dramatically more capable, retrieval still largely relies on lexical matching or similarity in fixed embedding spaces. This creates a capability asymmetry: what the retriever fails to find, even the strongest generator cannot recover. We propose DecisionRAG, which brings the capabilities of pretrained language models to retrieval using decision models that jointly evaluate candidate branches in a single forward pass, without generating any tokens, and show that judging candidates in a shared context makes their relevance estimates comparable. Like a person browsing a library, DecisionRAG navigates the corpus&#x27;s inherent structure from broad topics down to individual passages, deciding at each level which branches are worth exploring. Without task-specific training or a first-stage retriever, DecisionRAG outperforms dense retrieval with an 8B reranker by 13.8 R@1 points on MultiDoc2Dial and 17.4 Hit@1 points on Natural Questions. Across four benchmarks, including a corpus of 2.68 million Wikipedia paragraphs, retrieval takes just 0.7-1.8 seconds per query.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">While language models have become dramatically more capable, retrieval still largely relies on lexical matching or similarity in fixed embedding spaces.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Center-of-Mass Interpretation of Evolution Strategies</div>
+<div class="meta-line">Authors: Akshat Gupta</div>
+<div class="meta-line">First: 2026-10-26T17:59:33+00:00 · Latest: 2026-10-26T17:59:33+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35865v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35865v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Evolution strategies (ES) update a model by sampling a population of perturbed copies, scoring each one, and moving in the reward-weighted direction of the perturbations. This update is usually presented as an estimate of a smoothed gradient. We present a geometrical interpretation of this update instead. Treat each perturbed model as a particle and its reward as the particle&#x27;s mass. Before scoring, every particle has the same mass and the population balances at its centroid. Once rewards are assigned, it balances at its reward-weighted center of mass instead. We show that the mean-subtracted ES update is exactly this displacement, scaled by a scalar factor that depends on the mean reward, for any finite population. The physical reading needs nonnegative rewards, which can always be arranged by adding a constant to every reward without changing the update. In the limit of a large population or under antithetic sampling, the centroid sits on the model itself, so ES has an even simpler geometric interpretation: from its current location, the model moves towards the reward-weighted center of mass of its own population. The same picture explains what subtracting the mean reward does: it changes the point from which the displacement is measured, from the model to the sampled centroid. Our contribution is an intuitive, geometric way to visualize an ES update, exact for any finite population.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Evolution strategies (ES) update a model by sampling a population of perturbed copies, scoring each one, and moving in the reward-weighted direction of the perturbations.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Auto-Research Arena: Benchmarking and Advancing Auto-Research in Language Modeling</div>
+<div class="meta-line">Authors: Xi Chen, Chongjian Ge, Yiran Xu, Yiqun Mei, Henrik I. Christensen, Hao Tan, Ziwen Chen, Hanwen Jiang</div>
+<div class="meta-line">First: 2026-10-26T17:59:33+00:00 · Latest: 2026-10-26T17:59:33+00:00</div>
+<div class="meta-line">Comments: The code is available at https://github.com/Auto-Research-Arena/auto-research-arena</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35866v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35866v1">PDF</a> · <a href="https://github.com/Auto-Research-Arena/auto-research-arena">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">As autonomous research systems become more capable, benchmarks must both evaluate their performance and support meaningful research progress. We introduce Auto-Research Arena, a multi-target benchmark for evaluating autonomous research systems and discovering ideas in language modeling. Arena supports diverse research objectives within a shared experimental environment by separating admissibility from improvement: model quality and resource constraints determine whether a result qualifies, while the selected target measures progress among admissible results. We instantiate Arena in language model pretraining with nine targets spanning model, data, training, and inference efficiency, and evaluate seven research harnesses using two foundation models. Arena clearly differentiates existing harnesses across research objectives, with several sophisticated methods outperformed by our simple sequential search baseline, indicating substantial headroom in current auto-research systems. Beyond evaluation, Arena reveals a substantially broader frontier of model and system ideas aligned with active research directions. Reusing these discoveries in a new quality-driven search yields lower training loss under matched data and FLOPs and lower held-out BPB at the same model size. Together, Arena provides a common framework for benchmarking autonomous research and expanding its scope in language modeling. The code is available at https://github.com/Auto-Research-Arena/auto-research-arena</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">As autonomous research systems become more capable, benchmarks must both evaluate their performance and support meaningful research progress.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">VibeVideoBench:Evaluating Multimodal Agents on Code-Driven Video Generation</div>
+<div class="meta-line">Authors: Muxi Diao, Wenbin Xu, Lele Yang, Xuyang Ma, Yuzhe Chen, Jiankang Chen, Kaiyu Jiang, Changyi Liu, Haoyu Zhang, Hongyi Fu, Jianxiong Wang, Tianke Zhang, Haonan Fan, Yingxin Li, Bingyi Li, Xu Wang, Xuanyu Zheng, Bin Wen, Tingting Gao, Han Li, Wentao Zhang, Weiran Xu, Kongming Liang, Zhanyu Ma</div>
+<div class="meta-line">First: 2026-10-26T17:59:32+00:00 · Latest: 2026-10-26T17:59:32+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35864v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35864v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Diffusion video models produce striking clips, but they cannot reliably render an exact formula, a correct chart, a ruleconsistent game or narration synchronized to on-screen events. A different route is emerging: multimodal agents that write code to render every frame and synthesize every sound. We introduce VibeVideoBench, a benchmark for evaluating agents on code-driven video generation. Its 239 self-contained tasks in English and Chinese span 12 categories, from data stories and music-driven pieces to classroom lessons and paper explainers; each asks an agent, running in its native harness inside a sandbox, to deliver a finished MP4 with sound within one hour. Evaluation is hierarchical and evidence-based: program checks of the delivery spec, about 13k task-specific rubric checks traced to the requirements they enforce, and five quality dimensions anchored per task, judged by three VLM judge panels and validated with blind human preferences. Across nine frontier agent systems and 2,151 scored rollouts, the benchmark is far from solved: GPT-6 Astra and Claude Opus 5.5 lead clearly, yet even the best system fails a core requirement on about a quarter of tasks. Whether a video arrives at all matters as much as its quality, and three quarters of the lost videos are final renders started too late, run too slowly or never started. The judges agree with each other and with human preferences on system rankings, but only moderately on individual videos.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Diffusion video models produce striking clips, but they cannot reliably render an exact formula, a correct chart, a ruleconsistent game or narration synchronized to on-screen events.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Learning Force-Reactive Humanoid Loco-Manipulation</div>
+<div class="meta-line">Authors: Sihang Li, Xiaofeng Guo, Jinkun Cao, Charlie Cheng, Ruihan Yang, Chen Feng, Guanya Shi, Haozhi Qi</div>
+<div class="meta-line">First: 2026-10-26T17:59:11+00:00 · Latest: 2026-10-26T17:59:11+00:00</div>
+<div class="meta-line">Comments: 9 pages, 6 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35862v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35862v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://louis-leee.github.io/FLoRe/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Many everyday tasks require controlling contact force as well as motion. On a humanoid, this force must often be coordinated across both hands and the whole body, and cannot be specified by kinematic trajectories alone. Therefore, we present FLORE, a framework for learning force-reactive humanoid loco-manipulation. We collect robot-free demonstrations using two force-sensing UMI-style handheld grippers for hand motion and contact wrenches, and wearable trackers for body motion. A force-reactive diffusion policy takes vision, proprioception, and measured wrenches as input, then predicts actions and per-hand force commands. A hybrid compliance whole-body controller with force tracking executes these commands while maintaining balance: an integral of the force error measured by real force/torque (F/T) sensors lets each hand track force accurately along the commanded direction and remain compliant along the others. In simulation, the controller tracks per-hand force commands of varied magnitude and direction, with little loss in whole-body motion accuracy. Across three contact-rich tasks on the robot, the force-reactive policy succeeds in 80% of rollouts, compared with 26.7% for a position-only policy trained on the same demonstrations and executed by the same controller. For more details, please visit our website: https://louis-leee.github.io/FLoRe/.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Many everyday tasks require controlling contact force as well as motion.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Non-Commutative Lie-Algebraic State-Space Models: Finite-Division Variety Laws, Semidirect Cascades, and Gradient Saddle Escape</div>
+<div class="meta-line">Authors: Zeyu Jia</div>
+<div class="meta-line">First: 2026-09-29T11:14:24+00:00 · Latest: 2026-10-26T17:58:57+00:00</div>
+<div class="meta-line">Comments: 33 pages, 4 figures, 11 tables, 2 algorithms</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.00329v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.00329v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Structured state-space models (SSMs) achieve linear-time inference and logarithmic-time parallel training via associative scans, yet homogeneous diagonal transitions generate solvable semigroups unable to track non-solvable group words or 3D rigid-body manifolds. We develop a theoretical and empirical framework for Non-Commutative Lie-Algebraic State-Space Models (Lie-SSMs), parameterizing recurrent updates on Lie algebra tangent spaces via the matrix exponential. First, via an o-minimal multi-rate cylindrical flag collar, we establish an unconditional single-layer finite-division criterion for contracting $SO(3)$ and $SU(2)$ heads, proving odd-prime Sylow abelianity, odd-$p$-core centrality $[u^2,x]=e$, exponent-30 commutator laws ($[u^{30},v^{30}]=e$ in $SO(3)^m$ and $[u^{30},v^{30}]\in Z(G),[u^{30},v^{30}]^2=e$ in $SU(2)^m,SO(4)^m$, excluding $S_5$), and sharp threshold $d^*(S_5)=d^*(A_6)=5$ in $SO(5)$. Second, Depth-2 semidirect and Schreier $2$-cocycle cascades resolve $S_5$, $2I\cong SL_2(\mathbb{F}_5)$, and $\mathrm{Heis}(\mathbb{F}_p)$ in $\mathcal{O}(\log T)$ depth, whereas unnormalized contracting coupling collapses exponentially without Directional RMSNorm. Third, we characterize the $O(\varepsilon^{c-1})$ Chen--Magnus--Hall--Witt commutator saddle and $1/|[G,G]|$ coset-centroid dilution, proving $\varepsilon=0$ symmetry breaking and local Polyak--Łojasiewicz convergence ($θ_{\max}&lt;π$), solving $S_5$ ($99.90\%/99.40\%$ at $T=128$) and $D_{16}$ ($100.00\%$) via dense prefix loss and factored readouts. Across $Q_8,A_5,S_5,D_{16}$, Dyck-2, $SE_2(3)$ Left-Jacobian odometry, GPU scans ($26.03\times$ speedup), and three 3D IMU cohorts (UCI HAR, HAPT-PT, REALDISP), Depth-2 Lie-$SO(3)$ cascades reach $95.69\%\pm 0.14\%$ on HAR, $87.16\%\pm 0.64\%$ ($86.23\%\pm 0.64\%$ uniform $SO(3)$) on HAPT-PT, and $84.23\%\pm 1.00\%$ under displacement on REALDISP.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Structured state-space models (SSMs) achieve linear-time inference and logarithmic-time parallel training via associative scans, yet homogeneous diagonal transitions generate solvable semigroups unable to track non-solvable group words or 3D rigid-body manifolds.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Evaluating the Structural Basis for Polar Altermagnet Candidate Ca$_{3}$(Ru,Ti)$_{2}$O$_{7}$</div>
+<div class="meta-line">Authors: Akash Saha, Yihuang Xiong, Vladimir A. Stoica, Subin Mali, Aaron Pearre, Saugata Sarker, Huaiyu Wang, Yufei Zhao, Evguenia Karapetrova, Yu Wang, Jadupati Nag, Zachary W. Hazenstab, Seng Huat Lee, Long-Qing Chen, Geoffroy Hautier, Binghai Yan, Zhiqiang Mao, Venkatraman Gopalan</div>
+<div class="meta-line">First: 2026-06-15T03:52:13+00:00 · Latest: 2026-10-26T17:58:36+00:00</div>
+<div class="meta-line">Comments: Supplementary Material appended to file</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2606.16181v2">Abs</a> · <a href="https://arxiv.org/pdf/2606.16181v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The interplay between polar and altermagnetic orders remains largely unexplored in the broader landscape of correlated electron systems. Density functional theory (DFT) within the PBEsol + $U$ treatment propose Ca$_{3}$Ru$_{2}$O$_{7}$ as a polar altermagnet, reliant on the transformation of the experimentally reported $Bb2_{1}m$ phase to a lower symmetry $Pn2_{1}a$ structure. Here, we perform a targeted search for the $Pn2_{1}a$ phase using synchrotron X-ray diffraction on single crystals of Ca$_{3}$Ru$_{2}$O$_{7}$ and Ca$_{3}$(Ru$_{0.99}$Ti$_{0.01}$)$_{2}$O$_{7}$. No diffraction signature of the $Pn2_{1}a$ structure is detected down to 20 K within experimental limits. Through diffraction simulations, we translate this result into a quantitative upper bound on the symmetry breaking distortion amplitude, which we find to be significantly smaller than the DFT predicted distortion. Our DFT calculations further motivate dilute Ti substitution ($\lesssim 2\%$) as an alternative route to stabilize the low symmetry phase, for which we again find no clear evidence for this putative $Pn2_{1}a$ structure that hosts altermagnetism. Our findings indicate that PBEsol + $U$ over-stabilizes a $Pn2_{1}a$ distortion, and the measured bounds provide benchmark for future calculations. Ti substitution exceeding $\sim$3% reveals a chemically tunable polar altermagnetic phase within the $Bb2_{1}m$ structure and we theoretically demonstrate that the spin-splitting can be tuned by Ti substitution. By combining DFT, diffraction simulations and synchrotron X-ray measurements, our study demonstrates a general methodology to quantify subtle structural distortions that underlie emergent electronic and magnetic phases.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The interplay between polar and altermagnetic orders remains largely unexplored in the broader landscape of correlated electron systems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">BERAG: Bayesian Ensemble Retrieval-Augmented Generation for Knowledge-based Visual Question Answering</div>
+<div class="meta-line">Authors: Jinghong Chen, Jingbiao Mei, Guangyu Yang, Bill Byrne</div>
+<div class="meta-line">First: 2026-04-24T16:01:19+00:00 · Latest: 2026-10-26T17:58:25+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.22678v2">Abs</a> · <a href="https://arxiv.org/pdf/2604.22678v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A common approach to question answering with retrieval-augmented generation (RAG) is to concatenate documents into a single context and pass it to a language model to generate an answer. While simple, this strategy can obscure the contribution of individual documents, making attribution difficult and contributing to the ``lost-in-the-middle&#x27;&#x27; effect, where relevant information in long contexts is overlooked. Concatenation also scales poorly: computational cost grows quadratically with context length, a problem that becomes especially severe when the context includes visual data, as in visual question answering. Attempts to mitigate these issues by limiting context length can further restrict performance by preventing models from benefiting from the improved recall offered by deeper retrieval. We propose Bayesian Ensemble Retrieval-Augmented Generation (BERAG), along with Bayesian Ensemble Fine-Tuning (BEFT), as a RAG framework in which language models are conditioned on individual retrieved documents rather than a single combined context. BERAG treats document posterior probabilities as ensemble weights and updates them token by token using Bayes&#x27; rule during generation. This approach enables probabilistic re-ranking, parallel memory usage, and clear attribution of document contribution, making it well-suited for large document collections. We evaluate BERAG and BEFT primarily on knowledge-based visual question answering tasks, where models must reason over long, imperfect retrieval lists. The results show substantial improvements over standard RAG, including strong gains on Document Visual Question Answering and multimodal needle-in-a-haystack benchmarks. We also demonstrate that BERAG mitigates the ``lost-in-the-middle&#x27;&#x27; effect. The document posterior can be used to detect insufficient grounding and trigger deflection, while document pruning enables faster decoding than standard RAG.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A common approach to question answering with retrieval-augmented generation (RAG) is to concatenate documents into a single context and pass it to a language model to generate an answer.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Do vision models know that three is three?</div>
+<div class="meta-line">Authors: Ankit Sonthalia, Arnas Uselis, Seong Joon Oh</div>
+<div class="meta-line">First: 2026-10-26T17:58:17+00:00 · Latest: 2026-10-26T17:58:17+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35857v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35857v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Do vision models encode the transition $2{\to}3$ the same way whether it appears in handwritten digits or in hand gestures, and do they &quot;understand&quot; that clean${\to}$dirty is the same transformation regardless of whether it is applied to a kitchen or a carpet? The linear representation hypothesis (LRH) answers this for language models: concept changes correspond to directions in (language) embedding space. In vision, the same concept can manifest in visually unrelated &quot;regimes&quot; that rarely co-occur: images of digits and hands do not share much in common in pixel space. To understand whether vision models still encode the underlying abstract concepts, we study 46 vision encoders across architectures, training objectives, and scales, on 10 concept families including numerosity, age, object identity, and MIT-States attributes. Within each regime, we find statistically significant concept directions near-universally across our tested models. However, two distinct regimes do not always share the same concept direction. Several models learn multiple linear structures for the same concept transition, split across regimes. We call this phenomenon &quot;fragmented linearity&quot;: strong local linearity coexisting with near-absent global linearity. Fragmentation is, however, not fixed: models with stronger local linearity progressively escape it (local-global linearity correlated with $τ\in [0.38, 0.89]$ across all concepts), and where global linearity does emerge, concept directions can transfer as linear probes across regimes.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Do vision models encode the transition $2{\to}3$ the same way whether it appears in handwritten digits or in hand gestures, and do they &quot;understand&quot; that clean${\to}$dirty is the same transformation regardless of whether it is applied to a kitchen or a carpet?</div>
+</details>
+</div>
+<div class="card">
+<div class="title">On the stability of learning</div>
+<div class="meta-line">Authors: John J. Vastola</div>
+<div class="meta-line">First: 2026-10-26T17:58:14+00:00 · Latest: 2026-10-26T17:58:14+00:00</div>
+<div class="meta-line">Comments: 20 pages, 6 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35856v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35856v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Learning algorithms are usually analyzed under the assumption that informative gradients are continuously available. But this is not always true---learning signals in biological neural networks, for example, may be sparse, local, and only intermittently available at any given synapse. In this work, we show that if gradient information is noisy and only intermittently available, learning may be unstable. In particular, even if average learning dynamics converge to the correct optimum, variance in learning may be asymptotically infinite. We explore this point in a number of analytically tractable settings, including single-layer and multi-layer linear networks, and derive explicit conditions under which learning is stable. These conditions complement, but are conceptually distinct from, existing conditions related to the stability of stochastic gradient descent. Our work demonstrates that unbiased credit assignment is not enough for reliable learning; sufficiently frequent and informative feedback is also required, which yields an additional constraint on models of biologically plausible learning.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Learning algorithms are usually analyzed under the assumption that informative gradients are continuously available.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Patient-specific rubric-based evaluation of large language models across longitudinal cancer care</div>
+<div class="meta-line">Authors: Wei-Wei Zhang, Pengkai Wang, Yan Li, Zhijie Sang, Guan-Qun Zhou, Jun-Yan Li, Shu-Han Zhou, Pei-Wen Liu, Ting-Xi Tang, Min Tang, Zhitian Hou, Jianmin Wu, Jian Guan, i Lin, Hongxia Yang, Ying Sun</div>
+<div class="meta-line">First: 2026-10-26T17:56:26+00:00 · Latest: 2026-10-26T17:56:26+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35847v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35847v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Large language models (LLMs) show promise in specialty medicine, yet existing evaluations largely focus on isolated clinical encounters rather than tracking how clinical responsibilities evolve across a longitudinal care pathway. Here we introduce NPC-RubricBench, a phase-aware benchmark for evaluating multistage clinical reasoning across the cancer care continuum, using nasopharyngeal carcinoma as a defined disease context. Curated from longitudinal records of 405 patients across two cancer centers, the benchmark comprises 941 patient-phase units across six sequential care phases and 17,688 patient-specific atomic criteria spanning five evaluation dimensions, with each assessment strictly restricted to decision-time clinical evidence. Evaluating 30 general-purpose and medical LLMs revealed that strong diagnostic performance does not carry over to downstream care. We evaluated 30 general-purpose and medical LLMs, showing that high diagnostic performance did not translate into improved downstream care. Instead, the dominant failure modes reversed across phases. Explicit decision errors dominated anatomical staging at 48.2%, whereas decision omissions dominated initial work-up and post-treatment follow-up at 33.4% and 30.4%, respectively. In the evaluated model set, medically adapted models showed higher omission rates than general-purpose models. Moreover, varying query granularity exposes a critical specification trade-off: broad open-ended requests degrade Decision Quality across all 30 models, while more detailed, checklist-like prompts raise Decision Quality but reduce Evidence Faithfulness and Safety Adherence. Furthermore, NPC-RubricBench demonstrates that static diagnostic benchmarks are insufficient to ensure consistent clinical reliability over time, highlighting the importance of phase-adaptive safeguards in multistage medical AI.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Large language models (LLMs) show promise in specialty medicine, yet existing evaluations largely focus on isolated clinical encounters rather than tracking how clinical responsibilities evolve across a longitudinal care pathway.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Preserve to Expand: Source-Aware Adaptation and Model Merging for Multilingual LLM-Based ASR</div>
+<div class="meta-line">Authors: Yuchen Zhang, Haralambos Mouratidis, Ravi Shekhar</div>
+<div class="meta-line">First: 2026-10-26T17:56:22+00:00 · Latest: 2026-10-26T17:56:22+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35846v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35846v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Expanding multilingual ASR systems to new languages is challenging when adaptation must preserve previously supported languages without replaying source-language training data. We study this problem in connector-based Speech LLMs, where a trainable connector maps speech representations into a frozen large language model. We evaluate target-update construction and merging strategies for adapting the connector while preserving source-language performance. In single-target expansion, target-only fine-tuning and standard TIES merging learn new languages but cause severe source-language forgetting, while SSU-Wanda+TIES gives the best source-preserving trade-off. In multi-target expansion, update merging provides stable source retention, whereas recursive expansion can improve target adaptation under favorable orders but is highly order-sensitive. These results show that multilingual ASR expansion requires balancing target acquisition, source retention, and interactions among target-language updates.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Expanding multilingual ASR systems to new languages is challenging when adaptation must preserve previously supported languages without replaying source-language training data.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Work Agents: Systems, Capabilities, and Optimization</div>
+<div class="meta-line">Authors: Zishan Xu, Enjun Du, Mingqi Gao, Cheng Yang, Junhao Shen, Zirong Chen, Zhiyuan Yao, Yifu Guo, Yuquan Lu, Jinyang Huang, Zhengxi Lu, Siyi Liu, Ziyu Zheng, Yongqi Zhang, Difan Zou, Weiwen Liu</div>
+<div class="meta-line">First: 2026-10-26T17:56:21+00:00 · Latest: 2026-10-26T17:56:21+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35845v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35845v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">As foundation models evolve from information generation to digital work execution, agents are increasingly capable of completing complex tasks across tools, applications, and workflows. However, existing research lacks a unified perspective on how agents reliably accomplish delegated work. To address this gap, we present a work-centric, system-level perspective that views work agents as systems combining foundation models and runtime harnesses to execute tasks in stateful workspaces and deliver verifiable outcomes. We introduce two complementary dimensions, work persistence and work openness, to characterize working conditions, and classify digital work into five forms according to task scope and organization. Building on this framework, we identify five core capability families required for reliable work execution and examine approaches to model optimization, harness optimization, and their joint optimization. We further analyze existing evaluation methods and metrics from the perspective of work outcomes. Finally, we discuss future research directions, including sustained work delegation, adaptation to open environments, and the interaction between work execution and capability improvement. This paper provides a unified framework for understanding, optimizing, and evaluating work agents, supporting the development of systems capable of delivering reliable, verifiable, and practically valuable work outcomes.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">As foundation models evolve from information generation to digital work execution, agents are increasingly capable of completing complex tasks across tools, applications, and workflows.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Not All Features Are Created Equal: A Mechanistic Study of Vision-Language-Action Models</div>
+<div class="meta-line">Authors: Bryce Grant, Xijia Zhao, Peng Wang</div>
+<div class="meta-line">Venue: NeurIPS 2026 Poster</div>
+<div class="meta-line">First: 2026-03-19T17:59:55+00:00 · Latest: 2026-10-26T17:56:13+00:00</div>
+<div class="meta-line">Comments: NeurIPS 2026 Poster, ICLR Multimodal Intelligence Workshop Oral, 44 pages, 14 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.19233v5">Abs</a> · <a href="https://arxiv.org/pdf/2603.19233v5">PDF</a> · <a href="https://github.com/CWRU-AISM/action-atlas">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A fine-tuned Vision-Language-Action (VLA) policy can easily place the alphabet soup in the basket on command, just as it saw during fine-tuning. However, if the basket is shifted five centimeters to the left, it drops the soup off the table. We developed an interpretability pipeline to investigate what such a policy is computing. Injecting task A&#x27;s activations into the action expert while the policy looks at task B&#x27;s scene makes pi0.5 execute task A&#x27;s motor trajectory in 99.6\% of episodes ($n{=}1{,}968$). The injected program is bound to absolute workspace coordinates and ignores the visible scene, which provides a mechanistic account of the perturbation brittleness that concurrent benchmarks report. The binding holds on a physical UR10e: directed replay redirects the commanded task in 26/26 rollouts in one direction and 18/26 in the other, with no-injection and random-direction controls at the floor, and once the source object is moved 10--15\,cm the arm grasps and releases at the recorded coordinates in 50/50 trials, picking up the wrong block when one sits there and closing on empty air when none does. Applying the same interventions to six VLAs on LIBERO, MetaWorld, SimplerEnv, and ALOHA over 420{,}000+ rollouts yields three further findings: every architecture encodes the instruction, and four of the five weight it below vision whenever the scene alone identifies the goal; under the standard replacement write-back the SAE pooling that preserves behavior is architecture-specific (pi0.5 per-token, SmolVLA indifferent), and goal selection and motor generation separate into VLM and expert pathways wherever the two are distinguishable. We release \textbf{Action Atlas} (https://action-atlas.com), an interactive platform covering all 520+ trained SAEs, 79 identified concepts, and the scored UR10e rollouts. Code: https://github.com/CWRU-AISM/action-atlas</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A fine-tuned Vision-Language-Action (VLA) policy can easily place the alphabet soup in the basket on command, just as it saw during fine-tuning.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">ACARE: Agent-Context-Aware Reranker for Iterative Search</div>
+<div class="meta-line">Authors: Sahel Sharifymoghaddam, Yauhen Babakhin, Reza Esfandiarpoor, Oliver Holworthy, Jimmy Lin, Bo Liu</div>
+<div class="meta-line">First: 2026-10-26T17:53:30+00:00 · Latest: 2026-10-26T17:53:30+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35840v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35840v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In agentic search, a document can match an agent-generated sub-query without helping answer the user&#x27;s original question. Conventional rerankers score documents against the sub-query alone, overlooking the broader task and the agent&#x27;s reasoning. We introduce the Agent-Context-Aware Reranker (ACARe), a compact 4B LLM trained to rerank documents using this context when available. Across multiple benchmarks and agent families, ACARe improves retrieval quality over its base reranker while reducing search effort. These benefits extend to answer generation: ACARe improves accuracy and reduces searches over no reranking, while matching or exceeding the base reranker&#x27;s mean accuracy with more precise evidence. It also helps smaller agents narrow the retrieval-quality gap to larger agents, showing how better retrieval tools can make smaller agents more effective. The model, training data, and code will be released soon.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In agentic search, a document can match an agent-generated sub-query without helping answer the user&#x27;s original question.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">CoSpaDi: Compressing LLMs via Calibration-Guided Sparse Dictionary Learning</div>
+<div class="meta-line">Authors: Denis Makhov, Dmitriy Shopkhoev, Magauiya Zhussip, Ammar Ali, Stamatios Lefkimmiatis</div>
+<div class="meta-line">First: 2025-09-26T08:55:09+00:00 · Latest: 2026-10-26T17:53:03+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2509.22075v7">Abs</a> · <a href="https://arxiv.org/pdf/2509.22075v7">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Post-training LLM compression often relies on low-rank approximations, which force all columns of a projection matrix to share a single low-dimensional subspace. We propose CoSpaDi, a training-free compression framework that replaces this single-subspace assumption with a union-of-subspaces model via sparse dictionary learning. CoSpaDi factorizes each weight matrix into a dense dictionary and column-sparse coefficients, allowing different columns to select different subsets of dictionary atoms at the same storage budget. To preserve model behavior, we use calibration activations to transform functional reconstruction into a standard dictionary learning problem. Across LLaMA and Qwen models, CoSpaDi improves accuracy-compression and perplexity-compression trade-offs over SVD-based and structured pruning baselines at 20-40\% compression ratios, while naturally supporting sparse-dense computation and post-training quantization of sparse coefficients.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Post-training LLM compression often relies on low-rank approximations, which force all columns of a projection matrix to share a single low-dimensional subspace.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">I-HITL: Inalienable Human-in-the-Loop</div>
+<div class="meta-line">Authors: Samuel Breckenridge, Dani Vilardell, Wenhao Wang, Fan Zhang, Ari Juels</div>
+<div class="meta-line">First: 2026-10-26T17:52:14+00:00 · Latest: 2026-10-26T17:52:14+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35835v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35835v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Human oversight is a pillar of AI safety. It is often exercised by a human in the loop (HITL) who approves critical actions taken by an AI agent. AI agents&#x27; increasing ability to bypass guardrails, though, raises the question of how to enforce HITL robustly.
+  We introduce the concept of inalienable human-in-the-loop (I-HITL). An I-HITL protocol ensures that an agent can initiate an action only with explicit human approval, even when the human interacts with a system (e.g., a local agentic harness) compromised by the agent. A strong I-HITL protocol additionally ensures such approval even when an adversarial human attempts to delegate approvals to an agent.
+  To motivate I-HITL, we report on experiments with a popular agentic wallet platform in which raising an agent&#x27;s spending cap requires HITL approval via emailed one-time passcodes (OTPs). Given access to the user&#x27;s email and a task blocked by the cap, we find that ten different frontier models will often autonomously raise the cap, harvesting OTPs to bypass a HITL guardrail and surfacing other vulnerabilities.
+  We formally define I-HITL using the concept of communication topologies and prove necessary and sufficient conditions for its realization. We show that an I-HITL protocol requires a trusted entity - a trusted computing device (or equivalent) - and characterize which such devices can and cannot realize an I-HITL protocol. We present a prototype I-HITL system called Countersign that can plug into and strengthen existing HITL systems using off-the-shelf consumer mobile devices.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Human oversight is a pillar of AI safety.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Information-Theoretic Secure Aggregation With Heterogeneous Client Quantization</div>
+<div class="meta-line">Authors: Shreya Meel, Sennur Ulukus, Itzhak Tamo</div>
+<div class="meta-line">First: 2026-10-26T17:51:08+00:00 · Latest: 2026-10-26T17:51:08+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35833v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35833v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In federated learning (FL), secure aggregation enables a server to compute the sum of local model updates of $N$ clients, without revealing any information on the individual model updates to the server, beyond their sum. Different clients may be subject to heterogeneous bandwidth constraints, and consequently may choose different numbers of quantization levels to represent the information they send. Most secure aggregation works require the clients to project the values of their update parameters to a common finite group (or field), which does not directly accommodate heterogeneous precision constraints on their transmitted masked updates. Existing approaches of secure aggregation with heterogeneous quantization levels reveal partial aggregates of model-updates, and can reveal segments of individual model updates, under certain dropout and client-server collusion patterns. To prevent this privacy breach, we propose an information-theoretic secure aggregation scheme that tolerates client drop-outs, and up to $T$ semi-honest clients that collude with each other and with the server, under heterogeneous quantization at clients. Our protocol utilizes the $(T+1, N)$ threshold black-box secret sharing construction, where secret shares of the client updates, despite belonging to distinct algebraic groups owing to different quantization, are generated from identical linear integer systems.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In federated learning (FL), secure aggregation enables a server to compute the sum of local model updates of $N$ clients, without revealing any information on the individual model updates to the server, beyond their sum.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Profiling a Frontier Agent with EBench: From Direct Control to Harness with Policy</div>
+<div class="meta-line">Authors: Yifei Yao, Yude Zou, Guanbo Jiao, Xing Gao, Ning Gao, Yukai Wang, Jiantong Chen, Zihou Zhu, Xinyu Li, Ningyu Yan, Shuai Wang, Jianming Ma, Haoyu Guo, Weinan Zhang, Chunhua Shen</div>
+<div class="meta-line">First: 2026-10-26T17:51:02+00:00 · Latest: 2026-10-26T17:51:02+00:00</div>
+<div class="meta-line">Comments: Project page: https://internrobotics.github.io/EBench-Astra-Tech-Report/</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35832v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35832v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://internrobotics.github.io/EBench-Astra-Tech-Report/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Frontier multimodal large language models (MLLMs) can control robots without robot-specific training, but how their capabilities compare and interact with post-trained vision-language-action (VLA) and world action model (WAM) policies across manipulation demands remains to be thoroughly evaluated. In this report, we evaluate GPT-6-Astra on EBench as the core of an agent that controls a robot through an agent harness under the same visual and proprioceptive observation protocol as post-trained policies. We study two agent configurations: direct control, in which the agent generates waypoint commands directly, and harness with policy, in which it can also invoke a post-trained VLA or WAM policy for action execution. Under direct control, the agent achieves competitive overall performance relative to post-trained policies. It leads on short-horizon tasks and exhibits the least performance variation across generalization dimensions, whereas it underperforms post-trained policies on long-horizon tasks, tabletop manipulation, and high-precision contact-rich tasks. In the harness with policy, invoking a post-trained VLA or WAM combines the complementary strengths of both components, raising overall task success to the level of the strongest compared post-trained policies while substantially reducing token cost. However, performance remains below the per-task upper bound of the standalone components due to suboptimal policy invocation, fixed-instruction execution without subgoals, and grasp disruption when the agent resumes control. Overall, our study characterizes the capability boundary of a frontier MLLM agent and suggests directions for improving future agent harness design. Project page: https://internrobotics.github.io/EBench-Astra-Tech-Report/</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Frontier multimodal large language models (MLLMs) can control robots without robot-specific training, but how their capabilities compare and interact with post-trained vision-language-action (VLA) and world action model (WAM) policies across manipulation demands remains to be thoroughly evaluated.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">AI in Econometric Theory: An Example</div>
+<div class="meta-line">Authors: Isaiah Andrews, Anna Mikusheva</div>
+<div class="meta-line">First: 2026-10-26T17:50:47+00:00 · Latest: 2026-10-26T17:50:47+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35831v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35831v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This note contains a story and a paper. The paper is about the admissibility of two-stage least squares with weak instruments, a topic we have worked on together since 2019. The story is about how we (or, rather, our LLMs) wrote the paper, and some thoughts on what this may mean for our field.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This note contains a story and a paper.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Reva: Real-Time Vulnerability Detection through Contextual Probing of Large Language Models</div>
+<div class="meta-line">Authors: Amine Lbath, Massih-Reza Amini</div>
+<div class="meta-line">First: 2026-10-26T17:50:09+00:00 · Latest: 2026-10-26T17:50:09+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35829v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35829v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A vulnerability costs more to fix the later it is discovered. As coding agents generate code faster than developers can review it, software needs a first line of defense screening each new function in real time. LLM agents have recently become capable of finding real-world vulnerabilities by working as a security expert would: they run analysis tools, explore the surrounding code, test hypotheses and weigh the evidence before forming their own judgement. This reasoning, however, spans many model calls, so that each verdict takes minutes of compute, far too long for real-time screening. Faster detectors, which fine-tune deep learning models or prompt an LLM for a direct verdict, are less accurate: they judge a function without the context an agent gathers, and an LLM&#x27;s generated verdict is unreliable even when given some of it.
+  We present REVA (REal-time Vulnerability Analysis), an AI vulnerability detector that brings the security context and code understanding components behind agentic detectors into a single forward pass of an LLM. For each new function, REVA gives the LLM a pre-computed threat model of its module, lightweight static analysis findings and call-graph information. REVA leverages a trained probe to read the LLM&#x27;s internal representations of the new function in this context. On PrimeVul&#x27;s held-out test set, REVA on GLM-5.3-Flash reaches 60.0% accuracy in about one second per function. This matches VulTriage (59.2%), the state-of-the-art agentic detector, run on the same LLM, while being over 250 times faster and less than a tenth as costly. On the same prompt, the probe is 14% to 17% more accurate than the LLM&#x27;s own direct verdict. Across three open LLMs, REVA is at least as accurate as VulTriage, and about 10% more accurate on two of them. An LLM&#x27;s internal representations thus encode much of what agentic detectors obtain through reasoning.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A vulnerability costs more to fix the later it is discovered.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Understanding Jev-Style System One Models: Does Structure Reduce Selection Bias?</div>
+<div class="meta-line">Authors: Mingyang Song, Mao Zheng, Zhiyuan Ma, Xinpeng Zhou</div>
+<div class="meta-line">First: 2026-10-26T17:48:55+00:00 · Latest: 2026-10-26T17:48:55+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35826v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35826v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Selection bias in large language models (LLMs) can persist despite instructions to ignore presentation order or prompts that elicit reasoning. Recent efforts to reproduce Jev-style System One behavior have produced a growing family of models that predict probabilities directly over supplied candidates. Yet systematic comparisons of selection bias across Jev versions, Jev reproductions, and generative LLMs remain limited in multi-option tasks. This leaves a central question: does Jev-style decision structure reduce selection bias? We address this question with a simple test that shuffles options while keeping question and candidate content fixed. Across two Jev versions, twelve Jev reproductions, and six generative LLMs, we trace individual answers through eight presentations and compare them with fixed-order repetition. On our primary collection of 1,700 questions from two benchmarks, Jev&#x27;s accuracy varies by less than two percentage points, yet its cumulative failure set expands by 27--29\% relative to the original order, with first failures continuing into the final presentation. This loss of initial successes is substantially larger than under fixed-order repetition, even for highly repeatable Jev reproductions. Nor does Jev show a general advantage over the LLM baselines in preserving correct choices. Aggregation offers limited protection: voting yields modest gains for Jev, while even unanimous answers are frequently wrong. These results expose a gap between repeatable decisions and decisions that remain correct across equivalent presentations, showing why stable accuracy alone cannot establish resistance to selection bias.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Selection bias in large language models (LLMs) can persist despite instructions to ignore presentation order or prompts that elicit reasoning.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Hidden Singularity and Fractal Dimensions for Extended Harper Operators</div>
+<div class="meta-line">Authors: Simon Becker, Svetlana Jitomirskaya, Igor Krasovsky</div>
+<div class="meta-line">First: 2026-10-26T17:46:18+00:00 · Latest: 2026-10-26T17:46:18+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35822v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35822v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We prove that, for every irrational frequency, the spectra of the extended Harper family throughout the zero-measure regime have finite $1/2$-dimensional Hausdorff measure and lower box dimension at most $1/2$. Both numbers improve to $1/3$ on the isotropic critical boundary. The proof is based on a family of unitary transformations, that specializes to the chiral transform of [BJK] for the case of the critical almost Mathieu. This family allows to make every operator in this regime spectrally equivalent to a singular Jacobi operator. Using these singular representatives, we apply the method of [BJK] to construct covers by $O(q_n)$ intervals of total length $O(q_n^{-1})$, improving to $O(q_n^{-2})$ on the isotropic boundary, where $q_n$ is the denominator of a canonical approximant to $α$. The covers give upper box bounds and, with packing estimates, examples where the box-counting dimension fails to exist.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We prove that, for every irrational frequency, the spectra of the extended Harper family throughout the zero-measure regime have finite $1/2$-dimensional Hausdorff measure and lower box dimension at most $1/2$.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Do Value Vectors in Deep Layers Need Context from the Residual Stream?</div>
+<div class="meta-line">Authors: Muyu He, Yuchen Liu, Qingya Huang, Li Zhang</div>
+<div class="meta-line">First: 2026-06-01T18:43:34+00:00 · Latest: 2026-10-26T17:45:18+00:00</div>
+<div class="meta-line">Comments: 13 pages, 5 figures. Code: https://github.com/RiddleHe/nanochat</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2606.02780v6">Abs</a> · <a href="https://arxiv.org/pdf/2606.02780v6">PDF</a> · <a href="https://github.com/RiddleHe/nanochat">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The success of the transformer architecture is in large part due to its use of attention layers. An attention layer follows the standard neural network paradigm: it takes the residual stream as input and thereby produces context-dependent query, key, and value vectors. However, we find that model performance meaningfully improves when deeper layers learn only a context-free value vector to preserve the original token information, without drawing on any context from the residual stream. When the model has access to this context-free value vector, adding back the context-dependent component provides little additional benefit for aggregate benchmark performance. Such context-free value vectors can be stored as sparse model parameters, eliminating the need to recompute or persistently cache these values. Through systematic ablations on the key design choices for such context-free value vectors, we propose Bank of Values (BoV), a new way of computing value vectors in attention by learning a lookup table of token-specific value vectors for each of the last third of layers. Across 135M and 780M models, BoV improves validation loss over standard attention and, at 780M, the average score across 21 benchmarks, matching the previous best method that adds token information to the value vector with less compute and memory.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The success of the transformer architecture is in large part due to its use of attention layers.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Pretraining Knows What, Simulation Teaches How: Compositional Generalization in a Sim-Trained Robot Agent</div>
+<div class="meta-line">Authors: Benjamin Pikus, Daniel Saunders, Mircea Mironenco, Salman Mohammadi, Mathew Mathew, Sirou Zhu, Divya Makkar, Xuhua Huang, Qinbo Li, Supreeth Narasimhaswamy, Siyuan Cen, Thomas Neff, Dejia Xu, Shyamal Buch</div>
+<div class="meta-line">First: 2026-10-26T17:44:34+00:00 · Latest: 2026-10-26T17:44:34+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35817v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35817v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A robot policy needs to understand what a task is asking for in a scene, and how to move the robot to accomplish that task. To achieve these two skills, we introduce Zero-real Agent Policy (ZAP), a recipe that teaches a small off-the-shelf vision-language model to control a robot via a simple tool harness. We use a pretrained 27B parameter model to bootstrap world understanding and reasoning, followed by supervised fine-tuning and GRPO on simple simulated tasks to teach it how to move the robot. Without any real-world robot data during training, ZAP reaches 96.7% success on real-world tasks, matching GPT-6 Astra in our harness and outperforming the MolmoAct2 VLA (33.3%), while running 3x faster and 17x cheaper than GPT-6 Astra. We demonstrate that ZAP also generalizes to completely new objects, goals, strategies, and language by seating a test tube in a rack (and choosing a different hole in the rack when prompted), handing a test tube between arms mid-air, drawing an X on a tic-tac-toe board, and playing chess. These goals and types of manipulation don&#x27;t appear in our training data. Furthermore, ZAP also transfers to an unseen embodiment. On a single-arm Franka, ZAP reaches 55.9% on RoboLab-120, 4.9 percentage points ahead of the leading VLA/WAM baseline.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A robot policy needs to understand what a task is asking for in a scene, and how to move the robot to accomplish that task.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Multimodal Concert Video Editing: System Design and Exploratory Evaluation</div>
+<div class="meta-line">Authors: Lennart Schiweck, Adrian Kempf, Michelle Retig, Moritz Feucht, Tim Mangliers, Benjamin Himpel</div>
+<div class="meta-line">First: 2026-10-26T17:43:58+00:00 · Latest: 2026-10-26T17:43:58+00:00</div>
+<div class="meta-line">Comments: 19 pages, 3 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35816v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35816v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Editing multi-camera concerts requires coordinated decisions about musical relevance, visual quality and cut timing. We present a modular framework that combines instrument activity from multitrack audio, visible instruments and image sharpness with beat-based timing and probabilistic camera selection. An interpretable scoring model links these components to the choice of views over complete shot intervals. Component tests and an exploratory expert study on a four-camera concert yield mixed assessments across the editing variants. The findings motivate extending local audiovisual relevance with contextual and sequence-level criteria. The architecture provides a basis for testing these extensions and studying how component behaviour affects the quality of complete edits.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Editing multi-camera concerts requires coordinated decisions about musical relevance, visual quality and cut timing.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Late Attention Layers Alone Can Copy Entity Tokens, but Not Without Attending to Their Context</div>
+<div class="meta-line">Authors: Muyu He, Yuchen Liu, Ran Tao, Li Zhang</div>
+<div class="meta-line">First: 2026-09-28T17:23:01+00:00 · Latest: 2026-10-26T17:43:29+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.35663v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.35663v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Large language models (LLMs) reliably perform entity copying, in which a model copies tokens referring to an entity, termed entity tokens, from the prompt into its output to answer a question. Although entity copying is straightforward for most LLMs, existing research does not provide a systematic account of which layers specialize in this fundamental task or how other tokens in the same sequence, termed context tokens, influence the model&#x27;s ability to copy the entity tokens. To address these questions, we conduct experiments on Qwen3-8B using two novel methods: genie-in-a-bottle, which controls exactly which layers can participate in an entity-copying task, and attention lobotomy, which cuts off specific tokens&#x27; attention to entity tokens without affecting the remaining attention distribution. We find that two distinct groups of layers in the second half of the model are both necessary and sufficient for entity copying. Moreover, in addition to the decoding position&#x27;s attention to entity tokens, context tokens&#x27; attention to entity tokens also proves necessary for copying the exact tokens, even though context tokens do not store entity information themselves unless they satisfy particular semantic properties. Our findings establish the critical role of late layers in entity copying under the guidance of context tokens, calling for future work on how models propagate and consume entity information.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Large language models (LLMs) reliably perform entity copying, in which a model copies tokens referring to an entity, termed entity tokens, from the prompt into its output to answer a question.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Does VGGT Know What It Does Not Know?</div>
+<div class="meta-line">Authors: Adityan Thirumani Srinivasan, David Nordström</div>
+<div class="meta-line">First: 2026-10-26T17:37:39+00:00 · Latest: 2026-10-26T17:37:39+00:00</div>
+<div class="meta-line">Comments: 9 pages, 6 figures, 7 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35806v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35806v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Feed-forward 3D reconstruction models such as VGGT regress cameras and geometry in a single forward pass, but they report no uncertainty for the camera poses they predict: an incorrect relative pose looks no different from a correct one. We ask whether the frozen model nonetheless knows when its pose is wrong. On HardMatch, a benchmark of 1,000 deliberately difficult image pairs on which VGGT fails on 35% of pairs, a linear probe on VGGT&#x27;s frozen features predicts pose failure on held-out categories with ROC-AUC 93.5%, compared with 79.7% for VGGT&#x27;s own point-map confidence and 77.7% for a classifier trained on all of VGGT&#x27;s outputs. The probe catches failures VGGT is confident about, lets a downstream system abstain on the pairs it distrusts, and transfers without retraining to rotation failures on PhotoTourism and ScanNet-1500, beyond what co-visibility explains. This knowledge is absent from the per-image encoder: it is computed partway through the layers that fuse the two views, and the same holds for a second model, $π^3$. In essence, we find that VGGT knows more about its own failures than it reports.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Feed-forward 3D reconstruction models such as VGGT regress cameras and geometry in a single forward pass, but they report no uncertainty for the camera poses they predict: an incorrect relative pose looks no different from a correct one.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Learning When to Commit: Schedule Distillation for Fast Diffusion Language Models</div>
+<div class="meta-line">Authors: Aidar Myrzakhan, Zhiqiang Shen</div>
+<div class="meta-line">First: 2026-10-26T17:35:58+00:00 · Latest: 2026-10-26T17:35:58+00:00</div>
+<div class="meta-line">Comments: Code is available at https://github.com/VILA-Lab/dSpark</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35804v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35804v1">PDF</a> · <a href="https://github.com/VILA-Lab/dSpark">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Diffusion large language models (dLLMs) can generate multiple tokens in parallel, but often require many decoding rounds to complete a response. Efficient generation depends not only on which tokens are easy to predict, but also on how committing to them helps predict the remaining positions. A highly predictable token may provide little useful context, while revealing a less predictable token can help several other positions become predictable sooner. We propose dSpark, a new schedule distillation-based framework for learning when to commit tokens for faster diffusion language generation. To achieve this, we construct unmasking schedules that prioritize tokens whose reveal makes other positions easier to predict, reducing uncertainty earlier in decoding. We then distill these schedules into the model to enable faster parallel sampling, with a KL-divergence regularizer to help preserve generation quality. We extensively evaluate our approach across mathematical reasoning and code generation tasks. On GSM8K, our method achieves remarkable 10.12$\times$ and 5.12$\times$ speedups over the various baselines on LLaDA-8B-Instruct and Dream-7B-Instruct, respectively, while maintaining superior task performance. Our code is available at https://github.com/VILA-Lab/dSpark.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Diffusion large language models (dLLMs) can generate multiple tokens in parallel, but often require many decoding rounds to complete a response.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Game theory of academic effort and hiring in the age of AI</div>
+<div class="meta-line">Authors: Saptarshi Pal, Peter S. Park</div>
+<div class="meta-line">First: 2026-10-26T17:35:30+00:00 · Latest: 2026-10-26T17:35:30+00:00</div>
+<div class="meta-line">Comments: 30 pages, seven visualizations (four figures, three tables)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35802v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35802v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Many academic disciplines (in particular, mathematics and the theoretical sciences) face difficult questions about how to adapt their practices to the rise of highly capable artificial intelligence (AI). Before AI, a well-written research paper with a strong theoretical result acted as a reliable signal that its authors understood their field in depth. Now that AI is widely accessible, such signals have become cheaper to produce. As a result, they no longer reliably sort academics by their level of understanding. This has direct consequences for academic hiring. The age of AI raises a question for each side of the academic job market. Should an early-career researcher invest in a deep understanding of their field, or instead use AI to build a longer resume with many papers? Should a recruiter favor applicants with fewer papers who pass an interview aimed at probing understanding, or insist on both publication volume and a pass? In this paper, we develop a game-theoretic model of this two-sided dilemma. We classify all pure-strategy equilibria that can arise in this game and use learning simulations to identify the behaviors that populations of applicants and recruiters may learn to adopt. Our analysis provides a framework for reasoning about how academic hiring can adapt to AI and for evaluating practices that preserve the value of deep understanding.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Many academic disciplines (in particular, mathematics and the theoretical sciences) face difficult questions about how to adapt their practices to the rise of highly capable artificial intelligence (AI).</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Divide et Calibra: Multiclass Local Calibration via Vector Quantization</div>
+<div class="meta-line">Authors: Cesare Barbera, Lorenzo Perini, Giovanni De Toni, Andrea Passerini, Andrea Pugnana</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-05-20T11:44:55+00:00 · Latest: 2026-10-26T17:35:25+00:00</div>
+<div class="meta-line">Comments: Accepted at the Fortieth Annual Conference on Neural Information Processing System (NeurIPS 2026)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.21060v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.21060v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Accurate and well-calibrated Machine Learning (ML) models are mandatory in high-stakes settings, yet effective multiclass calibration remains challenging: global approaches assume calibration errors are homogeneous across the latent space, while local methods often rely on representation-space dimensionality reduction, discarding latent directions relevant to miscalibration. To address these issues, we propose a compositional approach to multiclass calibration, where region-specific calibration maps are constructed from shared factors. We instantiate this idea via Vector Quantization (VQ), which induces a structured partition of the representation space, and an indexed parameterization of Dirichlet concentrations that enables parameter sharing across regions. Our approach learns heterogeneous calibration maps that generalize well even to sparse regions of the latent space. Experiments on benchmark datasets show significant improvements in local calibration while maintaining competitive global calibration and predictive performance.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Accurate and well-calibrated Machine Learning (ML) models are mandatory in high-stakes settings, yet effective multiclass calibration remains challenging: global approaches assume calibration errors are homogeneous across the latent space, while local methods often rely on representation-space dimensionality reduction, discarding latent directions relevant to miscalibration.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">CEZSAR: A Contrastive Embedding Method for Zero-Shot Action Recognition</div>
+<div class="meta-line">Authors: Valter Estevam, Rayson Laroca, Helio Pedrini, David Menotti</div>
+<div class="meta-line">First: 2026-05-01T23:47:29+00:00 · Latest: 2026-10-26T17:35:11+00:00</div>
+<div class="meta-line">Comments: Accepted for presentation at the International Conference on Pattern Recognition (ICPR) 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.01165v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.01165v2">PDF</a> · <a href="https://github.com/valterlej/cezsar">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper proposes a novel Zero-Shot Action Recognition~(ZSAR) method based on contrastive learning. In ZSAR, we aim to classify examples from classes that were missing during training. Two well-known problems remain in ZSAR: the semantic gap and the domain shift. A semantic gap occurs because label representations come from the textual domain (i.e., language models) and must be associated with visual representations (i.e., CNNs, RNNs, transformer-based). This multimodal nature implies that the semantic properties of the two spaces are not identical. On the other hand, the domain shift arises from differences between the training and test sets and is inherent to ZSAR once the test set is unknown. One of the most promising methods to address both issues is learning joint embedding spaces. Therefore, we propose a new model that encodes videos and sentences in a joint embedding space, trained by aligning videos with their natural-language descriptions. We design an automatic negative sampling procedure to augment the training dataset and generate unpaired data, i.e., visual appearance and unrelated descriptions. Our results are state-of-the-art on the UCF-101 and Kinetics-400 datasets under several split configurations. Our code is available at https://github.com/valterlej/cezsar.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper proposes a novel Zero-Shot Action Recognition~(ZSAR) method based on contrastive learning.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">FOCUS: Active Critic Learning for Long-Horizon Language Model Agents</div>
+<div class="meta-line">Authors: Zhengping Jiang, William Jurayj, Liaoyaqi Wang, Chunsheng Zuo, Anqi Liu, Benjamin Van Durme</div>
+<div class="meta-line">First: 2026-10-26T17:34:47+00:00 · Latest: 2026-10-26T17:34:47+00:00</div>
+<div class="meta-line">Comments: 32 pages, 5 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35801v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35801v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Sparse outcome rewards make it difficult for long-horizon language-model agents to assign credit to earlier actions. Learned critics provide value estimates for intermediate states, but these estimates can be inaccurate, while estimating intermediate values with repetitive continuation samples from points within a trajectory incurs substantial costs. To mitigate these issues, we introduce FOCUS, an RL method that uses selective branching to help the critic network learn its value estimator. The rollout controller facilitates active learning for the critic by sampling continuations from states that are expected to most reduce the critic&#x27;s estimation error. These refined value estimates then score the segment between consecutive states with a TD($λ$) advantage, while the sampled evidence supplies training targets for the critic. FOCUS supports long-horizon agentic reinforcement learning through a modular context-management interface that decouples context management from rollout allocation. Our experiments show that using compaction-induced segment boundaries for value estimation and credit assignment, FOCUS outperforms GRPO and VinePPO with matched per-step generation budgets on legal reasoning, deep search, and code localization benchmarks, improving held-out accuracy at Qwen3.5-9B scale by 7.2 points over the strongest baseline on BrowseComp-Plus (55.4 vs. 48.2) and by 4.1 points on DeonticBench (56.5 vs. 52.4).</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Sparse outcome rewards make it difficult for long-horizon language-model agents to assign credit to earlier actions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">SATFormer: Learning When to Use Early Value Residuals in Transformers</div>
+<div class="meta-line">Authors: Skye Gunasekaran, Téa Wright, Rui-Jie Zhu, Jason Eshraghian</div>
+<div class="meta-line">First: 2026-05-05T16:38:29+00:00 · Latest: 2026-10-26T17:34:32+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.03953v3">Abs</a> · <a href="https://arxiv.org/pdf/2605.03953v3">PDF</a> · <a href="https://github.com/skyegunasekaran/satformer">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Recent Transformer architectures expose later layers to representations computed in earlier layers, motivated by the observation that low-level features can become harder to recover as the residual stream is transformed through depth. One such method adds static value residuals: learned mixing coefficients that expose the first-layer value projection V_1 uniformly across tokens and heads. However, we theorize that the usefulness of $V_1$ is unlikely to be constant across tokens, heads, and contexts, and therefore treat early-representation reuse as a retrieval problem. Here, we introduce Selective Access Transformer (SATFormer), which preserves the first-layer value pathway while controlling access with a context-dependent gate. Across models from 130M to 1.3B parameters, SATFormer improves validation loss over the static value-residual and Transformer baselines at every evaluated scale, and improves average zero-shot accuracy over both at all four scales. Its strongest gains appear on retrieval-intensive benchmarks, where it improves over static value residuals by approximately 1.5 average points, while maintaining near baseline throughput and memory. Mechanistic analyses suggest sparse, depth-dependent, head-specific, and category-sensitive access patterns, supporting the interpretation that SATFormer learns selective reuse of early representations rather than uniform residual copying. Our code is available at https://github.com/skyegunasekaran/satformer.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Recent Transformer architectures expose later layers to representations computed in earlier layers, motivated by the observation that low-level features can become harder to recover as the residual stream is transformed through depth.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Quantifying Claim Smoothing by LLM Research Agents</div>
+<div class="meta-line">Authors: Tiasa Singha Roy, Manya Wadhwa, Greg Durrett</div>
+<div class="meta-line">First: 2026-10-26T17:29:48+00:00 · Latest: 2026-10-26T17:29:48+00:00</div>
+<div class="meta-line">Comments: Code and data present at: https://github.com/tiasa2/SmoothScore</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35793v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35793v1">PDF</a> · <a href="https://github.com/tiasa2/SmoothScore">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Deep research, or any use of large language models (LLMs) to read a large document collection and produce insights, requires synthesizing information from different sources. In this work, we find that LLMs produce long-form research reports that read as confident syntheses but which fail to accurately reflect the underlying documents. We call this failure smoothing. In collapsing diverse and potentially conflicting sources into a single narrative, the model discards the evidential &quot;jaggedness&quot; of its corpus and asserts conclusions more decisive than the citations can support. We introduce a claim level scoring pipeline, SmoothScore, to quantify this effect. Our pipeline extracts key conclusive claims from model generated reports, then finds evidence relevant to each claim and clusters that evidence along high level aspects. Finally, each claim is scored with respect to the evidence to quantify the degree of smoothing done by the agent. Across 7 systems and 4 datasets, we find that agents consistently produce stronger claims than warranted.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Deep research, or any use of large language models (LLMs) to read a large document collection and produce insights, requires synthesizing information from different sources.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Annealed sampling of diffusion models in lattice field theory</div>
+<div class="meta-line">Authors: Gurtej Kanwar, Octavio Vega</div>
+<div class="meta-line">First: 2026-10-26T17:29:24+00:00 · Latest: 2026-10-26T17:29:24+00:00</div>
+<div class="meta-line">Comments: 30 pages, 17 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35792v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35792v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Machine learning methods have recently gained increasing interest as possible means of solving critical slowing down in lattice field theory, with particular emphasis on sampling methods using field transformations such as normalizing flows, annealing/out-of-equilibrium methods, and diffusion models. Annealing methods provide appealing polynomial scaling and exactness guarantees, while diffusion models use a simple and efficient score-matching training procedure. This work explores a method combining these benefits, first training an energy-based diffusion model using score matching, then sampling using either stochastic normalizing flows (SNFs) or flow-transformed replica exchange (T-REX). The choice of sampling method can be made after training the diffusion model; the theoretical properties of SNFs and T-REX and their relative trade-offs are discussed. Numerical results are presented for scalar field theory and the O(3) non-linear sigma model, using a class of local-footprint energy models with efficient gradient and divergence calculations. Sampling from the trained models follows predicted exactness and scaling properties, and significantly improves over sampling methods without a learned component.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Machine learning methods have recently gained increasing interest as possible means of solving critical slowing down in lattice field theory, with particular emphasis on sampling methods using field transformations such as normalizing flows, annealing/out-of-equilibrium methods, and diffusion models.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The Straight and Narrow: Do LLMs Possess an Internal Moral Path?</div>
+<div class="meta-line">Authors: Luoming Hu, Jingjie Zeng, Liang Yang, Hongfei Lin</div>
+<div class="meta-line">Venue: EMNLP 2026</div>
+<div class="meta-line">First: 2026-01-15T11:42:00+00:00 · Latest: 2026-10-26T17:26:51+00:00</div>
+<div class="meta-line">Comments: Our paper has been accepted by EMNLP 2026 Main; Code and datasets: https://github.com/Si1entt/Moral</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2601.10307v2">Abs</a> · <a href="https://arxiv.org/pdf/2601.10307v2">PDF</a> · <a href="https://github.com/Si1entt/Moral">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Enhancing the moral alignment of Large Language Models (LLMs) is a critical challenge in AI safety. Current alignment techniques often act as superficial guardrails, leaving the intrinsic moral representations of LLMs largely untouched. In this paper, we bridge this gap by leveraging Moral Foundations Theory (MFT) to map and manipulate the fine-grained moral landscape of LLMs. Through cross-lingual linear probing, we validate the shared nature of moral representations in middle layers and uncover a shared yet different moral subspace between English and Chinese. Building upon this, we extract steerable Moral Vectors and successfully validate their efficacy at both internal and behavioral levels. Leveraging the high generalizability of morality, we propose Adaptive Moral Fusion (AMF), a dynamic inference-time intervention that synergizes probe detection with vector injection to tackle the safety-helpfulness trade-off. Empirical results confirm that our approach acts as a targeted intrinsic defense, effectively reducing incorrect refusals on benign queries while minimizing jailbreak success rates compared to standard baselines.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Enhancing the moral alignment of Large Language Models (LLMs) is a critical challenge in AI safety.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">LangMAP: A Language-Adaptive Approach to Tokenization</div>
+<div class="meta-line">Authors: Clara Meister, Suchir Salhan, Andrzej Szablewski, Pietro Lesci, Paula Buttery, Tiago Pimentel</div>
+<div class="meta-line">Venue: EMNLP 2026 oral presentation</div>
+<div class="meta-line">First: 2026-06-22T16:32:00+00:00 · Latest: 2026-10-26T17:26:50+00:00</div>
+<div class="meta-line">Comments: Published in Proceedings of EMNLP 2026 (main conference; oral presentation)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2606.23566v3">Abs</a> · <a href="https://arxiv.org/pdf/2606.23566v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Language-specific tokenizers improve tokenization quality and the downstream performance of models on those languages. Using one with an existing pretrained model requires either training a new model from scratch or adapting the vocabulary of the pretrained one. We propose Language-adaptive Maximum a Posteriori (LangMAP) Tokenization, which extends the UnigramLM algorithm to the multilingual setting by replacing its single distribution over the vocabulary with one distribution per language over the same vocabulary. LangMAP can be used to train a multilingual language model from scratch, or to adapt a pretrained model&#x27;s tokenizer to individual languages without changing its vocabulary. Language labels are required to estimate the per-language distributions; at inference, the algorithm selects the highest-probability segmentation across languages, i.e., it does not need a language label. In experiments where we adapt a pretrained tokenizer with LangMAP, we observe that LangMAP&#x27;s new segmentation has consistently higher morphological boundary recall than the original tokenizer. In code data, it improves alignment with abstract syntax tree (AST) leaf boundaries in all configurations we try. Despite ostensible improvements in segmentations, in language model fine-tuning experiments, we do not observe significant differences in performance for most language-task pairs.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Language-specific tokenizers improve tokenization quality and the downstream performance of models on those languages.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Selective Tie Learning: Mitigating Spurious Correlations in Preference Optimization</div>
+<div class="meta-line">Authors: Christian Moya, Purav Matlia, Elliott Thornley, Guang Lin</div>
+<div class="meta-line">First: 2026-10-26T17:26:32+00:00 · Latest: 2026-10-26T17:26:32+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35787v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35787v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Preference optimization can learn spurious correlations, and augmenting the preference data with ties (equally preferred responses) can reduce spurious reliance. However, ties differ in their corrective effect, making their selection for augmentation important. For log-linear policies, we derive each tie&#x27;s influence on spurious reliance and show that taking the largest predicted reductions is first-order optimal among subsets of equal size. Computing these influences requires knowledge of the spurious features and the curvature of the training objective, which is often unavailable or expensive to estimate. To this end, we explore using the magnitude of a tie&#x27;s implicit reward margin and characterize the conditions under which it is a useful proxy for predicted influence. To test the theory and its qualitative transfer to neural models, we estimate influence with a counterfactual proxy for spurious reliance and use a generalized Gauss--Newton approximation to curvature for language models. Across log-linear policies, neural models, and large language models, our selection rules consistently achieve comparable reductions in spurious reliance with fewer ties than uniform selection.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Preference optimization can learn spurious correlations, and augmenting the preference data with ties (equally preferred responses) can reduce spurious reliance.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A theory of noisy linear recurrent neural network learning dynamics</div>
+<div class="meta-line">Authors: John J. Vastola, Kanaka Rajan</div>
+<div class="meta-line">First: 2026-10-26T17:25:19+00:00 · Latest: 2026-10-26T17:25:19+00:00</div>
+<div class="meta-line">Comments: 27 pages, 6 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35785v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35785v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Biological neural networks are noisy: their dynamics involve difficult-to-predict fluctuations which are likely due not just to chaos, but also to a variety of low-level biophysical processes. Despite the omnipresence of intrinsic noise, its theoretical consequences are incompletely understood, especially in the context of learning. For example, does noise meaningfully shape representation learning, or is it better viewed as a nuisance factor whose presence or absence changes little about what solution is found and when? Here, we argue that intrinsic noise can significantly modulate representation learning in recurrent neural networks (RNNs), since it can strongly break solution-space degeneracies and in some cases control whether a non-degenerate solution exists at all. We show that this is true for an analytically tractable model of noisy RNN learning with a linear activation function and white noise inputs. We find that, in the so-called rich regime (where weights are initialized with small values), noise strongly modulates the directions in which the read-in, readout, and recurrent weights align. Moreover, we find that noise produces a kind of phase transition: for sufficiently high noise, a non-degenerate solution is not even optimal if parameter scales are limited (e.g., via regularization). These results extend recent analytic work on RNN representation learning and show that noise can act as a fundamental determinant of representations.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Biological neural networks are noisy: their dynamics involve difficult-to-predict fluctuations which are likely due not just to chaos, but also to a variety of low-level biophysical processes.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">WorldArena 2.0: Extending Embodied World Model Benchmarking on Modality, Functionality and Platform</div>
+<div class="meta-line">Authors: Zhuohang Li, Yiding Ma, Yu Shang, Lei Jin, Shengyuan Wang, Jianjie Fang, Zhaolu Wang, Xvyuan Liu, Yinzhou Tang, Xin Jin, Ziyou Wang, Weikang Su, Xin Zhang, Haisheng Su, Weizhen He, Wei Wu, Haoyi Duan, Gordon Wetzstein, Xihui Liu, Dhruv Shah, Zhaoxiang Zhang, Zhibo Chen, Jun Zhu, Yonghong Tian, Tat-Seng Chua, Xin Wang, Wenwu Zhu, Chen Gao, Yong Li</div>
+<div class="meta-line">First: 2026-05-18T06:18:21+00:00 · Latest: 2026-10-26T17:24:26+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.17912v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.17912v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://world-arena.ai/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">World models have emerged as a central paradigm for embodied intelligence, enabling agents to predict action-conditioned future and reason about environmental dynamics. However, existing embodied world model benchmarks are still largely confined to vision-only prediction, offline embodied applications, and simulator-based evaluation, making them insufficient for assessing increasingly comprehensive world models. In this work, we introduce WorldArena 2.0, an expanded benchmark that systematically broadens embodied world model evaluation along three dimensions: modality, functionality, and platform. Along the modality dimension, WorldArena 2.0 extends evaluation from vision-only to visuotactile modalities, enabling assessment of multimodal perception and prediction. Along the functionality dimension, it extends beyond policy evaluation and planning to assess world models as interactive RL environments for policy optimization. Along the platform dimension, it moves beyond simulator-only evaluation to a diverse suite of simulated and real-world robotic settings across multiple embodiments. Under a standardized protocol, WorldArena 2.0 comprehensively evaluates perceptual quality, interactive utility, and cross-platform performance, providing a comprehensive testbed for tracking progress toward embodied world models. The project page including codes and demos is available at: https://world-arena.ai/.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">World models have emerged as a central paradigm for embodied intelligence, enabling agents to predict action-conditioned future and reason about environmental dynamics.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Weak Hurwitz stability of extended Turán expressions for Stirling--Whitney--Riordan and Laguerre polynomials</div>
+<div class="meta-line">Authors: Wenle Shi</div>
+<div class="meta-line">First: 2026-10-26T17:23:36+00:00 · Latest: 2026-10-26T17:23:36+00:00</div>
+<div class="meta-line">Comments: 15 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35783v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35783v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In this paper, we establish a sufficient condition for weak Hurwitz stability of extended Turán expressions for the Stirling--Whitney--Riordan polynomials. The proof uses polynomial transformations that preserve zeros in a real interval and in the unit disk. As an application, we prove that the extended Turán expressions for the Bell polynomials are weakly Hurwitz stable. We also prove the corresponding result for the reflected Laguerre polynomials using polynomial approximations. These results settle two conjectures of Chasse, Grabarek, and Visontai.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In this paper, we establish a sufficient condition for weak Hurwitz stability of extended Turán expressions for the Stirling--Whitney--Riordan polynomials.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Atomic Security Concerns: Towards a Foundational Language for Security Knowledge Representation</div>
+<div class="meta-line">Authors: Hanane Houmani</div>
+<div class="meta-line">First: 2026-10-26T17:22:27+00:00 · Latest: 2026-10-26T17:22:27+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35782v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35782v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Cybersecurity governance, risk management, compliance, and security architecture rely on numerous concepts, including security properties, domains, controls, risks, implementation measures, capabilities, and compliance requirements. Although these concepts are widely used, they are often represented through heterogeneous abstractions and vocabularies, making relationships among them difficult to express consistently and leaving much of the associated reasoning dependent on expert knowledge. This paper introduces the concepts of Security Concerns and Atomic Security Concerns (ASCs) and explores the hypothesis that cybersecurity knowledge may be represented through a finite set of foundational concerns. Inspired by the role of atoms in chemistry, the proposed approach views cybersecurity concepts as compositions of more fundamental concerns rather than as independent abstractions. Hence, Atomic Security Concerns could be viewed as a common abstraction layer for the representation of cybersecurity concepts, independently of their domain, nature, or level of granularity. Building upon this perspective, the paper explores how Atomic Security Concerns may provide the vocabulary of a cybersecurity language and how cybersecurity concepts may be represented as concern sets supporting explicit relationships among concepts. The contribution of this work is intentionally conceptual: it introduces a framework and research hypothesis for investigating the foundations of a common language for cybersecurity knowledge representation, reasoning, and future formalization.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Cybersecurity governance, risk management, compliance, and security architecture rely on numerous concepts, including security properties, domains, controls, risks, implementation measures, capabilities, and compliance requirements.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Where and What to Reward? Understanding Generalization Between Verifiable and Open-Ended Domains in Reinforcement Learning</div>
+<div class="meta-line">Authors: Shangjian Yin, Yu Fu, Yue Dong, Zhouxing Shi</div>
+<div class="meta-line">First: 2026-05-14T23:05:23+00:00 · Latest: 2026-10-26T17:21:42+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.15464v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.15464v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Reinforcement learning with verifiable rewards (RLVR) is widely used to improve the reasoning capability of language models, since model-generated answers can be easily verified by a rule-based verifier. In contrast, reinforcement learning from human feedback (RLHF) is mainly used to optimize open-ended conversation with a learned reward model, because such responses are not easy to verify. RLVR and RLHF are usually trained separately with their own domain data and training protocols. How gains transfer between these domains is unclear, partly because comparisons change both where a model is trained (the prompts) and what is rewarded (by a verifier or a reward model). We separate the two in a controlled study of RL on multiple base models that fixes the optimizer and the number of training prompts, and varies only the source domain of the prompts (math, multi-domain, chat, or mixtures) and the reward. We find that RLHF on open-ended prompts substantially improves conversational ability and also brings large gains in reasoning and coding, whereas RLVR improves reasoning but its gains in open-ended conversation plateau far below those of RLHF, suggesting that RL on open-ended prompts with a reward model can serve as an effective approach for generalizing across domains.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Reinforcement learning with verifiable rewards (RLVR) is widely used to improve the reasoning capability of language models, since model-generated answers can be easily verified by a rule-based verifier.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">SURE-Tagger: Structured Speech Representations for Compositional Evaluation and Targeted Data Selection</div>
+<div class="meta-line">Authors: Jing Peng, Huifei Wang, Weihan Chen, Shuo Gao, Bicheng Zhang, Junhao Du, Hanqi Li, Chaolei Liu, Wen Wen, Tao Liu, Xu Li, Yu Xi, Shuai Wang, Kai Yu</div>
+<div class="meta-line">First: 2026-10-23T05:50:42+00:00 · Latest: 2026-10-26T17:18:37+00:00</div>
+<div class="meta-line">Comments: Code is released at https://github.com/PigeonDan1/sure-tagger</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.32198v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.32198v2">PDF</a> · <a href="https://github.com/PigeonDan1/sure-tagger">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Speech conveys linguistic content, speaker characteristics, temporal interactions, paralinguistic cues, and acoustic environments. While recent speech captioning models describe these dimensions in natural language, inconsistent attribute coverage and ambiguous omissions hinder systematic analysis across recordings. We introduce SURE-Tagger, a framework that constructs semi-structured speech representations with explicit attribute values, supplementary descriptions, and abstention under insufficient evidence. By integrating specialist observations through language-model reasoning, SURE-Tagger enables speech conditions to be consistently identified and jointly queried across datasets. We further introduce Tag-Bench, combining real recordings with controlled, agentically synthesized speech scenes and verified attribute annotations. On Tag-Bench, SURE-Tagger achieves the highest scores on 25 of 29 evaluated dimensions for real speech and 24 of 29 for synthetic speech, outperforming caption-based baselines across structural and descriptive attributes. Beyond annotation, we use these representations to construct cross-dataset evaluation subsets and reveal condition-specific ASR errors. Using a separate candidate pool, SURE-Tagger-guided selection reduces the overall ASR error rate of Qwen3-ASR-1.7B by 14.3% relative to the unadapted model under a one-hour fine-tuning budget, while caption-guided and random selection increase error in the same setting. These results demonstrate how structured speech representations can connect rich annotation, compositional evaluation, and targeted model improvement.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Speech conveys linguistic content, speaker characteristics, temporal interactions, paralinguistic cues, and acoustic environments.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Bridging the Divide: End-to-End Sequence-Graph Learning</div>
+<div class="meta-line">Authors: Yuen Chen, Yulun Wu, Samuel Sharpe, Igor Melnyk, Nam H. Nguyen, Furong Huang, C. Bayan Bruss, Rizal Fathony</div>
+<div class="meta-line">Venue: Learning on Graphs Conference 2026</div>
+<div class="meta-line">First: 2025-10-29T03:06:54+00:00 · Latest: 2026-10-26T17:17:00+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2510.25126v3">Abs</a> · <a href="https://arxiv.org/pdf/2510.25126v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Many real-world prediction tasks, particularly those involving entities such as customers or patients, involve both {sequential} and {relational} data. Each entity maintains its own sequence of events while simultaneously engaging in relationships with others. Existing methods in sequence and graph modeling often overlook one modality in favor of the other. We argue that these two facets should instead be integrated and learned jointly. We introduce BRIDGE, a unified end-to-end architecture that couples a sequence model with a graph module under a single objective, allowing gradients to flow across both components to learn task-aligned representations. To enable fine-grained interaction, we propose TOKENXATTN, a token-level cross-attention layer that facilitates message passing between specific events in neighboring sequences. Across two settings, relationship prediction and fraud detection, BRIDGE consistently outperforms static graph models, temporal graph methods, as well as sequence-only baselines on both ranking and classification metrics.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Many real-world prediction tasks, particularly those involving entities such as customers or patients, involve both {sequential} and {relational} data.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">CleanGS: Pareto-Guided Post-Hoc Cleanup of 3D Gaussian Splatting Scenes</div>
+<div class="meta-line">Authors: Jyotirmaya Shivottam, Om Kumar, Subhankar Mishra</div>
+<div class="meta-line">First: 2026-01-01T05:02:45+00:00 · Latest: 2026-10-26T17:15:20+00:00</div>
+<div class="meta-line">Comments: Accepted to ICVGIP 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2601.00913v2">Abs</a> · <a href="https://arxiv.org/pdf/2601.00913v2">PDF</a> · <a href="https://github.com/smlab-niser/clean-gs/">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A pretrained 3D Gaussian Splatting (3DGS) reconstruction can reproduce its capture views well while retaining off-object structure that becomes visible under reframing. We present CleanGS, a post-hoc cleanup method that removes such structure without retraining the underlying representation. Given calibrated views and binary target masks, CleanGS scores candidate three-view subsets using mask reliability, camera baseline, viewing-direction diversity, and complementary sparse 3D support. Rather than collapsing these objectives a priori, it computes the exact Pareto front over subsets of the reduced candidate pool and selects a balanced on-dominated subset using weighted Chebyshev scalarization. The selected views then drive rasterization-aware two-of-three voting to retain a subset of the original Gaussians. We evaluate the exported asset directly and introduce a fixed-pose widened-field protocol that exposes structure outside the original framing. Across 18 scenes, CleanGS achieves 19.03 dB standard and 17.83 dB widened-field PSNR, compared with 16.44/16.29 dB for FlashSplat and 15.28/15.10 dB for GaussianCut with the same three masks. CleanGS leads five of six photometric metrics and remains within 0.32 dB of the uncleaned reconstruction in standard PSNR. Its filtering-and-export stage takes a median of 20 seconds and 1.9 GB peak memory, compared with 3.1 minutes and 41.6 GB for FlashSplat and 4.2 minutes and 34.9 GB for GaussianCut. Code is available at https://github.com/smlab-niser/clean-gs/.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A pretrained 3D Gaussian Splatting (3DGS) reconstruction can reproduce its capture views well while retaining off-object structure that becomes visible under reframing.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Unified Arena for LLM Agents across Diverse Eurogame</div>
+<div class="meta-line">Authors: Fengrui Zhang, Xiang Li, Ruomeng Ding, Jiayi Yuan, Yuchen Huang, Zhaoyang Han, Xiaoliang Wang, Daoyuan Chen, Yaliang Li</div>
+<div class="meta-line">First: 2026-10-26T17:14:22+00:00 · Latest: 2026-10-26T17:14:22+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35773v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35773v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Interactive environments offer a practical way to evaluate large language model (LLM) agents, and competitive games extend this evaluation to decisions shaped by competing goals and other agents&#x27; choices. Yet existing evaluations confined to individual games or execution frameworks leave unclear which competitive advantages persist across settings. We introduce DECE (Diverse Eurogame Competitive Environments), a unified arena spanning ten Eurogames with shared interfaces and evaluation protocols. These games combine lasting strategic commitments, competition over shared resources, and multiple routes to victory. Our primary study evaluates 12 model-harness configurations, spanning nine models and four execution harnesses, in 480 three-player matches across ten games. The main and supplementary studies comprise 1,032 completed matches in total. These comparisons reveal broad cross-game ranking agreement alongside game-specific strengths. Matched studies show that the same model can perform differently across execution harnesses, adding another source of variation to these profiles. These performance advantages do not consistently translate into better token or cost efficiency, making resource use an additional consideration when comparing configurations. Together, the findings support evaluating complete agent configurations by both their competitive performance across games and the resources needed to achieve it.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Interactive environments offer a practical way to evaluate large language model (LLM) agents, and competitive games extend this evaluation to decisions shaped by competing goals and other agents&#x27; choices.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Loop the Loopies!</div>
+<div class="meta-line">Authors: Zitian Gao, Yilong Chen, Yihao Xiao, Xinyu Yang, Ran Tao, Joey Zhou, Bryan Dai</div>
+<div class="meta-line">First: 2026-07-17T15:28:43+00:00 · Latest: 2026-10-26T17:12:57+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.16051v3">Abs</a> · <a href="https://arxiv.org/pdf/2607.16051v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We present Loopie, the most powerful open-source looped Transformer to date. The Loopie series consists of two Mixture-of-Experts (MoE) models: a 20B-parameter model with 2B active parameters and a 6B parameter model with 0.6B active parameters. Looped Transformers have long faced a challenge: given an N-fold pre-training compute, increasing the parameter count by a factor of N usually outperforms looping N times. Loopie addresses this challenge. Extensive ablation studies, including comparisons with a vanilla 30B-A3B model, show that Loopie substantially outperforms vanilla Transformer baselines trained with the same compute budget. With a novel post-training method, Loopie develops strong reasoning abilities and achieves frontier-level reasoning performance.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We present Loopie, the most powerful open-source looped Transformer to date.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Free to Look, Free to Reason: Simple LLM Harnesses Outdiagnose Hand-Crafted Root Cause Analysis Agents</div>
+<div class="meta-line">Authors: Tingzhu Bi, Xun Zhang, Jinglin Li, Ping Wang, Meng Ma</div>
+<div class="meta-line">First: 2026-10-26T17:12:02+00:00 · Latest: 2026-10-26T17:12:02+00:00</div>
+<div class="meta-line">Comments: 12 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35767v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35767v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Root cause analysis (RCA) of microservice failures has attracted many LLM agents whose investigation is hand-crafted, through standard operating procedures, fixed stages and role agents. Each is evaluated on its own data against few baselines, so it is unknown whether this design beats letting a capable model investigate on its own. We compare three simple harnesses that prescribe none of the model&#x27;s calls (one call over an evidence package, a SQL agent and the Codex coding agent) with five published LLM RCA agents and with statistical and causal methods on RCAtlas, 90 validated cases from eight public datasets, across six models and three reasoning efforts. The simple harnesses are the most accurate (PR@1 65-77% on three mid-tier models), ahead of the published agents (16-53%) and the non-LLM methods (6-39%), on every model on which both families were run. The published agents fix from a tenth to all of their model calls in the program, and a case study shows how these prescriptions skip the decisive evidence. A stronger model mainly improves reliability, a multi-turn harness mainly improves aptitude, and more reasoning effort changes accuracy by a few points at most while multiplying the time by up to seven. Among runs more accurate than the best non-LLM method, every Pareto-optimal run in cost or time uses a simple harness.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Root cause analysis (RCA) of microservice failures has attracted many LLM agents whose investigation is hand-crafted, through standard operating procedures, fixed stages and role agents.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261024_0550.html">20261024_0550</a>
+<a href="archive/20261021_0604.html">20261021_0604</a>
+<a href="archive/20261017_0555.html">20261017_0555</a>
+<a href="archive/20261014_0712.html">20261014_0712</a>
+<a href="archive/20261010_0702.html">20261010_0702</a>
+<a href="archive/20261007_0654.html">20261007_0654</a>
+<a href="archive/20261003_0657.html">20261003_0657</a>
+<a href="archive/20260930_0651.html">20260930_0651</a>
+<a href="archive/20260926_0559.html">20260926_0559</a>
+<a href="archive/20260923_0548.html">20260923_0548</a>
+<a href="archive/20260919_0526.html">20260919_0526</a>
+<a href="archive/20260916_0556.html">20260916_0556</a>
+<a href="archive/20260912_0534.html">20260912_0534</a>
+<a href="archive/20260909_0534.html">20260909_0534</a>
+<a href="archive/20260905_0513.html">20260905_0513</a>
+<a href="archive/20260902_0536.html">20260902_0536</a>
+<a href="archive/20260829_1000.html">20260829_1000</a>
+<a href="archive/20260826_0329.html">20260826_0329</a>
+<a href="archive/20260822_0324.html">20260822_0324</a>
+<a href="archive/20260819_0326.html">20260819_0326</a>
+<a href="archive/20260815_0346.html">20260815_0346</a>
+<a href="archive/20260812_0401.html">20260812_0401</a>
+<a href="archive/20260808_0352.html">20260808_0352</a>
+<a href="archive/20260801_0418.html">20260801_0418</a>
+<a href="archive/20260729_0415.html">20260729_0415</a>
+<a href="archive/20260725_0419.html">20260725_0419</a>
+<a href="archive/20260722_0418.html">20260722_0418</a>
+<a href="archive/20260718_0404.html">20260718_0404</a>
+<a href="archive/20260715_0409.html">20260715_0409</a>
+<a href="archive/20260711_0430.html">20260711_0430</a>
+<a href="archive/20260708_0449.html">20260708_0449</a>
+<a href="archive/20260704_0415.html">20260704_0415</a>
+<a href="archive/20260701_0457.html">20260701_0457</a>
+<a href="archive/20260627_0446.html">20260627_0446</a>
+<a href="archive/20260624_0501.html">20260624_0501</a>
+<a href="archive/20260617_0542.html">20260617_0542</a>
+<a href="archive/20260613_0503.html">20260613_0503</a>
+<a href="archive/20260610_0456.html">20260610_0456</a>
+<a href="archive/20260606_0449.html">20260606_0449</a>
+<a href="archive/20260603_0547.html">20260603_0547</a>
+<a href="archive/20260530_0511.html">20260530_0511</a>
+<a href="archive/20260527_0458.html">20260527_0458</a>
+<a href="archive/20260523_0443.html">20260523_0443</a>
+<a href="archive/20260520_0431.html">20260520_0431</a>
+<a href="archive/20260516_0416.html">20260516_0416</a>
+<a href="archive/20260513_0432.html">20260513_0432</a>
+<a href="archive/20260509_0408.html">20260509_0408</a>
+<a href="archive/20260506_0412.html">20260506_0412</a>
+<a href="archive/20260502_0405.html">20260502_0405</a>
+<a href="archive/20260429_0415.html">20260429_0415</a>
+<a href="archive/20260425_0351.html">20260425_0351</a>
+<a href="archive/20260422_0403.html">20260422_0403</a>
+<a href="archive/20260418_0359.html">20260418_0359</a>
+<a href="archive/20260415_0411.html">20260415_0411</a>
+<a href="archive/20260411_0343.html">20260411_0343</a>
+<a href="archive/20260408_0358.html">20260408_0358</a>
+<a href="archive/20260404_0339.html">20260404_0339</a>
+<a href="archive/20260401_0356.html">20260401_0356</a>
+<a href="archive/20260331_0905.html">20260331_0905</a>
+<a href="archive/20260331_0845.html">20260331_0845</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>

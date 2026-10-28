@@ -1,0 +1,525 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递 - Finance</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#dc2626;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#dc2626;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递 - Finance</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-10-29 06:57</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261029_0657</div>
+    <div class="row"><div class="card">
+<div class="title">Attention as Lattice Gauge Theory: Relations Interact Only Through Wilson Loops</div>
+<div class="meta-line">Authors: Aakash Sarkar, Ananya Mukherjee, Motoshige Sato</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-10-27T17:58:48+00:00 · Latest: 2026-10-27T17:58:48+00:00</div>
+<div class="meta-line">Comments: 7 pages, 1 figure. Accepted at the 9th Workshop on Machine Learning and the Physical Sciences (ML4PS 2026), co-located with NeurIPS 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37656v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37656v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Relations compose through the entity they share - Alice is Bob&#x27;s mother and Bob is Carol&#x27;s father, so Alice is Carol&#x27;s grandmother - and the order matters, since a father&#x27;s mother is not a mother&#x27;s father; verifying a composed relation means closing the loop. We show that if each entity&#x27;s coordinate frame may be rotated independently (per-entity frame freedom), three things follow. In the pure-gauge sector, relations that share no cycle cannot interact at all. The only gauge-invariant score of a triangle is a class function of its holonomy $H = T_{ij} T_{jk} T_{ki}$ - a Wilson loop. And the only equivariant update of an edge is $U = Ψ(H)\, T_{ij}$ with $Ψ$ conjugation-equivariant. Edge attention by Wilson loops is therefore not one design among many but the unique form the symmetry permits. Three communities hold pieces of this form: the commuting-operator embeddings of knowledge graphs are its abelian (commuting) sector; AlphaFold&#x27;s triangle update and the Edge Transformer have its shape - an edge updated through the third vertex - without its constraints; and lattice QCD builds it equivariantly on lattices. We instantiate the equivariant sub-family on general relational graphs as holonomy attention. With no training and composition alone, it infers unobserved $S_4$ relations on sparse graphs at 0.88 with a fifth of the edges corrupted, at or slightly below specialist synchronization algorithms, where every commutative architecture is capped at 0.083; its holonomy score flags corrupted triangles at AUC 0.99 where commuting scores are capped at 0.76 by a second selection rule, and it separates clusters without labels.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Relations compose through the entity they share - Alice is Bob&#x27;s mother and Bob is Carol&#x27;s father, so Alice is Carol&#x27;s grandmother - and the order matters, since a father&#x27;s mother is not a mother&#x27;s father; verifying a composed relation means closing the loop.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">KPPax: preprocess differentiable kinetic ODE for machine learning in atmospheric chemistry</div>
+<div class="meta-line">Authors: Wenqing Peng, Michael Boy, Zhi-Song Liu</div>
+<div class="meta-line">First: 2026-10-27T17:58:40+00:00 · Latest: 2026-10-27T17:58:40+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37655v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37655v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Atmospheric chemical mechanisms are commonly distributed in the language of the Kinetic PreProcessor (KPP), which generates efficient Fortran or C code but does not fit into the differentiable programming frameworks in which machine-learning models are developed. We present KPPax, a kinetic preprocessor that generates differentiable, just-in-time compiled, and vectorisable chemistry code in JAX from mechanisms written in the KPP language. KPPax evaluates the rate law with sparse operations in log space, which keeps it differentiable, and integrates the stiff system with the implicit solvers and the forward- and reverse-mode adjoints of the \texttt{diffrax} library, so that exact sensitivities are obtained without hand-derived adjoint code. We demonstrate two applications with the POLLU benchmark mechanism. In the first, the Fisher information matrix computed from an automatically differentiated Jacobian predicts, before any fit, which of the 25 rate coefficients a flow-tube-like design can identify, and noisy synthetic estimation confirms the predicted uncertainties of the nine identifiable rate coefficients to within about 30\% while revealing clusters of fast reactions of which only ratios are constrained. In the second, a neural-network correction of an emission inventory is trained offline on per-scenario 4D-Var retrievals and then fine-tuned online through the chemical model, which reduces the error of the biogenic correction by a factor of 2.4--5 and recovers information on low-temperature emissions that the individual retrievals lose. KPPax makes KPP mechanisms directly usable for parameter estimation and hybrid physics--machine-learning modelling.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Atmospheric chemical mechanisms are commonly distributed in the language of the Kinetic PreProcessor (KPP), which generates efficient Fortran or C code but does not fit into the differentiable programming frameworks in which machine-learning models are developed.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Tight 3-Approximation for Fair $k$-Means</div>
+<div class="meta-line">Authors: Kangke Cheng, Guanlin Mo, Shihong Song, Hu Ding</div>
+<div class="meta-line">First: 2026-09-07T20:54:36+00:00 · Latest: 2026-10-27T17:56:47+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.07974v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.07974v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Fairness in clustering has attracted sustained research interest, motivated by the need to ensure equitable representation of protected groups in machine learning applications. We study fair $k$-means clustering in Euclidean space, where the proportion of each protected group in every cluster must lie within specified lower and upper bounds. These constraints make it challenging to determine both cluster centers and point assignments. Our algorithm first splits the input into many small fair clusters and then merges them into $k$ clusters with a weighted $k$-means algorithm. The merge is cheap only when the small clusters do not move points away from their optimal centers, so we add a displacement penalty to the split, which charges each point for how far the small clusters move it. Given a $ρ$-approximate algorithm for weighted $k$-means and any $ε&gt;0$, our algorithm returns a fractional solution whose cost is at most $3ρ+ε$ times the optimal integral fair cost. With a PTAS as the subroutine, the approximation ratio becomes $3+O(ε)$, improving the previous factor of $5+O(ε)$. This ratio is the best possible: unless P=NP, no polynomial-time algorithm achieves the ratio $3-δ$ for any fixed $δ&gt;0$, even in one dimension. The solution satisfies all fairness constraints exactly and can be rounded to an integral assignment with a bounded additive violation of fairness and no increase in cost. The same approximation guarantee extends to the $k$-sparse Wasserstein barycenter problem.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Fairness in clustering has attracted sustained research interest, motivated by the need to ensure equitable representation of protected groups in machine learning applications.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Quaternion Approximate Networks for Enhanced Image Classification and Oriented Object Detection</div>
+<div class="meta-line">Authors: Bryce Grant, Peng Wang</div>
+<div class="meta-line">Venue: IROS 2025 Oral</div>
+<div class="meta-line">First: 2025-09-05T21:41:40+00:00 · Latest: 2026-10-27T17:53:05+00:00</div>
+<div class="meta-line">Comments: IROS 2025 Oral, 8 pages, 5 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2509.05512v2">Abs</a> · <a href="https://arxiv.org/pdf/2509.05512v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://cwru-aism.github.io/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper introduces Quaternion Approximate Networks (QUAN), a novel deep learning framework that leverages quaternion algebra for rotation equivariant image classification and object detection. Unlike conventional quaternion neural networks attempting to operate entirely in the quaternion domain, QUAN approximates quaternion convolution through Hamilton product decomposition using real-valued operations. This approach preserves geometric properties while enabling efficient implementation with custom CUDA kernels. We introduce Independent Quaternion Batch Normalization (IQBN) for training stability and extend quaternion operations to spatial attention mechanisms. QUAN is evaluated on image classification (CIFAR-10/100, ImageNet), object detection (COCO, DOTA), and robotic perception tasks. In classification tasks, QUAN achieves higher accuracy with fewer parameters and faster convergence compared to existing convolution and quaternion-based models. For objection detection, QUAN demonstrates improved parameter efficiency and rotation handling over standard Convolutional Neural Networks (CNNs) while establishing the SOTA for quaternion CNNs in this downstream task. These results highlight its potential for deployment in resource-constrained robotic systems requiring rotation-aware perception and application in other domains. Code: https://cwru-aism.github.io/ QUANpaper/</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper introduces Quaternion Approximate Networks (QUAN), a novel deep learning framework that leverages quaternion algebra for rotation equivariant image classification and object detection.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Linear-quadratic mean field games with Volterra dynamics</div>
+<div class="meta-line">Authors: Niccolò Fontana, Mattia Martini, Huyên Pham</div>
+<div class="meta-line">First: 2026-10-27T17:48:54+00:00 · Latest: 2026-10-27T17:48:54+00:00</div>
+<div class="meta-line">Comments: 31 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37622v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37622v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We study a class of linear-quadratic mean field games in which the state of each agent follows a stochastic Volterra equation of convolution type. The resulting dynamics are non-Markovian and account for memory effects through a completely monotone kernel, while the mean field interaction enters both the drift and diffusion coefficients. Exploiting a Markovian lifting of the Volterra dynamics, which restores the Markov property at the price of moving to an infinite-dimensional state space, we characterize the optimal response of a representative agent for a given population mean through a system of Riccati equations in Banach spaces, thereby obtaining a feedback representation of the optimal control. We then study the consistency condition defining the mean field equilibrium, which reduces to a forward-backward fixed point equation for the equilibrium mean: we prove existence and uniqueness of the equilibrium on short horizons and, when the control does not act on the diffusion coefficient, on arbitrary horizons under a monotonicity condition on the interaction. Finally, we consider the corresponding finite-player game and establish a quantitative propagation of chaos result. As a consequence, the feedback control of any mean field equilibrium, when implemented by each agent on its own state, yields an $\varepsilon_N$-Nash equilibrium for the $N$-player game, with an explicit rate as the number of agents tends to infinity.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We study a class of linear-quadratic mean field games in which the state of each agent follows a stochastic Volterra equation of convolution type.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Objectivity, basis ambiguity, and the classical simulability of concordant quantum computation</div>
+<div class="meta-line">Authors: Bishal Kumar Das, Sourav Manna, Vaibhav Madhok</div>
+<div class="meta-line">First: 2025-10-03T17:57:26+00:00 · Latest: 2026-10-27T17:48:47+00:00</div>
+<div class="meta-line">Comments: 21 pages (main text + references), 22 pages total including appendix; 2 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2510.03225v3">Abs</a> · <a href="https://arxiv.org/pdf/2510.03225v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Concordant quantum computations, in which circuits whose register carries zero quantum discord with respect to every subsystem at every step, contain neither entanglement nor any other form of quantum correlation, yet no efficient classical simulation of them is known beyond restricted gate sets. We argue that the obstruction is not a shortage of correlations but the absence of a uniquely identifiable local product basis, and we develop this \emph{basis ambiguity} on two fronts. Quantitatively, we introduce the Basis Ambiguity Measure $β\in[0,1]$, the normalized dimension of the manifold of admissible diagonalizing bases on a gate support, and prove a sharp equivalence: a concordance-preserving gate that defeats the Local Basis Finder of Cable and Browne exists if and only if $β&gt;0$. Both directions are constructive. Physically, we identify the resource whose absence the obstruction is: \emph{basis objectivity}, a redundant and independently accessible record of the local basis. We show that an environment in spectrum broadcast form, together with the system--environment interaction map, replaces the NP-hard degeneracy test of Eastin by a fixed number of pairwise fragment comparisons per gate, at a cost independent of register size and circuit depth; the two ingredients live on different axes (state and dynamics), and neither alone suffices. We further prove that a theory in which every state has a strictly unique decomposition into perfectly distinguishable pure states has a simplex state space and lacks the continuity content of Hardy&#x27;s fifth axiom, so that $β$ is a computational witness of that axiom.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Concordant quantum computations, in which circuits whose register carries zero quantum discord with respect to every subsystem at every step, contain neither entanglement nor any other form of quantum correlation, yet no efficient classical simulation of them is known beyond restricted gate sets.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Optimizing Spectral Signature in Code Backdoor Detection</div>
+<div class="meta-line">Authors: Quoc Hung Le, Thanh Le-Cong, Bach Le, Bowen Xu</div>
+<div class="meta-line">First: 2025-10-15T18:18:08+00:00 · Latest: 2026-10-27T17:45:08+00:00</div>
+<div class="meta-line">Comments: Accepted at the IEEE International Conference on Software Maintenance and Evolution (ICSME 2026). 12 pages, 4 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2510.13992v2">Abs</a> · <a href="https://arxiv.org/pdf/2510.13992v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">As Large Language Models (LLMs) are increasingly integrated into software development workflows, they also become prime targets for adversarial attacks. Among these, backdoor attacks are a significant threat, allowing attackers to manipulate model outputs through hidden triggers embedded in training data. Detecting such backdoors remains a challenge, and one promising approach is the use of Spectral Signature defense methods that identify poisoned data by analyzing feature representations through eigenvectors. While some prior works have explored Spectral Signatures for backdoor detection in neural networks, recent studies suggest that these methods may not be optimally effective for code models. In this paper, we revisit the applicability of Spectral Signature-based defenses in the context of backdoor attacks on code models. We systematically evaluate their effectiveness under various attack scenarios and defense configurations, analyzing their strengths and limitations. We found that the widely used setting of Spectral Signature in code backdoor detection is often suboptimal. Hence, we explored the impact of different settings of the key factors. We discovered a new proxy metric that can more accurately estimate the actual performance of Spectral Signature without model retraining after the defense. Our findings contribute to a deeper understanding of the configurations of Spectral Signature defenses in securing code models and offer insights into potential improvements for future research.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">As Large Language Models (LLMs) are increasingly integrated into software development workflows, they also become prime targets for adversarial attacks.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A dichotomy for minimal submanifolds</div>
+<div class="meta-line">Authors: Tobias Holck Colding, William P. Minicozzi</div>
+<div class="meta-line">First: 2026-07-31T15:05:22+00:00 · Latest: 2026-10-27T17:44:10+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.29502v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.29502v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We survey a circle of recent results showing that a minimal submanifold obeys a dichotomy: either it fills up space, spreading out like a space-filling curve, or it is confined, and confinement forces quantitative restrictions. On the confined side these restrictions are both geometric and function-theoretic: Euclidean volume growth, an optimal rate of convergence of the density, complex-curve rigidity for stable surfaces in $\bf{R}^4$, and a Liouville theorem forcing slowly growing harmonic functions on minimal disks to be constant. A prototypical restriction is Euclidean volume growth, which in these results is forced by the geometry rather than assumed. The mechanism is a volume doubling theorem that converts geometric confinement into quantitative rigidity: a stationary integral varifold trapped in a thin slab at a given scale cannot double its volume by more than a universal factor. We explain how this principle, and the height-excess bounds behind it, produce Euclidean volume growth for submanifolds of sublinearly growing height in every dimension and codimension, the optimal density rate in a slab, the complex-curve and Liouville rigidity above, a higher-codimension Bernstein theorem for disks, one-sided volume bounds, and an optimal stable Bernstein theorem in all dimensions generalizing Moser, Bombieri-De Giorgi-Miranda, Caffarelli-Nirenberg-Spruck and Ecker-Huisken. We describe three regimes with sharp borderlines. In narrow cones the volume grows polynomially with exponent $n+O(\varepsilon^2)$, and the order $\varepsilon^2$ is attained; in wide cones the growth can be arbitrarily fast. For holomorphic curves in $\mathbb{C}^2$, there are also three regimes and
+  the borderline is determined by the Kähler angle.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We survey a circle of recent results showing that a minimal submanifold obeys a dichotomy: either it fills up space, spreading out like a space-filling curve, or it is confined, and confinement forces quantitative restrictions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Working Memory with Polychronous Chains</div>
+<div class="meta-line">Authors: Laurent U Perrinet</div>
+<div class="meta-line">First: 2026-04-15T17:12:55+00:00 · Latest: 2026-10-27T17:38:23+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.14096v3">Abs</a> · <a href="https://arxiv.org/pdf/2604.14096v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Working memory --- the ability to store and recall precise temporal patterns of activity --- remains an open challenge for spiking neural networks (SNNs). A recurrent SNN of $N=1024$ neurons is proposed, in which each synapse is equipped with $D = 41$ heterogeneous delays, parameterised as a weight tensor $\mathbf{W} \in \mathbb{R}^{N \times N \times D}$ and trained end-to-end with surrogate-gradient backpropagation through time. Each stored motif is represented as a sequential chain of overlapping Spiking Motifs: contiguous context windows of length $D$ that uniquely predict the activity at the next time step. A closed-form Hebbian initialisation, derived by deconvolving the LIF membrane response and targeting a membrane potential value above the firing threshold $\vartheta$, already achieves high $F_1$ scores before any gradient step on a benchmark of $M=16$ motifs of duration $T=1000$ steps. With learning, the network reaches a mean $F_1$ score of $0.80$ over the motifs, and retrieval degrades gracefully when the trigger window is corrupted, with an $F_1$ score of $0.53$ at $25\%$ bit-flip noise. The network shows attractor-like retrieval dynamics consistent with hippocampal motif completion and with low-dimensional collective dynamics of population activity on manifolds. These results demonstrate that heterogeneous synaptic delays are an efficient and scalable substrate for working memory in SNNs, with direct implications for neuromorphic edge deployment.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Working memory --- the ability to store and recall precise temporal patterns of activity --- remains an open challenge for spiking neural networks (SNNs).</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A unified coarse-grained neural network potential for the dynamics of biomolecular complexes</div>
+<div class="meta-line">Authors: Antonio Mirarchi, Stephen E. Farr, Adrià Peréz, Gianni De Fabritiis</div>
+<div class="meta-line">First: 2026-10-27T17:37:10+00:00 · Latest: 2026-10-27T17:37:10+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37606v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37606v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The behavior of biomolecular complexes is governed by chemically specific interactions and often involves rare events that atomistic molecular dynamics struggle to capture within accessible timescales. Here we introduce AMARO v2.0, a coarse-grained neural network potential that retains all heavy atoms and treats solvent implicitly. Hydrogen-aware bead types and total-charge conditioning provide a shared representation for proteins, drug-like molecules, and their complexes, including ternary protein-protein-ligand systems. The model preserves folded proteins and captures key features of protein conformational free-energy landscapes. Across 262 complexes spanning 11 targets, the learned potential retains most ligand poses, although quaternary structure reorientation is observed for the HIF2A ternary complex. In targeted case studies, AMARO v2.0 distinguishes the two protonation states of trypsin-benzamidine and reaches the crystal binding pose in 3.3-fold more trajectories than all-atom molecular mechanics at a fixed estimated GPU-time budget. The same framework also recovers a reference binding pose in TYK2 and supports binding free-energy estimation for both trypsin-benzamidine and TYK2-EJM31, although the resulting values are more energetically favorable than the experimental references. SHP2 and CDK8 systems expose remaining limitations in binding-pose recovery and site specificity, respectively. Together, these results support AMARO v2.0 as a shared heavy-atom potential for biomolecular complex dynamics.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The behavior of biomolecular complexes is governed by chemically specific interactions and often involves rare events that atomistic molecular dynamics struggle to capture within accessible timescales.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">What Prediction-Market Contracts Reveal at Launch: Trading Volume and Dispute Risk</div>
+<div class="meta-line">Authors: Ahmed Mahrous, Roberto Di Pietro</div>
+<div class="meta-line">First: 2026-10-21T11:20:35+00:00 · Latest: 2026-10-27T17:36:58+00:00</div>
+<div class="meta-line">Comments: Accepted at the 7th ACM International Conference on AI in Finance (ICAIF 2026). 8 pages, 5 figures. Code and data: https://doi.org/10.5281/zenodo.23376383</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.29578v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.29578v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Using a near-census of 802,863 resolved markets listed on Polymarket between January 2023 and May 2026, and only information available at listing (the market&#x27;s title and description, named resolution source, and contract metadata), we predict lifetime trading volume and whether settlement is later disputed. Contract information predicts trading volume well (out-of-sample $R^2 = 0.747$ for log volume), and most of the signal is interpretable: market topic provides the largest gain ($+0.289$ $R^2$ over a $0.220$ contract-feature baseline), wording and resolution-rule design add smaller but measurable improvements ($+0.027$ combined), and neural text models add little beyond the interpretable features. This performance does not survive a period of platform change coinciding with a shift in listing formats: accuracy in predicting whether a market reaches \$1,000 falls from AUC $0.940$ under same-period evaluation to $0.577$ when training on past quarters and testing on later ones. The loss concentrates in markets whose question forms were absent from training (76.9% of test markets; on familiar forms the model still reaches $0.778$), and a decomposition attributes more of it to a changed relationship between contract characteristics and demand than to an outdated mapping from text to features. Dispute predictors are more stable but less precise: launch-time features rank dispute risk far better than chance (AUC $0.78$), yet at a 0.31% base rate precision is too low for case-by-case prediction (average precision $0.012$), so the scores suit ranking groups of markets rather than forecasting individual disputes.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Using a near-census of 802,863 resolved markets listed on Polymarket between January 2023 and May 2026, and only information available at listing (the market&#x27;s title and description, named resolution source, and contract metadata), we predict lifetime trading volume and whether settlement is later disputed.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The Acridine Polymorph Landscape: Characterization and Selective Control by Additives</div>
+<div class="meta-line">Authors: Adam Lahouari, Hengyu Zhou, Nikolaos Galanakis, Michael Kilgour, Daisuke Kuroshima, Jihye Han, Bart Kahr, Mark E. Tuckerman, Alexander G. Shtukenberg, Jutta Rogal</div>
+<div class="meta-line">First: 2026-10-27T17:31:07+00:00 · Latest: 2026-10-27T17:31:07+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37597v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37597v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Polymorphism in molecular crystals presents a major challenge for controlling crystallization. Here, we combine experiment and theory to characterize the polymorph landscape of acridine and investigate its selective control by additives. Melt crystallization experiments resolve the previously unknown structure of form VIII, while topological crystal structure prediction recovers all seven known unsolvated polymorphs with determined crystal structures. Combining a fine-tuned machine-learned interatomic potential with anharmonic free energy calculations reproduces the experimentally observed stability relationships and reveals a shallow free energy landscape. Finally, experimentally observed additive-induced polymorph preferences correlate with mixed-crystal substitutional defect energies and topological similarities between additive and acridine crystal structures. Together, these results provide a comprehensive picture of acridine polymorphism, linking crystal structure, thermodynamic stability, and additive-controlled crystallization.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Polymorphism in molecular crystals presents a major challenge for controlling crystallization.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A self-supervised machine learning approach to identify instrumental systematics in 21cm Cosmology</div>
+<div class="meta-line">Authors: Ajith Sampath</div>
+<div class="meta-line">First: 2026-10-27T17:29:58+00:00 · Latest: 2026-10-27T17:29:58+00:00</div>
+<div class="meta-line">Comments: 14 pages, 8 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37596v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37596v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The primordial sound waves in the baryon-photon plasma are imprinted on the large-scale galaxy distribution as Baryon Acoustic Oscillations (BAO), serving as a cosmological standard ruler to constrain dark energy and the Hubble parameter. The upcoming 21cm intensity-mapping arrays are designed to map the 21cm emission across large volumes and measure the BAO scale. However, radio interferometers suffer from instrumental systematics that can hinder detection of the cosmological 21cm signal by leaking bright foregrounds into the signal-dominated modes. This work aims to demonstrate that a self-supervised model can predict the instrument systematic state (here, the amplitude of a spectral ripple in the beam width) in interferometric visibilities and potentially disentangle the instrument from the sky without a forward model. Based on the fact that an instrument stays the same as the sky rotates in a drift-scan observation, and that the same sky is observed under different instrument states, we train a convolutional autoencoder to compress the information in the simulated visibilities and separate this information into instrument-only and sky-only latent vectors. The result shows excellent prediction of the unknown instrument systematic for 15 held-out instrument states with $R^2 = 0.9975$ with a linear probe, against $R^2 = -3.55$ for a random-encoder baseline. The instrument-latent carries no detectable sky signal, as measured with a total-power sky proxy, for any held-out test data. The sky-latent vector and instrument-latent vector show partial separation but not complete disentanglement, identifying sky-latent purity as the primary open problem. The results show the ability of the model to recognize the systematic and show a promising path towards an ML-based foreground cleaning pipeline. Full instrument-sky disentanglement constitutes the natural next step.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The primordial sound waves in the baryon-photon plasma are imprinted on the large-scale galaxy distribution as Baryon Acoustic Oscillations (BAO), serving as a cosmological standard ruler to constrain dark energy and the Hubble parameter.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Timestral</div>
+<div class="meta-line">Authors: Adrien Petralia, Alexandre Gavaudan, Artjom Joosen, Etienne Goffinet, Richard Kurle, Yassine El Ouahidi, Yassir Bendou, Abdelaziz Bounhar, Abhijeet Somani, Aditi Kabra, Adrian Valente, Adrien Sadé, Ahmed Djermani, Alan Jeffares, Albert Jiang, Alberto Bietti, Aleksandr Timashov, Alexandre Cahill, Alexandre Laval, Alexandre Sablayrolles, Alexandros Sanchez Vassopoulos, Amélie Héliou, Amos You, André Jonasson, Andreas Fürst, Andrew Bai, Andrew Ehrenberg, Andrew Zhao, Andy Lo, Angele Lenglemetz, Anmol Agarwal, Antonia Calvi, Arata Suzuki, Arjun Majumdar, Arthur Fournier, Ashwani Kumar, Augustin Lombard, Avinash Sooriyarachchi, Aylin Guliz Akkus, Aysenur Karaduman, Baptiste Bout, Baptiste Rozière, Barna Pásztor, Baudouin De Monicault, Benjamin Holzschuh, Benjamin Tibi, Benno Stein, Bernhard Stadlbauer, Bhargavi Bhaskar, Binbing Hou, Błażej Osiński, Boris van Breugel, Camille Le Scao, Chaoran Yu, Charlotte Cronjäger, Chen-Yo Sun, Chris Bamford, Christian Wallenwein, Christophe Renaudin, Clémence Lanfranchi, Colin Bonatti, Corentin Barreau, Corentin Sautier, Cristiana-Diana Diaconu, Cyprien Courtot, Daniel Lopes, Daniel Marczak, Darius Dabert, Diego de las Casas, Dominik Nuss, Dylan Rubini, Dzmitry Soupel, Elizaveta Demyanenko, Elliot Chane-Sane, Emilien Fugier, Emmanuel Gottlob, Erik Aas, Etienne Duchesne, Fabian Paischer, Fabian Schlager, Faruk Ahmed, Federico Baldassarre, Félix Rosseeuw, Filip Szatkowski, Filippo Vicentini, Florian Wiesner, Gabrielle Berrada, Gaëtan Ecrepont, Gaspard Blanchet, Gaspard Donada-Vidal, Gaurav Mahajan, Gauthier Guinet, Genevieve Hayes, Georgii Novikov, Georgios Christoglou, Giada Pistilli, Gonzague de Carpentier, Graeme Nail, Guillaume Breton, Guillaume Kunsch, Guillaume Lample, Guillaume Martin, Guillaume Raille, Guillaume Richard, Guillem Simeon, Gunjan Dhanuka, Gunshi Gupta, Hamza Senhaji Rhazi, Han Zhou, Hédi Hadiji, Himanshu Jaju, Hope McGovern, Hubert de Parseval, Hugo Cisneros, Hugo Germain, Hugo Thimonier, Hugo Venturini, Hyeonju Lee, Hyunwoo Oh, Iliass Lasri, Ilyas Oulkadda, Jacques Sun, Jan Ludziejewski, Jason Rute, Jean de Becdelièvre, Jean Quentin, Jean-Malo Delignon, Jessica Chudnovsky, Jianchao Li, Jie Zhang, Jin Bin Ou, Joachim Studnia, Joep Barmentlo, Johannes Brandstetter, John Harvill, Jonas Amar, Jonas Schweizer, Jonathan Roberts, Joséphine Delas, Josselin Somerville, Jules Depersin, Julien Denize, Julien Tauran, Julien Verlaguet, Kartik Khandelwal, Khyathi Raghavi Chandu, Kilian Tep, Konstantin Mishchenko, Kris Szczepaniak, Kush Jain, Larissa Laich, Laura Calem, Laurence Aitchison, Laurent Callot, Laurent Fainsin, Léo Cotteleer, Léonard Blier, Loïc Chadoutaud, Loïck Chambon, Lorenzo Proietti, Louis Faucon, Louis Martin, Louis Serrano, Lu Li, Luc Boudier, Lucas Fernandes Martins, Lucas Mebille, Lucile Saulnier, Ludovic Ho Fuh, Luis Montero, Łukasz Borchmann, Maarten Buyl, Malik Hassan Raza, Manon Chossegros, Marcin Możejko, Margaret Jennings, Markus Hennerbichler, Martin Alexandre, Mathieu Poirée, Mathieu Schmitt, Mathilde Guillaumin, Mathis Felardos, Matthieu André, Matthieu Dinot, Matthieu Futeral, Maurits Bleeker, Mauro Comi, Max Mynter, Maxim Berman, Maxime Darrin, Maxime Langelier, Maxime Louis, Maximilian Augustin, Maximilian Müller, Mehdi Bouaziz, Melina Jingting Laimon, Mert Unsal, Mia Chiquier, Michael Pilcer, Michał Pietruszka, Michał Zając, Mickaël Seznec, Mikhail Biriuchinskii, Minh-Quang Pham, Minwoo Kang, Mircea Lica, Morgane Rivière, Namit Katariya, Natasha Ørregaard Klingenbrunn, Nathan Bout, Nathan Grinsztajn, Nathan Simpson, Neeraj Aggarwal, Neil Ashton, Neil Mallinar, Nick Bührer, Nicolas Moreau, Nicolò Lucchesi, Ola Mysiak, Oliver Leicht, Olivier Bousquet, Olivier Koch, Parag Jain, Patricia Wang, Patrick Blies, Patrick von Platen, Patryk Saffer, Paul Jacob, Paul Teiletche, Paul Wambergue, Paula Kurylowicz, Pavan Kumar Reddy, Pavel Kuksa, Philippe Formont, Philippe Pinel, Philomène Chagniot, Pierre Glandon, Pierre Stock, Pierre-André Savalle, Piotr Miłoś, Poojan Shah, Prateek Gupta, Pravesh Agrawal, Pui Ki Chan, Quentin Desreumaux, Quentin Selle, Quentin Torroba, Quentin Wargnier, Quercus Hernandez, Ram Ramrakhya, Randall Isenhour, Ranjit Parva, Raphaël Balouka, Raphaël Rialland, Raul Perez Pelaez, Reinhard Sonnleitner, Remi Delacourt, Rishi Shah, Rob Romijnders, Rohan Shah, Rohin Arora, Romain Sauvestre, Roman Soletskyi, Ronan Riochet, Rosalie Millner, Rupert Menneer, Sagar Vaze, Samuel Barry, Samuel Belkadi, Samuel Humeau, Samuele Papa, Sanchit Gandhi, Sandeep Cranganore, Sandeep Subramanian, Sarthak Mittal, Saskia Adaime, Scott Matthews, Sean Cha, Sebastian Kaltenbach, Seungjae Jung, Shashwat Verma, Sherif Waly, Shrimai Prabhumoye, Siddhant Waghjale, Siddharth Gandhi, Simon Lepage, Simon Sorg, Soham Ghosh, Sophie Marbach, Srijan Mishra, Stanislas Lange, Steve Hong, Sumukh Aithal, Szymon Antoniak, Tarun Kumar Vangani, Teddy Turquet, Teven Le Scao, Théo Cachet, Thibaut Lavril, Thomas Chabal, Thomas Coste, Thomas Defard, Thomas Foubert, Thomas Loux, Thomas Robert, Thomas Wang, Tianyu Zhang, Tim Lawson, Timothée Lacroix, Timothy Wallis, Tobias Kronlachner, Tom Bewley, Tom Edwards, Tomas Hodan, Triantafyllos Afouras, Tuhin Das, Tyler Wang, Udit Saxena, Ulrick Blé, Umar Jamil, Umberto Tomasini, Valentin Macé, Van Phung, Venkata Reddy, Vibha Masti, Victor Jouault, Victor Letzelter, Victor Paltz, Victor Poucheret, Vincent Maladière, Vincent Pfister, Virgile Richard, Vladislav Bataev, Wassim Bouaziz, Wen Ding Li, William Flanagan, William Havard, William Marshall, Witold Jędrzejewski, Xinghui Li, Xingran Guo, Xinyu Yang, Xuanyu Zhang, Yann Dreze, Yann Viegas, Yannic Neuhaus, Yassine Turki, Yessin Moakher, Yi He, Yihan Wang, Yimu Pan, Yuying Zhu, Yves Martin des Taillades, Zaccharie Ramzi, Zhenlin Xu, Zsófia Csákány</div>
+<div class="meta-line">First: 2026-10-27T17:25:43+00:00 · Latest: 2026-10-27T17:25:43+00:00</div>
+<div class="meta-line">Comments: Webpage: https://mistral.ai/news/timestral ; Weights: https://huggingface.co/collections/mistralai/timestral ; Code: https://github.com/mistralai/timestral</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37585v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37585v1">PDF</a> · <a href="https://huggingface.co/collections/mistralai/timestral">Code1</a> · <a href="https://github.com/mistralai/timestral">Code2</a> · <a href="https://huggingface.co/huggingface">Code3</a> · <a href="https://mistral.ai/news/timestral">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We introduce Timestral, a family of four time series foundation models for probabilistic forecasting, with 5M, 28M, 123M, and 209M parameters. Timestral sets a new state of the art on GIFT-Eval, TIME, and fev-bench, where Timestral-209M and Timestral-123M take the top two places on every metric. We achieve this with three ingredients: Decoupled Horizon Forecasting (DHF), which separates prediction tokens from the causally encoded context, so that longer horizons are trained without masking context and each observed value is both a forecast target and context for later forecasts; a covariate framework that natively supports known-future covariates within a causal architecture; and a two-stage pipeline that pretrains exclusively on a diverse, large-scale synthetic corpus before post-training on a mix of real and synthetic data with extended context. This report describes the model design and its benchmark results. Weights for all four models are available on Hugging Face and inference code on GitHub.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We introduce Timestral, a family of four time series foundation models for probabilistic forecasting, with 5M, 28M, 123M, and 209M parameters.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Water at the molecular frontier</div>
+<div class="meta-line">Authors: Mischa Bonn, Marie-Laure Bocquet, Andre Geim, Laura Fumagalli, Angelos Michaelides, Lyderic Bocquet</div>
+<div class="meta-line">First: 2026-10-27T17:22:23+00:00 · Latest: 2026-10-27T17:22:23+00:00</div>
+<div class="meta-line">Comments: perspective under review</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37581v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37581v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Much of the water that matters most - flowing through biological cells and membranes, percolating through soils and rocks, or processed by filtration and desalination technologies - is not bulk water. It is water in nano- and molecular-scale confinement or at interfaces. Nanoscale water is therefore central to many challenges of our time, from the global water crisis and the water-energy nexus to catalysis, electrochemistry, and health. Beyond its applications, nanoscale water has emerged as a rich scientific field in its own right: discoveries are accumulating rapidly, revealing that confinement and interfacial forces produce a range of behaviours absent in the bulk. Sometimes this amounts to a renormalization of bulk properties; in other cases, new and non-intuitive phenomena emerge - exotic phases, anomalous transport, and dielectric responses that defy continuum expectations. A convergence of atomically precise nanofluidic devices, novel spectroscopies and microscopy approaches, and machine-learning-accelerated simulations is now exposing the molecular mechanisms behind these behaviours. This Perspective argues that the recent findings should not be viewed as isolated nanoscale anomalies, but as evidence for a molecular regime of water in which continuum descriptions must be rethought and molecular-level understanding becomes essential. Recognising and exploring this regime should have consequences ranging from fundamental physics to the rational design of future technologies that rely on water and dissolved ions.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Much of the water that matters most - flowing through biological cells and membranes, percolating through soils and rocks, or processed by filtration and desalination technologies - is not bulk water.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Spectral Braids: A Topological Descriptor for Dynamic Directed Networks</div>
+<div class="meta-line">Authors: Mehmet Emin Aktas, Esra Akbas</div>
+<div class="meta-line">First: 2026-10-27T17:21:19+00:00 · Latest: 2026-10-27T17:21:19+00:00</div>
+<div class="meta-line">Comments: 15 pages, 5 figures, 2 tables. Accepted at the 2026 IEEE International Conference on Big Data (IEEE BigData 2026)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37580v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37580v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Eigenvalues are a workhorse of graph machine learning: spectral clustering, spectral graph neural networks, and graph kernels all summarize a network by the eigenvalues of a matrix. These eigenvalues are almost always treated as a static list of numbers. When a graph changes, however, its eigenvalues move, and when the matrix is not symmetric, they move in the complex plane, where they can wind around each other. The pattern of this winding is a braid, a classical object from topology. We propose spectral braids, a methodology for dynamic directed networks: each snapshot is aggregated into a community-level transition matrix, its complex eigenvalues are tracked over time, and the braid they trace is read off as a word. The word is then mapped to a matrix by the Burau representation, which gives a fixed-size feature vector for any classifier. The braid has a concrete meaning: each eigenvalue describes how a group of communities behaves, and each crossing records one group overtaking another. We evaluate the method on dynamic network classification, using synthetic networks of online communities whose labels describe how the network evolved between the same starting and ending states. Our experimental results show that the proposed features reach 97.1% accuracy on four classes, against 44.5% for the best feature set that does not track eigenvalues, and that the Burau features also separate networks containing the same events in a different order, which simple counts of crossings cannot do. To the best of our knowledge, this is the first study that defines braids and braid monodromy on graph data and uses them as features for learning on dynamic networks.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Eigenvalues are a workhorse of graph machine learning: spectral clustering, spectral graph neural networks, and graph kernels all summarize a network by the eigenvalues of a matrix.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Arithmetic limiting laws over shifted primes: dimension zero, Fourier decay, and absolute continuity</div>
+<div class="meta-line">Authors: Vipin Singh Sehrawat</div>
+<div class="meta-line">First: 2026-03-11T18:04:48+00:00 · Latest: 2026-10-27T17:17:18+00:00</div>
+<div class="meta-line">Comments: 317 pages, 1 figure. Substantially expanded revision: strengthened packing and local dimension results; new information-dimension and quantization bounds; sharper concentration localization and Fourier resonance estimates; new determinant-constrained LWE reduction; extended arithmetic and lattice results. Exposition, proofs, references and attribution revised</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.11196v15">Abs</a> · <a href="https://arxiv.org/pdf/2603.11196v15">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">For primes $p$, let $c(p)=\frac{\varphi(p-1)}{p-1}\prod_{j\ge1}(1-p^{-j})$. Let $μ_G$ be its classical shifted-totient limiting law over primes and $μ_f$ its image under $x\mapsto-\log x$. Both laws have Hausdorff dimension zero, packing dimension one on every positive-mass Borel set, and almost-everywhere lower and upper local dimensions $(0,1)$. The four totient and divisor-sum laws over integers and shifted primes, and their logarithmic images, have lower and upper Shannon information dimensions in $(0.5503615,0.570489495)$. For convolution powers $μ_f^{*k}$, both information dimensions tend to one as $k\to\infty$, while each finite power has Hausdorff dimension zero. $μ_G$ gives full mass to absolutely normal Liouville numbers. Both Fourier transforms are $O((\log|τ|)^{-1/3}(\log\log|τ|)^{1/3})$. The empirical laws of $c(p)$ and $\varphi(p-1)/(p-1)$ for $p\le x$ have sharp Kolmogorov order $1/\log x$ in fixed reduced progressions; over unrestricted primes, they and their logarithmic images converge in $1$-Wasserstein distance at rate $O_B((\log x)^{-B})$ for every fixed $B&gt;0$, possibly with ineffective constants. For $μ_f$, we obtain concentration expansions to every fixed inverse-logarithmic order, quantitative maximizer localization near $\log3$, and Fourier resonance bounds. For $U_T$ uniform on $[0,T]$, $(\log T)\widehat{μ_f}(U_T)$ converges in distribution to a circularly symmetric random Euler product, with convergence of modulus moments for every fixed real $s&gt;-1$. Strongly additive functions with prime values $(\log\ell)^{-A}$ have absolutely continuous integer and shifted-prime laws for $A&gt;0$. We give certified number-theoretic transform prime searches. A lattice appendix determines second and third distinct nonzero squared norms of type-$A$ tensor products and gives cyclotomic smoothing bounds. These results are unconditional.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">For primes $p$, let $c(p)=\frac{\varphi(p-1)}{p-1}\prod_{j\ge1}(1-p^{-j})$.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Pneuma: A Large-Scale Real-World Time Series Benchmark for Commercial Aircraft Predictive Maintenance</div>
+<div class="meta-line">Authors: Jiafeng Lin, Yutian Zhang, Huan Zhang, Yuxuan Wang, Jinyan Feng, Yuhui Liu, Zhongyi Pei, Jianmin Wang</div>
+<div class="meta-line">First: 2026-10-27T17:09:19+00:00 · Latest: 2026-10-27T17:09:19+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37563v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37563v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Predictive maintenance is vital for commercial aviation, yet progress remains hindered by the lack of public, large-scale real-world datasets. As a result, most methods are developed and evaluated on proprietary data, limiting reproducibility. We introduce Pneuma, the first publicly available large-scale benchmark for predictive maintenance using onboard time series from in-service commercial aircraft. Built around bleed air systems, Pneuma contains over 920 million multivariate time steps across four aircraft types and 9 verified fault scenarios, directly aligned with real maintenance logs. The dataset exhibits key real-world challenges, including substantial class imbalance, subtle fault evolution patterns, and significant variance across aircraft configurations. We structure the benchmark around three tasks: multivariate forecasting, supervised fault classification, and unsupervised anomaly detection, with labels derived from actual maintenance records. Under unified settings, we evaluate over 25 models from four methodological families on 9 carefully curated subsets. The results reveal that even strong contemporary models struggle with subtle fault signatures. Further analyses show consistent gains from additional in-context examples and multivariate inference, while forecasting quality is strongly associated with anomaly detection performance. Together, these findings provide practical insights into effectively modeling complex real-world aviation time series. We hope Pneuma will serve as a rigorous and reproducible foundation for advancing data-driven predictive maintenance toward real-world deployment in commercial aviation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Predictive maintenance is vital for commercial aviation, yet progress remains hindered by the lack of public, large-scale real-world datasets.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Longitudinal retinal imaging and auxiliary tasks for discrete-time survival prediction of referable diabetic retinopathy and maculopathy: a retrospective cohort study</div>
+<div class="meta-line">Authors: Paul Nderitu, Laura Webster, Samantha S. Mann, Christos Bergeles, Timothy L. Jackson</div>
+<div class="meta-line">First: 2026-10-27T16:56:35+00:00 · Latest: 2026-10-27T16:56:35+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37544v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37544v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Deep learning can predict progression to referable diabetic retinopathy (rDR) and referable maculopathy (rM) from screening photographs, but existing models ignore the prior images that screening programmes hold. We assessed whether multi-visit (MV) images and auxiliary objectives that model the future visit improve prognostic prediction. In this retrospective cohort study of macula-centred photographs from the South-East London Diabetic Eye Screening Programme (UK), eyes without referable disease at baseline and with a follow-up at 20-28 months were split into development (72,559 eyes, 36,648 patients) and test (17,917 eyes, 9,071 patients) sets. A time-aware discrete-time survival model predicted incident rDR (R2 or R3), rM (M1), or either (rDR/rM). We compared baseline-only input with up to three visits (MV), alone or with auxiliary supervision of future-visit age (MV+age) or future-visit latent prediction (MV+latent), using the AUROC of 28-month cumulative risk and paired DeLong tests with Benjamini-Hochberg correction. In the test set, 308 eyes (1.7%) developed rDR/rM, 58 (0.3%) rDR, and 275 (1.5%) rM. MV images increased the AUROC for rDR/rM from 0.749 to 0.786 (+0.037, 95% CI 0.012-0.061; q=0.011) and for rM from 0.749 to 0.788 (+0.039, 0.013-0.065; q=0.010). Auxiliary objectives did not improve MV model performance. In eyes with two or three visits, prior visits accounted for 30-38% of positive Grad-CAM attributions. Prior screening images improved prediction of incident maculopathy and the composite rDR/rM outcome, with gains driven by longitudinal images, not auxiliary supervision. External validation and prospective studies are required before the deployment of models to individualise screening.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Deep learning can predict progression to referable diabetic retinopathy (rDR) and referable maculopathy (rM) from screening photographs, but existing models ignore the prior images that screening programmes hold.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Back-End-Of-Line Integration of 2-Terminal Ferroelectric Hafnia Synaptic Weights on Commercial CMOS Process</div>
+<div class="meta-line">Authors: Alexander Flasby, Anwesha Panda, Nathan Savoia, Laura Bégon-Lours</div>
+<div class="meta-line">First: 2026-10-27T16:51:15+00:00 · Latest: 2026-10-27T16:51:15+00:00</div>
+<div class="meta-line">Comments: 5 pages, 6 figures, submitted to ISCAS 2027, Special Session &quot;Hafnia Ferroelectrics: Co-Design from Materials to Energy-Efficient AI Circuits&quot;</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37530v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37530v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Functionalising the back-end-of-line (BEOL) of CMOS with emerging materials is a key route to neural network accelerators and neuromorphic systems. In this work, we demonstrate for the first time the integration of 2-terminal ferroelectric synaptic weights in the BEOL of as-delivered commercial 180 nm CMOS dies. A novel material stack is proposed, in which a WOx/[HfO2-ZrO2] bilayer is sandwiched between TiN and Mo electrodes. For devices annealed at 450 °C, programming below 1.8 V is achieved with a cycle-to-cycle variation below 3 %. Synaptic weights annealed at 500 °C exhibit more gradual weight updates, while the tested underlying NMOS transistors remain functional after the complete integration process. The trade-off between thermal budget and on-device training performance is illustrated using hardware-aware neural network simulations.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Functionalising the back-end-of-line (BEOL) of CMOS with emerging materials is a key route to neural network accelerators and neuromorphic systems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Walshness: an intrinsic neural-network representability metric for quantum states</div>
+<div class="meta-line">Authors: Nisarga Paul, Kehuang Chen, Jessica K. Jiang, Haimeng Zhao, Di Luo</div>
+<div class="meta-line">First: 2026-09-30T18:04:55+00:00 · Latest: 2026-10-27T16:51:13+00:00</div>
+<div class="meta-line">Comments: 9+36 pages; v2 submitted version</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.00505v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.00505v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Neural quantum states (NQS) have emerged as powerful representations of quantum states with rapidly expanding applications across quantum many-body physics. Yet our understanding of when neural networks can efficiently represent physical quantum states remains limited, in part due to the nonlinear parameterization of NQS, the intricate sign structure of quantum states, and the sensitive dependence on basis choice. We introduce Walshness, a complexity metric of a quantum state which quantifies whether it admits a compact neural-network representation. We rigorously prove that a general quantum many-body state admits an efficient NQS representation if it has bounded Walshness, and vice versa, for various NQS architectures. We provide an algorithm for finding the optimal basis by minimizing the energy of a corresponding classical spin model. This allows us to empirically improve the learnability of various physical quantum states, including ground states of the transverse-field Ising model and mixed-field toric code, often reducing infidelity by orders of magnitude, and generalizes the basis choice given by the well-known Marshall sign rule in frustrated antiferromagnets. Our results provide an intrinsic complexity metric for quantum states with provable connections to their neural-network representability.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Neural quantum states (NQS) have emerged as powerful representations of quantum states with rapidly expanding applications across quantum many-body physics.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">BadTime: An Effective Backdoor Attack on Multivariate Long-Term Time Series Forecasting</div>
+<div class="meta-line">Authors: Kunlan Xiang, Haomiao Yang, Wenbo Jiang, Haoxin Wang, Shiyue Huang, Shaofeng Li, Yijing Liu, Ji Guo</div>
+<div class="meta-line">First: 2025-08-06T08:18:01+00:00 · Latest: 2026-10-27T16:45:39+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2508.04189v3">Abs</a> · <a href="https://arxiv.org/pdf/2508.04189v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Multivariate long-term time series forecasting (MLTSF) models are increasingly deployed in critical domains such as climate, finance, and transportation. Despite their growing importance, the security of MLTSF models against backdoor attacks remains entirely unexplored. To bridge this gap, we propose BadTime, the first effective backdoor attack tailored for MLTSF. BadTime can manipulate hundreds of future predictions toward a target pattern by injecting a subtle trigger. BadTime addresses two key challenges that become particularly severe in MLTSF: (i) the rapid dilution of local triggers over long horizons, and (ii) the extreme sparsity of backdoor signals under stealth constraints. To counter dilution, BadTime leverages inter-variable correlations, temporal lags, and data-driven initialization to design a distributed, lag-aware trigger whose influence persists over long-range forecasts. To overcome sparsity, it mixes label-similar and label-dissimilar poisoned samples and adopts a decoupled backdoor training objective that explicitly up-weights the sparse backdoor signal, enabling reliable learning at a poisoning rate as low as 1%. Extensive experiments show that BadTime significantly outperforms the state-of-the-art backdoor attack on time series forecasting by extending the attackable horizon from at most 12 timesteps to 720 timesteps (a 60x improvement) and reducing the MAE on target variables by 57% on average, while changing the average clean forecasting error by less than 1%.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Multivariate long-term time series forecasting (MLTSF) models are increasingly deployed in critical domains such as climate, finance, and transportation.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The Structure Gap: When More Data Cannot Replace Structured Reasoning</div>
+<div class="meta-line">Authors: Kheer Sagar Patel, Mojtaba Soltanalian</div>
+<div class="meta-line">First: 2026-10-27T16:45:22+00:00 · Latest: 2026-10-27T16:45:22+00:00</div>
+<div class="meta-line">Comments: 13 pages, 6 figures, 2 tables. Includes supplementary material and reproducibility code/data</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37523v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37523v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A persistent belief in modern AI is that sufficiently large learners trained on sufficiently much data can make explicit domain knowledge optional. This paper examines a limitation of that belief. We define structure-encoded problems: tasks whose input-output map is determined, or sharply constrained, by known structure such as a solver, symmetry group, graph, physical law, measurement operator, grammar, combinatorial search space, or optimization objective. For such tasks, the central question is not expressivity--a dense neural network may contain the desired map--but finite-data identification, extrapolation, and certification. We introduce the structure gap: the finite-resource gap between a method that receives the governing structure and a learner that receives only examples. The strongest useful form of the claim is asymptotic rather than absolute: structure-agnostic learning may approach a structured solver as coverage grows, but every finite dataset can leave residual uncertainty that the structure resolves by construction. We prove this exactly for a Gaussian inverse problem: the known-operator Wiener solver attains Bayes risk, while the dense empirical learner in the correct linear class has persistent expected excess risk. We also prove a cell-coverage lower bound and an unobserved-orbit non-identifiability result. Controlled experiments in known-operator inversion, sparse recovery, and graph reachability with size extrapolation instantiate the mechanisms. When validated structure is available, it can constrain the hypothesis space before learning begins, leaving learning to address components the structure does not specify.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A persistent belief in modern AI is that sufficiently large learners trained on sufficiently much data can make explicit domain knowledge optional.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Distributionally Faithful Imputation via Positive Semi-Definite Kernel Density Estimation</div>
+<div class="meta-line">Authors: Andrea Basteri, Carlo Ciliberto, Alessandro Rudi</div>
+<div class="meta-line">First: 2026-07-08T15:51:05+00:00 · Latest: 2026-10-27T16:41:12+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.07767v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.07767v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Missing values undermine statistical inference and machine learning pipelines, yet most imputation methods rely on heuristics or restrictive parametric assumptions that ignore the joint data distribution. We recast imputation under missing completely at random (MCAR) as density estimation from masked observations: estimate a distribution whose observed marginals exactly match those in the data. Leveraging positive semidefinite (PSD) kernel densities we obtain a convex empirical risk problem with closed form marginals, solvable by a Newton interior point method. We further introduce a non convex extension that supports adaptive hyperparameter selection through alternating minimization. The resulting PSD-Impute model yields both single and multiple imputations from the same fitted density, enjoys statistical consistency, beating the curse of dimensionality for very regular probabilities. Experiments indicate competitive distributional accuracy compared with popular imputation baselines, suggesting strong practical promise.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Missing values undermine statistical inference and machine learning pipelines, yet most imputation methods rely on heuristics or restrictive parametric assumptions that ignore the joint data distribution.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A note on data-efficient finetuning of vision foundation models</div>
+<div class="meta-line">Authors: Niclas Hergenröther, Antonio Orvieto</div>
+<div class="meta-line">Venue: ICML 2025</div>
+<div class="meta-line">First: 2026-10-27T16:30:45+00:00 · Latest: 2026-10-27T16:30:45+00:00</div>
+<div class="meta-line">Comments: 8 pages, 3 figures, Accepted at ES-FoMo III: 3rd Workshop on Efficient Systems for Foundation Models at ICML 2025</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37510v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37510v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Adapting foundation models to a new task within or beyond the training domain is the de facto standard for building specialized machine learning models. Recently, Visual Prompting (VP) has emerged as a promising technique for efficient knowledge transfer. As new foundation model families~(like Mamba) get introduced and VP pipelines such as AutoVP reach greater maturity, we find a growing need for a systematic evaluation of current approaches. In this work, we assess the performance of the latest models, comparing them to earlier architectures and alternative fine-tuning methods, to better understand the progress, challenges and opportunities in the field of efficient fine-tuning under resource limitations. Towards this goal, this paper provides a concise empirical overview of the interactions among foundation model families (Attention-, Convolution-, and Mamba-based) and transfer paradigms: VP, Linear Probing (LP), Full Fine-tuning (FFT) and Low Rank Adaptation (LoRA). Our work builds up on previous findings by broadening the selection of evaluated models and techniques while tuning hyperparameters. In the interest of delivering practical guidelines for the user, we also explore application of prevalent regularization techniques to boost performance in the context of VP.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Adapting foundation models to a new task within or beyond the training domain is the de facto standard for building specialized machine learning models.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">AI Writes Faster Than Humans Can Review: A Longitudinal Study of an Enterprise 2x Mandate</div>
+<div class="meta-line">Authors: Hao He, Shyam Agarwal, Yegor Denisov-Blanch, Pavel Azaletskiy, Sanmi Koyejo, Bogdan Vasilescu</div>
+<div class="meta-line">First: 2026-07-02T09:03:32+00:00 · Latest: 2026-10-27T16:28:21+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.01904v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.01904v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Enterprises increasingly mandate the use of AI coding tools and announce ambitious productivity targets, yet there is little longitudinal evidence on whether such productivity targets have been reached, how, and at what cost. We present a quantitative case study of a documented enterprise &quot;2x&quot; mandate: in June 2025, the CTO of a mid-sized, AI-forward software company set the goal of doubling merged pull requests (PRs) per engineer with AI. Using a panel of 802 developers and 196,212 PRs (January 2024 - April 2026), we estimate the effect of AI adoption by comparing each developer&#x27;s PR throughput after they started using AI tools with their own throughput before. We find that the company eventually reached the target, but only in the tenth month and not in the way the announcement implied: PR throughput barely moved at the mandate date, rose by about 12% when each developer started using AI, and then kept growing as developers accumulated use. The target was not met merely by working longer or splitting work: extra working days account for at most one-fifth of the throughput increase, and the added PRs became larger and skewed toward features and bug fixes rather than routine changes. The gain is similar across seniority levels and larger in repositories created since 2022. The cost of AI adoption fell on code review, where load per reviewer doubled and automated review overtook human review in coverage within months of the mandate. We interpret these results as strong evidence that the adoption and sustained usage of AI raises PR throughput in an enterprise setting, with two caveats: throughput is only a proxy for productivity, and the exact size of the effect remains uncertain due to a lack of truly randomized assignment in our setting. Our results have implications for organizations under AI transformations and researchers studying the impact of AI on software development productivity.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Enterprises increasingly mandate the use of AI coding tools and announce ambitious productivity targets, yet there is little longitudinal evidence on whether such productivity targets have been reached, how, and at what cost.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Strategyproof Deep Reinforcement Learning for Online Resource Allocation</div>
+<div class="meta-line">Authors: Fariba Dehghan, Sebastian Stein, Vahid Yazdanpanah, Stephanie Gauthier</div>
+<div class="meta-line">First: 2026-10-27T16:25:28+00:00 · Latest: 2026-10-27T16:25:28+00:00</div>
+<div class="meta-line">Comments: 15 pages, 2 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37504v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37504v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Online resource allocation faces two coupled challenges: (1) allocating scarce resources efficiently under uncertain future demand, and (2) ensuring that agents report task valuations and requirements truthfully (strategyproofness). Reinforcement Learning (RL) adapts allocation decisions through experience but does not necessarily ensure strategyproofness. Existing strategyproof RL uses a linear allocation rule, which limits the resource interactions it can represent. Neural mechanism design methods offer greater expressiveness, but provide only approximate incentive guarantees. Against this background, we introduce the first strategyproof deep RL mechanism for online resource allocation. It integrates three novel components: (i) a monotonic neural network that learns nonlinear interactions by construction (higher reported value cannot reduce acceptance, while a longer reported duration or larger resource requirement cannot increase it); (ii) a generalised critical payment: the lowest accepted value, with all other inputs fixed; and (iii) training by either RL or imitation of an existing rule. Together, monotonicity and the critical payment ensure strategyproofness and individual rationality, while the neural rule provides flexibility and imitation improves training efficiency. Empirically, on a four-resource stream with two partner pairs that a linear difference cannot represent, the neural rule achieves 97.8% of an offline welfare upper bound, compared with 93.8% for a linear learner and 89.0% for first-come, first-served, closing 65% and 80% of the remaining optimality gap, respectively. Moreover, imitation reaches 97.5% in only 261 seconds, about 89 times faster than RL.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Online resource allocation faces two coupled challenges: (1) allocating scarce resources efficiently under uncertain future demand, and (2) ensuring that agents report task valuations and requirements truthfully (strategyproofness).</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Grades, equity and graduation rates: a quantitative analysis of the association of learning assistants with improved student outcomes</div>
+<div class="meta-line">Authors: Cassandra Paul, David Webb</div>
+<div class="meta-line">First: 2026-07-29T15:03:12+00:00 · Latest: 2026-10-27T16:23:03+00:00</div>
+<div class="meta-line">Comments: 6 pages, 3 figures, conference submission</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.27006v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.27006v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In this paper we use multilevel modeling of 10 introductory courses from four STEM disciplines to quantify associations of Learning Assistants (LAs) with the student-level outcomes, pass-rates, and retention. Overall we find that having an LA in a class is associated with improvement of these metrics for all students. Fur- thermore, along with all students showing improvement, we find noticeable demographic differences in the amount of improvement. For instance, LAs seem to be associated with larger improvements in pass-rates for historically marginalized groups, and larger increases in graduation rates for women identifying as belonging to historically marginalized races and ethnicities when compared to students from the same group but with class sections without LAs. This indicates that Learning Assistant programs may be an excellent investment for diverse institutions.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In this paper we use multilevel modeling of 10 introductory courses from four STEM disciplines to quantify associations of Learning Assistants (LAs) with the student-level outcomes, pass-rates, and retention.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Lojasiewicz Estimates for a Regularised Baby-Skyrme Model</div>
+<div class="meta-line">Authors: Sebastian Woodward</div>
+<div class="meta-line">First: 2026-10-27T16:22:21+00:00 · Latest: 2026-10-27T16:22:21+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37499v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37499v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We investigate the structure of degree $1$ minimisers of a Baby-Skyrme energy of maps $u:Σ\to S^2$ regularised by a Sacks-Uhlenbeck perturbation, and we establish quantitative convergence rates to a simple bubble tree consisting of a single degree $1$ bubble and a constant base map.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We investigate the structure of degree $1$ minimisers of a Baby-Skyrme energy of maps $u:Σ\to S^2$ regularised by a Sacks-Uhlenbeck perturbation, and we establish quantitative convergence rates to a simple bubble tree consisting of a single degree $1$ bubble and a constant base map.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Vortex Dynamics Driven Transverse Transport in Superconducting Thin Films</div>
+<div class="meta-line">Authors: Laxmipriya Nanda, Sohini Guin, Yasen Hou, Rajib Sarkar, Naresh Shyaga, Souvik Banerjee, A. Sundaresan, N. S. Vidhyadhiraja, Jagadeesh S. Moodera, Dhavala Suri</div>
+<div class="meta-line">First: 2026-05-04T14:55:56+00:00 · Latest: 2026-10-27T16:14:22+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.02677v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.02677v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The generation of transverse voltage in superconducting thin films carrying a longitudinal current has been recently related to demonstrate exotic, symmetry-breaking transport phenomena. To understand the underlying phenomenon we chose two distinctly different systems to investigate; a conventional (Nb) and a nonconventional (Ni/Bi bilayer) superconductor. A systematic study of this transverse response in these type-II superconducting thin films we aimed towards establishing its microscopic origin. Both longitudinal and transverse magneto transport measurements were carried out with Hall-bar patterned devices as a function of temperature with magnetic field applied out-of-plane. In both systems, a sharp, field antisymmetric transverse resistance emerges in the superconducting transition region, closely following the field derivative of the longitudinal resistance while it was vanishingly small or absent in the fully superconducting or normal states. Based on the vortex-flow model, the behavior could be quantitatively attributed as the transverse voltage arising due to the motion of Abrikosov vortices under a combined action of Magnus like force and viscous drag force, rather than from any exotic or intrinsic Hall-type mechanism. The close correspondence between a nominally conventional superconductor Nb and an unconventional superconductor heterostructure incorporating a ferromagnetic layer indicates that the vortex dynamics alone, independent of magnetic proximity effects or unconventional pairing, seems to be sufficient to account for the observed transverse signal. Our observations while seems to provide a quantitative, material-independent model for interpreting transverse voltages in superconducting films, raises the concerns in attributing such signals to exotic physics without first ruling out conventional vortex-flow contributions.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The generation of transverse voltage in superconducting thin films carrying a longitudinal current has been recently related to demonstrate exotic, symmetry-breaking transport phenomena.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261026_0522.html">20261026_0522</a>
+<a href="archive/20261025_0524.html">20261025_0524</a>
+<a href="archive/20261022_0604.html">20261022_0604</a>
+<a href="archive/20261019_0514.html">20261019_0514</a>
+<a href="archive/20261018_0512.html">20261018_0512</a>
+<a href="archive/20261015_0601.html">20261015_0601</a>
+<a href="archive/20261012_0640.html">20261012_0640</a>
+<a href="archive/20261011_0611.html">20261011_0611</a>
+<a href="archive/20261008_0727.html">20261008_0727</a>
+<a href="archive/20261005_0611.html">20261005_0611</a>
+<a href="archive/20261004_0558.html">20261004_0558</a>
+<a href="archive/20261001_0647.html">20261001_0647</a>
+<a href="archive/20260928_0550.html">20260928_0550</a>
+<a href="archive/20260927_0546.html">20260927_0546</a>
+<a href="archive/20260924_0559.html">20260924_0559</a>
+<a href="archive/20260921_0510.html">20260921_0510</a>
+<a href="archive/20260920_0515.html">20260920_0515</a>
+<a href="archive/20260917_0555.html">20260917_0555</a>
+<a href="archive/20260913_0510.html">20260913_0510</a>
+<a href="archive/20260910_0530.html">20260910_0530</a>
+<a href="archive/20260907_0502.html">20260907_0502</a>
+<a href="archive/20260906_0455.html">20260906_0455</a>
+<a href="archive/20260903_0532.html">20260903_0532</a>
+<a href="archive/20260831_0550.html">20260831_0550</a>
+<a href="archive/20260830_0530.html">20260830_0530</a>
+<a href="archive/20260827_0536.html">20260827_0536</a>
+<a href="archive/20260824_0320.html">20260824_0320</a>
+<a href="archive/20260823_0319.html">20260823_0319</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260817_0318.html">20260817_0318</a>
+<a href="archive/20260816_0319.html">20260816_0319</a>
+<a href="archive/20260813_0400.html">20260813_0400</a>
+<a href="archive/20260810_0330.html">20260810_0330</a>
+<a href="archive/20260809_0326.html">20260809_0326</a>
+<a href="archive/20260806_0423.html">20260806_0423</a>
+<a href="archive/20260803_0408.html">20260803_0408</a>
+<a href="archive/20260802_0408.html">20260802_0408</a>
+<a href="archive/20260730_0410.html">20260730_0410</a>
+<a href="archive/20260727_0411.html">20260727_0411</a>
+<a href="archive/20260726_0409.html">20260726_0409</a>
+<a href="archive/20260723_0410.html">20260723_0410</a>
+<a href="archive/20260720_0406.html">20260720_0406</a>
+<a href="archive/20260719_0403.html">20260719_0403</a>
+<a href="archive/20260716_0405.html">20260716_0405</a>
+<a href="archive/20260713_0405.html">20260713_0405</a>
+<a href="archive/20260712_0404.html">20260712_0404</a>
+<a href="archive/20260709_0419.html">20260709_0419</a>
+<a href="archive/20260706_0411.html">20260706_0411</a>
+<a href="archive/20260705_0408.html">20260705_0408</a>
+<a href="archive/20260702_0447.html">20260702_0447</a>
+<a href="archive/20260629_0411.html">20260629_0411</a>
+<a href="archive/20260628_0422.html">20260628_0422</a>
+<a href="archive/20260625_0445.html">20260625_0445</a>
+<a href="archive/20260622_0422.html">20260622_0422</a>
+<a href="archive/20260621_0414.html">20260621_0414</a>
+<a href="archive/20260618_0503.html">20260618_0503</a>
+<a href="archive/20260615_0416.html">20260615_0416</a>
+<a href="archive/20260614_0413.html">20260614_0413</a>
+<a href="archive/20260611_0525.html">20260611_0525</a>
+<a href="archive/20260608_0409.html">20260608_0409</a>
+<a href="archive/20260607_0408.html">20260607_0408</a>
+<a href="archive/20260604_0547.html">20260604_0547</a>
+<a href="archive/20260601_0406.html">20260601_0406</a>
+<a href="archive/20260531_0406.html">20260531_0406</a>
+<a href="archive/20260528_0459.html">20260528_0459</a>
+<a href="archive/20260524_0405.html">20260524_0405</a>
+<a href="archive/20260521_0459.html">20260521_0459</a>
+<a href="archive/20260518_0403.html">20260518_0403</a>
+<a href="archive/20260517_0402.html">20260517_0402</a>
+<a href="archive/20260514_0430.html">20260514_0430</a>
+<a href="archive/20260511_0400.html">20260511_0400</a>
+<a href="archive/20260510_0356.html">20260510_0356</a>
+<a href="archive/20260507_0419.html">20260507_0419</a>
+<a href="archive/20260504_0353.html">20260504_0353</a>
+<a href="archive/20260503_0353.html">20260503_0353</a>
+<a href="archive/20260430_0409.html">20260430_0409</a>
+<a href="archive/20260427_0344.html">20260427_0344</a>
+<a href="archive/20260426_0342.html">20260426_0342</a>
+<a href="archive/20260423_0403.html">20260423_0403</a>
+<a href="archive/20260420_0340.html">20260420_0340</a>
+<a href="archive/20260419_0339.html">20260419_0339</a>
+<a href="archive/20260416_0402.html">20260416_0402</a>
+<a href="archive/20260413_0337.html">20260413_0337</a>
+<a href="archive/20260412_0333.html">20260412_0333</a>
+<a href="archive/20260409_0358.html">20260409_0358</a>
+<a href="archive/20260406_0332.html">20260406_0332</a>
+<a href="archive/20260405_0329.html">20260405_0329</a>
+<a href="archive/20260402_0405.html">20260402_0405</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>

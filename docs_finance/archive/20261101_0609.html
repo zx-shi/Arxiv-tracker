@@ -1,0 +1,525 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递 - Finance</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#dc2626;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#dc2626;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递 - Finance</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-11-01 06:09</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261101_0609</div>
+    <div class="row"><div class="card">
+<div class="title">Variational wavefunctions for ideal anyon gas: superfluid and skyrmion Hall crystal</div>
+<div class="meta-line">Authors: Ya-Hui Zhang</div>
+<div class="meta-line">First: 2026-10-29T17:59:59+00:00 · Latest: 2026-10-29T17:59:59+00:00</div>
+<div class="meta-line">Comments: 31 pages, 10 figures (2 in the main text), including Supplemental Material</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40657v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40657v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The ground state of an ideal gas of anyons with statistical angle $θ\in(0,π)$ is a long-standing open problem, with renewed interest from the recent observations of fractional Chern insulators. In this work we construct variational wavefunctions that build in the exact anyon statistics and combine theory-guided composite-boson, composite-fermion and parton wavefunctions with neural-network correlations on the sphere. For spinless and SU(2) semions we confirm the paired anyon superfluid, well below the best crystal states. At $θ=π/3$ liquids and crystals are closer in energy for the spinless case. For $θ=π/3$ anyons with SU(3) flavor, we find two candidates. One is a skyrmion Hall crystal, in which the anyons form an integer quantum Hall state in the effective magnetic field from the spin texture. The other is a chiral color superconductor of six-anyon clusters, the color-flavor-locked pairing descendant of a holon metal with SU(3) color gauge symmetry and SU(3) flavor symmetry; its wavefunction is a hyperdeterminant rather than a product of parton determinants. Within our variational ansatz the color superconductor has better energy than both crystals and the color-flavor locked phases with U(1)$^2$ and Z$_3$ gauge groups. For twisted MoTe$_2$ this suggests that the reentrant integer quantum anomalous Hall phase is the skyrmion Hall crystal of the doped anyons, and that the observed superconductivity may be the color superconductor, which can undergo a transition to an $f+if$ BCS superconductor with a jump of the chiral central charge by 3.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The ground state of an ideal gas of anyons with statistical angle $θ\in(0,π)$ is a long-standing open problem, with renewed interest from the recent observations of fractional Chern insulators.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Reconstructing hidden observables via quantum snapshot thermometry</div>
+<div class="meta-line">Authors: Jie Ren, Andrew Hallam, Luheng Zhao, Huanqian Loh, Zlatko Papić</div>
+<div class="meta-line">First: 2026-10-29T17:59:38+00:00 · Latest: 2026-10-29T17:59:38+00:00</div>
+<div class="meta-line">Comments: 14 pages, 8 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40652v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40652v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Projective snapshots are a standard readout tool for quantum simulators, but they directly probe only observables that are diagonal in the measurement basis. We show how local equilibration and an independently calibrated equilibrium equation of state can reveal otherwise hidden conserved-density profiles. We demonstrate numerically that such ``quantum snapshot thermometry&#x27;&#x27; can recover energy fronts and a diffusion constant, distinguish spin transport from energy spreading, and reveal conserved-charge profiles invisible in the initial measurements. We also identify symmetry-imposed ambiguities in the readout and show how prior knowledge of the spatial structure can resolve them. Fixed-basis snapshot thermometry thus provides quantitative hydrodynamic information beyond transport exponents, bypassing additional measurement bases and quantum state tomography.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Projective snapshots are a standard readout tool for quantum simulators, but they directly probe only observables that are diagonal in the measurement basis.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">When Does Storage Complement Solar? Investment and Cost Recovery under Advanced Net Metering</div>
+<div class="meta-line">Authors: Nathan Engelman Lado, Ahmed Alahmed, Audun Botterud, Saurabh Amin</div>
+<div class="meta-line">First: 2026-10-29T17:59:31+00:00 · Latest: 2026-10-29T17:59:31+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40650v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40650v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We examine the joint PV and storage operational and investment decisions of a prosumer under net energy metering (NEM) and peak/off-peak tariffs. Legacy NEM compensates net exports at the retail rate over a netting period, typically under time-invariant pricing. To better reflect system costs, tariff features are being reconsidered, with many U.S. states adopting time-varying prices and export compensation below the retail price. We formulate the prosumer decision problem as a cost minimization problem with charge/discharge, PV investment, and storage investment decisions. We analytically derive the optimal decisions based on the tariff&#x27;s membership in one of six regions that partition the tariff space. Using these solutions, we examine the relationship between PV and storage, identifying when they are complements or substitutes. Furthermore, we identify the relationship between private DER incentives and the distribution utility&#x27;s (DU&#x27;s) net cost of serving the prosumer. For both storage and PV, when investment costs are greater than the costs of serving the customer, there is no tariff where investment in PV and storage decrease non-adopter bills. Under the same conditions, complementarity between PV and storage decreases DU cost recovery for a given tariff. In a Massachusetts-based case study, we validate our theoretical findings by connecting tariff design features to DER interaction, the DU&#x27;s net cost, and DER adoption in a stochastic, multi-prosumer, and multi-period setting.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We examine the joint PV and storage operational and investment decisions of a prosumer under net energy metering (NEM) and peak/off-peak tariffs.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Probing Human-Machine Perceptual Alignment with Semantically Ambiguous Images</div>
+<div class="meta-line">Authors: Yuqi Hu, Vasha DuTell, Ahna R. Girshick, Jennifer E. Corbett</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-03-25T18:53:31+00:00 · Latest: 2026-10-29T17:58:16+00:00</div>
+<div class="meta-line">Comments: Accepted by NeurIPS 2026 BiAlign Workshop</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.24730v2">Abs</a> · <a href="https://arxiv.org/pdf/2603.24730v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The classic duck-rabbit illusion reveals a fundamental property of perception: when visual evidence is ambiguous, a visual system must resolve competing interpretations. But do humans and machine classifiers resolve the same ambiguity in the same way? To explore this, we use semantically ambiguous images as probes of human-machine perceptual alignment. Our psychophysically-informed framework interpolates between concepts in vision-language embedding space to generate continuous spectra of ambiguous images, enabling direct comparison of human and machine perceptual decision boundaries and sensitivities. We find systematic differences in these boundaries: machine classifiers are shifted relative to both human observers and the midpoint of the synthesis continuum. Guidance scale affects both bias and sensitivity in humans and the machine classifiers tested. Controlled semantic ambiguity in generated images, combined with a psychophysical framework, can thus enable quantitative evaluation of human-machine perceptual alignment.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The classic duck-rabbit illusion reveals a fundamental property of perception: when visual evidence is ambiguous, a visual system must resolve competing interpretations.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">SymAnt: Grounding Long-Horizon Action Anticipation with Adaptable Symbolic Priors</div>
+<div class="meta-line">Authors: Fnu Aryan, Yaqi Xie, Joseph Campbell, Woojun Kim, Kwonjoon Lee, Hossein Nourkhiz Mahjoub, Ehsan Moradi-Pari, Katia Sycara, Simon Stepputtis</div>
+<div class="meta-line">Venue: WACV 2027</div>
+<div class="meta-line">First: 2026-10-29T17:58:00+00:00 · Latest: 2026-10-29T17:58:00+00:00</div>
+<div class="meta-line">Comments: Accepted to WACV 2027. 18 pages (8-page main paper, references, and supplementary appendix), 6 figures, 9 tables. Project page: https://aryanmangal769.github.io/symant/</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40632v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40632v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://aryanmangal769.github.io/symant/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">As robots and intelligent systems increasingly interact with humans, they must anticipate long sequences of future actions from only brief observations. While purely neural models typically require extensive observations to predict future actions and remain difficult to interpret and adjust, symbolic priors offer a structured alternative. To this end, we introduce SymAnt, a novel neuro-symbolic approach that unifies the expressiveness of neural networks with the structured reasoning of scene and knowledge graphs. Given a short video, SymAnt performs a joint-search over both graphs to construct a symbolic context, enabling unified reasoning over spatial relationships, object attributes, affordances, and associated actions. This symbolic context serves as a prior for an iterative refinement process that progressively generates and improves the sequence of future actions. By grounding predictions in symbolic context, SymAnt anticipates long-horizon actions from short observation windows in a parameter-efficient manner, while enabling users to directly edit the underlying knowledge to adjust predictions without further training. Through our experiments, we demonstrate the effectiveness of SymAnt, particularly when only short observation contexts are available, across five diverse datasets: Breakfast, 50 Salads, EPIC-KITCHENS, EGTEA Gaze+, and Assembly101.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">As robots and intelligent systems increasingly interact with humans, they must anticipate long sequences of future actions from only brief observations.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Finding Competitive Equilibria in Online Marketplaces with Platform Fees, Taxes, and Subsidies</div>
+<div class="meta-line">Authors: Taihei Oki, Ryosuke Sato</div>
+<div class="meta-line">First: 2026-10-29T17:56:24+00:00 · Latest: 2026-10-29T17:56:24+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40626v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40626v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We study equilibrium computation in multi-unit trading networks with valuations satisfying generalized full substitutes and agent- and transaction-specific piecewise-linear transfer functions. These transfers model platform fees, taxes, subsidies, and membership discounts in online marketplaces. Our ascending procedure raises prices at different rates and reaches the minimum equilibrium price vector in finitely many iterations, each implementable in strongly polynomial time under our oracle and arithmetic models. An equilibrium allocation can then be recovered efficiently. The method extends primal-dual techniques developed for ascending auctions to handle complementarities between purchases and sales through a submodular flow formulation. In single-seller markets with substitutes and complements, our framework also extends the double-track auctions of Sun and Yang (2009) and Shioura and Yang (2015) to bidder- and good-specific transfers.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We study equilibrium computation in multi-unit trading networks with valuations satisfying generalized full substitutes and agent- and transaction-specific piecewise-linear transfer functions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">From signaling to interviews in random matching markets</div>
+<div class="meta-line">Authors: Maxwell Allman, Itai Ashlagi, Amin Saberi, Sophie H. Yu</div>
+<div class="meta-line">First: 2025-01-24T01:08:05+00:00 · Latest: 2026-10-29T17:56:01+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2501.14159v3">Abs</a> · <a href="https://arxiv.org/pdf/2501.14159v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In two-sided labor markets, interviews precede matches. Rising interview volumes in medical residency markets have motivated signaling mechanisms that let applicants express interest in a limited number of partners. We study how signaling reduces interviews in centralized random matching markets with post-interview shocks. We focus on interim stability, which ensures that agents do not regret not interviewing with each other. A matching is almost interim stable if it becomes interim stable after removing a vanishing fraction of agents.
+  We consider markets with $n$ agents in which agents on the short side, long side, or both sides signal their top $d$ preferred partners. An interview occurs whenever at least one party signals the other. When the probability of a nonnegative interview shock is bounded away from zero and $d=ω(1)$, short-side signaling leads to almost interim stable matchings. Long-side signaling can fail in strongly imbalanced markets when pre-interview scores outweigh interview shocks. In balanced markets without interview shocks, both-side signaling fails to achieve almost interim stability when $d=o(\log n)$. For larger $d \ge Ω(\log^2 n)$, under the same probability condition, short-side signaling achieves perfect interim stability, while long-side signaling can fail in imbalanced markets. We extend these findings to propose a signaling mechanism for multi-tiered random markets and identify conditions for incentive compatibility. A technical contribution is the analysis of a message-passing algorithm for stable matchings on trees, together with local availability certificates used to study interim stability on general graphs.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In two-sided labor markets, interviews precede matches.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Field-level inference under pressure: the information content of the thermal Sunyaev-Zel&#x27;dovich field</div>
+<div class="meta-line">Authors: Carmen Embil Villagra, Adrian E. Bayer, William R. Coulton, Alina Sabyr, Francisco Villaescusa-Navarro, Blake D. Sherwin, Anthony Challinor, J. Colin Hill, Nicholas Battaglia</div>
+<div class="meta-line">First: 2026-10-29T17:54:55+00:00 · Latest: 2026-10-29T17:54:55+00:00</div>
+<div class="meta-line">Comments: 16 pages, 6 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40617v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40617v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The thermal Sunyaev--Zel&#x27;dovich (tSZ) field is highly non-Gaussian and contains cosmological information that cannot be fully captured by its angular power spectrum. In this work, we investigate the information content of this field using a convolutional neural network (CNN), and compare to simple and interpretable summary statistics, in a simulation-based inference (SBI) framework. We perform the first field-level analysis of the tSZ field, using a suite of $10{,}000$ simulated Compton-$y$ maps, where we jointly vary the cosmological parameters $Ω_c$ and $σ_8$ (the density fraction for cold dark matter and the matter clustering amplitude, respectively) and two parameters describing the amplitude and shape of the electron pressure profile, $P_0$ and $β$, that aim to capture astrophysical uncertainties. We consider both noiseless simulations and simulations including realistic Simons Observatory (SO) noise after component separation. We use SBI to compare the constraints obtained from the CNN with those from the three Minkowski functionals (MFs), individually and in combination, as well as the angular power spectrum. This is the first application of SBI to the MFs of the tSZ field. We find that the CNN provides tighter constraints than conventional summary statistics in the noiseless case. However, at SO-like noise levels, the combination of MFs and the power spectrum recovers constraints comparable to those obtained with the CNN. Our results highlight the potential of these interpretable summary statistics, as well as field-level inference, for extracting information from the tSZ field, motivating efforts toward their application to real data.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The thermal Sunyaev--Zel&#x27;dovich (tSZ) field is highly non-Gaussian and contains cosmological information that cannot be fully captured by its angular power spectrum.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Almost Homogeneity Characterizes Almost Bi-Lipschitz Euclidean Embeddability</div>
+<div class="meta-line">Authors: Ryo Fukano</div>
+<div class="meta-line">First: 2026-10-29T17:52:06+00:00 · Latest: 2026-10-29T17:52:06+00:00</div>
+<div class="meta-line">Comments: 12 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40601v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40601v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A metric space admits an almost bi-Lipschitz embedding into a Euclidean space if and only if it is almost homogeneous.
+  We prove the sufficient direction, complementing the known necessary condition. More quantitatively, we bound the target dimension and the embedding constants for every logarithmic exponent $γ&gt;1$. The bounds depend only on the covering parameters in the almost homogeneity condition. In particular every doubling metric space admits such an embedding. This answers a question of Margaris and Robinson and the almost bi-Lipschitz part of a question of Olson and Robinson. As a consequence, the difference set of the image is doubling, which answers the difference-set questions of Olson and Robinson and of Margaris.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A metric space admits an almost bi-Lipschitz embedding into a Euclidean space if and only if it is almost homogeneous.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Machine-learned exchange-correlation functionals for molecules, solids, and reactive surfaces</div>
+<div class="meta-line">Authors: Mohamed S. Abdallah, Zhuotao Jin, Boris Kozinsky, Kyle Bystrom</div>
+<div class="meta-line">First: 2026-08-21T18:02:55+00:00 · Latest: 2026-10-29T17:49:28+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.21525v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.21525v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The application of density functional theory to heterogeneous catalysis is hindered by the shortcomings of conventional density functional approximations. We combine machine learning with explicitly non-local physically informed descriptors and introduce an exchange-correlation functional (CIDER26SS) framework regularized for wide transferability. CIDER26SS is size-extensive, highly efficient, provides a balanced and accurate description of both molecular and solid-state systems, and is specifically well-optimized for transition metal surface chemistry. Surpassing existing conventional functionals, CIDER26SS resolves the CO/Pt puzzle, identifying the correct binding site for CO adsorption on the Pt(111) surface, along with an accurate adsorption energy, Pt lattice constant, and surface energy. Predictions agree well with the experimental values, even when all bulk and surface data for Pt are excluded from the training set. Remarkably, CIDER26SS exceeds the accuracy of semilocal approximations even for systems far outside the training domain.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The application of density functional theory to heterogeneous catalysis is hindered by the shortcomings of conventional density functional approximations.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Beyond Ground Truth: A Heuristic Unsupervised Quality Assurance Engine for Diagnosing Calibrational Blindness in Dental Segmentation</div>
+<div class="meta-line">Authors: Fatematuj Johura Mim</div>
+<div class="meta-line">First: 2026-10-29T17:47:25+00:00 · Latest: 2026-10-29T17:47:25+00:00</div>
+<div class="meta-line">Comments: Accepted at 11th IEEE Asia-Pacific Conference on Computer Science and Data Engineering (IEEE CSDE 2026), Cox&#x27;s Bazar, Bangladesh. Copyright 2026 IEEE. 5 pages, 5 figures, 3 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40587v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40587v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In real-world clinical settings, dental X-ray segmentation using deep learning methods suffers from reliability issues. Even when the segmentation quality is bad, deep learning models show high confidence in their predictions (calibrational blindness). Moreover, in real use, doctors do not have ground-truth masks to check their accuracy. To address this problem, we introduce a simple quality-checking engine called HUS-QA with three stages. We train it on the PRAD (Periapical Dental X-ray) dataset to build our SimCLR self-supervised ResNet-18 U-Net model, which generates the segmentation mask and then evaluates its quality. Our HUS-QA checks the segmentation mask quality without a ground-truth mask. Prediction confidence, edge sharpness, shape connectivity, and area-size penalty are the simple indicators considered in this research. Results show that standard confidence methods fail (r = -0.1394, p = 1.7864e-3, ROC AUC = 0.4275). By contrast, our HUS-QA shows a positive correlation with actual Dice scores (r = 0.4647, p = 3.7510e-28) and achieves a strong ROC-AUC of 0.8405. Therefore, HUS-QA serves as a practical tool for clinical quality control.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In real-world clinical settings, dental X-ray segmentation using deep learning methods suffers from reliability issues.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Multistatic ISAC with Deep Learning-Based Clutter Suppression for 5G and Beyond</div>
+<div class="meta-line">Authors: Yalin E. Sagduyu, Tugba Erpek, Sastry Kompella</div>
+<div class="meta-line">First: 2026-10-29T17:47:02+00:00 · Latest: 2026-10-29T17:47:02+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40586v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40586v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Integrated sensing and communications (ISAC) systems using 5G and beyond signals of opportunity enable joint wireless sensing and communication using shared infrastructure and spectrum resources. While multistatic ISAC can increase sensing coverage with spatially distributed receivers, dense and dynamic clutter can significantly degrade bistatic range and Doppler estimation, leading to errors in target localization and velocity estimation. This paper presents a multistatic ISAC framework with clutter suppression for high-fidelity estimation of target position and velocity. Distributed clutter is modeled with randomly located scatterers with varying Doppler spreads and radar cross sections to capture dense and dynamic clutter effects. A broad range of conventional signal processing baselines are evaluated for clutter suppression, showing limited robustness under strong clutter conditions. To address this limitation, deep learning-based clutter suppression methods are introduced to improve robustness against dense and dynamic clutter by employing residual and attention-enhanced deep neural network architectures that directly enhance target responses from clutter-contaminated observations. These methods substantially outperform conventional approaches in target position and velocity estimation across diverse clutter conditions in multistatic ISAC.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Integrated sensing and communications (ISAC) systems using 5G and beyond signals of opportunity enable joint wireless sensing and communication using shared infrastructure and spectrum resources.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Optimal Policy With Noisy Sufficient Statistics</div>
+<div class="meta-line">Authors: José Luis Montiel Olea, Mikkel Plagborg-Møller, Christian K. Wolf</div>
+<div class="meta-line">First: 2026-10-29T17:45:46+00:00 · Latest: 2026-10-29T17:45:46+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40582v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40582v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We study how policy-makers should set $k$ policy instruments so as to best hit $m$ (perhaps dynamic) targets, in a linear-quadratic model where there is statistical uncertainty about the causal effects of the policies. Plugging the estimated effects into &quot;sufficient statistics&quot; optimal policy formulas, as commonly done in the literature, can result in infinite risk. In fact, maintaining the status quo regardless of the data is uniquely minimax-optimal when $m&gt;1$, and uniquely minimax-regret-optimal when $m,k&gt;1$. Nevertheless, we recommend that policy-makers adopt a simple, dampened version of the popular plug-in rule, as in Fisher (1962) and Brainard (1967). Not only does this cautious rule outperform doing nothing over most of the parameter space, its worst-case risk is also close to the minimax value in empirically relevant models. Policy-makers should use causal effect estimates from an unbiased but dispersed estimator (such as a local projection) rather than from a moderately biased but precise estimator (such as a vector autoregression).</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We study how policy-makers should set $k$ policy instruments so as to best hit $m$ (perhaps dynamic) targets, in a linear-quadratic model where there is statistical uncertainty about the causal effects of the policies.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">When Imputation Changes the Nearest Neighbor: Exact Certification of Similarity Retrieval for Incomplete Sensor Time Series</div>
+<div class="meta-line">Authors: Jianru Shen</div>
+<div class="meta-line">First: 2026-10-29T17:45:34+00:00 · Latest: 2026-10-29T17:45:34+00:00</div>
+<div class="meta-line">Comments: Accepted at IEEE BigData</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40579v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40579v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Sensor time series routinely reach similarity search with missing values, and the retrieved neighbours then depend on how the gaps were filled. We ask which retrieval conclusions hold for every admissible completion of an incomplete query. For a family of window-minimum distances that contains the $L_1$ distance as its separable end we give a pairwise certificate that one candidate is strictly closer than another, a guaranteed candidate set that contains every possible nearest neighbour, and a certificate that a nearest-neighbour label cannot change. The guarantees hold uniformly over the specified box and apply to the true query whenever it lies inside. At the separable end a closed form is known, but beyond it the worst-case gap need not be attained at a corner of the box. We prove a finite reduction to critical values, give an exact interval dynamic programme for the worst-case ranking gap, and a quadratic-time fast layer of valid bounds and feasible witnesses, supported by an exact criterion for when the feature-box relaxation is tight. On three traffic-sensor collections with real gap patterns, linear interpolation changes the nearest neighbour in 15 to 33 percent of the queries. At the full band the feature-box relaxation misses up to 14 percent of the exactly stable boundary pairs, whereas fixed-completion and Monte Carlo checks issue false certificates. The fast layer resolves about 90 percent of all tested boundary pairs without dynamic programming, and on paired network-scale queries the exact method is 82 to 110 times faster than the programme alone. Label certificates transfer to three public benchmarks, and the band width trades forecasting accuracy and certification coverage for lower imputation sensitivity, with dataset-dependent crossovers.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Sensor time series routinely reach similarity search with missing values, and the retrieved neighbours then depend on how the gaps were filled.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">&quot;Deep lifts&quot;: Neural networks can generalize even with the dumbest optimizer</div>
+<div class="meta-line">Authors: Sunil Madhow, Yu-Xiang Wang</div>
+<div class="meta-line">First: 2026-10-16T06:37:42+00:00 · Latest: 2026-10-29T17:44:28+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23009v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.23009v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Given a labeled dataset $\{(x_i, y_i)\}_{i = 1}^n$, consider drawing a parameter vector $\hatθ$ uniformly at random from those that interpolate the data within a width-$W$ depth-$D$ ReLU architecture with continuous weights bounded within $[-M, M]$. We study the generalization properties of $\hatθ$ in the case where the dataset can, in fact, be explained by a smaller $w$-by-$d$ ReLU network. Despite the obliviousness of the selection rule for $\hatθ$, it adaptively generalizes at the rate $\tilde O\left(\frac{wdWD}{n}\right)$, rather than being governed by the VC dimension of the full $W$-by-$D$ hypothesis class. The reason is due to a particular inductive bias in ReLU networks: the $w$-by-$d$ parameter *witnesses* an exponential volume of $W$-by-$D$ interpolating parameters, which dwarfs the volume of poorly generalizing parameters (conditioned on interpolation). We explicitly construct this set of near-equivalent $W$-by-$D$ parameters by a proof technique called *deep lifting*, and then tie the achievable volume to stability properties of the $w$-by-$d$ witness. Examples show that these techniques allow us to convert approximation-theoretic results into generalization guarantees for nonparametric classes. We further show that generalization of uniform-random interpolators can survive label corruptions.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Given a labeled dataset $\{(x_i, y_i)\}_{i = 1}^n$, consider drawing a parameter vector $\hatθ$ uniformly at random from those that interpolate the data within a width-$W$ depth-$D$ ReLU architecture with continuous weights bounded within $[-M, M]$.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">FARMS: A Verifiable Foundation for Automated Computational Science</div>
+<div class="meta-line">Authors: Di Wu, Ling Liang, Haizhao Yang</div>
+<div class="meta-line">First: 2026-10-29T17:40:57+00:00 · Latest: 2026-10-29T17:40:57+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40560v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40560v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Automated computational science could accelerate discovery by selecting, adapting and developing numerical methods. This prospect requires mathematical knowledge that AI systems can interpret and reuse with explicit guarantees. Here we present FARMS, a faithful and efficient foundation that transforms computational mathematics into AI-ready computing knowledge. FARMS connects formal statements to source context, algorithmic meaning and quantitative guarantees through source preparation, reusable representations and semantic review. Across 171 targets in randomized numerical linear algebra and numerical partial differential equations, 157 were accepted by the pipeline, with mean estimated costs of US \$0.85-2.29 per target across sources. Lean-checked implications from explicit source premises connect selected statements to computational skills, illustrated by a heat-flow solve and wave-response compression. FARMS therefore supports an affordable, reusable knowledge foundation for trustworthy automated computational science.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Automated computational science could accelerate discovery by selecting, adapting and developing numerical methods.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Nonuniqueness of the $2$D Euler Evolutions with $L^1\cap L^p$ Vorticity</div>
+<div class="meta-line">Authors: Thomas Y. Hou, Xiang Qin, Peicong Song, Wenhan Zhang</div>
+<div class="meta-line">First: 2026-10-29T17:39:32+00:00 · Latest: 2026-10-29T17:39:32+00:00</div>
+<div class="meta-line">Comments: 92 pages, 4 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40553v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40553v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">For each prescribed $1&lt;p&lt;\infty$, we construct a compactly supported initial vorticity in $L^1(\mathbb{R}^2)\cap L^p(\mathbb{R}^2)$ that admits two distinct evolutions under the unforced two-dimensional incompressible Euler equation on $[0,1]$. Both vorticities are strongly continuous in $L^1\cap L^p$ and are transported exactly by their respective almost-everywhere invertible, measure-preserving regular Lagrangian flows. The construction couples unstable four-vortex configurations across increasingly small spatial scales, realizing them through concentrated signed vortex patches. At each finite cutoff, a prepared reference evolution remains close to rotating configurations, while a second evolution differs initially only at the finest scale. In the second evolution, the finest configuration consists of separating dipoles whose remote strain activates the instability of the next larger configuration. This process propagates through successive scales with summable transition times. As the cutoff tends to infinity, the two families of initial data converge strongly, along a subsequence, to the same datum, while a nonzero difference survives at a fixed larger scale and is detected by a fixed smooth observable at a positive limiting time. Quantitative concentration and relative comparison estimates establish this cascade for exact Euler patch solutions. Strong compactness through inverse-flow stability then preserves both exact vorticity transport and the positive-time distinction between the two limiting evolutions. The initial datum and construction parameters may depend on $p$.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">For each prescribed $1&lt;p&lt;\infty$, we construct a compactly supported initial vorticity in $L^1(\mathbb{R}^2)\cap L^p(\mathbb{R}^2)$ that admits two distinct evolutions under the unforced two-dimensional incompressible Euler equation on $[0,1]$.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Machine Learning-Based Detection of Mobile Money Scan Messages in Ghana: A Comparative Evaluation of Naive Bayes, Support Vector Machine, and Randon Forest Classifiers</div>
+<div class="meta-line">Authors: Ibrahim Salifu, Muhaisin Tiyumba Nantogmah</div>
+<div class="meta-line">First: 2026-10-29T17:36:41+00:00 · Latest: 2026-10-29T17:36:41+00:00</div>
+<div class="meta-line">Comments: 17 Pages, 8 Figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40544v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40544v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Mobile money (MoMo) is Ghana&#x27;s preferred retail payment channel, recording GHC518.4 billion in transactions in December 2025 and over 26.7 million active accounts (Graphic Online, 2026). This growth has coincided with increased social-engineering fraud over Short Message Service (SMS) and Unstructured Supplementary Service Data (USSD), where fraudsters impersonate network operators, agents, relatives, or regulators to obtain personal identification numbers (PINs), identity data, or funds. We present a supervised machine-learning pipeline for classifying scam and legitimate Ghanaian MoMo SMS messages using a labelled corpus of 220 messages across 18 scam and legitimate subcategories. Domain-specific normalisation of currency amounts, phone numbers, and USSD codes preceded TF-IDF vectorisation of unigrams and bigrams. Using stratified five-fold cross-validation and a 20% held-out test set, we trained and evaluated Multinomial Naive Bayes, linear support vector machine (SVM), and Random Forest classifiers using accuracy, precision, recall, F1-score, Matthews correlation coefficient (MCC), and area under the receiver operating characteristic curve (AUC-ROC). Held-out accuracy, F1, and AUC were 1.00 for Naive Bayes and linear SVM; cross-validated accuracy averaged 96.6% (+/-3.3), 94.9% (+/-4.6), and 92.0% (+/-4.2). Discriminative n-grams reflected imperative urgency (&quot;send,&quot; &quot;claim,&quot; &quot;please send&quot;) and PIN solicitation (&quot;PIN,&quot; &quot;pincode&quot;); legitimate messages featured confirmatory and cautionary language (&quot;balance,&quot; &quot;successful,&quot; &quot;do not share&quot;). Findings are contextualised in Sub-Saharan African SMS fraud detection, small template-based corpus ceiling effects, and a pathway toward larger naturalistic multilingual corpora. Interpretable classical classifiers achieve high accuracy on structured MoMo scam text and suit carrier- or handset-level filtering in low-resource, on-device settings.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Mobile money (MoMo) is Ghana&#x27;s preferred retail payment channel, recording GHC518.4 billion in transactions in December 2025 and over 26.7 million active accounts (Graphic Online, 2026).</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Quantitative sub-ballisticity of self-avoiding walk on $\mathbb{Z}^d$</div>
+<div class="meta-line">Authors: Ekin Arikök, Christoforos Panagiotis, Nicholas Pischke, Thomas Powell</div>
+<div class="meta-line">First: 2026-10-29T17:28:11+00:00 · Latest: 2026-10-29T17:28:11+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40520v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40520v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We prove quantitative sub-ballisticity for the self-avoiding walk on the lattice $\mathbb{Z}^d$, $d\geq 2$. Namely, we obtain an explicit exponential rate of decay for the probability that a self-avoiding walk of length $n$ reaches distance at least $vn$, in terms of $v&gt;0$. As a consequence, we show that the displacement of an $n$-step self-avoiding walk is at most $n/\exp(c\log^* n)$ with very high probability. Previously, only a non-quantitative $o(n)$ bound was known from the work of Duminil-Copin and Hammond. Along the way, we show that at criticality the partition function of bridges of length $n$ is on average bounded by $C/\log\log n$, which we believe to be of independent interest. Our approach is based on a quantitative analysis of the original nonconstructive proof of Duminil-Copin and Hammond using ideas from proof theory.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We prove quantitative sub-ballisticity for the self-avoiding walk on the lattice $\mathbb{Z}^d$, $d\geq 2$.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">High-throughput quantification of interfacial protein load in monodisperse oil-in-water emulsions</div>
+<div class="meta-line">Authors: Varun Potdar, Alexander Favela, Michael Boehm, Stefan Baier, Siva Vanapalli</div>
+<div class="meta-line">First: 2026-10-29T17:22:04+00:00 · Latest: 2026-10-29T17:22:04+00:00</div>
+<div class="meta-line">Comments: 26 pages, 7 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40506v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40506v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Food proteins play a critical role as emulsifiers, where adsorption at the oil and water interface governs emulsion formation and stability. However, quantitative characterization of interfacial protein load remains challenging due to polydispersity in conventional emulsification methods. We combine microfluidic generation of monodisperse emulsions with colorimetric protein quantification to measure the post-collection initial interfacial load ($Γ_0$) and subsequently monitored over 48 h to obtain the saturation load ($Γ_\infty$). Interfacial load exhibited a strong bulk concentration-dependent trend and was well described by a pseudo-first-order model. Both $Γ_0$ and $Γ_\infty$ followed sublinear scaling with concentration ($Γ_0$ ~ C^{0.21}$, $Γ_\infty$ ~ C^{0.12}$). Interfacial loads were largely independent of droplet diameter, with modest reductions in initial loading for the smallest droplets at low protein concentration. Measured loads exceeded idealized monolayer predictions and fell between bilayer and trilayer bounds, consistent with accumulation beyond a simplified monolayer model. Additionally, high-throughput mapping was performed across three proteins, seven concentrations, three pH values, and two ionic strengths, revealing that $α$-Casein exhibited higher interfacial loads than $β$-Casein and Whey protein Isolate, with maximum adsorption near the isoelectric point and at elevated ionic strength. In summary, this study establishes a quantitative experimental framework for linking protein properties, formulation conditions, and interfacial behavior using monodisperse microfluidic emulsions, while requiring only milligram-scale protein quantities.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Food proteins play a critical role as emulsifiers, where adsorption at the oil and water interface governs emulsion formation and stability.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Discovering Interpretable Acoustic Features in Autoregressive Voice-Cloning TTS Models</div>
+<div class="meta-line">Authors: Anuj Diwan, David Harwath, Eunsol Choi</div>
+<div class="meta-line">First: 2026-10-29T17:21:36+00:00 · Latest: 2026-10-29T17:21:36+00:00</div>
+<div class="meta-line">Comments: Under review</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40505v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40505v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Voice-cloning TTS models synthesize an unseen speaker&#x27;s voice from brief speech prompts, but it remains unclear which acoustic properties they represent and use. We introduce a feature-based interpretability framework for autoregressive voice-cloning TTS models, analyzing features from sparse autoencoders (SAEs), PCA, and random directions via sparse probing, steering, and quantitative auto-interpretability. We focus on Qwen3-TTS and extend probing and steering to $5$ additional models to test generalization across architectures. These models encode concepts like pitch, energy, noise, and accent, but sparse prediction and steering are effective only for some concepts. Strong probing does not always translate to steering or vice-versa. SAEs are useful for sparse probing of human-labelled concepts and novel-concept discovery, while PCA is competitive for dense probing and steering. Auto-interpretability finds $684$ automatically validated SAE features in Qwen3-TTS covering speaker clusters, speaking style, and recording conditions beyond known concepts. Overall, we perform a comprehensive interpretability study of autoregressive voice-cloning TTS models.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Voice-cloning TTS models synthesize an unseen speaker&#x27;s voice from brief speech prompts, but it remains unclear which acoustic properties they represent and use.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">On the existence of minimizers for the generalized liquid drop model</div>
+<div class="meta-line">Authors: Xiaopeng Cheng, Sara Daneri, Eris Runa</div>
+<div class="meta-line">First: 2026-10-29T17:20:05+00:00 · Latest: 2026-10-29T17:20:05+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40500v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40500v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We consider a broad class of generalized liquid drop models in which a perimeter term competes with repulsive nonlocal interactions with finite first moments. For all such kernels satisfying the natural physical assumption of reflection positivity we show existence of minimizers for all masses, in the (super-)critical regime. Moreover, in the subcritical regime we give the first quantitative estimate of the range of masses for which existence holds, which converges to the whole positive real line as one approaches the critical regime. This result builds on the nonlocal curvature approach introduced and developed in the periodic setting in \cite{dr24}.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We consider a broad class of generalized liquid drop models in which a perimeter term competes with repulsive nonlocal interactions with finite first moments.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Parameterized Stochastic Hamiltonian Process on Graphs with Two-Point Boundary Conditions</div>
+<div class="meta-line">Authors: Yaxin Feng, Yang Xiang, Haomin Zhou</div>
+<div class="meta-line">First: 2026-10-29T17:19:02+00:00 · Latest: 2026-10-29T17:19:02+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40497v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40497v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper presents a Lagrangian framework to solve Wasserstein Hamiltonian flows (WHF) under two-point boundary conditions on large finite graphs. Characterized by a coupled system of discrete master equation and Hamilton-Jacobi (HJ) equation on the probability simplex, this formulation defines the macroscopic WHF. While classical density-based solvers can track this flow, they face severe memory and computational bottlenecks as the graph scale grows. To bypass these limitations, we introduce the stochastic Hamiltonian process (SHP), a sample-based mathematical framework that tracks individual particle dynamics rather than the full node-wise density. We parameterize the time-dependent potential using neural network, yielding the Neural SHP solver. Numerical experiments on synthetic graphs demonstrate the scalability of our method relative to density-based baselines. Furthermore, we validate Neural SHP across two large-scale real-world networks, a PubMed citation network and a massive road network, demonstrating its robust efficiency for graph partition and routing problems on complex graph structures.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper presents a Lagrangian framework to solve Wasserstein Hamiltonian flows (WHF) under two-point boundary conditions on large finite graphs.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Fast and accurate neural triage decoding of ultra-high-rate quantum LDPC codes</div>
+<div class="meta-line">Authors: Hong-Ye Hu, Zhenlai Wang, Binzhao Luo, Tao Xiang, Chen Zhao</div>
+<div class="meta-line">First: 2026-10-29T17:16:38+00:00 · Latest: 2026-10-29T17:16:38+00:00</div>
+<div class="meta-line">Comments: 5 pages, 4 figures with Methods. We will release the fully supplementary information in the second update soon</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40490v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40490v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Quantum error correction is essential for fault-tolerant quantum computing. High-rate quantum low-density parity-check (qLDPC) codes have emerged as a promising approach to reducing the substantial physical qubit overhead of quantum error correction, enabling encoding rates exceeding $1/2$ in blocks of approximately one thousand physical data qubits. However, their practical implementation requires decoders that combine high accuracy with low latency to keep pace with quantum hardware. Existing decoders of high-rate qLDPC codes can achieve high accuracy but often incur substantial computational latency, whereas neural network decoders have yet to be demonstrated for high-rate qLDPC codes. Here, we introduce \emph{neural triage decoding}, a framework that uses syndrome consistency to adaptively allocate neural computation. A local neural message-passing network rapidly predicts error corrections, additional iterations reduce residual syndrome violations, and a rarely invoked diversification stage searches for consistent corrections to the remaining shots. We demonstrate that the \texttt{Triage} decoder can decode ultra-high-rate qLDPC codes encoding a few hundred logical qubits, including lifted-product and Kasai codes, achieving state-of-the-art accuracy comparable to the near optimal algorithmic decoders while reducing decoding latency by approximately one to two orders of magnitude. Our framework is inspired by a rigorous analysis of the exact bitwise marginal decoder, revealing a distance-independent syndrome-inconsistent error floor. In addition, we show the robustness of neural network decoders to mismatched error priors. Our results establish adaptive neural decoding as a promising route towards fast, accurate, and scalable quantum error correction in the near term.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Quantum error correction is essential for fault-tolerant quantum computing.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Real Part Emergence in Purely Imaginary Quasinormal Modes in Perturbed de Sitter Braneworlds</div>
+<div class="meta-line">Authors: Hai-Long Jia, Wen-Di Guo, Yun-Tao Gu, Yu-Xiao Liu</div>
+<div class="meta-line">First: 2026-06-03T04:09:08+00:00 · Latest: 2026-10-29T17:10:40+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2606.04424v2">Abs</a> · <a href="https://arxiv.org/pdf/2606.04424v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">For braneworlds with infinite extra dimensions, an analysis of the stability of the characteristic spectrum is essential for understanding their dynamical properties; in this study, we investigate the stability of the gravitational quasinormal-mode (QNM) spectrum of a thick de Sitter braneworld with a noncompact extra dimension, where the unperturbed background supports a localized graviton zero mode and a tower of purely imaginary QNMs. We first reconstruct the response of the warp factor and tensor effective potential to a smooth double-kink deformation of the bulk scalar field, and then introduce a superpotential deformation that parametrizes the resulting double-barrier structure; the deformed frequency-domain spectrum develops QNM pairs with nonzero real parts, and for the representative family studied here, a weak deformation can already generate a complex branch, although the least-damped pole remains purely imaginary in part of the parameter range. In the time domain, the QNM-dominated channel exhibits a transient damped oscillatory stage, whereas the original-potential evolution becomes dominated by the zero-mode sector at late times over the simulated interval. These results identify the double-barrier geometry as the model-specific realization of a more general sensitivity of outgoing, non-self-adjoint spectra, establish a robust model-level mechanism for oscillatory QNM imprints, and provide a dimensionless benchmark for future source-to-detector analyses, while quantitative detector detectability and cosmological-parameter inference require source, response, and noise modeling beyond the present analysis.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">For braneworlds with infinite extra dimensions, an analysis of the stability of the characteristic spectrum is essential for understanding their dynamical properties; in this study, we investigate the stability of the gravitational quasinormal-mode (QNM) spectrum of a thick de Sitter braneworld with a noncompact extra dimension, where the unperturbed background supports a localized graviton zero mode and a tower of purely imaginary QNMs.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Mutant invasion in stochastic individual-based models with cyclic resident dynamics</div>
+<div class="meta-line">Authors: Sylvain Billiard, Chloë Mian, Charline Smadi, András Tóbiás</div>
+<div class="meta-line">First: 2026-10-29T17:06:10+00:00 · Latest: 2026-10-29T17:06:10+00:00</div>
+<div class="meta-line">Comments: 30 pages, 7 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40466v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40466v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">When a resident community oscillates, can a rare mutant invade, and with which probability? We study a multitype birth-and-death process with interactions, in which population sizes are of the order of a carrying capacity $K$, and whose large-population limit, as $K\to\infty$, has a hyperbolically stable limit cycle for the $D-1$ resident types. We introduce a single individual of a new type. We prove that, as long as the mutant population is smaller than $\varepsilon K$ for a small $\varepsilon&gt;0$, the resident population sizes divided by $K$ stay close to a moving point of the cycle, whose asymptotic phase moves by at most $O(\varepsilon)$ per period. We deduce that, for large $K$, the mutant dies out quickly if its growth rate averaged over one period, $f(\bar{\mathbf n})$, is negative, and that it invades with positive probability, in a time close to $\ln K/f(\bar{\mathbf n})$, if $f(\bar{\mathbf n})$ is positive. This justifies a criterion used heuristically in ecology for decades. The invasion probability, unlike $f(\bar{\mathbf n})$, depends on the phase of the cycle at which the mutant arises. We give it explicitly through Kendall&#x27;s formula, and show that its average over the cycle, weighted by the birth rate of the mutant, equals $f(\bar{\mathbf n})$. In predator-prey, competitive and mutualistic examples, the invasion probability varies by a factor between $2$ and $600$ along the cycle, and individual-based simulations agree quantitatively with the theory. After invasion, the oscillations may vanish, persist on a cycle of higher dimension, or give way to chaotic coexistence.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">When a resident community oscillates, can a rare mutant invade, and with which probability?</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Predicting Weight Windows for Duct-Streaming Shielding Geometries with a Convolutional Neural Network</div>
+<div class="meta-line">Authors: Jilang Miao, Ansel Kneier, Jonathan Porrazzo</div>
+<div class="meta-line">First: 2026-10-29T17:02:13+00:00 · Latest: 2026-10-29T17:02:13+00:00</div>
+<div class="meta-line">Comments: 11 pages, 3 figures, 5 tables. Submitted to M&amp;C 2027, the International Conference on Mathematics and Computational Methods Applied to Nuclear Science and Engineering (American Nuclear Society)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40457v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40457v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Forward-flux-based weight windows give global variance reduction for duct-streaming shielding problems, but each new geometry needs an iterative Monte Carlo calculation to build them. We report preliminary results on a convolutional neural network (CNN) that learns the map from a two-dimensional duct geometry and source position to the lower window bound of such an iteration, here the MAGIC generator in OpenMC, in milliseconds. A set of 250 random concrete ducts of three curved and rectangular families on the Protvino labyrinth bounding box was run in OpenMC with a Cf-252 point source and MAGIC generation, and a 1.9-million-parameter U-Net was trained on the logarithm of the lower bound. On held-out ducts the error in the cells that carry the flux is 0.14 to 0.51 decades; replicate MAGIC runs show this part of the map to be reproducible to a few hundredths of a decade, so the residual is model error, while below $10^{-6}$ the reference itself is noise. Applied without retraining to the rectangular Protvino labyrinth, the prediction correlates with MAGIC at 0.96. Used as weight windows there, with its deepest cells clamped at deployment, it gives an exit-detector figure of merit 54 times the analog value, 1.7 times that of the MAGIC generation run for the same geometry, and 0.80 of that of reused MAGIC windows whose construction it does not pay for. The run cost of any window set is shown to be set by its deepest cells and predictable from a population proxy.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Forward-flux-based weight windows give global variance reduction for duct-streaming shielding problems, but each new geometry needs an iterative Monte Carlo calculation to build them.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Yoga biomechanics through energy optimization: diverse kinematics and low-dimensional kinetics</div>
+<div class="meta-line">Authors: Sriram Sekaripuram Muralidhar, Manoj Srinivasan</div>
+<div class="meta-line">First: 2026-10-29T16:54:43+00:00 · Latest: 2026-10-29T16:54:43+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40436v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40436v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Yoga is widely practiced for improving physical and mental health, yet the biomechanical demands of individual yoga poses remain poorly characterized. Existing experimental studies typically examine only a small number of poses or muscles, limiting their ability to guide pose selection for rehabilitation or exercise prescription. Here we present a computational framework for predicting whole-body joint torques and contact forces from two-dimensional images of yoga poses. The framework combines manual pose digitization, a sagittal-plane MuJoCo human model, and constrained metabolic energy minimization subject to static equilibrium. We applied the framework to 55 sagittally symmetric yoga poses from Light on Yoga, generating a dataset of joint kinematics, contact locations, and predicted joint torques and contact forces. These poses collectively span nearly the full physiological range of motion of the major joints while exhibiting a wide range of predicted joint torques, with the greatest average demands on the lower extremities and lumbar region. Principal component analysis revealed a striking contrast between kinematics and kinetics: nearly all ten dimensions were required to represent the joint-angle data, whereas the first three principal components captured over 90% of the variance in joint torques. Thus, yoga poses exhibit substantial diversity in body configurations but comparatively low-dimensional patterns of predicted joint loading. Predicted joint torque rankings were also largely insensitive to uncertainty in the relative weighting of joint metabolic costs. This framework enables systematic biomechanical analysis of yoga poses and provides a foundation for quantitatively evaluating their mechanical demands and informing future rehabilitation strategies.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Yoga is widely practiced for improving physical and mental health, yet the biomechanical demands of individual yoga poses remain poorly characterized.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Marginal Composite Likelihood Estimation of Bergomi Models from High-Frequency Option Prices</div>
+<div class="meta-line">Authors: Haruki Tomita</div>
+<div class="meta-line">First: 2026-10-29T16:49:14+00:00 · Latest: 2026-10-29T16:49:14+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40425v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40425v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We develop a theory for estimating the kernel parameters of Bergomi-type stochastic volatility models from option-price time series. The framework allows positive kernels that may be singular at the origin, including the pure power-law kernel of the rough Bergomi model. Using the option-price representation of cumulative forward variance, we formulate the statistical experiment as exact observations of this quantity on increasingly fine time-maturity grids over a fixed horizon. The model has an infinite-dimensional state driven by a single Brownian motion, resulting in a rank-one leading covariance across maturities. Our construction takes maturity differences and then logarithmic time increments. Approximating the resulting diffusion coefficients by maturity-averaged kernels removes the unobserved forward variance curve from the leading term. Positivity of the kernel allows the leading covariance to be recovered from the marginal variances, motivating a weighted marginal composite likelihood contrast. We prove consistency without relative rate restrictions between the time and maturity meshes, allowing the true parameter to lie on the boundary. Under additional regularity and nondegeneracy assumptions and explicit mesh rate conditions, we establish $\mathscr F_1$-stable asymptotic normality, where $\mathscr F_1$ is the terminal model $σ$-field. The Gaussian limit has deterministic sandwich covariance and is independent of $\mathscr F_1$, so the limit is preserved under equivalent changes of probability measure. We also provide sufficient mesh rate conditions for the pure power-law kernel.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We develop a theory for estimating the kernel parameters of Bergomi-type stochastic volatility models from option-price time series.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Quantitative propagation of chaos on arbitrary finite time intervals for the three-dimensional repulsive Vlasov-Poisson-Fokker-Planck equation</div>
+<div class="meta-line">Authors: Ning Jiang, Juntao Wu</div>
+<div class="meta-line">First: 2026-10-29T16:48:16+00:00 · Latest: 2026-10-29T16:48:16+00:00</div>
+<div class="meta-line">Comments: 36 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40422v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40422v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We prove quantitative propagation of chaos in total variation for repulsive Vlasov--Riesz--Fokker--Planck (VRFP) equations on $\mathbb{T}^d$ and $\mathbb{R}^d$ with unregularized interaction potentials with singularity $|x|^{-s}$, $0&lt;s&lt;d/2$. On every finite time interval on which the limiting classical solution satisfies the stated regularity assumptions, the particle marginals with a product initial law converge at an algebraic rate in the particle number, with constants growing at most exponentially in the marginal order. For the three-dimensional repulsive Vlasov--Poisson--Fokker--Planck (VPFP) equation on $\mathbb{R}^3$, a weighted $C^m$ initial probability density, $m\ge3$, with Gaussian velocity decay and polynomial spatial decay of order $M&gt;3$ gives convergence to the global classical solution on every finite time interval. The proof combines conditioning of the initial product law with weighted BBGKY estimates. A decomposition of the potential and a bounded modification of the far-field force yield weighted bounds growing geometrically in the marginal order on the prescribed interval. A centered second-moment estimate permits summation of the error hierarchy, and a synchronous coupling transfers the estimate to the original dynamics.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We prove quantitative propagation of chaos in total variation for repulsive Vlasov--Riesz--Fokker--Planck (VRFP) equations on $\mathbb{T}^d$ and $\mathbb{R}^d$ with unregularized interaction potentials with singularity $|x|^{-s}$, $0&lt;s&lt;d/2$.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261029_0657.html">20261029_0657</a>
+<a href="archive/20261026_0522.html">20261026_0522</a>
+<a href="archive/20261025_0524.html">20261025_0524</a>
+<a href="archive/20261022_0604.html">20261022_0604</a>
+<a href="archive/20261019_0514.html">20261019_0514</a>
+<a href="archive/20261018_0512.html">20261018_0512</a>
+<a href="archive/20261015_0601.html">20261015_0601</a>
+<a href="archive/20261012_0640.html">20261012_0640</a>
+<a href="archive/20261011_0611.html">20261011_0611</a>
+<a href="archive/20261008_0727.html">20261008_0727</a>
+<a href="archive/20261005_0611.html">20261005_0611</a>
+<a href="archive/20261004_0558.html">20261004_0558</a>
+<a href="archive/20261001_0647.html">20261001_0647</a>
+<a href="archive/20260928_0550.html">20260928_0550</a>
+<a href="archive/20260927_0546.html">20260927_0546</a>
+<a href="archive/20260924_0559.html">20260924_0559</a>
+<a href="archive/20260921_0510.html">20260921_0510</a>
+<a href="archive/20260920_0515.html">20260920_0515</a>
+<a href="archive/20260917_0555.html">20260917_0555</a>
+<a href="archive/20260913_0510.html">20260913_0510</a>
+<a href="archive/20260910_0530.html">20260910_0530</a>
+<a href="archive/20260907_0502.html">20260907_0502</a>
+<a href="archive/20260906_0455.html">20260906_0455</a>
+<a href="archive/20260903_0532.html">20260903_0532</a>
+<a href="archive/20260831_0550.html">20260831_0550</a>
+<a href="archive/20260830_0530.html">20260830_0530</a>
+<a href="archive/20260827_0536.html">20260827_0536</a>
+<a href="archive/20260824_0320.html">20260824_0320</a>
+<a href="archive/20260823_0319.html">20260823_0319</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260817_0318.html">20260817_0318</a>
+<a href="archive/20260816_0319.html">20260816_0319</a>
+<a href="archive/20260813_0400.html">20260813_0400</a>
+<a href="archive/20260810_0330.html">20260810_0330</a>
+<a href="archive/20260809_0326.html">20260809_0326</a>
+<a href="archive/20260806_0423.html">20260806_0423</a>
+<a href="archive/20260803_0408.html">20260803_0408</a>
+<a href="archive/20260802_0408.html">20260802_0408</a>
+<a href="archive/20260730_0410.html">20260730_0410</a>
+<a href="archive/20260727_0411.html">20260727_0411</a>
+<a href="archive/20260726_0409.html">20260726_0409</a>
+<a href="archive/20260723_0410.html">20260723_0410</a>
+<a href="archive/20260720_0406.html">20260720_0406</a>
+<a href="archive/20260719_0403.html">20260719_0403</a>
+<a href="archive/20260716_0405.html">20260716_0405</a>
+<a href="archive/20260713_0405.html">20260713_0405</a>
+<a href="archive/20260712_0404.html">20260712_0404</a>
+<a href="archive/20260709_0419.html">20260709_0419</a>
+<a href="archive/20260706_0411.html">20260706_0411</a>
+<a href="archive/20260705_0408.html">20260705_0408</a>
+<a href="archive/20260702_0447.html">20260702_0447</a>
+<a href="archive/20260629_0411.html">20260629_0411</a>
+<a href="archive/20260628_0422.html">20260628_0422</a>
+<a href="archive/20260625_0445.html">20260625_0445</a>
+<a href="archive/20260622_0422.html">20260622_0422</a>
+<a href="archive/20260621_0414.html">20260621_0414</a>
+<a href="archive/20260618_0503.html">20260618_0503</a>
+<a href="archive/20260615_0416.html">20260615_0416</a>
+<a href="archive/20260614_0413.html">20260614_0413</a>
+<a href="archive/20260611_0525.html">20260611_0525</a>
+<a href="archive/20260608_0409.html">20260608_0409</a>
+<a href="archive/20260607_0408.html">20260607_0408</a>
+<a href="archive/20260604_0547.html">20260604_0547</a>
+<a href="archive/20260601_0406.html">20260601_0406</a>
+<a href="archive/20260531_0406.html">20260531_0406</a>
+<a href="archive/20260528_0459.html">20260528_0459</a>
+<a href="archive/20260524_0405.html">20260524_0405</a>
+<a href="archive/20260521_0459.html">20260521_0459</a>
+<a href="archive/20260518_0403.html">20260518_0403</a>
+<a href="archive/20260517_0402.html">20260517_0402</a>
+<a href="archive/20260514_0430.html">20260514_0430</a>
+<a href="archive/20260511_0400.html">20260511_0400</a>
+<a href="archive/20260510_0356.html">20260510_0356</a>
+<a href="archive/20260507_0419.html">20260507_0419</a>
+<a href="archive/20260504_0353.html">20260504_0353</a>
+<a href="archive/20260503_0353.html">20260503_0353</a>
+<a href="archive/20260430_0409.html">20260430_0409</a>
+<a href="archive/20260427_0344.html">20260427_0344</a>
+<a href="archive/20260426_0342.html">20260426_0342</a>
+<a href="archive/20260423_0403.html">20260423_0403</a>
+<a href="archive/20260420_0340.html">20260420_0340</a>
+<a href="archive/20260419_0339.html">20260419_0339</a>
+<a href="archive/20260416_0402.html">20260416_0402</a>
+<a href="archive/20260413_0337.html">20260413_0337</a>
+<a href="archive/20260412_0333.html">20260412_0333</a>
+<a href="archive/20260409_0358.html">20260409_0358</a>
+<a href="archive/20260406_0332.html">20260406_0332</a>
+<a href="archive/20260405_0329.html">20260405_0329</a>
+<a href="archive/20260402_0405.html">20260402_0405</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>

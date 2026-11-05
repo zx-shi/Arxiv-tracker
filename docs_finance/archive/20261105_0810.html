@@ -1,0 +1,530 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递 - Finance</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#dc2626;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#dc2626;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递 - Finance</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-11-05 08:10</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261105_0810</div>
+    <div class="row"><div class="card">
+<div class="title">A Bayesian Optimized Biquad Filter-Burg Model for Real-Time EEG Phase Estimation</div>
+<div class="meta-line">Authors: Ivan Martinez-Kay, Tatiana Kardashina, ShiNung Ching, Eric C. Leuthardt, Benjamin T. Acland</div>
+<div class="meta-line">First: 2026-11-03T18:59:45+00:00 · Latest: 2026-11-03T18:59:45+00:00</div>
+<div class="meta-line">Comments: 24 pages, 12 figures (9 main, 3 supplements)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05374v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05374v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Real-time phase estimation on stimulus-aligned transient EEG is critical for closed-loop neuromodulation systems targeting the theta-band, yet most real-time phase estimation methods have been developed and validated on resting-state, high-fidelity signals in the alpha band. Recent work has pursued deep learning architectures, while individualized classical bandpass filter tuning remains underexplored. This study characterizes the spectral and temporal properties of non-anticipative bandpass filtering and demonstrates the performance gains achieved through individualized tuning. We present a Bayesian-Optimized Biquad Filter-Burg (BOB) model evaluated on EEG recorded during peripheral vibrotactile stimulation of the left median nerve (theta, N=20 healthy subjects) and on resting-state recordings from the Max Planck Institute&#x27;s LEMON dataset (alpha, N=20 healthy subjects). BOB was benchmarked against the Deep Dual-Branch Complex Neural Network (DBCNN), EEG Phase Prediction Network (EPN), Phastimate, and Phase Estimation with Autoregressive Padding (PEAP) under matched testing conditions: channel selection, individualized optimization, evaluation time points, and an offline reference phase obtained through zero-phase filtering and the Hilbert transform. Under these testing conditions, BOB achieved matched or better performance than these models at a fraction of the calibration time.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Real-time phase estimation on stimulus-aligned transient EEG is critical for closed-loop neuromodulation systems targeting the theta-band, yet most real-time phase estimation methods have been developed and validated on resting-state, high-fidelity signals in the alpha band.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Agnostic Learning by Imitating</div>
+<div class="meta-line">Authors: Sílvia Casacuberta, Parikshit Gopalan, Varun Kanade, Omer Reingold, Konstantinos Stavropoulos, Pranay Tankala</div>
+<div class="meta-line">First: 2026-11-03T18:45:38+00:00 · Latest: 2026-11-03T18:45:38+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05346v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05346v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Given a class of machine learning models and sample access to a data distribution with binary labels, which computational task is harder: training a discriminative model that distinguishes positive and negative labels as well as the best member of the class, or training a generative model whose outputs are indistinguishable from real data by all members of the class? We prove that these two fundamental tasks in computational learning theory are not just closely related, but actually equivalent to each other in complexity. One direction of this equivalence was previously known. Indeed, the powerful regularity lemma in complexity theory gives an efficient oracle reduction from the indistinguishability task (a.k.a. multiaccuracy) to the distinguishing task (a.k.a. agnostic learning) in the style of boosting algorithms. Our main contribution is an efficient oracle reduction in the other direction. Taking this idea further, we show that a multiaccuracy oracle is a remarkably powerful primitive, achieving not just agnostic learning but also a wide range of seemingly more demanding learning objectives via similarly efficient and direct constructions. Our results crucially use the power of making adaptive queries to the oracle, and stand in stark contrast to prior work, which showed that post-processing a single multiaccurate predictor is insufficient for even weak forms of learning. On a technical level, we draw a connection between our (offline) problem and a version of no-regret learning in the online setting, which allows us to use follow-the-leader type algorithms to modify the label distribution and aggregate the predictions of the multiaccuracy oracle.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Given a class of machine learning models and sample access to a data distribution with binary labels, which computational task is harder: training a discriminative model that distinguishes positive and negative labels as well as the best member of the class, or training a generative model whose outputs are indistinguishable from real data by all members of the class?</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Toward Identifiable Sparse Autoencoders</div>
+<div class="meta-line">Authors: Walter Nelson, Theofanis Karaletsos, Francesco Locatello</div>
+<div class="meta-line">Venue: ICML</div>
+<div class="meta-line">First: 2026-05-29T12:44:45+00:00 · Latest: 2026-11-03T18:44:49+00:00</div>
+<div class="meta-line">Comments: International Conference on Machine Learning (ICML) 2026. This version corrects the proof of Theorem 3.6; see Appendix</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.31245v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.31245v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Recently, sparse autoencoders (SAEs) have emerged as an attractive tool for interpreting and interacting with representations in practical neural networks. While it is common empirical folklore, we also show theoretically that SAEs are highly unstable: different training runs are likely to produce different concept dictionaries and sparse codes. We characterize the model properties that hinder the stability of real-world SAEs, and address each of these problems through minimal changes to the architecture and training procedure. Together, these changes yield two versions of an \textbf{i}dentifiable SAE (iSAE), a variant of the standard TopK SAE with lower reconstruction error and improved stability. We explain this improvement theoretically by connecting SAEs with traditional dictionary learning approaches, and show that the dictionaries learned in practice satisfy an approximate restricted isometry condition, rendering the corresponding sparse codes in those models near-identifiable.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Recently, sparse autoencoders (SAEs) have emerged as an attractive tool for interpreting and interacting with representations in practical neural networks.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Left-Digit Bias: Theory and Empirical Evidence from a Tax Salience Experiment</div>
+<div class="meta-line">Authors: Kaushil Patel</div>
+<div class="meta-line">First: 2026-11-03T18:42:14+00:00 · Latest: 2026-11-03T18:42:14+00:00</div>
+<div class="meta-line">Comments: 58 pages, 11 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05342v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05342v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Demand often drops sharply at whole-dollar prices. To explain this phenomenon, known as left-digit bias, we develop a random utility model in which consumers consider a good only if its price is below a heterogeneous attention threshold. Masses of consumers with integer attention thresholds generate demand discontinuities. When a tax is introduced, the model predicts a weaker demand response compared to rational choice for left-digit biased consumers. Using data from a tax experiment, we find that the model matches behavioral moments and partially identify the distribution of willingness to pay relative to thresholds. A weak demand response need not imply a low excess burden of taxation and understanding the specific mechanism is important for welfare analysis.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Demand often drops sharply at whole-dollar prices.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Weight-space programming for auditing clinical decision networks</div>
+<div class="meta-line">Authors: Humza Nusrat, Omar Nusrat</div>
+<div class="meta-line">First: 2026-11-03T18:41:15+00:00 · Latest: 2026-11-03T18:41:15+00:00</div>
+<div class="meta-line">Comments: 13 pages, 3 figures, 3 tables. Code, networks and every model answer: https://github.com/hnusrat1/weightspace-rt. A reading guide for language models (llms.txt), the paper in Markdown and the data behind each figure and table are in the ancillary files</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05341v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05341v1">PDF</a> · <a href="https://github.com/hnusrat1/weightspace-rt">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Machine learning models in radiotherapy are commissioned by testing them on cases with known answers, which may not reveal a shortcut that the test cases share with the training data. Frontier language models have recently been reported to read and write the raw weights of small neural networks, an ability called weight-space programming. The purpose of this study was to determine whether such a model, given only a clinical protocol and a network&#x27;s weights, can audit and repair the network. Networks with 433 to 4,801 parameters were trained to screen head-and-neck planning requests against four rules. Flaws were planted through the training data: confounds that hid each rule, a 3 Gy shift in the cord threshold, and a hidden trigger. Claude Opus 5.5 audited each network blind, without tools, data or code execution, and every claim and repair was tested on about 420,000 requests. The language model named the broken rule in 16 of 18 flawed networks (95% CI 67% to 97%), including all 15 with a confound or a threshold shift. It repaired each of the 16 by changing a median of 3 parameters. Fine-tuning on protocol-labeled requests also repaired every network, but changed nearly every parameter. Each confound and shift it found was visible in single units, and a simple statistic chosen for each flaw type found the same flaws. It cleared 2 of 5 healthy networks without being forced and found 1 of 3 triggers. Testing against the protocol detected every flaw, and black-box testing found the confounds and the shift faster. The results indicate that, in small networks, weight-space programming can locate and repair flaws that silence an input or shift a threshold, but cannot yet certify that a network is correct.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Machine learning models in radiotherapy are commissioned by testing them on cases with known answers, which may not reveal a shortcut that the test cases share with the training data.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Uniform local smoothing for the derivative NLS and the soliton mass threshold</div>
+<div class="meta-line">Authors: Mohamed Majdoub</div>
+<div class="meta-line">First: 2026-11-03T18:33:31+00:00 · Latest: 2026-11-03T18:33:31+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05330v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05330v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Harrop-Griffiths, Killip, Ntekoume and Vişan proved that the derivative nonlinear Schrödinger equation (DNLS) is globally well-posed in $L^2(\mathbb{R})$. A key ingredient of their proof is a local smoothing estimate. It holds on $L^2$-equicontinuous sets of initial data, but it cannot hold on $L^2$-balls, because rescaled stationary solitons, all of mass $2π$, violate it. This raises a natural question: for which masses $m$ does local smoothing hold uniformly on the ball $\{M(q_0)\le m\}$? We prove three results. First, we give a quantitative version of the local smoothing estimate in which the data enter only through the mass and an explicit frequency scale $κ(q_0)$. On time intervals of length $2T$ the bound grows like $1+κ(q_0)^2T$, and the stationary soliton shows that the power of $κ$ cannot be lowered below one. Second, we prove uniform local smoothing on balls of small mass, together with a scale-invariant Morrey-type form and a localized $L^4_{t,x}$ bound. Third, we analyse the soliton family from both sides. The uniform constant must blow up at least like $(2π-m)^{-1}$ as $m\uparrow 2π$, while every soliton of mass $m&lt;2π$ satisfies local smoothing with a constant $O((2π-m)^{-1})$. These facts single out the stationary-soliton mass $2π$, which is also the Hayashi--Ozawa coercivity threshold, as the natural candidate for the sharp threshold. We formulate this as a conjecture, give a spectral reformulation in terms of the Kaup--Newell scattering data, and discuss the obstacles to a proof.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Harrop-Griffiths, Killip, Ntekoume and Vişan proved that the derivative nonlinear Schrödinger equation (DNLS) is globally well-posed in $L^2(\mathbb{R})$.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">CATF: A Manager-Worker Framework for Context-Aware Time-Series Forecasting</div>
+<div class="meta-line">Authors: Yueqiao Chen, Dongyu Liu</div>
+<div class="meta-line">First: 2026-11-03T18:28:04+00:00 · Latest: 2026-11-03T18:28:04+00:00</div>
+<div class="meta-line">Comments: 21 pages of main text (including references), with 4 figures and 3 tables, plus 16 pages of appendices</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05325v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05325v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We study context-aware time-series forecasting, in which a single target variable is predicted from its own history and a set of contextual variables, such as weather and calendar information. As the context becomes more diverse, a single model struggles to capture all of its regimes, while ensemble learning and Mixture-of-Experts approaches rely on manual data partitioning or soft routing, which increases the inference cost and hinders interpretability. We propose CATF, a Context-Aware Time-Series Forecasting framework built on a Manager-Worker architecture: a Transformer-based Manager routes each input to a single Worker based on the context, using hard routing during both training and inference. The Workers thus specialize without manual data partitioning, and any single-model forecaster can serve as a Worker. On five context-rich datasets, four horizons, and two normalization schemes, CATF improves over its standalone counterpart in 162 of 200 comparisons, the best CATF-enhanced model outperforms the best standalone baseline in 19 of 20 settings, and it outperforms the zero-shot Time-MoE foundation model in 15 of 20 settings. A case study on bike-sharing data shows that the Manager routes inputs by the calendar and that each Worker specializes in a different weekly pattern.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We study context-aware time-series forecasting, in which a single target variable is predicted from its own history and a set of contextual variables, such as weather and calendar information.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Quantitative non-Gaussian and Gaussian approximation for exponential random graphs in the single-phase critical regime</div>
+<div class="meta-line">Authors: Yi-Kun Zhao</div>
+<div class="meta-line">First: 2026-11-03T18:24:07+00:00 · Latest: 2026-11-03T18:24:07+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05318v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05318v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We establish quantitative non-Gaussian and Gaussian approximations for edge-count fluctuations in dense exponential random graphs at single-phase criticality of any fixed even order $2m_*\ge 4$. The Hamiltonians use injective homomorphism counts of fixed simple graphs, with nonnegative leading coefficients for the higher-order terms. In bounded calibrated windows, edge-density fluctuations on the scale $n^{-1/m_*}$ admit an explicit non-Gaussian approximation with error $O(n^{-1/m_*})$. For parameter perturbations by fixed multiples of $n^{-1}$ with a nonzero first-order drift correction at the critical density, the deterministically centered edge count admits a Gaussian approximation on the scale $n^{(3m_*-2)/(2m_*-1)}$, with error $O(n^{-1/(2m_*-1)})$. Both rates hold in Wasserstein and Kolmogorov distances. The key step is to construct auxiliary kernels for exterior graphs outside an event of exponentially small probability. These kernels contract uniformly on the full row state space and agree with the conditional Gibbs updates on typical row configurations, yielding the conditional cumulant estimates used in Stein&#x27;s method.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We establish quantitative non-Gaussian and Gaussian approximations for edge-count fluctuations in dense exponential random graphs at single-phase criticality of any fixed even order $2m_*\ge 4$.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Noisy Issues, Noisy Results: Mislabeling in Information Retrieval-based Bug Localization</div>
+<div class="meta-line">Authors: Moumita Asad, Rafed Muhammad Yasir, Yirui He, Ziyao He, Sam Malek</div>
+<div class="meta-line">First: 2026-11-03T18:22:34+00:00 · Latest: 2026-11-03T18:22:34+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05314v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05314v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Information Retrieval-based Bug Localization (IRBL) leverages bug reports to identify faulty source files. Evaluations of IRBL approaches primarily rely on labeled issues from issue tracking systems. However, prior research has shown that issue labels are frequently incorrect in open-source projects, threatening the validity of IRBL evaluations. Existing studies have primarily examined traditional IRBL techniques on small datasets, overlooking modern approaches and the partial overlap between noisy and cleaned datasets. In this paper, we conduct a large-scale empirical study to investigate the prevalence and impact of mislabeled issues in IRBL benchmarks. We analyze five benchmark datasets comprising over 55,000 issue reports and find that, on average, 34.82% of issues are mislabeled. We further evaluate six IRBL techniques, spanning traditional, deep learning-based, and large language model-based approaches using the widely adopted Ye et al. benchmark and statistical methods that account for dataset overlap. Our results show that removing mislabeled issues from evaluation datasets significantly reduces measured performance across all six techniques, with Mean Reciprocal Rank decreasing by 4.68%-21.74%. Although mislabeling does not change the relative ranking of techniques, it affects the magnitude of their performance differences. These findings highlight the importance of reliable evaluation data for ensuring valid and meaningful comparisons of IRBL techniques.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Information Retrieval-based Bug Localization (IRBL) leverages bug reports to identify faulty source files.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Mitigating Return Drag and Regime Whipsaws in Sector Rotation: An Asymmetric Downside-Aware Nested Clustered Optimization Framework</div>
+<div class="meta-line">Authors: Supriadi</div>
+<div class="meta-line">First: 2026-11-03T18:19:23+00:00 · Latest: 2026-11-03T18:19:23+00:00</div>
+<div class="meta-line">Comments: 7 pages, 6 figures, 4 tables. Code available at: https://github.com/obo-cloud/sp500-asymmetric-nco</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05310v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05310v1">PDF</a> · <a href="https://github.com/obo-cloud/sp500-asymmetric-nco">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Hierarchical clustering and Nested Clustered Optimization (NCO) mitigate the mathematical ill-conditioning of classical Markowitz covariance matrices. However, two structural vulnerabilities persist in equity markets: (1) symmetric variance penalizes upside and downside return dispersion identically, inducing acute return drag against soaring momentum sectors; and (2) unconstrained Hidden Markov Models (HMM) exhibit hyper-active regime switching (whipsaw instability), incurring excessive turnover and transaction drag. We propose Asymmetric Downside-Risk Nested Clustered Optimization with Sticky Regime Dynamics (Asym-Sticky-NCO) for tactical sector rotation across all 11 S&amp;P 500 GICS sectors. The framework substitutes symmetric covariance with the Bawa-Lindenberg downside semi-covariance matrix across both hierarchical tree clustering and two-stage allocation. Furthermore, we introduce a Sticky Gaussian HMM incorporating a diagonal self-transition persistence prior (\k{appa}) and confidence-adaptive boundaries (δ) to enforce macroeconomic persistence. Strictly non-anticipative walk-forward backtesting across 65 out-of-sample months (August 2020 to December 2025) demonstrates that the architecture elevates CAGR from 10.65% (Plain NCO) to 13.41% (+276 bps/year), delivers a 97.74% total return versus 72.99%, suppresses maximum drawdown to 14.22% (versus 23.93% for the S&amp;P 500), and achieves a Calmar ratio of 0.94 (+38.2% over S&amp;P 500; +84.3% over Baseline Regime-NCO). Crucially, sticky dynamics cut regime whipsaws by 75.0% (from 16 to 4 switches) and reduce monthly turnover from 60.78% to 30.48%, addressing core limitations of machine learning asset allocation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Hierarchical clustering and Nested Clustered Optimization (NCO) mitigate the mathematical ill-conditioning of classical Markowitz covariance matrices.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Universal Hardness From Masking Channels</div>
+<div class="meta-line">Authors: Parikshit Gopalan, Manoj Prabhakaran, Pranay Tankala</div>
+<div class="meta-line">First: 2026-11-03T18:08:38+00:00 · Latest: 2026-11-03T18:08:38+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05296v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05296v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We prove a broad learning-theoretic generalization of the celebrated hardcore lemma concerning the average-case complexity of computing a Boolean function (Impagliazzo, 1995). Our starting point is the observation that the classic notion of a hardcore measure, which reweights a function&#x27;s input distribution, is equivalent to an input-dependent masking channel that injects randomness into the function&#x27;s output distribution until it appears fully pseudorandom. The analogue of density of the measure is the fidelity of the channel. From this viewpoint, we develop a general framework for certifying hardness that allows for non-Boolean functions $f$ and a wide range of notions of hardness besides the classic 0-1 loss, by choosing the right notion of fidelity via convex duality. We show the difficulty of learning $f$ using a class $\mathcal{C}$ to minimize a convex loss is tightly characterized by the maximum fidelity possible for a masking channel, which measures the least amount of noise the channel must add to hide the structure of $f$ and make it $\mathcal{C}$-indistinguishable from random noise. Using our framework, we derive a number of multiclass generalizations of the hardcore lemma, and reveal some unexpected subtleties in going to larger alphabets. We construct a universal masking channel that applies to many natural notions of hardness simultaneously. Such channels are dual to omnipredictors, which optimize multiple losses at once (Gopalan, Kalai, Reingold, Sharan, and Wieder, 2022). We observe a symmetry between masking channels and generalizations of the hardcore lemma using pseudoentropy. We present a tight characterization of pseudoentropy using the MaxEnt algorithm from machine learning. A long line of research has shown that learning and hardness are two sides of the same coin; our framework gives a crisp and general formulation of this principle via convex duality.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We prove a broad learning-theoretic generalization of the celebrated hardcore lemma concerning the average-case complexity of computing a Boolean function (Impagliazzo, 1995).</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Halász theorems for Gaussian ideals in sectors and short intervals</div>
+<div class="meta-line">Authors: Jan Kuś</div>
+<div class="meta-line">First: 2026-05-18T20:47:26+00:00 · Latest: 2026-11-03T18:04:51+00:00</div>
+<div class="meta-line">Comments: 43 pages, no figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.19105v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.19105v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We prove a quantitative Halász theorem for multiplicative functions on the nonzero ideals of $\mathbb{Z}[i]$, with bounds controlled by pretentious distance to the Archimedean characters $N^{it}$. We also prove a sectorial analogue: under angular non-pretentiousness, the sum of $f$ over ideals lying in a fixed sector is asymptotically given by the expected proportion of the unrestricted sum. Finally, under angular non-pretentiousness and a non-degeneracy condition on conjugate prime pairs, we prove a sectorial short-interval version of the Halász theorem for annular sectors whose radial thickness tends to infinity. The proof of the sectorial short-interval Halász theorem uses angular Fourier expansion, norm-compression to multiplicative functions on $\mathbb{N}$, and a theorem of Mangerel.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We prove a quantitative Halász theorem for multiplicative functions on the nonzero ideals of $\mathbb{Z}[i]$, with bounds controlled by pretentious distance to the Archimedean characters $N^{it}$.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">De Rham cohomological architectures for PINNs and PDEs with topological holes</div>
+<div class="meta-line">Authors: Andrew Gracyk</div>
+<div class="meta-line">First: 2026-11-03T17:57:15+00:00 · Latest: 2026-11-03T17:57:15+00:00</div>
+<div class="meta-line">Comments: First version</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05276v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05276v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We attempt to alleviate failure modes of classical physics-informed neural networks (PINNs) in scenarios of topological pathologies corresponding to punctures, holes, poles, and voids by introducing de Rham cohomological augmentations, or Hodge-de Rham PINNs. Vanilla PINNs often encounter pitfalls in hole-based settings due to discontinuous interfaces, nonzero closed path integration, path dependence, correspondence to exact forms via the exterior derivative, etc., therefore we absolve traditional failures via parameterizing a 1-form by the Hodge-Morrey-Friedrichs (HMF) decomposition for manifolds with boundary, drawing a connection to de Rham cohomology such as through the HMF isomorphism theorem. 1-forms can act as representations of scalar-valued PDE solutions through integral operator mappings. We propose performing a PINN-based loss on the parameterized 1-form through an associated PDE, which subsequently solves the potential-based PINN problem and moreover remedies the failures of vanilla PINNs via the Sobolev-regular operator under a Fréchet differentiation interconnection. The operator relationship often has a nontrivial closed-form and often requires integration or a case-by-case analysis, which we address thoroughly in our experiments. When an integrability condition is not met on our losses, we can equip exhaustion functions to train the networks. We demonstrate our methods on the Aharonov-Bohm effect, which, to our understanding, is largely nonexistent in PINN literature. We develop theoretical guarantees of our methods and demonstrate our pathological safeguards on a broad selection of topologically-adverse problems, including scenarios of inexact forms, and those of nontrivial harmonics and coexact terms.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We attempt to alleviate failure modes of classical physics-informed neural networks (PINNs) in scenarios of topological pathologies corresponding to punctures, holes, poles, and voids by introducing de Rham cohomological augmentations, or Hodge-de Rham PINNs.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Competition for Survival and the Law of Maximum Entropy Production</div>
+<div class="meta-line">Authors: Albert Han, Jiri Kataman-Kustwan, Alexey Bezryadin</div>
+<div class="meta-line">First: 2026-05-25T16:47:34+00:00 · Latest: 2026-11-03T17:56:59+00:00</div>
+<div class="meta-line">Comments: 15 pages; 14 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.27457v4">Abs</a> · <a href="https://arxiv.org/pdf/2605.27457v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The law of maximum entropy production (LMEP) is a selection principle stating that a non-equilibrium system will select the path or assembly of paths out of available paths that minimizes the potential or maximizes the entropy at the fastest rate given the constraints. Precise quantitative experimental tests are desirable for LMEP verification. Here we report electrical-circuit experiments on suspensions of silver particles which self-organize under electric field, form conducting paths and thus generate entropy by Joule heating. Our experiments on parallel-connected pairs of samples demonstrate a competitive relationship, thereby supporting the selection of the most efficient path. We find: (1) With sufficient voltage, a conducting bundle of silver particles forms, which acts as a self-organized dissipative structure (SODS). (2) With two samples in parallel, usually only one can develop SODS, due to the competition effect. As one sample approaches the maximum EPR, the others EPR is near zero. This confirms the path selection principle: only the highest EPR path survives. (3) At the end of the evolution, the sum of the sample EPR and the power supply circuit EPR approaches the calculated maximum. The deviation from the maximum is slightly lower when there are two competing samples. We identify the selection mechanism enabling natural selection and LMEP: A SODS gains a form of physical &quot;fitness&quot; when it establishes a pathway that efficiently suppresses the driving thermodynamic potential. As it develops and approaches the maximum EPR, the SODS modifies its nonequilibrium environment by consuming available free energy and eliminating the gradients that could support alternative pathways. We also examine the global implications of LMEP and propose that it serves as a driving mechanism propelling the hypothetical ascent of civilizations along the Kardashev scale.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The law of maximum entropy production (LMEP) is a selection principle stating that a non-equilibrium system will select the path or assembly of paths out of available paths that minimizes the potential or maximizes the entropy at the fastest rate given the constraints.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">NP-Hardness and Additive Inapproximability of Deterministic Communication Complexity</div>
+<div class="meta-line">Authors: Serge Gaspers, Tao Zixu He, Simon Mackenzie</div>
+<div class="meta-line">First: 2025-08-07T17:39:40+00:00 · Latest: 2026-11-03T17:49:38+00:00</div>
+<div class="meta-line">Comments: 76 pages, 5 figures. Substantially revised and expanded from v5. Adds NP-hardness for every fixed additive error in standard and strictly alternating communication models, explicit sparsification, and direct implications from approximation algorithms to faster sparse 3-SAT algorithms. Includes a Lean formalization and interactive proof inspector</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2508.05597v6">Abs</a> · <a href="https://arxiv.org/pdf/2508.05597v6">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Given the full truth table of a Boolean function whose input is split between two players, we study the complexity of determining the minimum worst-case number of bits they must communicate to compute it. This is a basic meta-complexity question, posed by Yao in 1979.
+  We prove NP-hardness of approximation within every fixed additive error for deterministic communication complexity, under deterministic polynomial-time reductions. The result holds both in the standard model and in Yao&#x27;s original model, where the players alternate after every bit and only the receiver of the last bit must determine the answer. In particular, it resolves the exact computation question under Yao&#x27;s original conventions. Earlier versions of this same paper established exact NP-hardness for the standard model, independently and concurrently with Hirahara, Ilango, and Loff.
+  In both models, a polynomial-time estimator with any fixed additive error would yield a polynomial-time $3$-SAT algorithm, deterministic or bounded-error randomized according to the estimator. For the standard model, we also give quantitative implications for errors that grow with the number $T$ of table entries. A bounded-error randomized polynomial-time estimator with additive error $c\log T/\log\log T$, for any fixed $0\le c&lt;1/8$, yields a bounded-error randomized $3$-SAT algorithm on $N$ variables and $O(N)$ clauses running in time $2^{O(N^α)}$ for every fixed $8c&lt;α&lt;1$. A deterministic polynomial-time estimator with additive error $c_*\log\log T$, for an effective absolute constant $c_*&gt;0$, yields a deterministic algorithm running in time $2^{O((\log N)^2)}$ on such formulas.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Given the full truth table of a Boolean function whose input is split between two players, we study the complexity of determining the minimum worst-case number of bits they must communicate to compute it.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">SONIC-K1: Porting a Universal Humanoid Motion Tracker to a Small Humanoid on a Single GPU</div>
+<div class="meta-line">Authors: Kyrylo Kolesnichenko, Irvin Steve Cardenas, Jong-Hoon Kim</div>
+<div class="meta-line">First: 2026-10-29T04:16:33+00:00 · Latest: 2026-11-03T17:41:54+00:00</div>
+<div class="meta-line">Comments: 4 pages, 3 figures. Project page: https://kyry.me/sonic-k1</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.39327v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.39327v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We present SONIC-K1, to our knowledge the first open-weights whole-body motion tracker for the Booster K1 humanoid, obtained by adapting the SONIC framework to this smaller robot. The policy is trained from scratch on a single shared GPU with a small fraction of the compute reported for SONIC. In MuJoCo simulation, it tracks nearly all held-out motion clips and performs well on external benchmarks under SONIC&#x27;s success criterion. On the real K1, it tracks upper-body and slow motions, while stepping and turning remain less reliable, and simulation experiments show a sensitivity to action latency. These results show broad motion-tracking capability on a modest training budget and point to quantitative hardware evaluation as the main next step. Code, policy weights and evaluation tools are publicly available.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We present SONIC-K1, to our knowledge the first open-weights whole-body motion tracker for the Booster K1 humanoid, obtained by adapting the SONIC framework to this smaller robot.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The sum-of-squares complexity of linear-algebraic principles</div>
+<div class="meta-line">Authors: Dmitriy Kunisky, Xifan Yu</div>
+<div class="meta-line">First: 2026-11-03T17:35:56+00:00 · Latest: 2026-11-03T17:35:56+00:00</div>
+<div class="meta-line">Comments: 41 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05250v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05250v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We study the degree needed for sum-of-squares (SoS) proofs of several basic principles of real linear algebra. For any $n\times n$ matrix $A$ of rank greater than $r$, the Weak Rank Principle states that the equations $XY^\top=A$ with $n\times r$ matrix variables $X, Y$ have no solution. We show that this principle requires degree exactly $2r+2$ to prove. On the other hand, for $A=I_n$, setting $X = Y$ gives the Tight Frame Principle, which has a degree-$4$ proof. For $n\times n$ matrices, proving that a right inverse is also a left inverse requires degree exactly $2n+2$, while proving that orthonormal rows imply orthonormal columns again has a degree-4 proof. Using our lower bounds, we also derive related SoS degree lower bounds for polynomial systems encoding sign rank, matrix rigidity, small-width homogeneous non-commutative algebraic branching programs, and tensor CP rank. Lastly, we show that quantitative bounds on the Frobenius norms of the factors in the Weak Rank Principle can lower the degree required to refute $XY^\top=I_n$, but sufficiently large bounds still preserve the exact degree $2r+2$ from the unbounded case, giving a quantitative version of the Archimedean property arising in classical results on SoS proofs.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We study the degree needed for sum-of-squares (SoS) proofs of several basic principles of real linear algebra.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Shrinkage prior for implicit generative models</div>
+<div class="meta-line">Authors: Shreya Sinha-Roy, Christian P. Robert, Ritabrata Dutta</div>
+<div class="meta-line">First: 2026-11-03T17:24:13+00:00 · Latest: 2026-11-03T17:24:13+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05241v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05241v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Implicit generative models based on deep neural networks have revolutionized many scientific fields, from weather research to language generation. They successfully model complex random objects arising in real-world problems. In this work, we propose a sample-efficient training mechanism for these models. Our approach leverages regularized inference with shrinkage priors and generalized Bayes. In the large $p$ (parameter dimension) and small $n$ (sample size) setting, sparsity-inducing priors have been successfully used for linear regression when $p \gg n$. However, their application to implicit generative models remains challenging due to the intractability of the likelihood function. To address this, we adapt a scoring rule posterior based on a strictly proper scoring rule, following the generalized Bayes framework. We then propose a block SGMCMC within Gibbs sampling mechanism. This enables efficient exploration of high-dimensional parameter spaces by identifying a sparse representation of neural implicit generative models. We demonstrate the performance of our proposed method through experiments on $p \gg n$ linear regression and an application of neural generative models.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Implicit generative models based on deep neural networks have revolutionized many scientific fields, from weather research to language generation.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Regret-based Characterization, Information Limits, and the Sample Complexity of Auditing Adaptive Policies</div>
+<div class="meta-line">Authors: Irene Aldridge</div>
+<div class="meta-line">First: 2026-11-03T17:13:24+00:00 · Latest: 2026-11-03T17:13:24+00:00</div>
+<div class="meta-line">Comments: 13 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05227v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05227v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A policy can earn its performance by where it locates on average or by reacting to information. For any Markov policy $π$ in a finite-horizon MDP, let $ν$ be its open-loop marginal, which plays $π$&#x27;s average action distribution at each step. We show that $J(π)-J(ν)$ equals $\sum_t tr Cov(Q^ν_t,π_t)$ under endogenous dynamics. Audits based on immediate costs alone can have the wrong sign. Writing the covariance as a joint-versus-product gap gives the bound $|J(π)-J(ν)|\le\sum_t span_t\sqrt{I(s_t;a_t)/2}$, with a sharp constant. Hence, an MDP&#x27;s adaptivity gap is bounded by the information that its optimal policy uses. Estimating $J(π)-J(ν)$ from $π$&#x27;s own bandit-feedback logs takes $Θ(\barχ^2 \log(1/η)/δ^2)$ rounds, where $\barχ^2$ is an average $χ^2$-divergence. At the same time, deterministic non-constant policies cannot be audited at all. We also provide an importance-sampling auditor for episodic MDPs.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A policy can earn its performance by where it locates on average or by reacting to information.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Learning curves in natural and artificial systems</div>
+<div class="meta-line">Authors: Dmitry A. Novikov</div>
+<div class="meta-line">Venue: Novikov D. (2026) Learning curves in natural and artificial systems // Large-scale Systems Control. Vol. 123. P.7-56</div>
+<div class="meta-line">First: 2026-11-03T17:10:57+00:00 · Latest: 2026-11-03T17:10:57+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05224v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05224v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A general mathematical model of experience formation is considered, in which the learning level is defined as the probability that the next value of the uncertainty factor has already been mastered and not forgotten. Within this model the shape of the learning curve is derived, and it turns out to be determined primarily by the distribution of situation occurrence: a uniform distribution yields an exponential curve, whereas a power-law distribution yields a power-law curve whose exponent equals the ratio of the distribution exponent to that same exponent increased by one. Both mechanisms generating power-law curves, established earlier in the analysis of debugging, assembly and repair activities, are shown to have been independently rediscovered in deep learning theory as the &quot;frequency&quot; and &quot;spectral&quot; mechanisms of scaling laws for artificial neural networks, while the exponential curves of machine learning (contraction operators, strongly convex optimization, stationary reinforcement) are generated by the same constancy of the contraction coefficient that was revealed half a century earlier in models of radioactive decay, the first-order lag element, and others. A solution is given for the problem of choosing a training distribution that differs from the deployment distribution. A methodological consequence is discussed: three distinct mechanisms generate curves indistinguishable in shape, so an observed learning curve does not allow one to judge the &quot;internal&quot; structure of the learning system.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A general mathematical model of experience formation is considered, in which the learning level is defined as the probability that the next value of the uncertainty factor has already been mastered and not forgotten.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Efficient Equilibrium Computation in Colonel Blotto Games</div>
+<div class="meta-line">Authors: Martin Bichler, Abheek Ghosh</div>
+<div class="meta-line">First: 2026-11-03T17:06:58+00:00 · Latest: 2026-11-03T17:06:58+00:00</div>
+<div class="meta-line">Comments: 75 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05221v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05221v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Colonel Blotto is a fundamental resource-allocation game in which two players divide their budgets across battlefields, and the higher allocation on each battlefield wins its value. The problem of computing an equilibrium efficiently has remained unresolved for its classical continuous version with arbitrary budgets and with values that may vary across battlefields but are the same for both players. We give a fully polynomial-time approximation scheme that computes an $\varepsilon$-Nash equilibrium in time polynomial in the input length and $1/\varepsilon$, and nearly linear in the input length for fixed $\varepsilon$. For sufficiently balanced budgets and battlefield values, we also compute exact equilibria in linear time.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Colonel Blotto is a fundamental resource-allocation game in which two players divide their budgets across battlefields, and the higher allocation on each battlefield wins its value.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Fusing Earth observation embeddings and spaceborne terrain with meteorological forcing for flood peak depth prediction from high-water marks</div>
+<div class="meta-line">Authors: Wen Zhou, Shaowen Wang, Upmanu Lall, Venkatesh Merwade, Dingqi Ye</div>
+<div class="meta-line">First: 2026-11-03T17:05:45+00:00 · Latest: 2026-11-03T17:05:45+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05220v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05220v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Flood peak depth on normally dry land governs damage and risk to life, but is observed only sparsely, by post-event high-water mark (HWM) surveys, and depth derived from satellite flood extent is produced after the event and inherits the vertical error of the digital elevation model (DEM) it is computed from. Deep-learning flood models have in turn been trained on hydrodynamic simulations rather than on observed depths. We ask whether flood peak depth can be learned from field observations and predicted before the peak from spaceborne terrain, geospatial foundation-model embeddings and antecedent meteorological forcing. We assembled 5689 USGS HWM surveys from 39 events (2011-2025) in 24 U.S. states and Puerto Rico, assigned each a peak time from nearby sensors, paired each with a rain-free window at the same site, and linked them to Copernicus GLO-30 terrain, AlphaEarth embeddings and 144 h of hourly forcing masked to the lead time. A cross-modal fusion network trained on these observations predicts depth at the surveyed marks with a mean absolute error of 0.39 m 6 h ahead of the peak. Supervision by surveyed depth corrects the DEM error implicitly: differencing the measured peak water level with the same DEM gives 0.93 m at the same marks, 2.4 times larger, although it uses the measured water level and the model does not. Forcing accounts for 77% of the attributed reduction in depth error; terrain and the embeddings are statistically equivalent to each other and contribute the remaining 23%. On eleven held-out events the model still separates flooded from rain-free conditions but no longer resolves depth at the marks (R2 = 0.03), so the skill reported here is confined to the events and regions sampled. Field-surveyed depths can thus supervise flood depth prediction and correct terrain error that extent-based estimation cannot, while transfer to unseen storms remains the open problem.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Flood peak depth on normally dry land governs damage and risk to life, but is observed only sparsely, by post-event high-water mark (HWM) surveys, and depth derived from satellite flood extent is produced after the event and inherits the vertical error of the digital elevation model (DEM) it is computed from.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Search for anomalies in vector-boson fusion production of the Higgs boson in $H(\rightarrow γγ) jj$ events using 164 fb$^{-1}$ of $pp$ collision data collected at $\sqrt{s}=13.6$ TeV with the ATLAS detector</div>
+<div class="meta-line">Authors: ATLAS Collaboration</div>
+<div class="meta-line">First: 2026-03-20T16:09:38+00:00 · Latest: 2026-11-03T17:03:55+00:00</div>
+<div class="meta-line">Comments: 52 pages in total, author list starting page 36, 10 figures, 2 tables, published in JHEP. All figures including auxiliary figures are available at: https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/HIGP-2024-23</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.20087v2">Abs</a> · <a href="https://arxiv.org/pdf/2603.20087v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/HIGP-2024-23">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This article details two studies of Higgs boson properties using the vector-boson fusion production mode and the $γγjj$ final state. Both efforts are based on a data sample corresponding to 164 fb$^{-1}$ of $\sqrt{s}=13.6$ TeV proton--proton collisions recorded by the ATLAS experiment at the Large Hadron Collider. The first study employs matrix-element-based optimal observables to constrain CP-odd couplings beyond the Standard Model within the Standard Model Effective Field Theory framework, expressed in the Warsaw basis. The second study exploits angular distributions to probe the Higgs boson&#x27;s couplings to longitudinally and transversely polarised $W$ and $Z$ bosons in the production of the Higgs boson. To maximise the sensitivity, the constraints of the CP-odd couplings are combined with those from a previous analysis performed in $γγjj$ events in a data sample of proton--proton collisions at $\sqrt{s}=13$ TeV, corresponding to an integrated luminosity of 140 fb$^{-1}$. A significant improvement with respect to the previous analysis is achieved through the implementation of a new neural-network-based classification algorithm. All measurements are in agreement with the Standard Model prediction of a CP-even Higgs boson with the expected relative coupling strengths to longitudinally and transversely polarised vector bosons.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This article details two studies of Higgs boson properties using the vector-boson fusion production mode and the $γγjj$ final state.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Beyond Anonymous Order Flow: Wallet Identity as a Feature for Short-Horizon Return Prediction</div>
+<div class="meta-line">Authors: Jingqiu Ding, Daojing Zhai</div>
+<div class="meta-line">First: 2026-11-03T17:03:36+00:00 · Latest: 2026-11-03T17:03:36+00:00</div>
+<div class="meta-line">Comments: 8 pages, 5 figures, 3 tables. Accepted at ACM ICAIF &#x27;26</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05218v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05218v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Conventional public order-book data summarize trading without identifying the accounts behind it. Hyperliquid&#x27;s Level-4 record also exposes persistent pseudonymous wallet addresses. We reconstruct full-depth books from consensus-ordered messages and evaluate wallet identity as a feature for short-horizon return prediction. The July 1-27, 2026 record covers 17.1 billion messages, 14.3 million aggressive orders by 147,113 wallets, and $84.3 billion in taker notional across ten markets. In the three model markets, notional-weighted ten-second markout rankings persist across adjacent ten-day windows (Spearman rho = 0.52); covariate-adjusted validation markouts reach 3.11 basis points in the top ventile. On a 100-millisecond grid, eleven features describing previously scored top-decile wallets raise one-second out-of-sample R2 from 10.88% to 12.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Conventional public order-book data summarize trading without identifying the accounts behind it.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Parallel Sparse Identification of Nonlinear Dynamics in Python: Task- and Data-Parallel SINDy with Numba, OpenMP, Threads and Multiprocessing for the Lorenz and Rössler Systems</div>
+<div class="meta-line">Authors: Pablo Guillen-Rondon</div>
+<div class="meta-line">First: 2026-11-03T17:01:26+00:00 · Latest: 2026-11-03T17:01:26+00:00</div>
+<div class="meta-line">Comments: 10 pages, 3 figures, 2 tables. Code and data: https://github.com/guillenrondonp/parallel-sindy</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05215v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05215v1">PDF</a> · <a href="https://github.com/guillenrondonp/parallel-sindy">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The sparse identification of nonlinear dynamics (SINDy) recovers interpretable governing equations from time-series data by sparse regression over a library of candidate functions. As data sets, candidate libraries and the number of repeated fits grow, the cost of SINDy becomes dominated by the evaluation of the library matrix and its least-squares problems. We present an open-source Python implementation of SINDy in which a single set of loop-based kernels is just-in-time compiled with Numba and executed on a shared-memory multicore node by four interchangeable back ends: Numba prange, OpenMP directives through PyOMP, Python threads that release the global interpreter lock, and multiprocessing with shared memory. The normal equations are accumulated in one cache-blocked pass over the data, with an automatic fallback to a tall-skinny QR reduction for ill-conditioned problems. Two decompositions are studied on the Lorenz and Rössler systems: an ensemble (task-parallel) workload of 960 independent identifications and a library (data-parallel) workload of one trajectory with $2\times10^7$ samples and a fifth-order library of 56 candidate terms. All back ends recover the exact sparsity pattern in every identification, with coefficient errors identical to PySINDy. On a dual-socket Intel Xeon E5-2650 v4 node of the University of Houston-Downtown HPC cluster (24 cores, 48 hardware threads), the compiled serial code is 4.3-5.6x faster than PySINDy, the parallel back ends reach speed-ups of 14.8-20.3 on 24 cores (parallel efficiency 0.61-0.84), and the overall time to solution is reduced by up to 117x with respect to PySINDy. We analyse the differences between the back ends, the effect of the two sockets and of hyper-threading, and give practical recommendations.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The sparse identification of nonlinear dynamics (SINDy) recovers interpretable governing equations from time-series data by sparse regression over a library of candidate functions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Improved Automatic Target Recognition in Synthetic Aperture Sonar Imagery Using Large Deep Neural Networks</div>
+<div class="meta-line">Authors: C. J. Moore, Alex Hurt, Jordan Malof</div>
+<div class="meta-line">First: 2026-09-01T19:09:21+00:00 · Latest: 2026-11-03T17:00:04+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.01800v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.01800v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Automatic Target Recognition (ATR) in Synthetic Aperture Sonar (SAS) is often underpinned by deep neural networks (DNNs). Recent research has focused on relatively low-capacity DNNs (i.e., relatively fewer trainable parameters) to avoid overfitting on the small training datasets that are typically available for SAS. However, recent research has found that increasing DNN capacity often improves performance, even when training data is scarce. Motivated by this emerging finding - termed the double descent phenomenon - this work investigates the use of especially high-capacity DNNs for SAS-ATR. We evaluate the performance of several state-of-the-art DNN architectures as we increase their model capacity. We examine performance in a realistic leave-one-geo-location-out cross-validation scheme. We find that increasing model capacity often increases performance substantially, and is never harmful. All of our large models significantly outperform two baseline models from recent publications. Training high-capacity models on small dataset however requires careful regularization, and we also perform systematic experiments showing the impact of several regularization strategies: pretraining on other imaging modalities, data augmentation (including some new to SAS), DropPath, and weight decay. We show that each of these strategies independently improves the performance of the large models.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Automatic Target Recognition (ATR) in Synthetic Aperture Sonar (SAS) is often underpinned by deep neural networks (DNNs).</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Physics-informed traditional and generative Mori-Zwanzig-reduced models for multiscale systems</div>
+<div class="meta-line">Authors: Emily Williams, Saad Qadeer, Amanda Howard, Panos Stinis</div>
+<div class="meta-line">First: 2026-11-03T16:57:56+00:00 · Latest: 2026-11-03T16:57:56+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05211v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05211v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Model reduction via the Mori-Zwanzig (MZ) formalism is well understood for coarse-grained representations constructed from standard basis functions such as Fourier functions. We show that the same formalism can be used to build reduced-order models in bases discovered by physics-informed machine learning. The fluctuation-dissipation theorem (FDT) is used to close the resulting non-Markovian evolution equations for the expansion coefficients of the learned basis. We further introduce a complementary, generative closure model. Relative to the Markovian dynamics alone, both the MZ and generative closures substantially improve predictions of the filtered states.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Model reduction via the Mori-Zwanzig (MZ) formalism is well understood for coarse-grained representations constructed from standard basis functions such as Fourier functions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Community detection in complex networks via node similarity, graph representation learning, and hierarchical clustering</div>
+<div class="meta-line">Authors: Łukasz Brzozowski, Grzegorz Siudem, Marek Gagolewski</div>
+<div class="meta-line">Venue: Information Systems 144, 102824, 2027</div>
+<div class="meta-line">First: 2023-03-21T22:12:53+00:00 · Latest: 2026-11-03T16:48:43+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2303.12212v3">Abs</a> · <a href="https://arxiv.org/pdf/2303.12212v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Community detection is a significant challenge in analysing real graphs, including social, citation, biological, and many other networks. This article proposes three new, general, hierarchical frameworks to deal with this task. The introduced approach supports various linkage-based clustering algorithms, vertex proximity matrices, and graph representation learning models. We compare 364 module combinations on Stochastic Block Model graphs and real-life datasets. We observe that our best pipelines (Wasserman-Faust and the mutual information-based PPMI proximity, as well as the deep learning-based DNGR representations) perform competitively with the state-of-the-art Leiden and Louvain algorithms. At the same time, unlike the latter, they remain hierarchical. Thus, they output a series of nested partitions of all possible cardinalities which are compatible with each other. This feature is crucial when the number of correct partitions is unknown in advance, and we show that it is obtained at near-zero practical cost in terms of partition quality. On graphs composed of many small communities, our pipelines are more accurate than the reference solutions. Nevertheless, the downside of our approach is its time complexity, which confines the framework to networks of some 10000 vertices on personal machines.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Community detection is a significant challenge in analysing real graphs, including social, citation, biological, and many other networks.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Ensembles of Random Partition-Based Models under Covariate Shift</div>
+<div class="meta-line">Authors: Mary Versa Clemens-Sewall, Eliza O&#x27;Reilly</div>
+<div class="meta-line">First: 2026-11-03T16:47:21+00:00 · Latest: 2026-11-03T16:47:21+00:00</div>
+<div class="meta-line">Comments: 29 pages, 3 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05195v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05195v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Distribution shifts, including covariate shifts, are ubiquitous in real-world applications of machine learning. Empirical evidence suggests that, across a variety of models with and without downstream adaptation, ensembles tend to be more robust to covariate shift than single models. We extend the theory of covariate shift severity from single models to ensembles, providing theoretical justification for the empirical trends. We introduce new discrepancy measures of covariate shift severity to control the risk of partition-based kernel estimators. We then show that with sufficient ensemble size, these models can achieve minimax-optimal risk convergence rates under covariate shift. Our results suggest that modelers can expect to need larger ensemble sizes for more severe covariate shifts.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Distribution shifts, including covariate shifts, are ubiquitous in real-world applications of machine learning.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Bang-Bang Correlation Sensitivity: A Local-to-Global Dichotomy for Correlation Preference</div>
+<div class="meta-line">Authors: Yi-Chun Chen, Soo Hong Chew, Xinhan Zhang</div>
+<div class="meta-line">First: 2026-11-03T16:44:04+00:00 · Latest: 2026-11-03T16:44:04+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05188v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05188v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Binary choice under risk can depend on how the alternative outcomes are jointly distributed. We show that in a finite outcome space, continuity, completeness, and betweenness impose a local-to-global restriction on this dependence: indifference between two alternatives with one common marginal distribution, however their outcomes are jointly distributed, implies correlation insensitivity for all lotteries supported on the same outcomes. In the correlation-sensitive case, these three axioms alone characterize correlation weighted utility, which combines statewise comparisons with a bilinear function of the marginal lotteries. In the correlation-insensitive case, an additional projective independence axiom yields Fishburn&#x27;s (1982) skew-symmetric bilinear representation. Strong independence reduces correlation weighted utility to Lanzani&#x27;s (2022) correlation expected utility representation. We extend the correlation-sensitive characterization to finitely supported lotteries on general metrizable outcome spaces. The resulting framework distinguishes correlation effects from departures from classical independence, and yields testable restrictions linking choices between identically distributed lotteries to correlated Allais behavior.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Binary choice under risk can depend on how the alternative outcomes are jointly distributed.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261102_0634.html">20261102_0634</a>
+<a href="archive/20261101_0609.html">20261101_0609</a>
+<a href="archive/20261029_0657.html">20261029_0657</a>
+<a href="archive/20261026_0522.html">20261026_0522</a>
+<a href="archive/20261025_0524.html">20261025_0524</a>
+<a href="archive/20261022_0604.html">20261022_0604</a>
+<a href="archive/20261019_0514.html">20261019_0514</a>
+<a href="archive/20261018_0512.html">20261018_0512</a>
+<a href="archive/20261015_0601.html">20261015_0601</a>
+<a href="archive/20261012_0640.html">20261012_0640</a>
+<a href="archive/20261011_0611.html">20261011_0611</a>
+<a href="archive/20261008_0727.html">20261008_0727</a>
+<a href="archive/20261005_0611.html">20261005_0611</a>
+<a href="archive/20261004_0558.html">20261004_0558</a>
+<a href="archive/20261001_0647.html">20261001_0647</a>
+<a href="archive/20260928_0550.html">20260928_0550</a>
+<a href="archive/20260927_0546.html">20260927_0546</a>
+<a href="archive/20260924_0559.html">20260924_0559</a>
+<a href="archive/20260921_0510.html">20260921_0510</a>
+<a href="archive/20260920_0515.html">20260920_0515</a>
+<a href="archive/20260917_0555.html">20260917_0555</a>
+<a href="archive/20260913_0510.html">20260913_0510</a>
+<a href="archive/20260910_0530.html">20260910_0530</a>
+<a href="archive/20260907_0502.html">20260907_0502</a>
+<a href="archive/20260906_0455.html">20260906_0455</a>
+<a href="archive/20260903_0532.html">20260903_0532</a>
+<a href="archive/20260831_0550.html">20260831_0550</a>
+<a href="archive/20260830_0530.html">20260830_0530</a>
+<a href="archive/20260827_0536.html">20260827_0536</a>
+<a href="archive/20260824_0320.html">20260824_0320</a>
+<a href="archive/20260823_0319.html">20260823_0319</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260817_0318.html">20260817_0318</a>
+<a href="archive/20260816_0319.html">20260816_0319</a>
+<a href="archive/20260813_0400.html">20260813_0400</a>
+<a href="archive/20260810_0330.html">20260810_0330</a>
+<a href="archive/20260809_0326.html">20260809_0326</a>
+<a href="archive/20260806_0423.html">20260806_0423</a>
+<a href="archive/20260803_0408.html">20260803_0408</a>
+<a href="archive/20260802_0408.html">20260802_0408</a>
+<a href="archive/20260730_0410.html">20260730_0410</a>
+<a href="archive/20260727_0411.html">20260727_0411</a>
+<a href="archive/20260726_0409.html">20260726_0409</a>
+<a href="archive/20260723_0410.html">20260723_0410</a>
+<a href="archive/20260720_0406.html">20260720_0406</a>
+<a href="archive/20260719_0403.html">20260719_0403</a>
+<a href="archive/20260716_0405.html">20260716_0405</a>
+<a href="archive/20260713_0405.html">20260713_0405</a>
+<a href="archive/20260712_0404.html">20260712_0404</a>
+<a href="archive/20260709_0419.html">20260709_0419</a>
+<a href="archive/20260706_0411.html">20260706_0411</a>
+<a href="archive/20260705_0408.html">20260705_0408</a>
+<a href="archive/20260702_0447.html">20260702_0447</a>
+<a href="archive/20260629_0411.html">20260629_0411</a>
+<a href="archive/20260628_0422.html">20260628_0422</a>
+<a href="archive/20260625_0445.html">20260625_0445</a>
+<a href="archive/20260622_0422.html">20260622_0422</a>
+<a href="archive/20260621_0414.html">20260621_0414</a>
+<a href="archive/20260618_0503.html">20260618_0503</a>
+<a href="archive/20260615_0416.html">20260615_0416</a>
+<a href="archive/20260614_0413.html">20260614_0413</a>
+<a href="archive/20260611_0525.html">20260611_0525</a>
+<a href="archive/20260608_0409.html">20260608_0409</a>
+<a href="archive/20260607_0408.html">20260607_0408</a>
+<a href="archive/20260604_0547.html">20260604_0547</a>
+<a href="archive/20260601_0406.html">20260601_0406</a>
+<a href="archive/20260531_0406.html">20260531_0406</a>
+<a href="archive/20260528_0459.html">20260528_0459</a>
+<a href="archive/20260524_0405.html">20260524_0405</a>
+<a href="archive/20260521_0459.html">20260521_0459</a>
+<a href="archive/20260518_0403.html">20260518_0403</a>
+<a href="archive/20260517_0402.html">20260517_0402</a>
+<a href="archive/20260514_0430.html">20260514_0430</a>
+<a href="archive/20260511_0400.html">20260511_0400</a>
+<a href="archive/20260510_0356.html">20260510_0356</a>
+<a href="archive/20260507_0419.html">20260507_0419</a>
+<a href="archive/20260504_0353.html">20260504_0353</a>
+<a href="archive/20260503_0353.html">20260503_0353</a>
+<a href="archive/20260430_0409.html">20260430_0409</a>
+<a href="archive/20260427_0344.html">20260427_0344</a>
+<a href="archive/20260426_0342.html">20260426_0342</a>
+<a href="archive/20260423_0403.html">20260423_0403</a>
+<a href="archive/20260420_0340.html">20260420_0340</a>
+<a href="archive/20260419_0339.html">20260419_0339</a>
+<a href="archive/20260416_0402.html">20260416_0402</a>
+<a href="archive/20260413_0337.html">20260413_0337</a>
+<a href="archive/20260412_0333.html">20260412_0333</a>
+<a href="archive/20260409_0358.html">20260409_0358</a>
+<a href="archive/20260406_0332.html">20260406_0332</a>
+<a href="archive/20260405_0329.html">20260405_0329</a>
+<a href="archive/20260402_0405.html">20260402_0405</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>

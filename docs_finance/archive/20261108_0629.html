@@ -1,0 +1,522 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递 - Finance</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#dc2626;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#dc2626;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递 - Finance</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-11-08 06:29</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261108_0629</div>
+    <div class="row"><div class="card">
+<div class="title">XStack: A Benchmark for ML Repo Migration</div>
+<div class="meta-line">Authors: Linrong Cai, Taiming Lu, Haozhe Chen, Zhuang Liu</div>
+<div class="meta-line">First: 2026-11-05T18:55:54+00:00 · Latest: 2026-11-05T18:55:54+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08472v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08472v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">ML code should run where researchers choose, not where it was first written. Today, machine learning code mainly lives in two ecosystems, PyTorch on NVIDIA GPUs and JAX on Google TPUs. Migrating repositories between them means building and testing across frameworks and hardware. This migration is (1) a practical need, since it unlocks different hardware for researchers, and (2) a natural benchmark: it involves different frameworks and hardware, covers whole repositories, and is long-horizon and challenging. We introduce XStack, a benchmark that evaluates agents on migrating ML repositories between these two ecosystems. Each agent receives a PyTorch repository and a clean TPU machine and must deliver a JAX repository. Its output passes if it meets our grading criteria, based on the source repository&#x27;s published result, authenticated and calibrated by us. Migration by agents remains unreliable: Claude Opus 5 passes 75%, GPT-5.6-sol 45%, and every other agent at most 40%. XStack is a step toward freeing ML code from its ecosystem. We release XStack to make progress toward reliable migration across frameworks and hardware measurable.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">ML code should run where researchers choose, not where it was first written.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">An Accelerated Proximal Gradient Method for Bures-Wasserstein Space</div>
+<div class="meta-line">Authors: Jakob Nylöf, Sloan Nietert, Julien Pallage, Giancarlo Ferrari-Trecate, Daniel Kuhn, John Lygeros</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-11-05T18:55:10+00:00 · Latest: 2026-11-05T18:55:10+00:00</div>
+<div class="meta-line">Comments: Submitted on September 2 to the Geometric Distributional Deep Learning workshop at NeurIPS 2026, accepted</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08468v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08468v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We study composite optimization over the Bures--Wasserstein (BW) space of Gaussian measures. Our main observation is that a useful class of BW problems can be lifted into the Euclidean space of affine transport maps, such that the lifted problems can be solved efficiently using accelerated proximal gradient methods. For objectives whose smooth and nonsmooth components admit convex smooth and convex proximable affine lifts, respectively, our algorithm BW-FISTA achieves minimax-optimal objective gap $O(k^{-2})$ after $k$ iterations. We verify these regularity conditions for potential and interaction energies together with common spectral regularizers, and we treat stochastic gradients under a suitable noise model. As a principal application, we consider Gaussian variational inference with a log-concave, log-smooth target. Here, the resulting entropy term is handled by an efficient, exact proximal step, and we improve the previous rate of $O(k^{-1})$ to $O(k^{-2})$. We numerically verify this predicted boost with synthetic experiments.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We study composite optimization over the Bures--Wasserstein (BW) space of Gaussian measures.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Quantum Knowledge Distillation: State-of-the-art, Applications and Open Problems</div>
+<div class="meta-line">Authors: Aldana Al-Sulaiti, Kuan-Cheng Chen, Muhammad Bilal Akram Dastagir, Ahmed Farouk, Saif Al-Kuwari</div>
+<div class="meta-line">First: 2026-11-05T18:53:05+00:00 · Latest: 2026-11-05T18:53:05+00:00</div>
+<div class="meta-line">Comments: 21 pages, 3 figures, 4 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08461v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08461v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Knowledge distillation transfers predictions, representations, or other supervisory information between learning models and is increasingly investigated in quantum machine learning. Its applications extend beyond compression to cross-architecture transfer, circuit approximation, distributed learning, and classical deployment of models trained using quantum-derived supervision. This survey reviews these approaches using two complementary classification axes: teacher-student configuration and the role of quantum resources in the distillation process. Quantum-inspired methods are discussed separately from methods that simulate quantum computations classically or execute them on quantum hardware. We explain how measurement probabilities, expectation values, classical readouts, state overlaps, and circuit-level objectives support different transfer mechanisms. We then critically assess the presented results against baseline design, execution conditions, uncertainty, and resource costs. The evidence shows that distillation can improve selected quantum students, but benefits are task- and architecture-dependent, and several studies find negligible gains or even performance degradation. Evaluations on physical quantum hardware remain limited, with some testing individual quantum components rather than complete learning pipelines. Heterogeneous protocols and incomplete resource reporting prevent general conclusions about practical quantum advantage. We identify priorities for controlled benchmarking, noise-aware learning, reproducible evaluation, and efficient transfer between quantum and classical models.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Knowledge distillation transfers predictions, representations, or other supervisory information between learning models and is increasingly investigated in quantum machine learning.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Adversarial Training with Large Step Sizes: Implicit Bias, Optimization, and Sharpness</div>
+<div class="meta-line">Authors: Yi Feng, Andrea Paudice</div>
+<div class="meta-line">First: 2026-11-05T18:48:50+00:00 · Latest: 2026-11-05T18:48:50+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08457v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08457v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Adversarial Training (AT) is an important method for improving model robustness. We study the dynamics of deterministic Gradient Descent (GD) in AT. Most existing works in this direction focus on the small or vanishing step sizes regime, where GD resembles a continuous-time flow. However, such step sizes can make training inefficient and are rarely used in practice. In this paper, we study the AT dynamics of GD with large constant step sizes. We first study GD in adversarial linear logistic regression, focusing on two aspects: where the model parameters converge (implicit bias) and how quickly the losses decrease (optimization). We then turn to neural networks training and study how the sharpness of losses evolve during AT. Our results advance the understanding of the behaviors of GD with large step sizes in AT and highlight three key differences from its behavior in Standard Training (ST): (i) the implicit bias gap between AT and ST, previously established only for small step sizes, persists for arbitrarily large constant step sizes, (ii) different from ST, there is no uniform rate of convergence for the optimization error in AT, and (iii) sharpness can exhibit two-stage dynamics that differ from the Edge-of-Stability behavior observed in ST.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Adversarial Training (AT) is an important method for improving model robustness.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">ReproBridge: Building Reproducibility into ML Research Artifacts</div>
+<div class="meta-line">Authors: Yubo Wang, Rui Meng, Jaehyun Nam, Tomas Pfister, Jinsung Yoon</div>
+<div class="meta-line">First: 2026-11-05T18:45:36+00:00 · Latest: 2026-11-05T18:45:36+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08452v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08452v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Reproducing machine learning experiments requires reconstructing procedures from information scattered across papers, released code, and supporting artifacts. For coding agents, reproduction success can therefore depend on their ability to fill in missing details, rather than on the released artifacts alone. We ask whether preserving recovered procedures and decisions improves subsequent independent reproduction. We define a standardized artifact design comprising a refined codebase, environment setup, experiment launchers, and a reproduction guide, and introduce ReproBridge, an agent workflow for constructing these refined reproducible artifacts. ReproBridge-Bench provides 1,029 tasks from 387 experiments across 36 papers, anchored by five human-verified reference scores per task. Agents attempt tasks in fresh sessions with raw code or refined artifacts; a separate Auditor checks execution evidence. Across four evaluated models, refined artifacts raise mean reproduction success from 76.4% to 92.6% and reduce downstream API spending by 19.7% on average. The cross-model success-rate spread narrows from 21.6 to 3.9 percentage points, with all four models achieving mean success rates above 90%. Removing any component reduces success in the ablation study, with the largest losses from code and environment removal. These results suggest that preserving execution knowledge helps even models with lower raw-code success reproduce experiments more reliably and at lower API cost.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Reproducing machine learning experiments requires reconstructing procedures from information scattered across papers, released code, and supporting artifacts.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Deep-learning surrogate model for rapid quantum-noise computation in dual-pump fiber-optic phase-sensitive amplifiers</div>
+<div class="meta-line">Authors: Yousra Bouasria, Debanuj Chatterjee, Abdessamad Belfakir, Debabrota Basu</div>
+<div class="meta-line">First: 2026-11-05T18:30:14+00:00 · Latest: 2026-11-05T18:30:14+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08437v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08437v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Fiber-optic parametric amplifiers in a phase-sensitive amplifier (PSA) configuration are well known for their low noise properties. Quantum mechanics dictates that these amplifiers can have a 0 dB noise figure (NF) (ratio of signal-to-noise ratio at the input and output of the amplifier) under certain conditions. However, for a dual-pump configuration, when the system is highly nonlinear, fully quantum calculations of NF become non-trivial. In such cases, semi-quantum models of NF evaluation exists, however, they are often complicated and resource intensive. To simplify that, in this work, first we use a semi-quantum NF calculation framework for the generation of numerically simulated input-output dataset of NF over a large parameter spaces. Then we use the data to train an optimized deep neural network (DNN) for rapid NF prediction. Utilizing the DNN, we demonstrate about 400 times reduction in the computation time compared to the standard semi-quantum NF evaluation approach with a mean absolute error (MAE) of 0.0015 dB. Using clustering we demonstrate a rapid exploration of the parameter space with respect to high gain (20 dB) and low NF (0.3 dB) targets and retrieve associated design parameters. These results illustrate the efficacy of machine learning-based approaches for rapid search of high-dimensional parameter spaces especially in compute intensive photonic systems.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Fiber-optic parametric amplifiers in a phase-sensitive amplifier (PSA) configuration are well known for their low noise properties.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">DiffSequence-Q: Diffusion Design with Quantum Assistance for Biologically Active Proteins</div>
+<div class="meta-line">Authors: Ke-Xin Tang, Zhen-Qiang Weng, Kai Yan, Yao-Yao Lu, Yu-Ze Zhu, Hang Song, Jun-Jie He, Jie-Cheng Yang, Xiang Zhao, Lin Yang, Xian-Min Jin</div>
+<div class="meta-line">First: 2026-11-05T18:28:09+00:00 · Latest: 2026-11-05T18:28:09+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08434v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08434v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Designing protein sequences that satisfy both secondary structure requirements and solubility targets remains challenging. We present DiffSequence-Q, a hybrid multinomial diffusion model conditioned on secondary structure at each residue and a continuous solubility target. To introduce quantum auxiliary supervision during training, we employ a quantum neural network (QNN) or quantum Kolmogorov-Arnold network (QKAN) as an auxiliary solubility prediction head over shared Transformer representations. The auxiliary prediction loss is jointly optimized with the diffusion objective, allowing quantum auxiliary supervision to influence the learned denoising model. Once trained, protein sequences are generated entirely through classical reverse diffusion. On the CATH benchmark, DiffSequence-Q achieved the highest secondary structure recovery among the four evaluated models for complete sequence generation. Evaluation with a separately trained solubility prediction model showed that the best QNN and QKAN configurations achieved mean predicted solubility scores 14.0% and 22.7% higher than the multilayer perceptron (MLP) baseline, respectively. Experimental characterization further demonstrated biological activity across three distinct protein families. Selected defensins exhibited pronounced inhibitory activity against Aspergillus niger, while xylanases and short-chain dehydrogenases exhibited substantial enzymatic activity. Together, these results support DiffSequence-Q as a framework for integrating structural requirements and solubility targets in protein generation, with experimentally demonstrated biological activity.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Designing protein sequences that satisfy both secondary structure requirements and solubility targets remains challenging.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Cross-Border Ownership and Input Access: Evidence from the Lithium Supply Chain</div>
+<div class="meta-line">Authors: Kei Irizawa</div>
+<div class="meta-line">First: 2026-11-05T18:23:47+00:00 · Latest: 2026-11-05T18:23:47+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08430v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08430v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">How does cross-border ownership shape the lithium supply chain? Using global data on mines and refineries, I estimate a model in which ownership can lower refiners&#x27; effective ore costs, encourage mines to restrict spot sales, and soften competition. To study these effects, I examine policies motivated by national security concerns about reliable access to critical mineral inputs: divestiture of Chinese stakes in overseas producers and a ban on ore exports to China. Divestiture increases spot ore supply but leaves lithium output nearly unchanged, while continued trade preserves Chinese access to ore. The export ban reduces global lithium supply because refining capacity elsewhere cannot fully replace lost Chinese production. Ownership transfers do not reserve ore for domestic production; restricting Chinese access imposes a substantial supply cost at existing capacities.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">How does cross-border ownership shape the lithium supply chain?</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Implicit Regularization via Spectral Neural Networks and Non-linear Matrix Sensing</div>
+<div class="meta-line">Authors: Hong T. M. Chu, Xiaoyu Dong, Subhro Ghosh, Chi Thanh Lam, Soumendu Sundar Mukherjee</div>
+<div class="meta-line">First: 2024-02-27T15:28:01+00:00 · Latest: 2026-11-05T18:23:13+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2402.17595v2">Abs</a> · <a href="https://arxiv.org/pdf/2402.17595v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The phenomenon of implicit bias has attracted interest in recent years as a fundamental aspect of the remarkable generalizing ability of neural networks. In a nutshell, it entails that gradient descent dynamics in many neural nets, even without any explicit regularizer in the loss function, converges to the solution of a regularized learning problem.
+  In this work, we show that this phenomenon extends to non-linear spectral parameterizations in matrix sensing. More precisely, we propose a matrix network architecture called Spectral Neural Networks (abbrv. SNN) where each neuron applies nonlinear activation to the singular values of the input matrix. Conceptually, this entails coordinatizing the space of matrices by their singular values and singular vectors, as opposed to by their entries, a potentially fruitful perspective for matrix learning. We prove the exponentially fast decay of squared loss during the training dynamics of an SNN parameterized matrix sensing model under gradient flow (which is a continuous approximation of the discrete gradient descent), and also that the training implicitly selects an approximate solution that minimizes nuclear norm. We also demonstrate the effectiveness of the SNN architecture in the context of matrix sensing by empirical investigations. We believe that the SNN architecture has the potential to be of wide applicability in a broad class of matrix learning scenarios.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The phenomenon of implicit bias has attracted interest in recent years as a fundamental aspect of the remarkable generalizing ability of neural networks.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Data-driven discovery of intrinsic Lie point symmetries of differential equation systems</div>
+<div class="meta-line">Authors: Ilker Gurcan, Kadir Ustun, Ramazan Gokberk Cinbis</div>
+<div class="meta-line">First: 2026-11-05T18:19:28+00:00 · Latest: 2026-11-05T18:19:28+00:00</div>
+<div class="meta-line">Comments: 63 pages, 10 figures. Code and data availability statements are included in the manuscript</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08421v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08421v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Discovering continuous symmetries directly from differential-equation data can reveal geometric structure for model reduction and scientific machine learning without symbolic determining equations or a closed-form representation of the governing system. We formulate intrinsic Lie point-symmetry discovery as an operator-theoretic problem on sampled jet-space data. Admissible generators are identified from a sampled determining operator and separated from redundant, solution-dependent, and geometrically trivial directions. The framework combines prolongation, sequential subspace restrictions, and a fixed nonlinear dictionary linear in trainable coefficients. A rank-stabilization preflight test diagnoses systems whose represented intrinsic symmetry algebra does not stabilize under dictionary refinement. On a controlled differential-equation benchmark with an analytically known 11-dimensional represented intrinsic symmetry algebra, the method recovers the complete represented generator set, reproduces its Lie-bracket structure to numerical precision, and approximates a known generator beyond the training domain. Here we show that explicit intrinsic continuous-symmetry generators can be recovered from data obtained from exact or approximate differential systems.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Discovering continuous symmetries directly from differential-equation data can reveal geometric structure for model reduction and scientific machine learning without symbolic determining equations or a closed-form representation of the governing system.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">On the limitations of molecular representations</div>
+<div class="meta-line">Authors: Acer Blake, Fergus Imrie, Charlotte M. Deane</div>
+<div class="meta-line">First: 2026-11-05T18:19:19+00:00 · Latest: 2026-11-05T18:19:19+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08420v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08420v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Molecular representations such as fingerprints and learned embeddings play a central role in cheminformatics and small-molecule machine learning. They serve as the primary input for a diverse array of tasks, including clustering, dataset splitting, and virtual screening, yet their evaluation is often limited to downstream model performance on narrow benchmark tasks. We carried out a systematic investigation of the quality of molecular representations, finding that none of the state-of-the-art molecular embedding models capture graph structure, 3D shape, or ADMET endpoint similarity better than fingerprints or physicochemical descriptors. However, classical fingerprints also revealed their own material limitations. For example, we show that depending on the representation, between 225M and $\sim$4B molecules have non-unique representations in the 10.8B Enamine REAL database, with implications for virtual screening. Our findings provide an insight into the current limitations of molecular representations, outlining future research directions for the development of more robust encodings of small molecules.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Molecular representations such as fingerprints and learned embeddings play a central role in cheminformatics and small-molecule machine learning.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Conformal Prediction for Time-Dependent PDEs</div>
+<div class="meta-line">Authors: Joshua Stiller, Annika Schneider, Eyke Hüllermeier</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-11-05T18:15:42+00:00 · Latest: 2026-11-05T18:15:42+00:00</div>
+<div class="meta-line">Comments: Accepted at NeurIPS 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08409v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08409v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Uncertainty quantification is crucial in scientific machine learning, where models inform safety-critical tasks such as flood forecasting, financial risk management, and thermal control in machines. Conformal prediction provides distribution-free coverage guarantees, but in time-dependent settings common to physics and engineering, these guarantees can break down, leading to systematic undercoverage. We study this problem in the context of surrogate models for time-dependent physical systems described by partial differential equations. We prove that in a function space setting, distributions at arbitrarily close times can be mutually singular, making exact coverage guarantees impossible. We further show that in discretized settings, the total variation distance between distributions often saturates exponentially fast with the grid resolution, mandating restrictions on the spatial discretization to ensure coverage. Finally, for certain settings, we show how to use principled weighted conformal prediction to obtain finite-sample coverage guarantees over growing time horizons.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Uncertainty quantification is crucial in scientific machine learning, where models inform safety-critical tasks such as flood forecasting, financial risk management, and thermal control in machines.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Synaptic Multi-Weight Wafer-Scale Domain Wall Magnetic Tunnel Junctions Driven by Spin Orbit Torque</div>
+<div class="meta-line">Authors: Nicholas Zogbi, Domenico Giuliano, Vaishnavi Kateel, Van Dai Nguyen, Jyotirmoy Chatterjee, Alvaro Palomino, Robert Carpenter, Siddharth Rao, Jean Anne C. Incorvia</div>
+<div class="meta-line">First: 2026-11-05T18:13:45+00:00 · Latest: 2026-11-05T18:13:45+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08405v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08405v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Spintronic synaptic devices based on magnetic random access memory (MRAM) are a rapidly evolving class within the analog neuromorphic architecture. However, obtaining the multi-weight or analog behavior desired for improved neural network inference accuracy in scaled MRAM remains a challenge. In this study, we demonstrate and tune up to eight distinct resistance levels in 300 mm wafer-scale magnetic tunnel junction artificial synapses driven by spin orbit torque. By varying the applied in-plane field, multi-weight resistance states emerge through domain wall nucleation and pinning. These multi-weight states appear stochastically and can be addressed with an iterative programming algorithm to program a specific resistance. Electromagnetic simulations indicate the multiple states are due to domain wall nucleation mediated by in-plane field and applied voltage. Implementation of the measured multi-weight devices in a neural network yields a 96.1% inference accuracy using the MNIST dataset if all devices provide the same number of multi-weight states. When experimental device-to-device variation is included, the accuracy is 48.6%. Overall, this work demonstrates a route towards multi-weight artificial synapse MRAM, establishing a path towards scalable neuromorphic systems based on spintronics.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Spintronic synaptic devices based on magnetic random access memory (MRAM) are a rapidly evolving class within the analog neuromorphic architecture.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Learning a patient world model for health system simulation in intensive care</div>
+<div class="meta-line">Authors: Yingtai Li, Ruoyan Wang, Yu Li, Shaohua Kevin Zhou</div>
+<div class="meta-line">First: 2026-11-05T18:06:42+00:00 · Latest: 2026-11-05T18:06:42+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08392v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08392v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Designing healthcare strategies requires anticipating their clinical and operational consequences before implementation, a task that often relies on health system simulation. Such a simulation necessitates modeling how patient states evolve and generate care demands. However, conventional approaches typically tailor compact state transitions to a single policy question and omit history-dependent dynamics, thus requiring the redefinition of states and transitions when there is a new question that entails different clinical information. We propose to learn a patient world model from longitudinal EHRs using a neural network to provide a shared clinical representation of patient trajectories that can serve simulation questions across scenarios. Taking ICU operations as an example, we train the model on MIMIC-IV, freeze it, and couple its time-queryable predictions to shared ICU calendars, resources, and queues via scenario-specific mappings, so that one model renders admission demand, care tasks, and discharge proposals across simulations evaluating ICU bed capacity, care dispatch, and post-ICU transfer capacity. Experiments show that our model matches Markov and semi-Markov comparators in aggregate occupancy and directional responses to capacity and dispatch policies. It also reproduces policy gains from replayed observed trajectories. For patients entering the same support state from different prior trajectories, the learned representation captures a 24-h recovery difference (-6.4 predicted versus -6.7 observed percentage points), a contrast missed by compact state models, which propagates into distinct simulated care demand, queue burden, and bed use. These results indicate that a learned world model of patient dynamics has the potential to replace question-specific state models, allowing new care policies to be evaluated by reconfiguring the scenario without model rebuilding.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Designing healthcare strategies requires anticipating their clinical and operational consequences before implementation, a task that often relies on health system simulation.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">GPU-accelerated Regularized Vector Multiplicative Error Models for Positive-valued Financial Time Series</div>
+<div class="meta-line">Authors: Rohan Hemant Chhatre, Chiranjit Dutta, Nalini Ravishanker, Sumanta Basu</div>
+<div class="meta-line">First: 2026-10-06T14:35:04+00:00 · Latest: 2026-11-05T18:05:21+00:00</div>
+<div class="meta-line">Comments: ISBIS-STATFIN Conference 2026 contributed talk (Conference link: https://statfin.cmi.ac.in/ISBIS2026/, Talk link: https://statfin.cmi.ac.in/ISBIS2026/#:~:text=72-,Rohan%20Chattre,-UConn)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.08443v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.08443v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The logarithmic vector multiplicative error model (log-vMEM) provides a methodology for modeling and forecasting multivariate positive-valued time series. However, the number of autoregressive parameters increases rapidly with the system dimension and lag order, posing challenges for estimation and model selection. This paper develops a regularized estimation framework for the log-vMEM with multivariate Gamma errors by incorporating hierarchical lag structures to induce sparsity and accommodate heterogeneous lag dynamics. We consider three hierarchical lag structures: componentwise, own-other, and elementwise, in combination with group lasso, group MCP, and group SCAD, adaptive group lasso penalties. Parameter estimation is carried out through an alternating block-coordinate optimization algorithm with sequential Gauss-Seidel updates, while GPU-accelerated numerical quadrature is employed to address the computational burden of evaluating the multivariate Gamma likelihood. Simulation experiments investigate parameter recovery and lag selection under different sparsity structures. The real data analysis is carried out on the realized volatility measures for Microsoft (NASDAQ:MSFT) which allows a comparison of the competing regularization approaches in an empirical financial setting. Together, these developments provide a computational framework for sparse multivariate volatility modeling with flexible lag structures and dependent Gamma errors.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The logarithmic vector multiplicative error model (log-vMEM) provides a methodology for modeling and forecasting multivariate positive-valued time series.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Hybrid Machine Learning for Imbalanced Landing-Phase Safety Event Prediction from Flight Data</div>
+<div class="meta-line">Authors: Taha Asghar, Bilal Mufti, Syed Qasim Zaheer, Luqman Ahmed</div>
+<div class="meta-line">First: 2026-11-05T18:04:26+00:00 · Latest: 2026-11-05T18:04:26+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08386v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08386v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Landing-phase safety-event prediction requires the detection of rare abnormal approaches within strongly imbalanced multivariate flight data. Capturing coupled temporal behavior while distinguishing event-specific signatures across airport operating contexts remains a central modeling challenge. This study proposes an interpretable hybrid feature-fusion framework for multiclass landing-phase safety-event prediction. A long short-term memory (LSTM) autoencoder trained on nominal flight windows characterizes deviations from routine approach behavior. Its continuous reconstruction-error descriptor is fused with parameter-specific statistical flight-history features and supplied to a class-weighted XGBoost classifier to distinguish Normal, Speed High, Path High, and Flaps Late windows. The framework is evaluated using 53,750 NASA DASHlink approach windows from three arrival airports. Pooled and airport-specific learning strategies are compared alongside component-level benchmarks, repeated pipeline retraining, and feature-attribution analysis. The results demonstrate strong class-balanced detection, with mean macro recall above 0.90 across all airports under repeated partitioning and retraining. Component comparisons establish the importance of class weighting and show that continuous feature fusion outperforms reconstruction-error-only and hard-gate alternatives. Airport-level comparisons reveal benefits from local specialization at the two airports with larger datasets and from pooled training at the airport with the smallest dataset. Feature attributions associate predictions with operationally relevant vertical-path, configuration, speed, and approach-context variables. The framework provides an interpretable approach to rare-event detection and practical guidance for adapting flight-data monitoring models to airport-level data availability.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Landing-phase safety-event prediction requires the detection of rare abnormal approaches within strongly imbalanced multivariate flight data.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">More accurate behavioral predictions with hybrid Bayesian-connectionist models</div>
+<div class="meta-line">Authors: Brenden M. Lake, Akshay K. Jagadish, Guangyuan Jiang</div>
+<div class="meta-line">First: 2026-08-23T00:50:47+00:00 · Latest: 2026-11-05T18:03:42+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.22154v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.22154v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Researchers must often choose between Bayesian or neural network models of behavior, two paradigms with complementary strengths and weaknesses. An ideal paradigm would facilitate testing many kinds of representations and inductive biases; Bayesian models make this easy, while neural networks do not. Similarly, an ideal paradigm would avoid over-simplifications; neural networks make this easy, while Bayesian models do not. Here, we introduce Bayesian distillation with Behavioral Tuning (BBT) as an approach to getting the best of both traditions. BBT offers a simple recipe for model building: first, a neural network is trained to mimic a Bayesian model through synthetic data, and second, the network is fine-tuned on human behavior to capture additional structure and nuance. Across four case studies in human concept learning, we find that BBT outperforms traditional approaches at predicting human behavior while also revealing psychological insights, resulting in models that can both mimic Bayesian priors and capture heuristics and biases that violate simple modeling assumptions.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Researchers must often choose between Bayesian or neural network models of behavior, two paradigms with complementary strengths and weaknesses.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Diffusion-Driven State Space Models</div>
+<div class="meta-line">Authors: Jack Ruder, Michael Wojnowicz</div>
+<div class="meta-line">First: 2026-06-19T02:00:40+00:00 · Latest: 2026-11-05T18:02:33+00:00</div>
+<div class="meta-line">Comments: Accepted to ProbML 2026 Workshop Track</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2606.21036v2">Abs</a> · <a href="https://arxiv.org/pdf/2606.21036v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In many domains, practitioners seek models that produce accurate forecasts while faithfully capturing latent system dynamics. Existing approaches typically sacrifice one of these goals: deep state space models often assume Gaussian latent transitions, limiting fit and forecasting, while diffusion models are highly expressive but lack principled inference for the underlying dynamics. To combine the strengths of both, we introduce the Diffusion-Driven State Space Model (DDSSM), which replaces the conventional Gaussian transition distribution with a diffusion model. Our DDSSM resolves the open problem of how to jointly train an autoencoder and a diffusion model on sequential data, thereby extending the literature on latent diffusion models for time series. Moreover, we find that the DDSSM empirically outperforms a state-of-the-art deep SSM at fitting and forecasting a simulated time series with multimodal transitions.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In many domains, practitioners seek models that produce accurate forecasts while faithfully capturing latent system dynamics.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Module-Aware Optimization for Graph Neural Networks</div>
+<div class="meta-line">Authors: Guy Hadad, Haggai Roitman, Moshe Eliasof, Bracha Shapira</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-11-05T17:56:33+00:00 · Latest: 2026-11-05T17:56:33+00:00</div>
+<div class="meta-line">Comments: NeurIPS 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08379v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08379v1">PDF</a> · <a href="https://github.com/guy-hadad/GraphMuon">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Different optimizers impose different geometries on parameter updates. Adaptive methods such as Adam and AdamW use coordinate-wise updates, while matrix-aware optimizers such as Muon utilize weight-matrix structure through orthogonalized updates. For Graph Neural Networks (GNNs), however, the effective geometry of its weight matrices is shaped not only by its learned channel-mixing weights, but also by the graph-propagated representations it acts on. Thus, even if an update is well normalized as a matrix, its effect on the layer output can be amplified when applied to graph-propagated features. To address this gap, we introduce GraphMuon, a graph-aware optimizer that adapts Muon&#x27;s matrix updates to the covariance structure of graph-propagated layer inputs. GraphMuon performs orthogonalization in a metric defined by these propagated representations and normalizes step sizes according to the update&#x27;s induced effect on the layer representation. We show that theoretically, vanilla Muon can suffer from graph-induced update amplification, while our GraphMuon can mitigate this effect. As such, our GraphMuon yields a graph-metric analogue of Muon&#x27;s polar update step. Empirically, GraphMuon achieves $1.32\times$-$2.42\times$ validation-loss time-to-target speedups over AdamW on three large-scale OGB benchmarks. Across 15 dataset-architecture configurations spanning node classification, inductive graph classification, and graph regression, it achieves lower time-to-target in 13 cases, while maintaining competitive or superior predictive performance. Code is available at https://github.com/guy-hadad/GraphMuon.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Different optimizers impose different geometries on parameter updates.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Information Games: Strategic Crowding and Firm Repositioning in Language-Model Space</div>
+<div class="meta-line">Authors: Marcus Gawronsky, Chun-Sung Huang</div>
+<div class="meta-line">First: 2026-09-29T15:30:02+00:00 · Latest: 2026-11-05T17:56:23+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.37820v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.37820v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">When firms respond to new market opportunities, their capacity choices alter the future discounted free cash flows available to both competitors and investors. In competitive markets, these investment decisions publicized in news articles and analyst reports, measuring the changes in capital structure, product mix, firm leadership, risk exposure and operating procedure made by the firm. Modern search engines rely on Large Language Models to measure the relevancy of source documents to given search query. These measurements let researchers represent these news articles as clouds of dense vectors whose information geometry reflects the dissimilarity of firms over time. Building on Xu et al. (2022), we develop a model of costly competitive adjustment in which firms allocate capacity in which firms make firm capacity adjustment towards free cash flow shocks. Using a novel sandwich estimator, we analyse the sign and magnitude of this predicted adjustment using multi-agent simulation, and validate our findings on a sample of news and analyst reports from Nasdaq-listed companies between 2018-2022.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">When firms respond to new market opportunities, their capacity choices alter the future discounted free cash flows available to both competitors and investors.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">OraRefer: Segmentation-Guided Multi-Photograph Fusion for Oral Cancer Screening with Guaranteed Patient-Level Sensitivity</div>
+<div class="meta-line">Authors: Rupam Mukherjee, Mehakdeep Singh, Shirin Dasgupta, Subhamoy Mandal</div>
+<div class="meta-line">First: 2026-11-05T17:39:50+00:00 · Latest: 2026-11-05T17:39:50+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08360v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08360v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Oral cancer and the oral potentially malignant disorders (OPMD) that can precede it are visible on the oral mucosa, which makes smartphone photographs a promising tool for screening. Deep learning models for this task classify individual photographs. However, screening refers patients, not photographs: a patient is usually photographed several times, and the referral decision must miss no more than a set share of patients with disease. We propose OraRefer, a patient-level screening model that reads each photograph with a segmentation-guided foundation model that conditions its class decision on the predicted lesion, combines all photographs of a patient with risk factors, and refers through a threshold with a finite-sample sensitivity guarantee. The model localizes the mouth itself, so inference needs no annotation. On 3000 photographs of 714 patients, patient-level fusion reaches an AUROC of 0.919 and outperforms attention-based multiple-instance learning. At a 90% sensitivity target, OraRefer detects 95% of patients with OPMD or cancer and misses 3 of 61 patients with cancer, at a specificity of 0.610. Because the threshold is calibrated without retraining, each clinic can set its own guaranteed operating point on a local calibration sample.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Oral cancer and the oral potentially malignant disorders (OPMD) that can precede it are visible on the oral mucosa, which makes smartphone photographs a promising tool for screening.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Unifying Central Flow, Rod Flow, and the Edge Coupling</div>
+<div class="meta-line">Authors: Eric Regis, Sinho Chewi</div>
+<div class="meta-line">First: 2026-11-05T17:37:58+00:00 · Latest: 2026-11-05T17:37:58+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08358v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08358v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">At the edge of stability, the iterates of gradient descent oscillate along the sharp directions of the Hessian. This poses a significant challenge for continuous-time models as the usual continuous-time approximation -- the gradient flow -- admits no oscillations. Several continuous-time models have been proposed to capture the behavior at the edge of stability, among them central flow and rod flow. Although both models can be interpreted as performing a coarse-graining in time, the connection between them remains poorly understood. Here we show that both flows can be derived from a third object, the edge coupling: a functional on consecutive iterates whose critical points are the fixed points and period-two orbits of gradient descent. It is revealed that the two flows correspond to coarse-grainings at different time scales. Rod flow coarse-grains over only the fastest time scale, while central flow coarse-grains over both the fast and intermediate time scales. Furthermore, using the edge coupling, we derive rod flows and central flows for momentum methods such as heavy ball and Adam. We verify the derived flows experimentally on representative neural network architectures, where they track the discrete iterates throughout all phases of training -- including the transition from the stable regime to the edge of stability.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">At the edge of stability, the iterates of gradient descent oscillate along the sharp directions of the Hessian.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Risk Ceilings and Development Deadlines: Pacing AI under Uncertain Safety Productivity</div>
+<div class="meta-line">Authors: Li Gan</div>
+<div class="meta-line">First: 2026-10-08T02:10:00+00:00 · Latest: 2026-11-05T17:33:59+00:00</div>
+<div class="meta-line">Comments: v2: full-length version, with the supplemental appendix included as Appendices C-J; v1 was a short version of the same paper</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.11093v3">Abs</a> · <a href="https://arxiv.org/pdf/2610.11093v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Can a regulator promise both a risk ceiling and a development deadline when safety productivity is unknown? A ceiling below the final model&#x27;s unprotected hazard requires a minimum stock of safety knowledge, so both promises hold only if weak research can be ruled out. Learning first and then replaying development, with spare compute in safety, comes close to that minimum. In a calibration with only state risk, constant safety yield, and full knowledge transfer, it needs only 3.3 percent more productivity than the necessary bound. Customer services pay for the guarantee. Rules that fix compute allocation fix dates, not risk.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Can a regulator promise both a risk ceiling and a development deadline when safety productivity is unknown?</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Multimagnon bound states in the polarized phase of anisotropic antiferromagnets</div>
+<div class="meta-line">Authors: A. El Mendili, M. E. Zhitomirsky</div>
+<div class="meta-line">First: 2026-11-05T17:33:30+00:00 · Latest: 2026-11-05T17:33:30+00:00</div>
+<div class="meta-line">Comments: 15 pages, 6 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08349v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08349v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We investigate single-ion bound magnon states in the high-field polarized phase of uniaxial antiferromagnets. By solving the two-particle problem exactly, we determine the dispersion of bound magnon pairs both below and above the continuum. We also obtain rigorous bounds on their binding energies by using the Gershgorin circle theorem. For spin-1 easy-axis systems, two-magnon bound states with zero total momentum emerge as low-energy excitations once the ratio of single-ion anisotropy to exchange exceeds a threshold value. As the field decreases, magnon pairs condense, driving a transition into a spin-nematic phase. Beyond the two-magnon problem, we develop a general strong-coupling approach that describes $n$-magnon single-ion bound states ($n\leq 2S$) in large-$S$ easy-axis antiferromagnets. The Bose-Einstein condensation of these multi-magnon excitations yields a rich hierarchy of field-induced multipolar phases stabilized by single-ion anisotropy. Comparisons with recent experiments on Na$_2$BaNi(PO$_4$)$_2$ and Sr$_2$CoGe$_2$O$_7$ illustrate the quantitative power of our theory.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We investigate single-ion bound magnon states in the high-field polarized phase of uniaxial antiferromagnets.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Safety Research and the Allocation of Frontier Compute</div>
+<div class="meta-line">Authors: Li Gan</div>
+<div class="meta-line">First: 2026-10-09T20:31:38+00:00 · Latest: 2026-11-05T17:16:51+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.14305v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.14305v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">During a frontier takeoff period, an AI lab splits a committed stock of compute among capability research, safety research, and customers, and a regulator limits both the services customers lose and how long any capability can be delayed. Extra safety compute can then come from customers or from capability research. Funding from capability research delays the end of the takeoff period, so the cheaper source depends on how much finishing raises customer services: customers above a threshold, capability research as well below it. Customer funding leaves capability dates unchanged, while research funding gives safety knowledge more time at the cost of later capability and customer services. The threshold is evaluated at a given allocation under a common continuation. Varying the calibration shows how delay costs, additional safety learning, and service valuation move it; in the baseline, it rises with the service budget. Customer-funded safety is front-loaded relative to customer use under the baseline timing conditions. Within the tested constant-share rules, commitment before the safety technology is known costs little unless safety work also advances capability. At the baseline budget, front-loaded customer-funded safety cuts catastrophe probability from 75 to 51 percent when full-speed catastrophe has a 75 percent probability, and from 25 to 14 percent when it has 25 percent. Either way it comes within one point of the best tested rule that also cuts capability research, and the funding threshold does not move.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">During a frontier takeoff period, an AI lab splits a committed stock of compute among capability research, safety research, and customers, and a regulator limits both the services customers lose and how long any capability can be delayed.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">VACE: Learning Geometrically Structured Representations for Time Series Anomaly Detection</div>
+<div class="meta-line">Authors: Alberto D. Cencillo, Leonardo Concepción, Isaac Triguero, Julián Luengo</div>
+<div class="meta-line">First: 2026-05-22T11:07:09+00:00 · Latest: 2026-11-05T17:13:43+00:00</div>
+<div class="meta-line">Comments: 16 pages, 5 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.23504v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.23504v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Anomaly detection in multivariate time series is a critical task across a wide range of real-world applications, where abnormal behaviour is rare, labels are unavailable, and the cost of a miss is high. The central challenge is learning a characterisation of normality precise enough to flag deviations. Representation self-supervised learning, typically through contrastive approaches, addresses this by embedding temporal patches into a latent space where normality occupies a well-defined region, with anomalies detected by geometric deviation. However, contrastive approaches shape this space indirectly through pair-sampling heuristics, providing no explicit control over the geometric structure on which distance-based scoring operates. That geometry is thus left to chance. We present VACE (Velocity-Aligned Channel Embeddings), a self-supervised anomaly detection method that represents normality as a locally smooth, directionally coherent trajectory in the embedding space. To this end, VACE trains a channel-aware encoder through a velocity-consistency objective, with no negatives and no synthetic anomalies, so that normal trajectories are locally smooth and aligned. At test time, a Mahalanobis positional score and a directional score computed against a bank of normal directions are combined multiplicatively, the directional score acting as a gate that amplifies the positional one where the local dynamics are atypical. Despite its simplicity, VACE achieves state-of-the-art performance on TSB-AD-M under rigorous evaluation, significantly outperforming more complex methods trained on substantially larger budgets.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Anomaly detection in multivariate time series is a critical task across a wide range of real-world applications, where abnormal behaviour is rare, labels are unavailable, and the cost of a miss is high.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Optimal Large-Contest Design</div>
+<div class="meta-line">Authors: Giovanni Valvassori Bolgè</div>
+<div class="meta-line">First: 2026-01-27T08:16:16+00:00 · Latest: 2026-11-05T17:12:12+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2601.19331v3">Abs</a> · <a href="https://arxiv.org/pdf/2601.19331v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In this paper, we provide a theoretical framework to analyze the optimal design of large contests, such as university admissions and research funding. Under a broad class of distributional preferences, the optimal allocation rules are step functions with at most two steps, thus rationalizing several real-world examples. From a methodological perspective, we leverage the mathematics of extreme points to characterize optimal allocation rules in environments where the distribution of efforts can be endogenous. When the designer wants to maximize aggregate effort, the optimal allocation rule sets a performance threshold and it awards prizes at random above it, provided noise is sufficiently small. When noise is larger, awarding prizes to the best performers becomes optimal.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In this paper, we provide a theoretical framework to analyze the optimal design of large contests, such as university admissions and research funding.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">LLM-Assisted Label Noise Correction for EEG-Based Sleep Stage Classification</div>
+<div class="meta-line">Authors: Elmira Salari, Shruti Kshirsagar</div>
+<div class="meta-line">First: 2026-11-05T17:12:05+00:00 · Latest: 2026-11-05T17:12:05+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08311v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08311v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Automatic sleep stage classification from electroencephalography (EEG) signals is a critical task in clinical sleep medicine. While deep learning models have shown promising results in this domain, their performance is fundamentally constrained by the quality of training labels, which human experts manually annotate and that are subject to inter-rater disagreement and systematic labeling errors. In this paper, we propose a novel LLM-assisted label-noise filtering pipeline that operates exclusively during training to identify and remove unreliable sleep-stage annotations before retraining the classifier. Specifically, TinySleepNet is first trained on the original dataset to extract per-epoch SoftMax confidence scores, then low-confidence epochs are submitted to LLaMA 3.1 along with their EEG spectral features and surrounding sequence context. The LLM evaluates each epoch against AASM sleep-scoring guidelines and assigns a verdict of RELIABLE or SUSPICIOUS. Suspicious epochs are removed from the training set, and TinySleepNet is retrained on the cleaned data. Evaluated on the Sleep-EDF Expanded dataset using 20-fold cross-validation, our method improves overall accuracy from 81.8% to 84.6% and Macro F1-score from 75.6% to 77.4%, with particularly notable gains in REM detection. Crucially, because the LLM operates only during training, the lightweight TinySleepNet architecture (1.3M parameters) is preserved at inference, making the proposed pipeline suitable for real-time, wearable sleep monitoring applications.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Automatic sleep stage classification from electroencephalography (EEG) signals is a critical task in clinical sleep medicine.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">First-Token Attraction in Mamba Dynamics</div>
+<div class="meta-line">Authors: Trinh T. Nguyen, Minh-Khoi Nguyen-Nhat, Duy-Tung Pham, Hoang-Son Do, Tan Minh Nguyen, Thieu N. Vo</div>
+<div class="meta-line">First: 2026-11-05T17:06:17+00:00 · Latest: 2026-11-05T17:06:17+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08303v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08303v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We study token dynamics in deep Mamba models, with a particular focus on the attracting role of the first token. Unlike attention mechanisms, where token interactions are governed by positive scalar coefficients, Mamba dynamics involve full matrix-valued interaction coefficients with no positivity or definiteness guarantees. This structural difference makes Mamba dynamics substantially harder to analyze and prevents the direct application of existing techniques for attention-based models. To overcome this challenge, we introduce a new analytical framework based on a high-dimensional invariant box and a sharp exit-time argument, which together recover an effective form of sign-definiteness. Using this framework, we characterize the possible limit points of token trajectories and prove explicit exponential convergence rates. Our analysis reveals that the first token has privileged dynamics: its limiting direction attracts subsequent tokens, inducing token clustering and attention-sink phenomena in deep Mamba models. We further show that this attraction mechanism extends to broader sequence dynamics, including state-space models, causal attention, and classical time-series models. Experiments on Falcon-Mamba-7B validate our predictions, showing that concentration on the first token increases with depth and dominates in later layers.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We study token dynamics in deep Mamba models, with a particular focus on the attracting role of the first token.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Residual-based error control for neural Galerkin reconstruction of minimum-norm wave controls</div>
+<div class="meta-line">Authors: Nguyen Gia Hien</div>
+<div class="meta-line">First: 2026-10-10T23:18:32+00:00 · Latest: 2026-11-05T17:06:17+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.15220v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.15220v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We analyse how errors in independently approximated adjoint waves propagate into the Hilbert Uniqueness Method (HUM) reconstruction of the minimum-$L^2$-norm interior control of a variable-coefficient wave equation. The central result is an identity: the error of the control assembled exactly from any approximate adjoints splits orthogonally into the distance of the minimum-norm control to their observation span and a moment-inconsistency term generated by their interior wave residuals. From it we derive a posteriori bounds for the returned control, including assembly and solve errors, and a continuous accept-or-refine test for the network directions returned by training; under continuous observability, a fully discrete estimate separates truncation, adjoint and assembly errors. The adjoints are computed here by adaptive Galerkin neural networks, but the bounds apply to any computed adjoints. In one-dimensional benchmarks with known minimum-norm controls, all inputs are enclosed by ball arithmetic. Without truncation the residual bounds exceed the true error by factors of 9 to 115; with sixteen adjoints outside the trial class, a truncated terminal space and all inputs computed from the target data, by about 1.08 to 6.50. In two and three dimensions, including a time-dependent coefficient, the neural controls closely reproduce reference controls of the same truncation, and at equal neuron counts trained hidden features reduce the error more than tenfold relative to random features. Classical solvers are much cheaper in all tested cases, and certification is confined to the one-dimensional benchmarks.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We analyse how errors in independently approximated adjoint waves propagate into the Hilbert Uniqueness Method (HUM) reconstruction of the minimum-$L^2$-norm interior control of a variable-coefficient wave equation.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261105_0810.html">20261105_0810</a>
+<a href="archive/20261102_0634.html">20261102_0634</a>
+<a href="archive/20261101_0609.html">20261101_0609</a>
+<a href="archive/20261029_0657.html">20261029_0657</a>
+<a href="archive/20261026_0522.html">20261026_0522</a>
+<a href="archive/20261025_0524.html">20261025_0524</a>
+<a href="archive/20261022_0604.html">20261022_0604</a>
+<a href="archive/20261019_0514.html">20261019_0514</a>
+<a href="archive/20261018_0512.html">20261018_0512</a>
+<a href="archive/20261015_0601.html">20261015_0601</a>
+<a href="archive/20261012_0640.html">20261012_0640</a>
+<a href="archive/20261011_0611.html">20261011_0611</a>
+<a href="archive/20261008_0727.html">20261008_0727</a>
+<a href="archive/20261005_0611.html">20261005_0611</a>
+<a href="archive/20261004_0558.html">20261004_0558</a>
+<a href="archive/20261001_0647.html">20261001_0647</a>
+<a href="archive/20260928_0550.html">20260928_0550</a>
+<a href="archive/20260927_0546.html">20260927_0546</a>
+<a href="archive/20260924_0559.html">20260924_0559</a>
+<a href="archive/20260921_0510.html">20260921_0510</a>
+<a href="archive/20260920_0515.html">20260920_0515</a>
+<a href="archive/20260917_0555.html">20260917_0555</a>
+<a href="archive/20260913_0510.html">20260913_0510</a>
+<a href="archive/20260910_0530.html">20260910_0530</a>
+<a href="archive/20260907_0502.html">20260907_0502</a>
+<a href="archive/20260906_0455.html">20260906_0455</a>
+<a href="archive/20260903_0532.html">20260903_0532</a>
+<a href="archive/20260831_0550.html">20260831_0550</a>
+<a href="archive/20260830_0530.html">20260830_0530</a>
+<a href="archive/20260827_0536.html">20260827_0536</a>
+<a href="archive/20260824_0320.html">20260824_0320</a>
+<a href="archive/20260823_0319.html">20260823_0319</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260817_0318.html">20260817_0318</a>
+<a href="archive/20260816_0319.html">20260816_0319</a>
+<a href="archive/20260813_0400.html">20260813_0400</a>
+<a href="archive/20260810_0330.html">20260810_0330</a>
+<a href="archive/20260809_0326.html">20260809_0326</a>
+<a href="archive/20260806_0423.html">20260806_0423</a>
+<a href="archive/20260803_0408.html">20260803_0408</a>
+<a href="archive/20260802_0408.html">20260802_0408</a>
+<a href="archive/20260730_0410.html">20260730_0410</a>
+<a href="archive/20260727_0411.html">20260727_0411</a>
+<a href="archive/20260726_0409.html">20260726_0409</a>
+<a href="archive/20260723_0410.html">20260723_0410</a>
+<a href="archive/20260720_0406.html">20260720_0406</a>
+<a href="archive/20260719_0403.html">20260719_0403</a>
+<a href="archive/20260716_0405.html">20260716_0405</a>
+<a href="archive/20260713_0405.html">20260713_0405</a>
+<a href="archive/20260712_0404.html">20260712_0404</a>
+<a href="archive/20260709_0419.html">20260709_0419</a>
+<a href="archive/20260706_0411.html">20260706_0411</a>
+<a href="archive/20260705_0408.html">20260705_0408</a>
+<a href="archive/20260702_0447.html">20260702_0447</a>
+<a href="archive/20260629_0411.html">20260629_0411</a>
+<a href="archive/20260628_0422.html">20260628_0422</a>
+<a href="archive/20260625_0445.html">20260625_0445</a>
+<a href="archive/20260622_0422.html">20260622_0422</a>
+<a href="archive/20260621_0414.html">20260621_0414</a>
+<a href="archive/20260618_0503.html">20260618_0503</a>
+<a href="archive/20260615_0416.html">20260615_0416</a>
+<a href="archive/20260614_0413.html">20260614_0413</a>
+<a href="archive/20260611_0525.html">20260611_0525</a>
+<a href="archive/20260608_0409.html">20260608_0409</a>
+<a href="archive/20260607_0408.html">20260607_0408</a>
+<a href="archive/20260604_0547.html">20260604_0547</a>
+<a href="archive/20260601_0406.html">20260601_0406</a>
+<a href="archive/20260531_0406.html">20260531_0406</a>
+<a href="archive/20260528_0459.html">20260528_0459</a>
+<a href="archive/20260524_0405.html">20260524_0405</a>
+<a href="archive/20260521_0459.html">20260521_0459</a>
+<a href="archive/20260518_0403.html">20260518_0403</a>
+<a href="archive/20260517_0402.html">20260517_0402</a>
+<a href="archive/20260514_0430.html">20260514_0430</a>
+<a href="archive/20260511_0400.html">20260511_0400</a>
+<a href="archive/20260510_0356.html">20260510_0356</a>
+<a href="archive/20260507_0419.html">20260507_0419</a>
+<a href="archive/20260504_0353.html">20260504_0353</a>
+<a href="archive/20260503_0353.html">20260503_0353</a>
+<a href="archive/20260430_0409.html">20260430_0409</a>
+<a href="archive/20260427_0344.html">20260427_0344</a>
+<a href="archive/20260426_0342.html">20260426_0342</a>
+<a href="archive/20260423_0403.html">20260423_0403</a>
+<a href="archive/20260420_0340.html">20260420_0340</a>
+<a href="archive/20260419_0339.html">20260419_0339</a>
+<a href="archive/20260416_0402.html">20260416_0402</a>
+<a href="archive/20260413_0337.html">20260413_0337</a>
+<a href="archive/20260412_0333.html">20260412_0333</a>
+<a href="archive/20260409_0358.html">20260409_0358</a>
+<a href="archive/20260406_0332.html">20260406_0332</a>
+<a href="archive/20260405_0329.html">20260405_0329</a>
+<a href="archive/20260402_0405.html">20260402_0405</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>

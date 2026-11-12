@@ -1,0 +1,536 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递 - Finance</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#dc2626;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#dc2626;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递 - Finance</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-11-12 09:16</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261112_0916</div>
+    <div class="row"><div class="card">
+<div class="title">When Does the Real Wiring Win? Testing connectome structure-function claims against unmeasured physiology</div>
+<div class="meta-line">Authors: Yeyuan Liu</div>
+<div class="meta-line">First: 2026-11-10T18:55:48+00:00 · Latest: 2026-11-10T18:55:48+00:00</div>
+<div class="meta-line">Comments: 23 pages, 5 figures, 10 tables. Code, data and prediction files are included as ancillary files</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14508v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14508v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Connectome-constrained models are often used to argue that a measured wiring diagram outperforms shuffled or rewired wiring, and hence that structure shapes function. Such comparisons can confound wiring with how the models are tuned: a connectome fixes who connects to whom, not the excitability, gains or plasticity rates the model also needs, and modellers often tune these until the real-wiring model works. We separate three estimands: physiology tuned on the real wiring and transferred to nulls (P1), each wiring tuned on its own (P2), and P2 restricted to physiology consistent with independent data (P3). The biases involved are known in machine learning (under-tuned baselines, inherited weights, winner&#x27;s curse); we measure what they do to biological conclusions, using synthetic ground truth, placebo nulls and three Drosophila circuit models. Some claims survive every protocol we test: segregated reward and punishment dopamine improves learning, and head-direction topography is required for a persistent bump. Others do not. In the mushroom body, the real Kenyon-cell output wiring beats a cross-subtype identity shuffle by 0.09 under P1 and P2 but loses to it by 0.09 under P3 (95% CIs exclude zero; held-out runs confirm). The verdict is set by the share of alpha&#x27;beta&#x27; cells among active Kenyon cells, which P1 selects low; at the share implied by imaging (about 44%) the real-wiring model fails to learn, exposing a model inadequacy rather than a deficit of the fly&#x27;s wiring. In flyvis, P1 penalises a mirrored connectome, which has a constructed solution within 0.07 (median) of the real error, more than a spatially shuffled one in 50 of 50 members; the ranking survives ten-fold longer retraining but depends on the checkpoint at fifty-fold. A credible structural claim needs matched optimisation, data-constrained physiology and a model that still works there.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Connectome-constrained models are often used to argue that a measured wiring diagram outperforms shuffled or rewired wiring, and hence that structure shapes function.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Uniform-in-Time Weak Propagation-of-Chaos in Shallow Neural Networks</div>
+<div class="meta-line">Authors: Margalit Glasgow, Joan Bruna</div>
+<div class="meta-line">First: 2026-05-21T05:14:19+00:00 · Latest: 2026-11-10T18:54:51+00:00</div>
+<div class="meta-line">Comments: 52 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.22010v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.22010v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We consider one-hidden layer neural networks trained in the feature-learning regime using gradient descent, and relate the output of the finite-width network $f_{\hatρ_t^m}$ to its infinite-width counterpart $f_{ρ_t^{MF}}$, which evolves in the mean-field dynamics.
+  While constant-time horizon bounds for $\|f_{ρ_t^{MF}} - f_{\hatρ_t^m}\|$ may be obtained via standard Grönwall estimates, the long-time behavior of the fluctuation is a more delicate matter. Uniform-in-time bounds often rely on (local) strong convexity in the landscape or Logarithmic Sobolev inequalities present in noisy gradient dynamics.
+  In this work, we establish non-asymptotic weak propagation-of-chaos that holds uniformly in time, obtained by exploiting instead the convergence rate of the mean-field deterministic Wasserstein-gradient-flow dynamics. Specifically, denoting by $L_t$ the mean-field excess MSE loss at time $t$ and $m$ the number of neurons, under standard regularity assumptions and the condition $\int_0^\infty L_t^{1/2} dt =O(\log d)$, we obtain the uniform in time bound $\|f_{ρ_t^{MF}}- f_{\hatρ_t^m}\|^2 \lesssim \text{poly}(d) m^{-\min(1,c/6)}$ whenever $L_t \lesssim t^{-c}$. Our result holds in a noiseless setting and does not make any assumptions on the geometry of the landscape near the optimum, and extends seamlessly to other forms of discretization, including finite number of samples and time discretization. A key takeaway of our result is that whenever the convergence rate of the mean-field, population-loss dynamics is faster than $t^{-2}$, we can attain a loss of $ε$ with only $\text{poly}(d/ε)$ neurons, training samples, and GD steps.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We consider one-hidden layer neural networks trained in the feature-learning regime using gradient descent, and relate the output of the finite-width network $f_{\hatρ_t^m}$ to its infinite-width counterpart $f_{ρ_t^{MF}}$, which evolves in the mean-field dynamics.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Measuring Robustness and Efficiency in a Connectome-Constrained Fly Visual System Model: Linking an Adversarial and a Perceptual Illusion</div>
+<div class="meta-line">Authors: Alexandre Garcia-Duran, Alejandro Rodriguez-Garcia, Manuel Molano-Mazón, Alexandre Hyafil, Srikanth Ramaswamy, Janne K. Lappalainen</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-11-10T18:51:31+00:00 · Latest: 2026-11-10T18:51:31+00:00</div>
+<div class="meta-line">Comments: 39 pages, 24 figures, 2 tables, Accepted at 40th Conference on Neural Information Processing Systems (NeurIPS 2026)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14498v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14498v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Biological visual systems compute reliably under tight metabolic and wiring constraints, whereas artificial vision systems consume far more energy and can be sensitive to adversarial perturbations. Whether networks with brain-like wiring are more robust at lower computational cost is unclear. We address this by benchmarking a task-optimized, continuous-time recurrent neural network of the fly visual system constrained by its synaptic connectome (FlyNet) against artificial neural networks. We compare it against CNNs, RAFT, and continuous-time recurrent neural networks without detailed connectome constraints (sCTRNN, CTRNN) on a collision-detection task within a differentiable 3D rendering pipeline. FlyNet is adversarially vulnerable but, relative to its compute, more robust to common video corruptions than RAFT, while using up to five orders of magnitude fewer FLOPs. The CTRNNs remain more robust than FlyNet across almost all tested perturbations, suggesting that connectome constraints benefit efficiency, through their low edge count, over robustness. Recurrence improves robustness to white-box attacks in RAFT and temporal context improves robustness to common corruptions. FlyNet&#x27;s position and velocity representations degrade under adversarial textures but recover under counterfactual textures that restore correct classification while staying equally far from training, ruling out unfamiliar textures as the cause of failure. The reverse-phi illusion similarly disrupts these representations and inverts the same low-level motion statistic as the adversarial textures. Optimizing this input statistic alone, without access to the network, suffices to induce classification failure, attributing both perturbations to the same circuit vulnerability. Connectome-constrained models can thus surface adversarial failure mechanisms as testable hypotheses about biological perceptual vulnerabilities.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Biological visual systems compute reliably under tight metabolic and wiring constraints, whereas artificial vision systems consume far more energy and can be sensitive to adversarial perturbations.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Sharp Quantitative Convergence of Compactly Supported Aggregation-Diffusion</div>
+<div class="meta-line">Authors: Yunhong Deng</div>
+<div class="meta-line">First: 2026-10-21T00:05:21+00:00 · Latest: 2026-11-10T18:51:03+00:00</div>
+<div class="meta-line">Comments: 22 pages, 1 figure</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.29000v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.29000v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We establish the quantitative convergence of nonlinear aggregation-diffusion equations in dimension one, with sublinear attraction kernel and degenerate diffusion higher than quadratic. In these models, steady state is known to be the unique, compactly supported, and radial decreasing probability distribution. In this paper, we work with compactly supported densities in dimension one, we prove these solutions converge to the steady state exponentially fast.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We establish the quantitative convergence of nonlinear aggregation-diffusion equations in dimension one, with sublinear attraction kernel and degenerate diffusion higher than quadratic.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">TimeSeek: Multi-Task and Multi-Domain Pretraining for Generalized Time Series Analytics</div>
+<div class="meta-line">Authors: Peng Chen, Yihang Wang, Zhongwen Rao, Yang Shu, Yuying Qiu, Yuxuan Chen, Lujia Pan, Bin Yang, Chenjuan Guo</div>
+<div class="meta-line">First: 2026-11-10T18:49:26+00:00 · Latest: 2026-11-10T18:49:26+00:00</div>
+<div class="meta-line">Comments: Accepted by IEEE Transactions on Pattern Analysis and MachineIntelligence</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14491v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14491v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Time series analytics has been widely applied across various domains. While existing time series foundation models (TSFMs) have demonstrated promising results, they still face two major challenges: 1) Most TSFMs mainly rely on stacking Transformer layers to increase parameter size, lacking the ability to adaptively model complex time series patterns from multi-domain data. 2) Current TSFMs are primarily pre-trained for specific tasks, e.g., forecasting or anomaly detection, and a few models support multiple tasks, but they fail to fully leverage task specificity and commonality, resulting in suboptimal performance. To address these challenges, we propose TimeSeek, a novel generalized time series analytics model that adaptively models time series patterns from multi-domain data and unifies multiple tasks in pre-training. Conceptually, TimeSeek is guided by selective information sharing under domain and task heterogeneity. From the perspective of multi-domain data, we propose a Multi-Domain Feature Extractor that adaptively captures temporal dependencies and channel correlations based on domain-specific characteristics, including progressive multi-scale modeling and adaptive slot channel modeling. From the perspective of the diversity of tasks, we propose multi-task collaborative training, which leverages task specificity and task commonality through task customization and cross-task training, effectively unifying multiple tasks in pre-training and better adapting to diverse downstream scenarios. After pre-training on large-scale time series data, TimeSeek achieves state-of-the-art performance in forecasting, anomaly detection, and classification tasks across both few-shot learning and zero-shot situations, together with favorable inference efficiency.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Time series analytics has been widely applied across various domains.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Allard Regularity for Abelian Yang--Mills--Higgs Equation</div>
+<div class="meta-line">Authors: Huy The Nguyen, Shengwen Wang</div>
+<div class="meta-line">First: 2026-04-21T15:01:27+00:00 · Latest: 2026-11-10T18:47:58+00:00</div>
+<div class="meta-line">Comments: This is a substantial update to the previous paper - we remove the dimension restriction and extend the regularity from the nodal set to all level sets</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.19542v2">Abs</a> · <a href="https://arxiv.org/pdf/2604.19542v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We prove an Allard regularity theorem for critical points of the Abelian Yang-Mills-Higgs energy at critical coupling in every ambient dimension. A new cylindrical monotonicity formula for the full excess, based on an improved Modica inequality, converts the tilt-excess decay of De Philippis-Halavati-Pigati into rigidity of nontrivial entire critical points with almost unit density. This resolves their Gibbons conjecture without a local minimising assumption. Adapting the local vortex expansion and projected linear theory of Badran-del Pino, we obtain quantitative vortex approximation and uniform interior $C^{2,α}$ estimates for the nodal sets. To pass to nonzero complex levels, we use a Hodge decomposition of the difference between the actual and approximate connections: curvature comparison controls the co-closed part, while the Coulomb condition gives estimates for the exact part and hence for the phase. In the Coulomb gauge with vanishing normal component on the outer boundary, this yields graphical $C^{2,α}$ bounds for all levels $\{u_\varepsilon=t\}$, uniformly for $|t|\leq1-b$, in an interior tubular neighbourhood of the nodal set.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We prove an Allard regularity theorem for critical points of the Abelian Yang-Mills-Higgs energy at critical coupling in every ambient dimension.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Mechanistic Interpretability Needs a Logic of Inference</div>
+<div class="meta-line">Authors: Zhimin Hu, Chen Jiang, Hanbo Xie, N. Apurva Ratan Murty, Sashank Varma</div>
+<div class="meta-line">Venue: NeurIPS 2026 Oral</div>
+<div class="meta-line">First: 2026-11-10T18:45:07+00:00 · Latest: 2026-11-10T18:45:07+00:00</div>
+<div class="meta-line">Comments: NeurIPS 2026 Interp4Discovery (Oral)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14483v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14483v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Neural networks are increasingly studied not merely as predictive systems, but as complex systems whose internal computations are themselves objects of scientific inquiry. Recent progress in mechanistic interpretability (MI) has made it possible to identify neurons, features, circuits, population structures, and dynamical patterns associated with model behavior. As these tools improve, attention is shifting from what can be observed inside a model to how those observations support mechanistic explanations. We examine the parallel efforts of neuroscience and MI to address this question and identify recurring inferential bottlenecks when inferring mechanisms from complex neural systems. We propose five principles and organize them into a recursive logic for a more rigorous procedure of mechanistic inference. These principles provide a framework that supports scientific discovery in two senses: it helps turn local interpretability findings into cumulative knowledge of mechanisms within models, and it makes those mechanisms sufficiently precise to generate testable hypotheses about domains beyond the models. Evidence beyond MI is ultimately required to establish what model mechanisms reveal about the world.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Neural networks are increasingly studied not merely as predictive systems, but as complex systems whose internal computations are themselves objects of scientific inquiry.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Spontaneous breaking of a continuous symmetry at a non-conformal quantum critical point in one dimension</div>
+<div class="meta-line">Authors: R. Flores-Calderón, M. Zündel</div>
+<div class="meta-line">Venue: Phys. Rev. Research 8, 043001, 1 October, 2026</div>
+<div class="meta-line">First: 2025-11-12T08:11:39+00:00 · Latest: 2026-11-10T18:45:01+00:00</div>
+<div class="meta-line">Comments: We correct a renormalization condition. $ν$ at $\varepsilon=1$ shifts from $0.6251$ to $0.6258$, the other exponents are unaffected</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2511.09097v4">Abs</a> · <a href="https://arxiv.org/pdf/2511.09097v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In this work, we present numerical evidence for the spontaneous breaking of a continuous $U(1)$ symmetry in a nearest-neighbor interacting spin-1 chain at a quantum critical point separating two XY quasi-long-range ordered phases distinguished by a spontaneously broken $\mathbb{Z}_2$ symmetry. Remarkably, the continuous symmetry breaking emerges precisely at the critical point of the discrete order parameter, suggesting a novel mechanism beyond currently established scenarios. At criticality, the XY correlations develop true long-range order, accompanied by a finite perpendicular magnetization, a zero-frequency Bragg peak in the transverse dynamical structure factor, and sharp gapless collective excitations. From complementary static and dynamical observables, we quantitatively determine the critical exponents, obtaining a dynamical exponent $z=1.50\pm0.04$ and an anomalous dimension $η=1.04\pm0.03$. We further show that the non-interacting continuum limit is equivalent to the recently introduced transverse quantum fluid, displaying their off-diagonal long-ranged order in one dimension. Complementing the numerical study, we derive the renormalization-group flow equations of the continuum theory to second order in the $\varepsilon$ expansion. We identify an interacting fixed point whose critical behavior differs from the Ising universality class already at two-loop order, although the perturbative exponents remain far from the numerical values.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In this work, we present numerical evidence for the spontaneous breaking of a continuous $U(1)$ symmetry in a nearest-neighbor interacting spin-1 chain at a quantum critical point separating two XY quasi-long-range ordered phases distinguished by a spontaneously broken $\mathbb{Z}_2$ symmetry.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The overlooked price feedback: Why simulations overstate distribution grid peaks from home batteries under real time pricing</div>
+<div class="meta-line">Authors: Lion Hirth</div>
+<div class="meta-line">First: 2026-09-28T13:15:13+00:00 · Latest: 2026-11-10T18:43:48+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.35111v4">Abs</a> · <a href="https://arxiv.org/pdf/2609.35111v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Simulation studies of home batteries under real-time electricity pricing commonly find that synchronized charging creates new load peaks in distribution grids. Yet all home-battery simulation studies reviewed here treat wholesale prices as exogenous, ignoring the effect of battery dispatch on the prices that guide it. Charging in low-price hours raises the wholesale price, which dampens the incentive to charge. In equilibrium, charging is spread out across hours. I examine how accounting for this feedback changes local load peaks. An analytical model shows that, when charging power limits do not bind, the local charging peak depends on the local share of national flexibility, the amount of energy absorbed nationally, and the shape of the residual-load trough. I then simulate household battery dispatch under a spot-linked retail tariff with endogenous wholesale prices, calibrated to German data for 2025. In the base case at full battery penetration among PV households, exogenous prices raise the coincident import peak (mean load in the highest 1 % of hours) by 83 % relative to the no-battery benchmark. In the modeled equilibrium with endogenous prices, the same fleet leaves this peak 6 % below the benchmark. The reduction relative to exogenous-price simulations persists across alternative price functions, price paths, peak measures, and scenario assumptions. New local peaks remain possible, particularly where batteries are geographically concentrated. The results suggest that simulations ignoring wholesale price feedback overstate the local peak-load effects of price-responsive home batteries.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Simulation studies of home batteries under real-time electricity pricing commonly find that synchronized charging creates new load peaks in distribution grids.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Agentic Symbolic Search: Approximating Solutions of PDEs Beyond Hand-crafted Expressions, Meshes, and Neural Networks</div>
+<div class="meta-line">Authors: Zongmin Yu, Jun Zhai, Liu Yang</div>
+<div class="meta-line">First: 2026-06-18T16:46:42+00:00 · Latest: 2026-11-10T18:43:13+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2606.20467v2">Abs</a> · <a href="https://arxiv.org/pdf/2606.20467v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Numerical methods and neural networks have transformed our understanding of nonlinear partial differential equations (PDEs), yet discovering mathematical representations that explain their dynamics remains largely an expert task. We introduce Agentic Symbolic Search (ASYS), in which coding agents construct and refine explicit approximations from a known PDE and supplied mathematical knowledge. ASYS couples evolutionary search over differentiable symbolic programs with gradient-based fitting, using the governing equation to evaluate candidates and guide their revision. For a singular generalized Constantin-Lax-Majda profile, ASYS infers a missing decay term that sets how fast the field approaches its singular-time limit, and builds a basis that fits the profile to a median error of $3.90\times10^{-5}\%$. For Fujita blow-up, separating diffusion from reaction and deriving a local response lowers the supplied formula&#x27;s error from 55.5% to 0.0879%. For Allen-Cahn interfaces, a 14-parameter construction yields a mode-coupling law confirmed by independent simulations. These studies show how agentic search develops mathematical starting points into accurate, analyzable approximations.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Numerical methods and neural networks have transformed our understanding of nonlinear partial differential equations (PDEs), yet discovering mathematical representations that explain their dynamics remains largely an expert task.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Bayesian inverse problems and epidemic-threshold uncertainty for a heterogeneous SIS reaction-diffusion model</div>
+<div class="meta-line">Authors: Duc-Lam Duong</div>
+<div class="meta-line">First: 2026-11-10T18:32:19+00:00 · Latest: 2026-11-10T18:32:19+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14468v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14468v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We study Bayesian inference of persistence from early observations of a heterogeneous susceptible--infected--susceptible (SIS) reaction--diffusion model with standard incidence. We show that the leading prevalence dynamics depend on the unknown coefficients only through the difference between the transmission and recovery rates and the infected diffusivity. The same pair determines the principal eigenvalue whose sign governs persistence, so early prevalence can inform the threshold even when the individual rates remain uncertain. We prove global weak well-posedness and quantitative parameter stability for the SIS system and use the resulting observation-map estimates to establish Bayesian well-posedness. For an initial infection of size $\varepsilon$, we derive a uniform second-order expansion that describes how the separate rates enter prevalence. Incidence depends explicitly on transmission at leading order. When the noise standard deviation is proportional to $\varepsilon$, we prove $O(\varepsilon)$ convergence in Hellinger distance of the nonlinear posteriors to their low-prevalence limits for both prevalence alone and joint prevalence and incidence data. We bound the principal eigenvalue using the growth rate of the infected $L^2$ norm between two times. This rate gives a lower bound for the full nonlinear system, and the upper bound separates spatial transients from nonlinear saturation. Uniform spectral estimates and bounds on infection size and measurement error give sufficient conditions for persistence and extinction. We also bound the error in posterior persistence probabilities under forward and eigenvalue approximation, accounting for posterior mass near the threshold. Numerical examples illustrate threshold inference and the predicted \(O(\varepsilon)\) convergence of the nonlinear posteriors to their low-prevalence limits in Hellinger distance.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We study Bayesian inference of persistence from early observations of a heterogeneous susceptible--infected--susceptible (SIS) reaction--diffusion model with standard incidence.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Before the First Bond: Depletion-Assisted Stochastic Capture at the Onset of Endocytosis</div>
+<div class="meta-line">Authors: Hao Wu</div>
+<div class="meta-line">First: 2026-10-31T22:45:37+00:00 · Latest: 2026-11-10T18:29:55+00:00</div>
+<div class="meta-line">Comments: 16 pages, 6 figures, 2 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.01321v2">Abs</a> · <a href="https://arxiv.org/pdf/2611.01321v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The first barrier to receptor-mediated endocytosis is not binding but arrival within a few nanometers of the membrane. In a crowded extracellular environment, this pre-contact approach is driven by thermal fluctuations and entropic depletion, yet continuum models usually start from established contact or treat the approach deterministically. We formulate a thermodynamically consistent stochastic theory for this stage. The sphere--plane depletion geometry uses the exact Asakura--Oosawa spherical-cap overlap, not a fitted cap, with either ideal van~&#x27;t~Hoff or pressure-only Carnahan--Starling (CS) pressure. Near-wall mobility enters with its essential and often omitted noise-induced drift. The first specific reaction is a Robin radiation boundary; the outer boundary is reflecting or absorbing. Three first-passage quantities are obtained analytically by quadrature: the mean reaction time, the reaction-before-escape probability, and the conditional success time, the last encoded by a Doob transform that exposes the selection bias of conditioning on capture. The local Damköhler number diagnoses the boundary reaction-to-diffusion ratio, while the mean-time crossover follows from the exact reaction and diffusion terms. At baseline, ideal and CS contact depths are \(2.33\) and \(5.95\,k_{\rm B}T\), and the reflecting-outer mean reaction time is approximately \(0.20\,{\rm ms}\); with an absorbing outer boundary the conditional success time is shorter, but the two observables use different boundary protocols. Numerical checks reproduce the analytic results and the radiation-boundary mass balance. This provides a quantitative theoretical framework for crowding-assisted capture before membrane wrapping.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The first barrier to receptor-mediated endocytosis is not binding but arrival within a few nanometers of the membrane.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Accurate predictions of properties of energetic materials with tabular foundation models</div>
+<div class="meta-line">Authors: Vagn Krister Nes Glomsrud, Mathias Bynke, Lars Henry Berge Olsen, Dennis Christensen</div>
+<div class="meta-line">First: 2026-11-10T18:29:37+00:00 · Latest: 2026-11-10T18:29:37+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14462v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14462v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We use TabPFN, a recently developed tabular foundation model, to predict three properties of energetic materials: impact sensitivity, decomposition temperature and crystal density. Without any hyperparameter tuning, TabPFN outperforms the best published models for all three properties. It also substantially outperforms a wide range of established machine-learning models, including tuned gradient boosting (XGBoost), random forests and Gaussian processes. This holds both when the models are given hand-crafted molecular descriptors and when they are given learned representations from Chemprop&#x27;s message-passing neural network. In particular, for all three properties, TabPFN applied to Chemprop&#x27;s own embedding is more accurate than Chemprop&#x27;s predictions. TabPFN is also among the fastest models we consider, more than an order of magnitude faster than XGBoost. As TabPFN predicts the entire distribution of the target rather than just a single value, it offers built-in uncertainty quantification, which we compare with the empirical distributions of compounds with repeated measurements. Finally, we interpret the predictions using Shapley values, which rank the features by their importance.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We use TabPFN, a recently developed tabular foundation model, to predict three properties of energetic materials: impact sensitivity, decomposition temperature and crystal density.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">On the Potential of Graph Neural Networks as Metamodels for Supply Chain Optimization: Dataset, Architectures, and Directions</div>
+<div class="meta-line">Authors: Tushar Lone, Neha Karanjkar</div>
+<div class="meta-line">First: 2026-07-18T11:06:22+00:00 · Latest: 2026-11-10T18:24:44+00:00</div>
+<div class="meta-line">Comments: Accepted to Winter Simulation Conference 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.16769v3">Abs</a> · <a href="https://arxiv.org/pdf/2607.16769v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Graph Neural Networks (GNNs) have emerged as a powerful, differentiable class of learning models for graph-structured systems. Their ability to generalize across topologies opens the prospect of a surrogate for combined structural and parametric optimization, which classical metamodels cannot offer. Supply chains are a natural target, yet the use of GNN surrogates for supply chain problems is largely unexplored. This paper lays the foundation, presents initial steps, and discusses key research directions. As a foundation, we formulate the problem and create a large public training dataset of programmatically generated supply chain graphs with input parameters and steady-state performance metrics obtained using our SupplyNetPy simulation library. As initial steps, we explore GNN architectures that work well as surrogates for node- and network-level predictions, and analyze their accuracy-compute trade-off against simulation. Most importantly, we outline the exciting directions this opens, namely gradient-based optimization over topology, fast design-space exploration, and sensitivity analysis.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Graph Neural Networks (GNNs) have emerged as a powerful, differentiable class of learning models for graph-structured systems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A first application of split conformal prediction for dose prediction in knowledge-based radiotherapy planning</div>
+<div class="meta-line">Authors: Raphaël Brodeur, Anne-Sophie Charest, Louis Archambault</div>
+<div class="meta-line">First: 2026-11-10T18:10:47+00:00 · Latest: 2026-11-10T18:10:47+00:00</div>
+<div class="meta-line">Comments: Submitted to Physics in Medicine &amp; Biology</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14438v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14438v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Radiation therapy treatment planning is a labour-intensive process prone to inter-expert variability. Deep learning (DL) dose prediction can accelerate this process, but most DL models do not quantify their reliability. In this study, we construct prediction intervals for DL-based radiotherapy dose prediction using split conformal prediction (CP), a model-agnostic and distribution-free method for uncertainty quantification that provides finite-sample coverage guarantees. We propose patient-level nonconformity scores obtained by aggregating voxelwise scores. Specifically, we formulate a maximum aggregation construction, which guarantees simultaneous coverage of the true dose in all voxels of a future patient with at least a user-defined probability, and a quantile-based construction, which guarantees, with the same probability lower bound, that a future patient attains a prescribed minimum level of voxel coverage. We also investigate groupwise calibration for region-specific guarantees and predictive uncertainty scaling for locally adaptive prediction intervals. The methods are evaluated on head-and-neck cases using a deep ensemble model. The proposed constructions achieved empirical coverage consistent with the nominal levels. Maximum aggregation led to conservative prediction intervals, whereas quantile aggregation produced narrower intervals. Groupwise calibration and uncertainty scaling reduced interval widths in some anatomical regions, while providing region-specific guarantees and local adaptivity. This is the first application of split CP to radiotherapy dose prediction. The explicit patient-level coverage guarantees offer a more interpretable characterisation of prediction reliability than raw uncertainty estimates. Split CP could help clinicians assess the reliability of model predictions and identify cases requiring further review.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Radiation therapy treatment planning is a labour-intensive process prone to inter-expert variability.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Hedging out the HEDGE Bias: Identifying Dynamic Partial-Equilibrium Effects with Panel LP-IV</div>
+<div class="meta-line">Authors: Endong Wang, Ren Zhang</div>
+<div class="meta-line">First: 2026-11-10T18:08:13+00:00 · Latest: 2026-11-10T18:08:13+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14434v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14434v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Cross-sectional designs are widely used to estimate dynamic partial-equilibrium effects of an aggregate treatment. We show analytically that these estimates are biased when exposures to the treatment and to aggregate confounders are correlated or the confounders feed back into the treatment. This paper develops the heterogeneous-exposure local-projection instrumental variables (HELP-IV) framework, which compares units while holding the confounder path fixed by instrumenting the treatment and this path with exposure-weighted shock proxies. We prove that HELP-IV identifies the partial-equilibrium effect. We further extend the framework, with the corresponding inference, to multiple exposure margins and confounders, forward-looking outcomes, and cumulative multipliers. Finally, we apply HELP-IV to state fiscal multipliers and regional stock-wealth effects, where it yields partial-equilibrium effects that are smaller than conventional estimates and deliver different implications when ported to macroeconomic models.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Cross-sectional designs are widely used to estimate dynamic partial-equilibrium effects of an aggregate treatment.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Quantifying the Sampling Frequency Invariance of Time-Series Foundation Models for Sensor Data Applications</div>
+<div class="meta-line">Authors: Sourish Gunesh Dhekane, Abinaya Kumar, Torsten Woertwein, Yan-Bo Lin, Thomas Ploetz, Shabnam Ghaffarzadegan</div>
+<div class="meta-line">First: 2026-11-10T18:01:23+00:00 · Latest: 2026-11-10T18:01:23+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14425v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14425v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Time-Series Foundation Models (TSFMs) are increasingly used in sensor applications, where sampling frequency (SF) varies across sensors, devices, and operating modes (e.g., power saving). Ideally, TSFMs must remain effective during such SF changes, provided the SF retains task-critical bandwidth. In this paper, we stress-test 4 prominent TSFMs: MOMENT, Chronos-2, Moirai-MoE, and TimesFM, to quantify their SF-invariance and investigate whether their behavior tracks the resulting loss of information bandwidth rather than the SF value itself. Our stress-test probes 3 dimensions: (i) the shift in embeddings, (ii) the degradation in forecasting performance, and (iii) the degradation in downstream performance, quantified by three novel metrics: FSI, FDI, and CDI, respectively. To our knowledge, this is the first study to place SF-invariance at the core of TSFM evaluations. Our results characterize: (i) how SF-invariance depends on the margin between signal&#x27;s native-SF and the bandwidth its task requires, (ii) how much of that invariance the choice of TSFM explains, and (iii) how much of TSFM&#x27;s performance degradation under a lower SF reflects information loss rather than a limitation of their abilities. These findings reframe SF-invariance as a measurable, signal-aware property of the (signal X TSFM) pair, and guide practitioners on when TSFMs display SF-invariance.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Time-Series Foundation Models (TSFMs) are increasingly used in sensor applications, where sampling frequency (SF) varies across sensors, devices, and operating modes (e.g., power saving).</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Cotangent-lift inference of stochastic microbial dynamics</div>
+<div class="meta-line">Authors: José A. Capitán, Alberto Megías, Cristina Sardón</div>
+<div class="meta-line">First: 2026-11-10T18:00:26+00:00 · Latest: 2026-11-10T18:00:26+00:00</div>
+<div class="meta-line">Comments: 26 pages, 3 figures, 3 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14423v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14423v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We study the parameter estimation for the stochastic logistic and Lotka--Volterra diffusions from discrete, irregularly spaced observations corrupted by measurement noise, a setting typical of microbiome time series. For the logistic equation, the growth rate acts as a time change and does not enter the stationary law, so it can be identified only from the temporal structure of the data. We prove that the maximum-likelihood estimator of the Euler scheme, with the observations taken as the states, coincides with the regression of log-increments on abundances used in the literature, and we characterise what this estimator cannot see under measurement noise: for the linearised dynamics, the law of consecutive pairs of observations is invariant along an explicit one-parameter family of relaxation rates and noise levels, and the regression converges to a limit set by the noise. Treating the true abundances as latent, we compute the likelihood with a Gaussian moment filter and show that measurement noise is precisely what couples the filter states across samples. The exact gradient is then the backward recursion of the discrete cotangent lift, whose cost, two to three likelihood evaluations, does not depend on the number of parameters, and we give the covector map of each filter step in closed form. In simulations, the latent estimator recovers the relaxation times, noise levels and interaction strengths that the regression biases, while larger communities require prior information on the interactions. In gut microbiome time series it attributes most of the variability of a dominant genus to measurement noise and estimates its relaxation time at about $64$ hours, with a large standard error.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We study the parameter estimation for the stochastic logistic and Lotka--Volterra diffusions from discrete, irregularly spaced observations corrupted by measurement noise, a setting typical of microbiome time series.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The energetic cost of loading classical data in quantum computers</div>
+<div class="meta-line">Authors: Joao F. Doriguello, Alessandro Luongo, Harshit Verma</div>
+<div class="meta-line">First: 2026-11-10T18:00:05+00:00 · Latest: 2026-11-10T18:00:05+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14422v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14422v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Quantum algorithms for machine learning, chemistry, and cryptanalysis often assume coherent access to classical data at negligible physical cost. We instead treat data loading as a hardware process and quantify the dynamic energetic cost of a quantum random access memory (QRAM) query on a superconducting processor. Using the metric-noise-resource framework, we relate query fidelity and power to gate duration, relative two-qubit drive strength, and the distribution of attenuation across a multi-stage refrigerator, while accounting for thermal photons and gate errors. We analyze the linear-depth multiplexer and the noise-resilient bucket-brigade architectures, adapting the latter to a native superconducting gate set and refining its fidelity analysis using the fully decomposed gate schedule. For a representative bucket-brigade QRAM query with a $12$-qubit address register we obtain a query fidelity of $0.969$. The query consumes $3.51\times10^{-4}\,\mathrm{J}$ of dynamic energy, corresponding to an average dynamic power of $4.38\,\mathrm{W}$ and a peak of $64.4\,\mathrm{W}$. Our optimization shows that, at fixed target fidelity, the operating point and attenuation profile can change the average power by a factor of two or more.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Quantum algorithms for machine learning, chemistry, and cryptanalysis often assume coherent access to classical data at negligible physical cost.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Generalizable fetal brain biometry via adaptive artificial intelligence</div>
+<div class="meta-line">Authors: Yijin Li, Mingxuan Liu, Yi Liao, Le Chang, Hongjia Yang, Kasidit Anmahapong, Xiaotian Hu, Ziang Wang, Yingqi Hao, Haoxiang Li, Yifei Chen, Zihan Li, Ziyu Li, Juncheng Zhu, Min Kang, Yan Song, Hua Lai, Xiaoling Zhou, Dingzhi Yue, Xu Liu, Nan Sun, Rong Hu, Xuesheng Li, Fenglin Jia, Gang Ning, Haibo Qu, Qiyuan Tian</div>
+<div class="meta-line">First: 2026-10-11T13:39:48+00:00 · Latest: 2026-11-10T17:54:49+00:00</div>
+<div class="meta-line">Comments: 67 pages, 8 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.23966v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.23966v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Fetal brain biometry provides a quantitative basis for assessing prenatal growth and identifying congenital brain abnormalities. However, comprehensive assessment remains limited by labor-intensive manual measurements and automated models that lose accuracy across imaging sequences and institutions. We introduce BioTTA, an anatomically guided test-time adaptation framework that measures 11 fetal brain biometrics from reconstructed three-dimensional magnetic resonance images. BioTTA adapts pretrained models to individual unlabeled volumes using geometric consistency and atlas priors, without access to source images. In a retrospective study across five centers in China and Switzerland, BioTTA improved measurement accuracy across three out-of-distribution datasets and two network architectures. It reduced mean absolute measurement errors by 46-82% relative to the corresponding models without adaptation, achieving errors similar to those of supervised fine-tuning. Its measurements were mapped onto normative growth trajectories derived from expert annotations, enabling gestational-age-specific assessment through a web-based reporting platform. Across four disease cohorts, the platform achieved 82.1-95.0% accuracy in binary detection of ventriculomegaly or cerebellar abnormalities, with performance similar to that of a senior radiologist. BioTTA provides a practical foundation for standardized fetal brain biometry across heterogeneous imaging settings, supporting scalable prenatal growth assessment and quantitative evaluation of brain abnormalities.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Fetal brain biometry provides a quantitative basis for assessing prenatal growth and identifying congenital brain abnormalities.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Good Practices for Measuring the Interfacial Dzyaloshinskii-Moriya Interaction by Brillouin Light Scattering and Magneto-Optical Kerr Effect</div>
+<div class="meta-line">Authors: Marco Madami, Silvia Tacchi, Adriano Di Pietro, Alessandro Magni, Giovanni Gandini, Christian Rinaldi, Giovanni Carlotti, Gianfranco Durin, Johannes Hertel, Maximilian Lederer, Christopher H. Marrows, Vito Puliafito, Michaela Kuepferling</div>
+<div class="meta-line">First: 2026-11-10T17:48:48+00:00 · Latest: 2026-11-10T17:48:48+00:00</div>
+<div class="meta-line">Comments: 20 pages, 7 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14405v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14405v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The interfacial Dzyaloshinskii-Moriya interaction (iDMI) is a key ingredient for stabilizing chiral magnetic states, such as skyrmions and chiral domain walls, which are key building blocks for next-generation spintronic technologies. Despite its importance, the quantitative determination of the iDMI constant, $D$, is often plagued by significant discrepancies. This paper establishes a set of good practices for measuring iDMI using two primary techniques: Brillouin Light Scattering (BLS) and the Magneto-Optical Kerr Effect (MOKE). Through the analysis of Co/Pt-based heterostructures, this work provides a comprehensive roadmap for measurement procedures, data evaluation, and uncertainty analysis. Our analysis highlights the crucial role of magnetic parameters used to extract the iDMI constant and propagation of their uncertainties, and the measurement model for enhancing measurement reliability. The proposed methodology provides a practical framework for improving the consistency and reproducibility of iDMI measurements across different laboratories and experimental techniques.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The interfacial Dzyaloshinskii-Moriya interaction (iDMI) is a key ingredient for stabilizing chiral magnetic states, such as skyrmions and chiral domain walls, which are key building blocks for next-generation spintronic technologies.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Discovering Equations for the Thermodynamics of South Asian Monsoon Precipitation</div>
+<div class="meta-line">Authors: Savannah L. Ferretti, Jane W. Baldwin, Michael S. Pritchard, Tom Beucler</div>
+<div class="meta-line">First: 2026-11-10T17:45:21+00:00 · Latest: 2026-11-10T17:45:21+00:00</div>
+<div class="meta-line">Comments: Main Text (23 pages, 6 figures, 1 table) and Supporting Information (6 pages, 2 figures, 3 tables)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14401v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14401v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">South Asian monsoon precipitation depends on the thermodynamic structure of the lower troposphere, but how its ingredients combine to shape precipitation remains unclear, partly because this dependence is nonlocal in the vertical. We use symbolic distillation, which combines neural networks and symbolic regression, to discover interpretable precipitation equations from 21 years of June-August reanalysis data. Neural networks first learn the vertical thermodynamic structure most relevant to precipitation, condensing each variable into a single interpretable feature not tied to a particular vertical grid. Then, symbolic regression derives closed-form equations from these features and the surface state. Our best equation explains 1.5 times as much precipitation variance as a widely used buoyancy-based diagnostic and recovers about 85% of neural network skill while using about a thousand times fewer parameters. Unlike the buoyancy diagnostic, which adds moisture and instability, the equations treat them as competing controls, with the heaviest precipitation occurring when the lower free troposphere is humid. Over ocean, sensible heating is associated with additional precipitation mainly when near-surface air is warm and moist, improving predicted precipitation and its diurnal cycle. Although the learned features were optimized only for precipitation prediction, the equations largely respond to each feature as expected from convective physics, consistent with the reanalysis. These responses reduce the dependence of monsoon precipitation on the entire vertical column to a few simple, testable constraints that could guide data-driven precipitation models to make them more physically consistent.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">South Asian monsoon precipitation depends on the thermodynamic structure of the lower troposphere, but how its ingredients combine to shape precipitation remains unclear, partly because this dependence is nonlocal in the vertical.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Margin Perspective on LoRA: Robustness to Catastrophic Forgetting and Adapter Merging (MaLoRA)</div>
+<div class="meta-line">Authors: Ziqing Xu, Hancheng Min, Lachlan Ewen MacDonald, Salma Tarmoun, Enrique Mallada, Weijie Su, Rene Vidal</div>
+<div class="meta-line">First: 2026-11-10T17:44:14+00:00 · Latest: 2026-11-10T17:44:14+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14397v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14397v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Low-rank adaptation (LoRA) is the de facto method for parameter-efficient fine-tuning of large neural networks, achieving strong task adaptation with minimal trainable parameters and low optimization cost. Beyond this efficiency, practitioners have observed two striking properties: \textit{robustness to catastrophic forgetting} and the ability to \textit{merge independently trained adapters} into a single model that performs competitively across multiple tasks. These properties are central to continual and multi-task learning, yet remain poorly understood. In this work, we provide a theoretical explanation through a unified \textit{margin-based perspective}. We analyze LoRA in multiclass linear classification under a near-orthogonal task regime with $\ell_2$-regularization, and characterize the optimal LoRA adapter across regularization regimes. Our analysis shows that, in an intermediate regime of regularization parameters, the optimal adapter aligns with the \emph{max-margin solution} on the fine-tuning data. Building on this characterization, we derive two key consequences. First, we obtain closed-form expressions for the margins on pre-training and fine-tuning data, revealing a precise margin trade-off: the regularization parameter controls the balance between retention and adaptation. Second, we analyze adapter merging, proving that merged models achieve positive margin on each task and deriving optimal mixing coefficients that balance margins across tasks and maximize the margin over their union. These results lead to a simple, training-free merging rule, which we term \textit{margin-based LoRA merging} (MaLoRA). Experiments on modern architectures and real datasets validate our theoretical predictions, showing that MaLoRA matches or outperforms several adapter-merging baselines across a range of vision and language classification tasks.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Low-rank adaptation (LoRA) is the de facto method for parameter-efficient fine-tuning of large neural networks, achieving strong task adaptation with minimal trainable parameters and low optimization cost.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Improved Myelin Water Fraction Estimation and Uncertainty Mapping in Multicomponent T2 Relaxometry via NNLS Bootstrap Aggregation</div>
+<div class="meta-line">Authors: Erick J Canales-Rodríguez, Thomas Yu, Juan Manuel Górriz, Santiago Galdo-Álvarez, Tobias Kober, Tom Hilbert, Gian Franco Piredda, Miguel Ángel Rivas-Fernández</div>
+<div class="meta-line">First: 2026-11-10T17:43:51+00:00 · Latest: 2026-11-10T17:43:51+00:00</div>
+<div class="meta-line">Comments: 22 pages, 5 figures, 3 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14395v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14395v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Estimating the myelin water fraction (MWF) from multicomponent T2 relaxometry requires solving an ill-conditioned inverse problem, making estimates sensitive to noise. Regularization can improve stability but may introduce bias. Conventional NNLS-based methods also provide point estimates without directly quantifying voxelwise variability. To address these limitations, we propose the non-negative least squares Bootstrap Barycenter (NNLS-BB), combining residual resampling with repeated NNLS reconstruction. We average spectra and derived parameters across bootstrap replicates and use their standard deviations to characterize sensitivity to signal perturbations. The method requires neither an explicit spectral regularization penalty nor a training dataset. NNLS-BB was evaluated on 40,000 simulated voxels with signal-to-noise ratios of 50-1000, against conventional NNLS, two regularized NNLS methods, and a model-informed machine-learning (MIML) method. Scan-rescan repeatability was assessed across 20 white-matter regions in two independent cohorts comprising 13 healthy participants. NNLS-BB achieved the lowest MWF mean absolute error and root mean squared error in all simulated noise regimes. Mean absolute error decreased by 36-41% relative to conventional NNLS, alongside lower error dispersion. Compared with Bayes-Reg-$D^{-1}$ and MIML, NNLS-BB achieved comparable dispersion but substantially lower bias, although MIML reconstructed the full spectrum more accurately. In vivo, NNLS-BB yielded the lowest regional scan-rescan dispersion and highest mean correlation in both cohorts. Bootstrap standard-deviation maps provided complementary information about parameter variability. These results support residual-bootstrap aggregation for improving MWF estimation while providing voxelwise variability maps from a single acquisition.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Estimating the myelin water fraction (MWF) from multicomponent T2 relaxometry requires solving an ill-conditioned inverse problem, making estimates sensitive to noise.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Is the Kaniadakis deformation of holographic dark energy detectable? A non-flat analysis with DESI DR2, cosmic chronometers and Pantheon+SH0ES</div>
+<div class="meta-line">Authors: P. Suresh Kumar, Said Salim AL Kathiri</div>
+<div class="meta-line">First: 2026-10-09T18:23:38+00:00 · Latest: 2026-11-10T17:42:52+00:00</div>
+<div class="meta-line">Comments: 20 pages, 6 figures, 3 tables. v2: revised following the JCAP referee report</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.26883v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.26883v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Kaniadakis entropy deforms the horizon entropy through one parameter $κ$, and holographic dark energy built on it (KHDE) reduces to standard holographic dark energy (HDE) when $κ\to0$. The deformation enters the equations through the dimensionless combination $β=KM_p^2/H_0^2$, where $K$ is the effective KHDE parameter. We test whether current data detect it in a curved universe without CMB information. We combine Pantheon+SH0ES supernovae calibrated with Cepheids, 32 cosmic-chronometer measurements of $H(z)$ with their correlated systematic errors, and DESI DR2 baryon acoustic oscillations with a free sound horizon. Non-flat KHDE fits the data as well as flat $Λ$CDM ($Δχ^2=-3.0$), but $β$ is not detected: the profile $χ^2$ changes by only 0.44 between $β=0$ and its best value, and by 0.46 in the flat case. The upper limit $β&lt;0.65$ (95%) comes from the condition that the model has a real solution, not from the data; where the truncated expansion is reliable, the limit is $β&lt;0.57$. $β$ of order one corresponds to $κ$ of order $10^{-122}$. Comparing flat and non-flat HDE and KHDE with $Λ$CDM shows that neither curvature nor the deformation improves the fit enough to justify the extra parameters. The joint fit gives $Ω_{k0}=0.007\pm0.046$, $H_0=72.85\pm0.94$ km s$^{-1}$ Mpc$^{-1}$ and $r_d=137.41\pm1.88$ Mpc. The expansion starts to accelerate at $z_t=0.66\pm0.03$, and a neural-network reconstruction of $H(z)$ from the chronometers agrees with the model.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Kaniadakis entropy deforms the horizon entropy through one parameter $κ$, and holographic dark energy built on it (KHDE) reduces to standard holographic dark energy (HDE) when $κ\to0$.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Cost controllability and predictive control of input-constrained monotone systems on Hilbert spaces</div>
+<div class="meta-line">Authors: Till Preuster, Karl Worthmann, Lars Grüne, Manuel Schaller</div>
+<div class="meta-line">First: 2026-11-10T17:42:44+00:00 · Latest: 2026-11-10T17:42:44+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14393v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14393v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Cost controllability, relating controllability and a performance measure like the stage cost in model predictive control (MPC), is a key tool in the stability and suboptimality analysis of closed-loop systems. We establish cost controllability for maximal monotone control systems subject to input constraints, a class encompassing finite- and infinite-dimensional port-Hamiltonian systems with colocated input and output. To this end, we employ a recently proposed saturated feedback to derive state-dependent bounds on the closed-loop cost. Our main result is that cost controllability holds globally with semiglobal exponential rate. We first establish this result in continuous time and then extend it to sampled-data systems. Whereas a qualitative detectability-like property is sufficient for asymptotic convergence of the controller, cost controllability requires quantitative rates. We provide two verifiable conditions ensuring cost controllability with explicit exponential rates: coercivity of the sum of system operator and output injection, and exponential detectability of the linear part. Moreover, under the coercivity condition, the resulting MPC scheme without terminal conditions renders the equilibrium globally asymptotically stable with semiglobal exponential rate already for prediction horizon two. We illustrate our results by a nonlinear finite-dimensional system, a semilinear heat equation and a nonlinearly damped wave equation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Cost controllability, relating controllability and a performance measure like the stage cost in model predictive control (MPC), is a key tool in the stability and suboptimality analysis of closed-loop systems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Semiparametric Inference in Panel Data with Interactive and High-dimensional Confounding</div>
+<div class="meta-line">Authors: Bin Chen, Yukun Ma, Qiyang Yu</div>
+<div class="meta-line">First: 2026-11-10T17:37:38+00:00 · Latest: 2026-11-10T17:37:38+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14385v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14385v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper develops inference for a low-dimensional treatment coefficient in partially linear panel models with high-dimensional observed covariates and latent interactive confounding. Flexible adjustment for observed covariates can leave correlated factor components in treatment and outcome residuals, invalidating standard double/debiased machine learning (DML). We propose Factor-Augmented DML (FA-DML), which estimates treatment-side and reduced-form factor spaces from first-stage residuals. The estimator combines a feasible double projection with three-fold, unit-level cross-fitting. The double projection controls interactions between the two estimated factor spaces. The separate folds eliminate same-training-unit pairings in the leading disturbance components of the factor-estimation errors. Under fixed factor ranks, pervasive factor signals, strict exogeneity, and joint asymptotics in the number of units N and periods T , FA-DML is first-order equivalent to an infeasible oracle, is asymptotically normal, and admits consistent variance estimation. In the baseline simulation design with strong interactive confounding, FA-DML confidence intervals have coverage close to the nominal level. Standard DML and a two-fold variant that estimates both factor spaces on the same units substantially undercover. In an application to U.S. states, FA-DML finds that a 10% increase in the real minimum wage is associated with a roughly 1.1% lower 50/10 wage ratio. The estimate is stable across control sets and first-stage learners.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper develops inference for a low-dimensional treatment coefficient in partially linear panel models with high-dimensional observed covariates and latent interactive confounding.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">An Energy-Based Perspective on Machine Learning</div>
+<div class="meta-line">Authors: Bo Dai, Yilun Du</div>
+<div class="meta-line">First: 2026-11-10T17:37:22+00:00 · Latest: 2026-11-10T17:37:22+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14383v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14383v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Energy-based models (EBMs) define a distribution through a scalar energy, $p_θ(x)\propto\exp(-E_θ(x))$, and are usually presented as one model family among many. This tutorial has a broader goal: beyond introducing EBMs, it uses them as a single lens that connects the different aspects of machine learning. Any EBM is specified by three choices, the energy, which determines what the model represents; the inference procedure, which samples from or optimizes the energy; and the learning method, which fits the energy to data. We first develop these components, including sampling, variational inference, and learning by maximum likelihood, noise contrastive estimation, pseudolikelihood, score matching, and adversarial training, and show that the learning methods share one contrastive structure. We then show that discriminative models, generative models such as GANs, normalizing flows, diffusion and autoregressive models, representation learning methods such as contrastive learning, word2vec, BERT, denoising auto-encoders, and diffusion representations, reinforcement learning with EBM policies and world models, inverse reinforcement learning, and planning, as well as inference-time computation with verifiers, are all EBMs that differ in these three choices, mostly in how they handle the partition function and sampling. This view explains existing methods, organizes them into a common framework, and suggests new algorithms by replacing one component while keeping the others, with composition of energies as a principled way to combine learned models at inference time.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Energy-based models (EBMs) define a distribution through a scalar energy, $p_θ(x)\propto\exp(-E_θ(x))$, and are usually presented as one model family among many.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Towards end-to-end LLM-based censoring-aware survival analysis</div>
+<div class="meta-line">Authors: Yishu Wei, Hexin Dong, Yi Lin, Jiahe Qian, Yi Liu, Yifan Peng</div>
+<div class="meta-line">First: 2026-05-25T03:45:42+00:00 · Latest: 2026-11-10T17:35:42+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.25399v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.25399v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Objective: Survival analysis is central to medical prediction, yet large language models (LLMs) are rarely used as end-to-end survival models because censoring prevents straightforward supervised fine-tuning. Here we present LLMSurvival, a framework that enables censoring-aware survival analysis with unmodified LLMs operating directly on tabular clinical data.
+  Materials and Methods: LLMSurvival reformulates time-to-event prediction as pairwise ranking among comparable subjects, and derives test-time risk by aggregating comparisons against anchor individuals from the training cohort.
+  Results: Across two clinical tasks (ICU mortality prediction in MIMIC-IV and fragility fracture prediction in a NewYork-Presbyterian/Weill Cornell Medicine cohort), LLMSurvival improves overall concordance over Cox proportional hazards modeling by 3.1% for ICU mortality and 0.5% for fracture risk, 2.1% on average for ICU mortality and 2.8% for fracture risk over three established deep learning survival models.
+  Discussion: The results show that survival modeling with censoring can be made compatible with LLM fine-tuning through comparison-based reformulation. The framework demonstrates high portability and superior performance over expert curated scores like SAPS-II and FRAX scores across diverse clinical context. Furthermore, the framework supports local deployment, as compact, publicly available base models provide sufficient performance.
+  Conclusion: The LLMSurvival framework serves as a proof of concept for an integrated, censoring-conscious approach to survival analysis via LLMs.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Objective: Survival analysis is central to medical prediction, yet large language models (LLMs) are rarely used as end-to-end survival models because censoring prevents straightforward supervised fine-tuning.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Bundling Complements</div>
+<div class="meta-line">Authors: Weijie Zhong</div>
+<div class="meta-line">First: 2026-07-08T23:15:17+00:00 · Latest: 2026-11-10T17:29:18+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.07982v4">Abs</a> · <a href="https://arxiv.org/pdf/2607.07982v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">I study a monopolist selling goods to a buyer with combinatorial preferences. The dual of the seller&#x27;s problem is a minimum-cost flow of the differential virtual value. I characterize when the type distribution alone determines the differential virtual value. The distribution then determines the *required directions*, along which the dual transports mass, and the preference determines the *covered directions* of each bundle; optimality is full coverage. This separation enables comparative statics in the preference: raising a complementarity premium on bundles containing a core of goods widens their covered directions. Two premium thresholds describe the optimum: above a lower threshold the grand bundle must be offered; above an upper threshold a *core-peripheral* menu --- a bundled core with optional add-ons not sold standalone --- is optimal, and every optimal menu is core-peripheral. The upper threshold is finite if and only if the menu is *inclusive*: it excludes no near-top buyer.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">I study a monopolist selling goods to a buyer with combinatorial preferences.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261109_0639.html">20261109_0639</a>
+<a href="archive/20261108_0629.html">20261108_0629</a>
+<a href="archive/20261105_0810.html">20261105_0810</a>
+<a href="archive/20261102_0634.html">20261102_0634</a>
+<a href="archive/20261101_0609.html">20261101_0609</a>
+<a href="archive/20261029_0657.html">20261029_0657</a>
+<a href="archive/20261026_0522.html">20261026_0522</a>
+<a href="archive/20261025_0524.html">20261025_0524</a>
+<a href="archive/20261022_0604.html">20261022_0604</a>
+<a href="archive/20261019_0514.html">20261019_0514</a>
+<a href="archive/20261018_0512.html">20261018_0512</a>
+<a href="archive/20261015_0601.html">20261015_0601</a>
+<a href="archive/20261012_0640.html">20261012_0640</a>
+<a href="archive/20261011_0611.html">20261011_0611</a>
+<a href="archive/20261008_0727.html">20261008_0727</a>
+<a href="archive/20261005_0611.html">20261005_0611</a>
+<a href="archive/20261004_0558.html">20261004_0558</a>
+<a href="archive/20261001_0647.html">20261001_0647</a>
+<a href="archive/20260928_0550.html">20260928_0550</a>
+<a href="archive/20260927_0546.html">20260927_0546</a>
+<a href="archive/20260924_0559.html">20260924_0559</a>
+<a href="archive/20260921_0510.html">20260921_0510</a>
+<a href="archive/20260920_0515.html">20260920_0515</a>
+<a href="archive/20260917_0555.html">20260917_0555</a>
+<a href="archive/20260913_0510.html">20260913_0510</a>
+<a href="archive/20260910_0530.html">20260910_0530</a>
+<a href="archive/20260907_0502.html">20260907_0502</a>
+<a href="archive/20260906_0455.html">20260906_0455</a>
+<a href="archive/20260903_0532.html">20260903_0532</a>
+<a href="archive/20260831_0550.html">20260831_0550</a>
+<a href="archive/20260830_0530.html">20260830_0530</a>
+<a href="archive/20260827_0536.html">20260827_0536</a>
+<a href="archive/20260824_0320.html">20260824_0320</a>
+<a href="archive/20260823_0319.html">20260823_0319</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260817_0318.html">20260817_0318</a>
+<a href="archive/20260816_0319.html">20260816_0319</a>
+<a href="archive/20260813_0400.html">20260813_0400</a>
+<a href="archive/20260810_0330.html">20260810_0330</a>
+<a href="archive/20260809_0326.html">20260809_0326</a>
+<a href="archive/20260806_0423.html">20260806_0423</a>
+<a href="archive/20260803_0408.html">20260803_0408</a>
+<a href="archive/20260802_0408.html">20260802_0408</a>
+<a href="archive/20260730_0410.html">20260730_0410</a>
+<a href="archive/20260727_0411.html">20260727_0411</a>
+<a href="archive/20260726_0409.html">20260726_0409</a>
+<a href="archive/20260723_0410.html">20260723_0410</a>
+<a href="archive/20260720_0406.html">20260720_0406</a>
+<a href="archive/20260719_0403.html">20260719_0403</a>
+<a href="archive/20260716_0405.html">20260716_0405</a>
+<a href="archive/20260713_0405.html">20260713_0405</a>
+<a href="archive/20260712_0404.html">20260712_0404</a>
+<a href="archive/20260709_0419.html">20260709_0419</a>
+<a href="archive/20260706_0411.html">20260706_0411</a>
+<a href="archive/20260705_0408.html">20260705_0408</a>
+<a href="archive/20260702_0447.html">20260702_0447</a>
+<a href="archive/20260629_0411.html">20260629_0411</a>
+<a href="archive/20260628_0422.html">20260628_0422</a>
+<a href="archive/20260625_0445.html">20260625_0445</a>
+<a href="archive/20260622_0422.html">20260622_0422</a>
+<a href="archive/20260621_0414.html">20260621_0414</a>
+<a href="archive/20260618_0503.html">20260618_0503</a>
+<a href="archive/20260615_0416.html">20260615_0416</a>
+<a href="archive/20260614_0413.html">20260614_0413</a>
+<a href="archive/20260611_0525.html">20260611_0525</a>
+<a href="archive/20260608_0409.html">20260608_0409</a>
+<a href="archive/20260607_0408.html">20260607_0408</a>
+<a href="archive/20260604_0547.html">20260604_0547</a>
+<a href="archive/20260601_0406.html">20260601_0406</a>
+<a href="archive/20260531_0406.html">20260531_0406</a>
+<a href="archive/20260528_0459.html">20260528_0459</a>
+<a href="archive/20260524_0405.html">20260524_0405</a>
+<a href="archive/20260521_0459.html">20260521_0459</a>
+<a href="archive/20260518_0403.html">20260518_0403</a>
+<a href="archive/20260517_0402.html">20260517_0402</a>
+<a href="archive/20260514_0430.html">20260514_0430</a>
+<a href="archive/20260511_0400.html">20260511_0400</a>
+<a href="archive/20260510_0356.html">20260510_0356</a>
+<a href="archive/20260507_0419.html">20260507_0419</a>
+<a href="archive/20260504_0353.html">20260504_0353</a>
+<a href="archive/20260503_0353.html">20260503_0353</a>
+<a href="archive/20260430_0409.html">20260430_0409</a>
+<a href="archive/20260427_0344.html">20260427_0344</a>
+<a href="archive/20260426_0342.html">20260426_0342</a>
+<a href="archive/20260423_0403.html">20260423_0403</a>
+<a href="archive/20260420_0340.html">20260420_0340</a>
+<a href="archive/20260419_0339.html">20260419_0339</a>
+<a href="archive/20260416_0402.html">20260416_0402</a>
+<a href="archive/20260413_0337.html">20260413_0337</a>
+<a href="archive/20260412_0333.html">20260412_0333</a>
+<a href="archive/20260409_0358.html">20260409_0358</a>
+<a href="archive/20260406_0332.html">20260406_0332</a>
+<a href="archive/20260405_0329.html">20260405_0329</a>
+<a href="archive/20260402_0405.html">20260402_0405</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
